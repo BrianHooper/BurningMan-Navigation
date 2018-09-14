@@ -5,14 +5,9 @@ public class Main {
     public static final int BLOCK_WIDTH = 240;
 
     public static void main(String[] args) {
-        Coordinate location = new Coordinate(40.7785, -119.2153, 60);
-
         CampList campList = new CampList();
-
-        campList.add("Man", new Position(0, 0, 0));
-        campList.add("Temple", new Position(0, 0, 'A'));
-        campList.add("Center Camp", new Position(6, 0, 'A'));
-
+        campList.importCamps("camplist.csv");
+        Coordinate location = new Coordinate(40.7785, -119.2153, 60);
         System.out.println("Current coordinates: " + location);
         System.out.println("Current address: " + location.address());
         System.out.println("Distance to the man: " + location.distance(campList.findCamp("Man")) + "'");
