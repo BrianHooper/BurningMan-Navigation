@@ -14,12 +14,7 @@ public class Coordinate {
      * @param longitude current longitude position
      */
     public Coordinate(double latitude, double longitude) {
-        this.latitude = latitude;
-        this.longitude = longitude;
-        double time = (angle() / 360) * 12;
-        int hour = (int) time;
-        int minute = (int) ((time - hour) * 60);
-        currentPosition = new Position(hour, minute, distance());
+        updateCoordinates(latitude, longitude);
     }
 
     /**
@@ -31,6 +26,15 @@ public class Coordinate {
     public Coordinate(double latitude, double longitude, double bearing) {
         this(latitude, longitude);
         this.bearing = bearing;
+    }
+
+    public void updateCoordinates(double latitude, double longitude) {
+        this.latitude = latitude;
+        this.longitude = longitude;
+        double time = (angle() / 360) * 12;
+        int hour = (int) time;
+        int minute = (int) ((time - hour) * 60);
+        currentPosition = new Position(hour, minute, distance());
     }
 
     /**
