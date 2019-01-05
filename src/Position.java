@@ -3,7 +3,6 @@
  * Represents the BM address of a camp or person
  */
 public class Position {
-
     private int hour;
     private int minute;
     private double distance;
@@ -29,7 +28,7 @@ public class Position {
     }
 
     /**
-     * Consturctor
+     * Constructor
      * @param hour angular hourly position
      * @param minute angular minute position
      * @param distance distance from the man in feet
@@ -46,17 +45,21 @@ public class Position {
      * @return Address as String
      */
     private String getAddress() {
-        if(distance < Main.ESPLANADE_DISTANCE || distance > Main.ESPLANADE_DISTANCE + 12 * Main.BLOCK_WIDTH) {
+        if(distance < Navigator.esplanade_distance || distance > Navigator.esplanade_distance + 12 * Navigator.block_width) {
             return hour + ":" + minute + " & " + distance + "'";
         } else {
             String street;
-            if(distance < Main.ESPLANADE_DISTANCE + Main.BLOCK_WIDTH) {
+            if(distance < Navigator.esplanade_distance + Navigator.block_width) {
                 street = "Esplanade";
             } else {
-                char chIndex = (char) (((distance - Main.ESPLANADE_DISTANCE) / Main.BLOCK_WIDTH) + 64);
+                char chIndex = (char) (((distance - Navigator.esplanade_distance) / Navigator.block_width) + 64);
                 street = Character.toString(chIndex);
             }
-            return hour + ":" + minute + " & " + street;
+            if(minute < 10) {
+                return hour + ":0" + minute + " & " + street;
+            } else {
+                return hour + ":" + minute + " & " + street;
+            }
         }
     }
 

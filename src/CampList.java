@@ -1,10 +1,7 @@
-import com.sun.xml.internal.ws.util.*;
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.text.ParseException;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -14,11 +11,7 @@ import java.util.regex.Pattern;
  * Maintains a searchable list of unique camp names and coordinates
  */
 public class CampList {
-    private HashMap<String, Position> camps;
-
-    public CampList() {
-        camps = new HashMap<>();
-    }
+    private HashMap<String, Position> camps = new HashMap<>();
 
     /**
      * Adds a new camp
@@ -26,6 +19,7 @@ public class CampList {
      * @param camp Position of the camp
      * @return true if the list does not already contain the camp
      */
+    @SuppressWarnings("unused")
     public boolean add(String name, Position camp) {
         if(camps.containsKey(name)) {
             return false;
