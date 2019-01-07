@@ -48,6 +48,7 @@ public class Coordinate {
      */
     public static double angle(double latitude, double longitude) {
         double angle = Math.toDegrees(Math.atan2(latitude - Navigator.man_latitude, longitude - Navigator.man_longitude));
+        angle += calculateOffset(angle);
         if(angle < 0) {
             angle += 360;
         }
@@ -60,7 +61,20 @@ public class Coordinate {
         if(angle == 360) {
             angle = 0;
         }
+
         return angle;
+    }
+
+    public static double calculateOffset(double angle) {
+        if(angle > 270) {
+            angle -= 270;
+        } else if(angle > 180) {
+            angle -= 180;
+        } else if(angle > 90) {
+            angle -= 90;
+        }
+        double percent = angle / 90;
+        return 37 + (percent * 16);
     }
 
     /**

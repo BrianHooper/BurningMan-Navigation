@@ -23,6 +23,14 @@ public class Navigator {
         currentCoordinate = new Coordinate(latitude, longitude);
     }
 
+    public void updateLocation(double latitude, double longitude) {
+        currentCoordinate.updateCoordinates(latitude, longitude);
+    }
+
+    public String currentAddress() {
+        return currentCoordinate.address();
+    }
+
     /**
      * Imports a csv file containing a list of bathroom coordinates
      * @param bathroomListLocation path to csv file
