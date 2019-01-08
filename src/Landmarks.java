@@ -251,11 +251,11 @@ public class Landmarks {
      * @param searchterm search term
      * @return String matching, or null if none
      */
-    private static String findMatch(Set<String> locations, String searchterm) {
+    private static String findMatch(HashMap<String, Location> locations, String searchterm) {
         searchterm = searchterm.toLowerCase();
 
         ArrayList<String> matches = new ArrayList<>();
-        for(String location : locations) {
+        for(String location : locations.keySet()) {
             String lc = location.toLowerCase();
             if(lc.contains(searchterm)) {
                 matches.add(location);
@@ -269,10 +269,11 @@ public class Landmarks {
         } else {
             System.out.println("Multiple options found: ");
             for(int i = 1; i <= matches.size(); i++) {
-                System.out.println(i + ": " + matches.get(i - 1));
+                System.out.println(i + ": " + matches.get(i - 1) + " - " + locations.get(matches.get(i - 1)));
             }
             Scanner scan = new Scanner(System.in);
             try {
+                System.out.print("Enter choice: ");
                 int choice = scan.nextInt();
                 scan.close();
                 if(choice > 0 && choice <= matches.size()) {
@@ -295,7 +296,7 @@ public class Landmarks {
      * @return Location of camp, or null if none
      */
     public Location findCamp(String name) {
-        String campName = findMatch(camps.keySet(), name);
+        String campName = findMatch(camps, name);
         if(campName == null) {
             return null;
         } else {
@@ -309,7 +310,7 @@ public class Landmarks {
      * @return Location of art piece, or null if none
      */
     public Location findArt(String name) {
-        String campName = findMatch(art.keySet(), name);
+        String campName = findMatch(art, name);
         if(campName == null) {
             return null;
         } else {
