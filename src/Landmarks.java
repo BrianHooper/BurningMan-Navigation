@@ -1,0 +1,319 @@
+/* Brian Hooper
+ *
+ * 2018
+ */
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Scanner;
+import java.util.Set;
+
+/**
+ * Class Landmarks
+ *
+ * Maintains lists of Location objects and methods for interacting with them
+ */
+public class Landmarks {
+    private ArrayList<Location> bathrooms;
+    private HashMap<String, Location> camps;
+    private HashMap<String, Location> art;
+
+    /**
+     * Constructor
+     *
+     * Initializes empty sets
+     */
+    public Landmarks() {
+        this.bathrooms = new ArrayList<>();
+        this.camps = new HashMap<>();
+        this.art = new HashMap<>();
+    }
+
+    /**
+     * Reads a file into an ArrayList of lines
+     * @param filename relative path of file
+     * @return ArrayList of strings
+     */
+    private ArrayList<String> readFile(String filename) {
+        ArrayList<String> lines = new ArrayList<>();
+        try {
+            Scanner scan = new Scanner(new File(filename));
+            while(scan.hasNextLine()) {
+                lines.add(scan.nextLine());
+            }
+            scan.close();
+        } catch(FileNotFoundException e) {
+            System.err.println("Error reading " + filename);
+        } finally {
+            return lines;
+        }
+    }
+
+    /**
+     * Populates the list of bathroom locations from a file
+     * @param filename relative path of file
+     */
+    public void readBathrooms(String filename) {
+        ArrayList<String> lines = readFile(filename);
+        try {
+            for(String line : lines) {
+                String[] split = line.split(",");
+                if(split.length == 2) {
+                    double latitude = Double.parseDouble(split[0]);
+                    double longitude = Double.parseDouble(split[1]);
+                    bathrooms.add(new Location(latitude, longitude));
+                } else if(split.length == 3) {
+                    int hour = Integer.parseInt(split[0]);
+                    int minute = Integer.parseInt(split[1]);
+                    if(split[2].matches("0-9")) {
+                        double distance = Double.parseDouble(split[2]);
+                        bathrooms.add(new Location(hour, minute, distance));
+                    } else {
+                        bathrooms.add(new Location(hour, minute, split[2].charAt(0)));
+                    }
+                }
+            }
+        } catch(NumberFormatException e) {
+            System.err.println("Error parsing bathroom coordinates");
+        }
+    }
+
+    /**
+     * Populates a list of named locations into a HashSet
+     * @param map HashSet of String-Location
+     * @param filename relative path of file
+     */
+    private void readNamedLocations(HashMap<String, Location> map, String filename) {
+        ArrayList<String> lines = readFile(filename);
+        try {
+            for(String line : lines) {
+                String[] split = line.split(",");
+                if(split.length == 3) {
+                    double latitude = Double.parseDouble(split[1]);
+                    double longitude = Double.parseDouble(split[2]);
+                    map.put(split[0], new Location(latitude, longitude));
+                } else if(split.length == 4) {
+                    int hour = Integer.parseInt(split[1]);
+                    int minute = Integer.parseInt(split[2]);
+                    if(split[3].matches("0-9")) {
+                        double distance = Double.parseDouble(split[3]);
+                        map.put(split[0], new Location(hour, minute, distance));
+                    } else {
+                        map.put(split[0], new Location(hour, minute, split[3].charAt(0)));
+                    }
+                }
+            }
+        } catch(NumberFormatException e) {
+            System.err.println("Error parsing bathroom coordinates");
+        }
+    }
+
+    /**
+     * Populates the list of camp locations from a file
+     * @param filename relative path of file
+     */
+    public void readCamps(String filename) {
+        readNamedLocations(camps, filename);
+    }
+
+    /**
+     * Populates the list of art locations from a file
+     * @param filename relative path of file
+     */
+    public void readArt(String filename) {
+        readNamedLocations(art, filename);
+    }
+
+    /**
+     * Adds a bathroom to the list based on geographic coordinates
+     * @param latitude latitude
+     * @param longitude longitude
+     */
+    public void addBathroom(double latitude, double longitude) {
+        this.bathrooms.add(new Location(latitude, longitude));
+    }
+
+    /**
+     * Adds a bathroom to the list based on time/distance
+     * @param hour hour
+     * @param minute minute
+     * @param distance distance in feet
+     */
+    public void addBathroom(int hour, int minute, double distance) {
+        this.bathrooms.add(new Location(hour, minute, distance));
+    }
+
+    /**
+     * Adds a bathroom to the list based on time/street
+     * @param hour hour
+     * @param minute minute
+     * @param street street as char
+     */
+    public void addBathroom(int hour, int minute, char street) {
+        this.bathrooms.add(new Location(hour, minute, street));
+    }
+
+    /**
+     * Adds a camp to the list based on geographic coordinates
+     * @param latitude latitude
+     * @param longitude longitude
+     */
+    public void addCamp(String name, double latitude, double longitude) {
+        this.camps.put(name, new Location(latitude, longitude));
+    }
+
+    /**
+     * Adds a camp to the list based on time/distance
+     * @param hour hour
+     * @param minute minute
+     * @param distance distance in feet
+     */
+    public void addCamp(String name, int hour, int minute, double distance) {
+        this.camps.put(name, new Location(hour, minute, distance));
+    }
+
+    /**
+     * Adds a camp to the list based on time/street
+     * @param hour hour
+     * @param minute minute
+     * @param street street as char
+     */
+    public void addCamp(String name, int hour, int minute, char street) {
+        this.camps.put(name, new Location(hour, minute, street));
+    }
+
+    /**
+     * Adds a art location to the list based on geographic coordinates
+     * @param latitude latitude
+     * @param longitude longitude
+     */
+    public void addArt(String name, double latitude, double longitude) {
+        this.art.put(name, new Location(latitude, longitude));
+    }
+
+    /**
+     * Adds a art location to the list based on time/distance
+     * @param hour hour
+     * @param minute minute
+     * @param distance distance in feet
+     */
+    public void addArt(String name, int hour, int minute, double distance) {
+        this.art.put(name, new Location(hour, minute, distance));
+    }
+
+    /**
+     * Adds a art location to the list based on time/street
+     * @param hour hour
+     * @param minute minute
+     * @param street street as char
+     */
+    public void addArt(String name, int hour, int minute, char street) {
+        this.art.put(name, new Location(hour, minute, street));
+    }
+
+    /**
+     * Finds the closest location to another location
+     * @param locations list of Locations
+     * @param currentLocation Location to compare
+     * @return closest Location
+     */
+    private Location findClosest(ArrayList<Location> locations, Location currentLocation) {
+        if(locations.isEmpty()) {
+            return null;
+        }
+
+        Location closestLocation = locations.get(0);
+        double closestDistance = Double.MAX_VALUE;
+        for(Location location : locations) {
+            double distance = currentLocation.distance(location);
+            if(distance < closestDistance) {
+                closestLocation = location;
+                closestDistance = distance;
+            }
+        }
+        return closestLocation;
+    }
+
+    /**
+     * Finds the closest bathroom relative to the current location
+     * @param currentLocation current Location
+     * @return closest bathroom Location
+     */
+    public Location findBathroom(Location currentLocation) {
+        return findClosest(bathrooms, currentLocation);
+    }
+
+    /**
+     *  Attempts to find a Location matching a search term
+     * @param locations Set of String to search
+     * @param searchterm search term
+     * @return String matching, or null if none
+     */
+    private static String findMatch(Set<String> locations, String searchterm) {
+        searchterm = searchterm.toLowerCase();
+
+        ArrayList<String> matches = new ArrayList<>();
+        for(String location : locations) {
+            String lc = location.toLowerCase();
+            if(lc.contains(searchterm)) {
+                matches.add(location);
+            }
+        }
+
+        if(matches.isEmpty()) {
+            return null;
+        } if(matches.size() == 1) {
+            return matches.get(0);
+        } else {
+            System.out.println("Multiple options found: ");
+            for(int i = 1; i <= matches.size(); i++) {
+                System.out.println(i + ": " + matches.get(i - 1));
+            }
+            Scanner scan = new Scanner(System.in);
+            try {
+                int choice = scan.nextInt();
+                scan.close();
+                if(choice > 0 && choice <= matches.size()) {
+                    choice -= 1;
+                    return matches.get(choice);
+                }
+            } catch(NumberFormatException e) {
+                System.err.println("Input error");
+                scan.close();
+                return null;
+            }
+            scan.close();
+            return null;
+        }
+    }
+
+    /**
+     * Searches the list of camps for a camp matching the search term
+     * @param name search term
+     * @return Location of camp, or null if none
+     */
+    public Location findCamp(String name) {
+        String campName = findMatch(camps.keySet(), name);
+        if(campName == null) {
+            return null;
+        } else {
+            return camps.get(campName);
+        }
+    }
+
+    /**
+     * Searches the list of art for a art piece matching the search term
+     * @param name search term
+     * @return Location of art piece, or null if none
+     */
+    public Location findArt(String name) {
+        String campName = findMatch(art.keySet(), name);
+        if(campName == null) {
+            return null;
+        } else {
+            return art.get(campName);
+        }
+    }
+}
