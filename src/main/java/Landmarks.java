@@ -56,6 +56,9 @@ public class Landmarks {
      * @param filename relative path of file
      */
     public void readBathrooms(String filename) {
+        if(filename == null) {
+            return;
+        }
         ArrayList<String> lines = readFile(filename);
         try {
             for(String line : lines) {
@@ -115,6 +118,9 @@ public class Landmarks {
      * @param filename relative path of file
      */
     public void readCamps(String filename) {
+        if(filename == null) {
+            return;
+        }
         readNamedLocations(camps, filename);
     }
 
@@ -123,6 +129,9 @@ public class Landmarks {
      * @param filename relative path of file
      */
     public void readArt(String filename) {
+        if(filename == null) {
+            return;
+        }
         readNamedLocations(art, filename);
     }
 

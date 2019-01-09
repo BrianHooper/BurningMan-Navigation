@@ -28,7 +28,7 @@ public class View {
         JPanel mainPanel = new JPanel();
         JLabel address = new JLabel();
 
-        JButton button = new JButton("Press");
+        JButton button = new JButton("Calculate address");
         button.addActionListener(actionHandler);
         button.setActionCommand("UpdateLocationButton");
 
@@ -37,10 +37,10 @@ public class View {
         latitude.setColumns(16);
         longitude.setColumns(16);
 
-        mainPanel.add(button);
-        mainPanel.add(address);
         mainPanel.add(latitude);
         mainPanel.add(longitude);
+        mainPanel.add(button);
+        mainPanel.add(address);
         mainFrame.add(mainPanel);
 
         components.put("MainPanel", mainPanel);
