@@ -5,7 +5,7 @@
       <xy x="20" y="20" width="800" height="600"/>
     </constraints>
     <properties>
-      <minimumSize width="800" height="600"/>
+      <minimumSize width="-1" height="-1"/>
     </properties>
     <border type="none"/>
     <children>
@@ -17,7 +17,7 @@
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
-          <columns value="16"/>
+          <columns value="32"/>
           <editable value="false"/>
         </properties>
       </component>
@@ -30,7 +30,7 @@
           <text value="Current Address"/>
         </properties>
       </component>
-      <component id="c00b1" class="javax.swing.JLabel">
+      <component id="c00b1" class="javax.swing.JLabel" binding="nearestBathroomLabel" custom-create="true">
         <constraints>
           <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
@@ -47,7 +47,7 @@
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
-          <columns value="16"/>
+          <columns value="32"/>
           <editable value="false"/>
         </properties>
       </component>
@@ -59,11 +59,11 @@
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
-          <columns value="16"/>
+          <columns value="32"/>
           <editable value="false"/>
         </properties>
       </component>
-      <component id="d42f9" class="javax.swing.JLabel">
+      <component id="d42f9" class="javax.swing.JLabel" binding="homeCampLabel" custom-create="true">
         <constraints>
           <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
@@ -80,7 +80,7 @@
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
-          <columns value="16"/>
+          <columns value="32"/>
           <editable value="false"/>
         </properties>
       </component>
@@ -92,11 +92,11 @@
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
-          <columns value="16"/>
+          <columns value="32"/>
           <editable value="false"/>
         </properties>
       </component>
-      <component id="cc773" class="javax.swing.JLabel">
+      <component id="cc773" class="javax.swing.JLabel" binding="destinationLabel" custom-create="true">
         <constraints>
           <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
@@ -113,7 +113,7 @@
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
-          <columns value="16"/>
+          <columns value="32"/>
           <editable value="false"/>
         </properties>
       </component>
@@ -125,7 +125,7 @@
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
-          <columns value="16"/>
+          <columns value="32"/>
           <editable value="false"/>
         </properties>
       </component>
@@ -137,7 +137,7 @@
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
-          <columns value="16"/>
+          <columns value="32"/>
           <editable value="false"/>
         </properties>
       </component>

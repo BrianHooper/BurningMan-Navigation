@@ -8,7 +8,6 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
-import java.util.Set;
 
 /**
  * Class Landmarks
@@ -16,9 +15,14 @@ import java.util.Set;
  * Maintains lists of Location objects and methods for interacting with them
  */
 public class Landmarks {
+    private HashMap<String, Location> favorites;
     private ArrayList<Location> bathrooms;
+
+    public HashMap<String, Location> getCamps() {
+        return camps;
+    }
+
     private HashMap<String, Location> camps;
-    private HashMap<String, Location> art;
 
     /**
      * Constructor
@@ -28,7 +32,7 @@ public class Landmarks {
     public Landmarks() {
         this.bathrooms = new ArrayList<>();
         this.camps = new HashMap<>();
-        this.art = new HashMap<>();
+        this.favorites = new HashMap<>();
     }
 
     /**
@@ -46,9 +50,9 @@ public class Landmarks {
             scan.close();
         } catch(FileNotFoundException e) {
             System.err.println("Error reading " + filename);
-        } finally {
-            return lines;
+
         }
+        return lines;
     }
 
     /**
@@ -125,21 +129,11 @@ public class Landmarks {
     }
 
     /**
-     * Populates the list of art locations from a file
-     * @param filename relative path of file
-     */
-    public void readArt(String filename) {
-        if(filename == null) {
-            return;
-        }
-        readNamedLocations(art, filename);
-    }
-
-    /**
      * Adds a bathroom to the list based on geographic coordinates
      * @param latitude latitude
      * @param longitude longitude
      */
+    @SuppressWarnings("unused")
     public void addBathroom(double latitude, double longitude) {
         this.bathrooms.add(new Location(latitude, longitude));
     }
@@ -150,6 +144,7 @@ public class Landmarks {
      * @param minute minute
      * @param distance distance in feet
      */
+    @SuppressWarnings("unused")
     public void addBathroom(int hour, int minute, double distance) {
         this.bathrooms.add(new Location(hour, minute, distance));
     }
@@ -160,6 +155,7 @@ public class Landmarks {
      * @param minute minute
      * @param street street as char
      */
+    @SuppressWarnings("unused")
     public void addBathroom(int hour, int minute, char street) {
         this.bathrooms.add(new Location(hour, minute, street));
     }
@@ -169,6 +165,7 @@ public class Landmarks {
      * @param latitude latitude
      * @param longitude longitude
      */
+    @SuppressWarnings("unused")
     public void addCamp(String name, double latitude, double longitude) {
         this.camps.put(name, new Location(latitude, longitude));
     }
@@ -179,6 +176,7 @@ public class Landmarks {
      * @param minute minute
      * @param distance distance in feet
      */
+    @SuppressWarnings("unused")
     public void addCamp(String name, int hour, int minute, double distance) {
         this.camps.put(name, new Location(hour, minute, distance));
     }
@@ -189,37 +187,9 @@ public class Landmarks {
      * @param minute minute
      * @param street street as char
      */
+    @SuppressWarnings("unused")
     public void addCamp(String name, int hour, int minute, char street) {
         this.camps.put(name, new Location(hour, minute, street));
-    }
-
-    /**
-     * Adds a art location to the list based on geographic coordinates
-     * @param latitude latitude
-     * @param longitude longitude
-     */
-    public void addArt(String name, double latitude, double longitude) {
-        this.art.put(name, new Location(latitude, longitude));
-    }
-
-    /**
-     * Adds a art location to the list based on time/distance
-     * @param hour hour
-     * @param minute minute
-     * @param distance distance in feet
-     */
-    public void addArt(String name, int hour, int minute, double distance) {
-        this.art.put(name, new Location(hour, minute, distance));
-    }
-
-    /**
-     * Adds a art location to the list based on time/street
-     * @param hour hour
-     * @param minute minute
-     * @param street street as char
-     */
-    public void addArt(String name, int hour, int minute, char street) {
-        this.art.put(name, new Location(hour, minute, street));
     }
 
     /**
@@ -304,26 +274,20 @@ public class Landmarks {
      * @param name search term
      * @return Location of camp, or null if none
      */
-    public Location findCamp(String name) {
+    public String findCampName(String name) {
         String campName = findMatch(camps, name);
         if(campName == null) {
-            return null;
+            return "";
         } else {
-            return camps.get(campName);
+            return campName;
         }
     }
 
-    /**
-     * Searches the list of art for a art piece matching the search term
-     * @param name search term
-     * @return Location of art piece, or null if none
-     */
-    public Location findArt(String name) {
-        String campName = findMatch(art, name);
-        if(campName == null) {
-            return null;
-        } else {
-            return art.get(campName);
-        }
+    public Location getCamp(String exactCampName) {
+        return camps.get(exactCampName);
+    }
+
+    public HashMap<String, Location> getFavorites() {
+        return favorites;
     }
 }
