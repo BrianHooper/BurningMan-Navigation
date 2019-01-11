@@ -240,29 +240,8 @@ public class Landmarks {
 
         if(matches.isEmpty()) {
             return null;
-        } if(matches.size() == 1) {
-            return matches.get(0);
         } else {
-            System.out.println("Multiple options found: ");
-            for(int i = 1; i <= matches.size(); i++) {
-                System.out.println(i + ": " + matches.get(i - 1) + " - " + locations.get(matches.get(i - 1)));
-            }
-            Scanner scan = new Scanner(System.in);
-            try {
-                System.out.print("Enter choice: ");
-                int choice = scan.nextInt();
-                scan.close();
-                if(choice > 0 && choice <= matches.size()) {
-                    choice -= 1;
-                    return matches.get(choice);
-                }
-            } catch(NumberFormatException e) {
-                System.err.println("Input error");
-                scan.close();
-                return null;
-            }
-            scan.close();
-            return null;
+            return matches.get(0);
         }
     }
 

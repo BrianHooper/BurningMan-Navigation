@@ -194,12 +194,10 @@ public class MenuController {
      * Creates JOptionPane popup for setting man coordinates
      */
     private void setMan() {
-        System.out.println(Location.man_latitude);
         int result = JOptionPane.showConfirmDialog(view.getMainFrame(), "Use current location as man coordinates?");
         if(result == JOptionPane.YES_OPTION) {
             navigator.writeToConfigFile("config.cfg");
         }
-        System.out.println(Location.man_latitude);
     }
 
     /**
