@@ -1,3 +1,5 @@
+package navigation;
+
 import java.util.*;
 
 public class Navigator {

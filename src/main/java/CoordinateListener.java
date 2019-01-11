@@ -1,3 +1,7 @@
+import navigation.Location;
+import navigation.Navigator;
+import view.View;
+
 import java.util.AbstractMap;
 
 public class CoordinateListener extends Thread {

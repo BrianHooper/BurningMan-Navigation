@@ -1,3 +1,8 @@
+package view;
+
+import view.Menu;
+import view.MenuLabel;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -20,9 +25,9 @@ public class MainInterfacePanel {
     private JLabel homeCampLabel;
     private JLabel destinationLabel;
 
-    private Menu menu;
+    private view.Menu menu;
 
-    public Menu getMenu() {
+    public view.Menu getMenu() {
         return menu;
     }
 

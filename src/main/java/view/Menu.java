@@ -1,3 +1,5 @@
+package view;
+
 public class Menu {
     private MenuLabel[] menuItems;
     private int selected = 0;
@@ -43,6 +45,8 @@ public class Menu {
             case "List all camps":
                 home();
                 return "listCamps";
+            case "Exit":
+                System.exit(0);
             default: return "";
         }
     }
@@ -69,12 +73,13 @@ public class Menu {
     }
 
     public void settings() {
-        menuItems = new MenuLabel[4];
+        menuItems = new MenuLabel[5];
 
         menuItems[0] = new MenuLabel("Set home address");
         menuItems[1] = new MenuLabel("Set man coordinates");
         menuItems[2] = new MenuLabel("Adjust Esplanade distance");
         menuItems[3] = new MenuLabel("Adjust block width");
+        menuItems[4] = new MenuLabel("Exit");
 
         selected = 0;
         menuItems[0].select();
