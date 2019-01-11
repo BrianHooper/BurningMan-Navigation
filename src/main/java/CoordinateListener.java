@@ -4,15 +4,30 @@ import view.View;
 
 import java.util.AbstractMap;
 
+/**
+ * class CoordinateListener
+ *
+ * Reads GPS coordinates from file & updates view
+ */
 public class CoordinateListener extends Thread {
     private Navigator navigator;
     private View view;
 
+    /**
+     * Constructor
+     * @param navigator Navigator object
+     * @param view main View
+     */
     public CoordinateListener(Navigator navigator, View view) {
         this.navigator = navigator;
         this.view = view;
     }
 
+    /**
+     * Thread process
+     *
+     * Listens for changes to GPS coordinate file
+     */
     public void run() {
         while(true) {
             try {

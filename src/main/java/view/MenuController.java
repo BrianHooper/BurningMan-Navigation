@@ -4,15 +4,30 @@ import javax.swing.*;
 import java.util.Set;
 import navigation.*;
 
+/**
+ * Class MenuController
+ *
+ * Handles menu actions and updates view
+ */
 public class MenuController {
     private View view;
     private Navigator navigator;
-    
+
+    /**
+     * Constructor
+     *
+     * @param view main View
+     * @param navigator Navigator object
+     */
     public MenuController(View view, Navigator navigator) {
         this.view = view;
         this.navigator = navigator;
     }
-    
+
+    /**
+     * Performs an action based on an action command
+     * @param actionCommand String action command
+     */
     private void action(String actionCommand) {
         switch (actionCommand) {
             case "findCamp":
@@ -46,6 +61,9 @@ public class MenuController {
         view.setNavigation(navigator);
     }
 
+    /**
+     * Creates JOptionPane popup for listing camps
+     */
     private void listCamps() {
         Set<String> camps = navigator.getCamps().keySet();
         Object[] menuItems = new String[camps.size()];
@@ -62,6 +80,9 @@ public class MenuController {
         findCamp(input);
     }
 
+    /**
+     * Creates JOptionPane popup for deleting a favorite location
+     */
     private void delFavorite() {
         //todo write to file
         Set<String> favorites = navigator.getFavorites().keySet();
@@ -86,6 +107,9 @@ public class MenuController {
         }
     }
 
+    /**
+     * Creates JOptionPane popup for navigating to a favorite location
+     */
     private void navFavorite() {
         Set<String> favorites = navigator.getFavorites().keySet();
         Object[] menuItems = new String[favorites.size()];
@@ -105,6 +129,9 @@ public class MenuController {
         }
     }
 
+    /**
+     * Creates JOptionPane popup for creating a favorite location
+     */
     private void addFavorite() {
         //todo write to file
         String favName = JOptionPane.showInputDialog(view.getMainFrame(), "Enter name:");
@@ -135,7 +162,9 @@ public class MenuController {
         }
     }
 
-
+    /**
+     * Creates JOptionPane popup for setting the width of a block
+     */
     private void setBlockWidth() {
         String result = JOptionPane.showInputDialog(view.getMainFrame(), "Enter block width (default 240)");
         try {
@@ -145,6 +174,9 @@ public class MenuController {
         }
     }
 
+    /**
+     * Creates JOptionPane popup for setting esplanade distance
+     */
     private void setEsplanade() {
         String result = JOptionPane.showInputDialog(view.getMainFrame(), "Enter Esplanade distance (default 2600)");
         try {
@@ -154,6 +186,9 @@ public class MenuController {
         }
     }
 
+    /**
+     * Creates JOptionPane popup for setting man coordinates
+     */
     private void setMan() {
         System.out.println(Location.man_latitude);
         int result = JOptionPane.showConfirmDialog(view.getMainFrame(), "Use current location as man coordinates?");
@@ -164,6 +199,9 @@ public class MenuController {
         System.out.println(Location.man_latitude);
     }
 
+    /**
+     * Creates JOptionPane popup for setting home address
+     */
     private void setHome() {
         String result = JOptionPane.showInputDialog(view.getMainFrame(), "Enter home address (Hour,Minute,Street): ");
         String[] split = result.split(",");
@@ -181,11 +219,17 @@ public class MenuController {
         }
     }
 
+    /**
+     * Creates JOptionPane popup for searching for a camp
+     */
     private void findCamp() {
         String result = JOptionPane.showInputDialog(view.getMainFrame(), "Enter search term: ");
         findCamp(result);
     }
 
+    /**
+     * Searches for a camp and sets navigation
+     */
     private void findCamp(String result) {
         if(result == null) {
             return;
@@ -200,21 +244,31 @@ public class MenuController {
         }
     }
 
+    /**
+     * Updates view / moves selection up
+     */
     public void menuUp() {
         view.getMenu().up();
     }
 
+    /**
+     * Updates view / moves selection down
+     */
     public void menuDown() {
         view.getMenu().down();
     }
 
+    /**
+     * Activates current selection
+     */
     public void menuSelect() {
         action(view.getMenu().select());
-        view.reset();
     }
 
+    /**
+     * Updates view with home selection
+     */
     public void menuEscape() {
         view.getMenu().home();
-        view.reset();
     }
 }

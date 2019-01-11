@@ -1,13 +1,27 @@
 package view;
 
+/**
+ * Class Menu
+ *
+ * handles displaying of menu items
+ */
 public class Menu {
     private MenuLabel[] menuItems;
     private int selected = 0;
 
+    /**
+     * Constructor
+     *
+     * creates Home menu
+     */
     public Menu() {
         home();
     }
 
+    /**
+     * Activates currently selected menu label
+     * @return String actionCommand
+     */
     public String select() {
         String action = menuItems[selected].getText();
 
@@ -51,6 +65,9 @@ public class Menu {
         }
     }
 
+    /**
+     * Creates favorites menu
+     */
     private void favorites() {
         menuItems = new MenuLabel[3];
         menuItems[0] = new MenuLabel("Add new favorite");
@@ -61,6 +78,9 @@ public class Menu {
         menuItems[0].select();
     }
 
+    /**
+     * Creates home menu
+     */
     public void home() {
         menuItems = new MenuLabel[4];
         menuItems[0] = new MenuLabel("Find camp");
@@ -72,6 +92,9 @@ public class Menu {
         menuItems[0].select();
     }
 
+    /**
+     * Creates settings menu
+     */
     public void settings() {
         menuItems = new MenuLabel[5];
 
@@ -85,6 +108,9 @@ public class Menu {
         menuItems[0].select();
     }
 
+    /**
+     * Moves menu selection down
+     */
     public void down() {
         menuItems[selected].deselect();
         selected++;
@@ -95,6 +121,9 @@ public class Menu {
         menuItems[selected].select();
     }
 
+    /**
+     * Moves menu selection up
+     */
     public void up() {
         menuItems[selected].deselect();
         selected--;
@@ -104,6 +133,10 @@ public class Menu {
         menuItems[selected].select();
     }
 
+    /**
+     * Getter for menuItems
+     * @return menuItems
+     */
     public MenuLabel[] readMenu() {
         return menuItems;
     }

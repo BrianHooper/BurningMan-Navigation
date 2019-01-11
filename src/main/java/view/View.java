@@ -4,20 +4,22 @@ import javax.swing.*;
 import java.awt.*;
 import navigation.Navigator;
 
+/**
+ * Class View
+ *
+ * Creates JFrame and components
+ */
 public class View {
-
     private JFrame mainFrame;
     private MainInterfacePanel mainPanel;
 
-
+    /**
+     * Constructor
+     *
+     * instantiates main JFrame and components
+     */
     public View() {
-        Font standardFont = new Font("Monospaced", Font.PLAIN, 22);
-        UIManager.put("Label.font", standardFont);
-        UIManager.put("TextField.font", standardFont);
-        UIManager.put("JList.font", standardFont);
-        UIManager.put("JScrollPane.font", standardFont);
-        UIManager.put("OptionPane.font", standardFont);
-        UIManager.put("TextField.background", Color.WHITE);
+        setUIParameters();
 
         mainPanel = new MainInterfacePanel();
 
@@ -30,33 +32,50 @@ public class View {
         mainPanel.getMainPanel().setFocusable(true);
         mainPanel.getMainPanel().requestFocus();
 
-        reset();
         mainFrame.setVisible(true);
     }
 
-    public void setKeyListener(KeyController controller) {
+    /**
+     * Sets global view properties (font, etc)
+     */
+    public void setUIParameters() {
+        Font standardFont = new Font("Monospaced", Font.PLAIN, 22);
+        UIManager.put("Label.font", standardFont);
+        UIManager.put("TextField.font", standardFont);
+        UIManager.put("JList.font", standardFont);
+        UIManager.put("JScrollPane.font", standardFont);
+        UIManager.put("OptionPane.font", standardFont);
+        UIManager.put("TextField.background", Color.WHITE);
+    }
 
+    /**
+     * Binds KeyController to main JPanel
+     * @param controller KeyController
+     */
+    public void setKeyListener(KeyController controller) {
         mainPanel.getMainPanel().addKeyListener(controller);
     }
 
+    /**
+     * Updates navigation fields with navigator data
+     * @param navigator Navigator
+     */
     public void setNavigation(Navigator navigator) {
         mainPanel.setNavigation(navigator.getPanelUpdate());
     }
 
-    public void reset() {
-        mainPanel.resetMenu();
-        mainFrame.revalidate();
-        mainFrame.repaint();
-    }
-
+    /**
+     * Getter for mainFrame
+     * @return mainFrame
+     */
     public JFrame getMainFrame() {
         return mainFrame;
     }
 
-    public JPanel getMainPanel() {
-        return mainPanel.getMainPanel();
-    }
-
+    /**
+     * Getter for menu
+     * @return menu
+     */
     public Menu getMenu() {
         return mainPanel.getMenu();
     }

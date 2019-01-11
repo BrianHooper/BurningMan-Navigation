@@ -3,9 +3,19 @@ package view;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+/**
+ * Class KeyController
+ *
+ * listens for key presses
+ */
 public class KeyController implements KeyListener {
     private MenuController menu;
 
+    /**
+     * Constructor
+     *
+     * @param menu MenuController object
+     */
     public KeyController(MenuController menu) {
         this.menu = menu;
     }
@@ -16,6 +26,10 @@ public class KeyController implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {}
 
+    /**
+     * Activates menu based on KeyEvents
+     * @param e KeyEvent object
+     */
     @Override
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
