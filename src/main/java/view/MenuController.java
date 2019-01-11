@@ -30,31 +30,31 @@ public class MenuController {
      */
     private void action(String actionCommand) {
         switch (actionCommand) {
-            case "findCamp":
+            case "Find camp":
                 findCamp();
                 break;
-            case "setHome":
+            case "Set home address":
                 setHome();
                 break;
-            case "setMan":
+            case "Set man coordinates":
                 setMan();
                 break;
-            case "setEsplanade":
+            case "Adjust Esplanade distance":
                 setEsplanade();
                 break;
-            case "setBlockWidth":
+            case "Adjust block width":
                 setBlockWidth();
                 break;
-            case "addFavorite":
+            case "Add new favorite":
                 addFavorite();
                 break;
-            case "navFavorite":
+            case "Navigate to favorite":
                 navFavorite();
                 break;
-            case "delFavorite":
+            case "Delete favorite":
                 delFavorite();
                 break;
-            case "listCamps":
+            case "List all camps":
                 listCamps();
                 break;
         }
@@ -101,6 +101,7 @@ public class MenuController {
             int confirmation = JOptionPane.showConfirmDialog(view.getMainFrame(), "Delete favorite " + input + "?");
             if (confirmation == JOptionPane.YES_OPTION) {
                 navigator.getFavorites().remove(input);
+                navigator.writeFavorites();
                 navigator.writeToConfigFile("config.cfg");
             }
         }
@@ -134,7 +135,7 @@ public class MenuController {
      */
     private void addFavorite() {
         String favName = JOptionPane.showInputDialog(view.getMainFrame(), "Enter name:");
-        if(favName == null) {
+        if(favName == null || favName.length() == 0) {
             return;
         }
 
@@ -149,7 +150,7 @@ public class MenuController {
         String campAddress = JOptionPane.showInputDialog(view.getMainFrame(), "Enter address (Hour,Minute,Street): ");
         String[] split = campAddress.split(",");
         String err = "Invalid address";
-        if(split.length != 3) {
+        if(campAddress.length() == 0 || split.length != 3) {
             JOptionPane.showMessageDialog(view.getMainFrame(), err);
         }
 
@@ -226,15 +227,19 @@ public class MenuController {
      */
     private void findCamp() {
         String result = JOptionPane.showInputDialog(view.getMainFrame(), "Enter search term: ");
-        findCamp(result);
+        if(result == null) {
+            return;
+        } else if(!findCamp(result)) {
+            JOptionPane.showMessageDialog(view.getMainFrame(), "Camp not found");
+        };
     }
 
     /**
      * Searches for a camp and sets navigation
      */
-    private void findCamp(String result) {
-        if(result == null) {
-            return;
+    private boolean findCamp(String result) {
+        if(result == null || result.length() == 0) {
+            return false;
         }
         String campName = navigator.findCampName(result);
         if(campName.length() > 0) {
@@ -243,8 +248,10 @@ public class MenuController {
                 navigator.setDestination(camp, campName);
                 view.setNavigation(navigator);
                 navigator.writeToConfigFile("config.cfg");
+                return true;
             }
         }
+        return false;
     }
 
     /**

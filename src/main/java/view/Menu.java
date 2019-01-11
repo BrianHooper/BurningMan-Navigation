@@ -26,42 +26,15 @@ public class Menu {
         String action = menuItems[selected].getText();
 
         switch (action) {
-            case "Find camp":
-                home();
-                return "findCamp";
             case "Favorites":
                 favorites();
                 return "";
             case "Settings":
                 settings();
                 return "";
-            case "Set home address":
-                home();
-                return "setHome";
-            case "Set man coordinates":
-                home();
-                return "setMan";
-            case "Adjust Esplanade distance":
-                home();
-                return "setEsplanade";
-            case "Adjust block width":
-                home();
-                return "setBlockWidth";
-            case "Add new favorite":
-                home();
-                return "addFavorite";
-            case "Navigate to favorite":
-                home();
-                return "navFavorite";
-            case "Delete favorite":
-                home();
-                return "delFavorite";
-            case "List all camps":
-                home();
-                return "listCamps";
             case "Exit":
                 System.exit(0);
-            default: return "";
+            default: return action;
         }
     }
 
