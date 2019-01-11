@@ -20,9 +20,9 @@ public class Navigator {
         landmarks = new Landmarks();
 
         currentLocation = new Location(6,0,'D');
-        home = null;
+        home = new Location(6,0,'D');
 
-        currentDestination = null;
+        currentDestination = home;
         currentDestinationName = "";
     }
 
