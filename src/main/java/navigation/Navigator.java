@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.*;
 
 public class Navigator {
-    private Location currentLocation;
+    private final Location currentLocation;
     private Location home;
     private Location currentDestination;
     private String currentDestinationName;
@@ -77,16 +77,6 @@ public class Navigator {
         } catch (IOException e) {
             System.err.println("Error writing config file");
         }
-    }
-
-    /**
-     * Updates the current location based on address
-     * @param hour int hour
-     * @param minute int minute
-     * @param street char street
-     */
-    public void updateLocation(int hour, int minute, char street) {
-        currentLocation = new Location(hour, minute, street);
     }
 
     /**
