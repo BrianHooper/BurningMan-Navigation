@@ -4,12 +4,11 @@
     <list default="true" id="24b9839f-6ad8-43a5-9b83-c469d9815187" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/CoordinateListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CoordinateListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/navigation/Landmarks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/navigation/Landmarks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/navigation/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/navigation/Location.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/navigation/Navigator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/navigation/Navigator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/KeyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/KeyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/MainInterfacePanel.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainInterfacePanel.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/MainInterfacePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainInterfacePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/MenuLabel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MenuLabel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/View.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -50,29 +49,29 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="form" value="3" />
-          <entry key="java" value="61" />
+          <entry key="form" value="4" />
+          <entry key="java" value="66" />
           <entry key="xml" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="GUI_DESIGNER_FORM" value="3" />
-          <entry key="JAVA" value="61" />
+          <entry key="GUI_DESIGNER_FORM" value="4" />
+          <entry key="JAVA" value="66" />
           <entry key="XML" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="23858" />
-          <entry key="txt" value="97" />
+          <entry key="java" value="23945" />
+          <entry key="txt" value="119" />
           <entry key="xml" value="100" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="23858" />
-          <entry key="PLAIN_TEXT" value="97" />
+          <entry key="JAVA" value="23945" />
+          <entry key="PLAIN_TEXT" value="119" />
           <entry key="XML" value="100" />
         </counts>
       </usages-collector>
@@ -124,24 +123,60 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/view/Controller.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/CoordinateListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="57">
-              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+            <state relative-caret-position="584">
+              <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/view/KeyController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="209">
+              <caret line="11" column="33" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/view/MenuController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="432">
+              <caret line="186" column="97" selection-start-line="186" selection-start-column="97" selection-end-line="186" selection-end-column="97" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/navigation/Landmarks.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="232" column="90" selection-start-line="232" selection-start-column="90" selection-end-line="232" selection-end-column="90" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/view/KeyController.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/view/MainInterfacePanel.form">
+          <provider selected="true" editor-type-id="ui-designer" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/navigation/Navigator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="58">
-              <caret line="30" column="31" selection-start-line="30" selection-start-column="31" selection-end-line="30" selection-end-column="31" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#320#321#0" expanded="true" />
-                <element signature="e#352#353#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="228">
+              <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -205,14 +240,16 @@
         <option value="$PROJECT_DIR$/src/main/java/MenuController.java" />
         <option value="$PROJECT_DIR$/src/main/java/Menu.java" />
         <option value="$PROJECT_DIR$/src/main/java/NavigationDriver.java" />
-        <option value="$PROJECT_DIR$/src/main/java/CoordinateListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/view/MainInterfacePanel.form" />
         <option value="$PROJECT_DIR$/src/main/java/view/MainInterfacePanel.java" />
         <option value="$PROJECT_DIR$/src/main/java/view/View.java" />
         <option value="$PROJECT_DIR$/src/main/java/view/MenuLabel.java" />
         <option value="$PROJECT_DIR$/src/main/java/view/Menu.java" />
-        <option value="$PROJECT_DIR$/src/main/java/view/MenuController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/navigation/Navigator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/CoordinateListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/view/KeyController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/view/MenuController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/navigation/Landmarks.java" />
       </list>
     </option>
   </component>
@@ -385,12 +422,13 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///home/brian/Documents/code/java/BurningMan-Navigation/src/main/java/Location.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547179673432" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547179755982" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+    <property name="run.code.analysis.last.selected.profile" value="aDefault" />
     <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
@@ -457,11 +495,18 @@
       <option name="project" value="LOCAL" />
       <updated>1547178322768</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Updated documentation">
+      <created>1547179730468</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1547179730468</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46088000" />
+    <option name="totallyTimeSpent" value="46446000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -476,16 +521,17 @@
     <frame x="0" y="0" width="1920" height="1044" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2524013" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2524013" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Inspection Results" weight="0.3296582" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49946752" weight="0.32829374" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4941427" visible="true" weight="0.3131202" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4941427" weight="0.3131202" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4968051" weight="0.3963283" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -541,7 +587,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Migrated project to Maven" />
     <MESSAGE value="Decoupled controller logic from view" />
-    <option name="LAST_COMMIT_MESSAGE" value="Decoupled controller logic from view" />
+    <MESSAGE value="Updated documentation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated documentation" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -570,16 +617,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ActionHandler.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/navigation/Landmarks.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/navigation/Location.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="229">
@@ -589,23 +626,6 @@
           </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/navigation/Navigator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="543">
-          <caret line="90" lean-forward="true" selection-start-line="90" selection-end-line="90" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/view/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/view/MainInterfacePanel.form">
-      <provider selected="true" editor-type-id="ui-designer" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/view/MainInterfacePanel.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -644,13 +664,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/CoordinateListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="28" column="49" selection-start-line="28" selection-start-column="49" selection-end-line="28" selection-end-column="49" />
         </state>
       </provider>
     </entry>
@@ -698,35 +711,59 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/view/MenuController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/view/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4826">
-          <caret line="254" column="37" selection-start-line="254" selection-start-column="37" selection-end-line="254" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#8237#8238#0" expanded="true" />
-            <element signature="e#8272#8273#0" expanded="true" />
-            <element signature="e#8302#8303#0" expanded="true" />
-            <element signature="e#8339#8340#0" expanded="true" />
-            <element signature="e#8371#8372#0" expanded="true" />
-            <element signature="e#8418#8419#0" expanded="true" />
-            <element signature="e#8450#8451#0" expanded="true" />
-            <element signature="e#8487#8488#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="57">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/navigation/Navigator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/CoordinateListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="584">
+          <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/view/KeyController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="58">
-          <caret line="30" column="31" selection-start-line="30" selection-start-column="31" selection-end-line="30" selection-end-column="31" />
+        <state relative-caret-position="209">
+          <caret line="11" column="33" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#320#321#0" expanded="true" />
-            <element signature="e#352#353#0" expanded="true" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/view/MenuController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="186" column="97" selection-start-line="186" selection-start-column="97" selection-end-line="186" selection-end-column="97" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/navigation/Landmarks.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="232" column="90" selection-start-line="232" selection-start-column="90" selection-end-line="232" selection-end-column="90" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/view/MainInterfacePanel.form">
+      <provider selected="true" editor-type-id="ui-designer" />
     </entry>
   </component>
   <component name="masterDetails">

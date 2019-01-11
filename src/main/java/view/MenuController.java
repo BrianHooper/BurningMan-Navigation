@@ -10,8 +10,8 @@ import navigation.*;
  * Handles menu actions and updates view
  */
 public class MenuController {
-    private View view;
-    private Navigator navigator;
+    private final View view;
+    private final Navigator navigator;
 
     /**
      * Constructor
@@ -171,6 +171,7 @@ public class MenuController {
             Location.block_width = Integer.parseInt(result);
             //TODO write to file
         } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(view.getMainFrame(), "Error, invalid block width");
         }
     }
 
@@ -183,6 +184,7 @@ public class MenuController {
             Location.esplanade_distance = Integer.parseInt(result);
             //TODO write to file
         } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(view.getMainFrame(), "Error, invalid esplanade distance");
         }
     }
 

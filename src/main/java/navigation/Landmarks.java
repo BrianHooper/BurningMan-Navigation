@@ -15,14 +15,14 @@ import java.util.Scanner;
  * Maintains lists of Location objects and methods for interacting with them
  */
 public class Landmarks {
-    private HashMap<String, Location> favorites;
-    private ArrayList<Location> bathrooms;
+    private final HashMap<String, Location> favorites;
+    private final ArrayList<Location> bathrooms;
 
     public HashMap<String, Location> getCamps() {
         return camps;
     }
 
-    private HashMap<String, Location> camps;
+    private final HashMap<String, Location> camps;
 
     /**
      * Constructor
@@ -227,16 +227,16 @@ public class Landmarks {
     /**
      *  Attempts to find a Location matching a search term
      * @param locations Set of String to search
-     * @param searchterm search term
+     * @param searchTerm search term
      * @return String matching, or null if none
      */
-    private static String findMatch(HashMap<String, Location> locations, String searchterm) {
-        searchterm = searchterm.toLowerCase();
+    private static String findMatch(HashMap<String, Location> locations, String searchTerm) {
+        searchTerm = searchTerm.toLowerCase();
 
         ArrayList<String> matches = new ArrayList<>();
         for(String location : locations.keySet()) {
             String lc = location.toLowerCase();
-            if(lc.contains(searchterm)) {
+            if(lc.contains(searchTerm)) {
                 matches.add(location);
             }
         }

@@ -12,7 +12,7 @@ public class Navigator {
         return landmarks.getCamps();
     }
 
-    private Landmarks landmarks;
+    private final Landmarks landmarks;
 
     public Navigator() {
         //todo read previous values from file

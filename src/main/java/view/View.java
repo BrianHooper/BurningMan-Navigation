@@ -10,8 +10,8 @@ import navigation.Navigator;
  * Creates JFrame and components
  */
 public class View {
-    private JFrame mainFrame;
-    private MainInterfacePanel mainPanel;
+    private final JFrame mainFrame;
+    private final MainInterfacePanel mainPanel;
 
     /**
      * Constructor

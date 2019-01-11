@@ -9,7 +9,7 @@ import java.awt.event.KeyListener;
  * listens for key presses
  */
 public class KeyController implements KeyListener {
-    private MenuController menu;
+    private final MenuController menu;
 
     /**
      * Constructor

@@ -10,8 +10,8 @@ import java.util.AbstractMap;
  * Reads GPS coordinates from file & updates view
  */
 public class CoordinateListener extends Thread {
-    private Navigator navigator;
-    private View view;
+    private final Navigator navigator;
+    private final View view;
 
     /**
      * Constructor
@@ -29,6 +29,7 @@ public class CoordinateListener extends Thread {
      * Listens for changes to GPS coordinate file
      */
     public void run() {
+        //noinspection InfiniteLoopStatement
         while(true) {
             try {
                 AbstractMap.SimpleEntry<Double, Double> coordinates = Location.readCoordinates("coordinate");
