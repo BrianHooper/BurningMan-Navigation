@@ -79,4 +79,15 @@ public class View {
     public Menu getMenu() {
         return mainPanel.getMenu();
     }
+
+    /**
+     * Repaints panel and requests keyboard focus
+     */
+    public void getFocus() {
+        mainPanel.resetMenu();
+        mainPanel.getMainPanel().requestFocus();
+        mainFrame.repaint();
+        mainFrame.revalidate();
+
+    }
 }

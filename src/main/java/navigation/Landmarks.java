@@ -1,13 +1,10 @@
-package navigation;/* Brian Hooper
- *
- * 2018
- */
+package navigation;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 /**
  * Class Landmarks
@@ -15,14 +12,14 @@ import java.util.Scanner;
  * Maintains lists of Location objects and methods for interacting with them
  */
 public class Landmarks {
-    private final HashMap<String, Location> favorites;
+    private final TreeMap<String, Location> favorites;
     private final ArrayList<Location> bathrooms;
 
-    public HashMap<String, Location> getCamps() {
+    public TreeMap<String, Location> getCamps() {
         return camps;
     }
 
-    private final HashMap<String, Location> camps;
+    private final TreeMap<String, Location> camps;
 
     /**
      * Constructor
@@ -31,8 +28,8 @@ public class Landmarks {
      */
     public Landmarks() {
         this.bathrooms = new ArrayList<>();
-        this.camps = new HashMap<>();
-        this.favorites = new HashMap<>();
+        this.camps = new TreeMap<>();
+        this.favorites = new TreeMap<>();
     }
 
     /**
@@ -92,7 +89,7 @@ public class Landmarks {
      * @param map HashSet of String-Location
      * @param filename relative path of file
      */
-    private void readNamedLocations(HashMap<String, Location> map, String filename) {
+    private void readNamedLocations(TreeMap<String, Location> map, String filename) {
         ArrayList<String> lines = readFile(filename);
         try {
             for(String line : lines) {
@@ -230,7 +227,7 @@ public class Landmarks {
      * @param searchTerm search term
      * @return String matching, or null if none
      */
-    private static String findMatch(HashMap<String, Location> locations, String searchTerm) {
+    private static String findMatch(TreeMap<String, Location> locations, String searchTerm) {
         searchTerm = searchTerm.toLowerCase();
 
         ArrayList<String> matches = new ArrayList<>();
@@ -283,11 +280,32 @@ public class Landmarks {
         }
     }
 
+    /**
+     * Returns a camp or favorite based on an exact camp name
+     * @param exactCampName exact camp name
+     * @return Location or null
+     */
     public Location getCamp(String exactCampName) {
-        return camps.get(exactCampName);
+        Location camp = camps.get(exactCampName);
+        if(camp == null) {
+            return favorites.get(exactCampName);
+        } else {
+            return camp;
+        }
     }
 
-    public HashMap<String, Location> getFavorites() {
+    /**
+     * Getter for favorites HashMap
+     * @return favorites
+     */
+    public TreeMap<String, Location> getFavorites() {
         return favorites;
+    }
+
+    public void readFavorites(String filename) {
+        if(filename == null) {
+            return;
+        }
+        readNamedLocations(favorites, filename);
     }
 }

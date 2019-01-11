@@ -16,7 +16,7 @@ import java.util.Scanner;
  */
 public class Location {
     public static double man_latitude = 40.7864;
-    public static final double man_longitude = -119.2065;
+    public static double man_longitude = -119.2065;
     public static int esplanade_distance = 2600;
     public static int block_width = 240;
 
@@ -274,5 +274,9 @@ public class Location {
     @Override
     public String toString() {
         return getAddress();
+    }
+
+    public String getCSVAddress() {
+        return String.valueOf(hour) + "," + String.valueOf(minute) + "," + String.valueOf((int) distance);
     }
 }

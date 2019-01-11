@@ -84,7 +84,6 @@ public class MenuController {
      * Creates JOptionPane popup for deleting a favorite location
      */
     private void delFavorite() {
-        //todo write to file
         Set<String> favorites = navigator.getFavorites().keySet();
         Object[] menuItems = new String[favorites.size()];
         System.arraycopy(favorites.toArray(), 0, menuItems, 0, favorites.size());
@@ -101,8 +100,8 @@ public class MenuController {
         if(input != null) {
             int confirmation = JOptionPane.showConfirmDialog(view.getMainFrame(), "Delete favorite " + input + "?");
             if (confirmation == JOptionPane.YES_OPTION) {
-                //todo fix keyboard select error
                 navigator.getFavorites().remove(input);
+                navigator.writeToConfigFile("config.cfg");
             }
         }
     }
@@ -126,6 +125,7 @@ public class MenuController {
 
         if(input != null) {
             navigator.setDestination(navigator.getFavorites().get(input), input);
+            navigator.writeToConfigFile("config.cfg");
         }
     }
 
@@ -133,7 +133,6 @@ public class MenuController {
      * Creates JOptionPane popup for creating a favorite location
      */
     private void addFavorite() {
-        //todo write to file
         String favName = JOptionPane.showInputDialog(view.getMainFrame(), "Enter name:");
         if(favName == null) {
             return;
@@ -142,6 +141,8 @@ public class MenuController {
         int confirm = JOptionPane.showConfirmDialog(view.getMainFrame(), "Use current address?");
         if(confirm == JOptionPane.YES_OPTION) {
             navigator.getFavorites().put(favName, new Location(navigator.currentLocation()));
+            navigator.writeFavorites();
+            navigator.writeToConfigFile("config.cfg");
             return;
         }
 
@@ -157,6 +158,7 @@ public class MenuController {
             int minute = Integer.parseInt(split[1]);
             char street = split[2].charAt(0);
             navigator.getFavorites().put(favName, new Location(hour, minute, street));
+            navigator.writeToConfigFile("config.cfg");
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(view.getMainFrame(), err);
         }
@@ -169,7 +171,7 @@ public class MenuController {
         String result = JOptionPane.showInputDialog(view.getMainFrame(), "Enter block width (default 240)");
         try {
             Location.block_width = Integer.parseInt(result);
-            //TODO write to file
+            navigator.writeToConfigFile("config.cfg");
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(view.getMainFrame(), "Error, invalid block width");
         }
@@ -182,7 +184,7 @@ public class MenuController {
         String result = JOptionPane.showInputDialog(view.getMainFrame(), "Enter Esplanade distance (default 2600)");
         try {
             Location.esplanade_distance = Integer.parseInt(result);
-            //TODO write to file
+            navigator.writeToConfigFile("config.cfg");
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(view.getMainFrame(), "Error, invalid esplanade distance");
         }
@@ -195,8 +197,7 @@ public class MenuController {
         System.out.println(Location.man_latitude);
         int result = JOptionPane.showConfirmDialog(view.getMainFrame(), "Use current location as man coordinates?");
         if(result == JOptionPane.YES_OPTION) {
-            //todo write to file
-            navigator.setManCoordinates();
+            navigator.writeToConfigFile("config.cfg");
         }
         System.out.println(Location.man_latitude);
     }
@@ -216,6 +217,7 @@ public class MenuController {
             int minute = Integer.parseInt(split[1]);
             char street = split[2].charAt(0);
             navigator.setHome(hour, minute, street);
+            navigator.writeToConfigFile("config.cfg");
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(view.getMainFrame(), err);
         }
@@ -242,6 +244,7 @@ public class MenuController {
             if (camp != null) {
                 navigator.setDestination(camp, campName);
                 view.setNavigation(navigator);
+                navigator.writeToConfigFile("config.cfg");
             }
         }
     }
@@ -265,6 +268,7 @@ public class MenuController {
      */
     public void menuSelect() {
         action(view.getMenu().select());
+        view.getFocus();
     }
 
     /**
@@ -272,5 +276,6 @@ public class MenuController {
      */
     public void menuEscape() {
         view.getMenu().home();
+        view.getFocus();
     }
 }
