@@ -3,6 +3,12 @@
  * 2018
  */
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.AbstractMap;
+import java.util.NoSuchElementException;
+import java.util.Scanner;
+
 /**
  * Class Location
  *
@@ -17,6 +23,18 @@ public class Location {
     private int hour;
     private int minute;
     private double distance;
+
+    public static AbstractMap.SimpleEntry<Double, Double> readCoordinates(String coordinateFile) {
+            try {
+                Scanner scan = new Scanner(new File(coordinateFile));
+                double latitude = Double.parseDouble(scan.nextLine());
+                double longitude = Double.parseDouble(scan.nextLine());
+                scan.close();
+                return new AbstractMap.SimpleEntry<>(latitude, longitude);
+            } catch (FileNotFoundException | NumberFormatException | NoSuchElementException e) {
+                return null;
+            }
+    }
 
     /**
      * Calculates the distance between a set of coordinates and the man
@@ -116,6 +134,17 @@ public class Location {
     }
 
     /**
+     * Copy constructor
+     *
+     * @param other location
+     */
+    public Location(Location other) {
+        this.hour = other.hour;
+        this.minute = other.minute;
+        this.distance = other.distance;
+    }
+
+    /**
      * Updates the current location based on a set of coordinates
      * @param latitude updated latitude
      * @param longitude updated longitude
@@ -133,7 +162,7 @@ public class Location {
      */
     public String getAddress() {
         if(distance < esplanade_distance || distance > esplanade_distance + 12 * block_width) {
-            return hour + ":" + minute + " & " + distance + "'";
+            return hour + ":" + minute + " & " + ((int) distance) + "'";
         } else {
             String street;
             if(distance < esplanade_distance + block_width) {
@@ -219,14 +248,22 @@ public class Location {
      */
     public String cardinal(Location other) {
         double bearing = bearing(other);
-        if(bearing < 23) return "north";
-        else if(bearing < 68) return "northeast";
-        else if(bearing < 113) return "east";
-        else if(bearing < 158) return "southeast";
-        else if(bearing < 203) return "south";
-        else if(bearing < 248) return "southwest";
-        else if(bearing < 293) return "west";
-        else if(bearing < 338) return "northwest";
+        if(bearing < 11) return "north";
+        else if(bearing < 34) return "north-northeast";
+        else if(bearing < 56) return "northeast";
+        else if(bearing < 79) return "northeast-east";
+        else if(bearing < 101) return "east";
+        else if(bearing < 124) return "southeast-east";
+        else if(bearing < 146) return "southeast";
+        else if(bearing < 169) return "south-southeast";
+        else if(bearing < 191) return "south";
+        else if(bearing < 214) return "south-southwest";
+        else if(bearing < 236) return "southwest";
+        else if(bearing < 259) return "southwest-west";
+        else if(bearing < 281) return "west";
+        else if(bearing < 304) return "northwest-west";
+        else if(bearing < 326) return "northwest";
+        else if(bearing < 348) return "north-northwest";
         else return "north";
     }
 

@@ -1,12 +1,15 @@
 public class NavigationDriver {
+
     public static void main(String[] args) {
-        Location location = new Location(6,0,'K');
+        Navigator navigator = new Navigator();
+        navigator.initializeLandmarks("bathrooms.csv", "camps.csv");
 
-        Landmarks landmarks = new Landmarks();
-        landmarks.readCamps("camps.csv");
+        navigator.updateLocation(4,30,'K');
+        View view = new View(navigator);
 
-        Location other = landmarks.findCamp("swab");
-        System.out.println(location.distance(other));
-        System.out.println(location.cardinal(other));
+        view.setNavigation(navigator);
+
+        CoordinateListener coordinateListener = new CoordinateListener(navigator, view);
+        coordinateListener.start();
     }
 }
