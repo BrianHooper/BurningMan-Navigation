@@ -19,7 +19,7 @@ public class Event {
     );
 
     private String name;
-    private Location location;
+    private String location;
     private LocalDateTime[] startTimes;
     private LocalDateTime[] endTimes;
     private EventCategory category;
@@ -28,20 +28,35 @@ public class Event {
      * Constructor
      *
      * Initializes an Event object
-     * @param location Location object
-     * @param startTimes Array of LocalDateTime object
-     * @param endTimes Array of LocalDateTime object
+     * @param name event name
+     * @param location Location String
      * @param category EventCategory
+     * @param startTimes Array of LocalDateTime object
      */
-    public Event(Location location, LocalDateTime[] startTimes, LocalDateTime[] endTimes, EventCategory category) {
+    public Event(String name, String location, EventCategory category, LocalDateTime[] startTimes) {
+        this.name = name;
         this.location = location;
         this.startTimes = startTimes;
-        this.endTimes = endTimes;
         this.category = category;
     }
 
     /**
-     * Builds a LocalDateTime object from the start time and an offest
+     * Constructor
+     *
+     * Initializes an Event object
+     * @param name event name
+     * @param location Location String
+     * @param category EventCategory
+     * @param startTimes Array of LocalDateTime object
+     * @param endTimes Array of LocalDateTime object
+     */
+    public Event(String name, String location, EventCategory category, LocalDateTime[] startTimes, LocalDateTime[] endTimes) {
+        this(name, location, category, startTimes);
+        this.endTimes = endTimes;
+    }
+
+    /**
+     * Builds a LocalDateTime object from the start time and an offset
      * @param day day offset
      * @param hour hour offset
      * @param minute minute offset
@@ -57,10 +72,20 @@ public class Event {
 
     /**
      * Converts a list of integers to a list of dates
-     * @param dateIndexes ArrayList of integers
+     * @param dateStrIndexes String array of integers
      * @return LocalDateTime array
      */
-    public static LocalDateTime[] multiDateBuilder(ArrayList<Integer> dateIndexes) {
+    public static LocalDateTime[] multiDateBuilder(String[] dateStrIndexes) {
+        ArrayList<Integer> dateIndexes = new ArrayList<>();
+        for(String index : dateStrIndexes) {
+            try {
+                dateIndexes.add(Integer.parseInt(index));
+            } catch (NumberFormatException e) {
+                System.err.println("Error reading date indexes");
+                return null;
+            }
+        }
+
         if(dateIndexes.size() % 3 != 0) {
             System.err.println("Data data has incorrect number of parameters");
             return null;

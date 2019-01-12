@@ -227,9 +227,7 @@ public class MenuController {
      */
     private void findCamp() {
         String result = JOptionPane.showInputDialog(view.getMainFrame(), "Enter search term: ");
-        if(result == null) {
-            return;
-        } else if(!findCamp(result)) {
+        if(result != null) {
             JOptionPane.showMessageDialog(view.getMainFrame(), "Camp not found");
         }
     }

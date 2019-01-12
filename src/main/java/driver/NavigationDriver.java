@@ -1,6 +1,8 @@
 package driver;
 
 import events.Event;
+import events.EventManager;
+import navigation.Landmarks;
 import navigation.Navigator;
 import view.KeyController;
 import view.MenuController;
@@ -12,7 +14,7 @@ import java.util.ArrayList;
 public class NavigationDriver {
 
     public static void main(String[] args) {
-//        // Initialize navigator
+        // Initialize navigator
 //        Navigator navigator = new Navigator();
 //        navigator.initializeLandmarks("bathrooms.csv", "camps.csv", "favorites.csv");
 //        navigator.loadFromFile("config.cfg");
@@ -28,28 +30,30 @@ public class NavigationDriver {
 //        CoordinateListener coordinateListener = new CoordinateListener(navigator, view);
 //        coordinateListener.start();
 
-        ArrayList<Integer> startOffsets = new ArrayList<>();
-        startOffsets.add(3);
-        startOffsets.add(16);
-        startOffsets.add(0);
-        startOffsets.add(4);
-        startOffsets.add(5);
-        startOffsets.add(40);
-        startOffsets.add(4);
-        startOffsets.add(8);
-        startOffsets.add(0);
-        LocalDateTime[] startDates = Event.multiDateBuilder(startOffsets);
-        ArrayList<Integer> endOffsets = new ArrayList<>();
-        endOffsets.add(3);
-        endOffsets.add(17);
-        endOffsets.add(0);
-        endOffsets.add(4);
-        endOffsets.add(7);
-        endOffsets.add(0);
-        LocalDateTime[] endDates = Event.multiDateBuilder(endOffsets);
-
-
-
-        System.out.println(Event.asString(startDates, endDates));
+//        ArrayList<Integer> startOffsets = new ArrayList<>();
+//        startOffsets.add(3);
+//        startOffsets.add(16);
+//        startOffsets.add(0);
+//        startOffsets.add(4);
+//        startOffsets.add(5);
+//        startOffsets.add(40);
+//        startOffsets.add(4);
+//        startOffsets.add(8);
+//        startOffsets.add(0);
+//        LocalDateTime[] startDates = Event.multiDateBuilder(startOffsets);
+//        ArrayList<Integer> endOffsets = new ArrayList<>();
+//        endOffsets.add(3);
+//        endOffsets.add(17);
+//        endOffsets.add(0);
+//        endOffsets.add(4);
+//        endOffsets.add(7);
+//        endOffsets.add(0);
+//        LocalDateTime[] endDates = Event.multiDateBuilder(endOffsets);
+//
+//
+//
+//        System.out.println(Event.asString(startDates, endDates));
+        EventManager eventManager = new EventManager();
+        eventManager.importEvents("eventslist.csv");
     }
 }

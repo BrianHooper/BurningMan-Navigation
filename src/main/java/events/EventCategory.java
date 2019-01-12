@@ -1,5 +1,35 @@
 package events;
 
 public enum EventCategory {
-    ADULT, CARE, FIRE, FOOD, GAMES, KIDS, PARADE, PARTY, PERFORMACE, RITUAL, WORKSHOP
+    ADULT, CARE, FIRE, FOOD, GAMES, KIDS, PARADE, PARTY, PERFORMANCE, RITUAL, WORKSHOP;
+
+    public static EventCategory of(String category) {
+        category = category.toLowerCase();
+        switch (category) {
+            case "adult":
+                return ADULT;
+            case "care":
+                return CARE;
+            case "fire":
+                return FIRE;
+            case "food":
+                return FOOD;
+            case "games":
+                return GAMES;
+            case "kids":
+                return KIDS;
+            case "parade":
+                return PARADE;
+            case "party":
+                return PARTY;
+            case "performance":
+                return PERFORMANCE;
+            case "ritual":
+                return RITUAL;
+            case "workshop":
+                return WORKSHOP;
+            default:
+                return null;
+        }
+    }
 }
