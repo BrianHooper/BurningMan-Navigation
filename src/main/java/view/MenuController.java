@@ -1,7 +1,11 @@
 package view;
 
 import javax.swing.*;
+import java.util.ArrayList;
 import java.util.Set;
+
+import events.Event;
+import events.EventManager;
 import navigation.*;
 
 /**
@@ -12,6 +16,7 @@ import navigation.*;
 public class MenuController {
     private final View view;
     private final Navigator navigator;
+    private final EventManager eventManager;
 
     /**
      * Constructor
@@ -19,9 +24,11 @@ public class MenuController {
      * @param view main View
      * @param navigator Navigator object
      */
-    public MenuController(View view, Navigator navigator) {
+    public MenuController(View view, Navigator navigator, EventManager eventManager) {
         this.view = view;
         this.navigator = navigator;
+        this.eventManager = eventManager;
+
     }
 
     /**
@@ -57,8 +64,128 @@ public class MenuController {
             case "List all camps":
                 listCamps();
                 break;
+            case "View Events by day":
+                viewEventsByDay();
+                break;
+            case "Search events by name":
+                searchEventsName();
+                break;
+            case "Search events by camp":
+                searchEventsCamp();
+                break;
+            case "List events happening soon":
+                listEventsHappeningSoon();
+                break;
         }
         view.setNavigation(navigator);
+    }
+
+    /**
+     * Lists all events on a specific day
+     */
+    private void viewEventsByDay() {
+        String[] choices = {"1: Sunday", "2: Monday", "3: Tuesday", "4: Wednesday", "5: Thursday",
+                "6: Friday", "7: Saturday", "8: Sunday"};
+        String input = (String) JOptionPane.showInputDialog(view.getMainFrame(), "",
+                "Select day", JOptionPane.QUESTION_MESSAGE, null,
+                choices, // Array of choices
+                choices[0]); // Initial choice
+        if(input == null)
+            return;
+
+        int day = 0;
+        try {
+            day = Integer.parseInt(input.substring(0, 1));
+        } catch (NumberFormatException e) {
+            return;
+        }
+
+        ArrayList<Event> eventList = eventManager.listByDay(day);
+        String[] eventStringArray = new String[eventList.size()];
+        for(int i = 0; i < eventList.size(); i++) {
+            eventStringArray[i] = eventList.get(i).toString();
+        }
+
+        if(eventStringArray.length == 0) {
+            JOptionPane.showMessageDialog(view.getMainFrame(), "No events found");
+        } else {
+            //TODO change to scroll pane
+            JOptionPane.showInputDialog(view.getMainFrame(), "",
+                    "Events", JOptionPane.QUESTION_MESSAGE, null,
+                    eventStringArray, // Array of choices
+                    eventStringArray[0]); // Initial choice
+        }
+    }
+
+    /**
+     * Lists events matching an event name
+     */
+    private void searchEventsName() {
+        String eventName = JOptionPane.showInputDialog(view.getMainFrame(), "Enter event name:");
+        if(eventName == null) {
+            return;
+        }
+        ArrayList<Event> eventList = eventManager.listByName(eventName);
+        String[] eventStringArray = new String[eventList.size()];
+        for(int i = 0; i < eventList.size(); i++) {
+            eventStringArray[i] = eventList.get(i).toString();
+        }
+
+        if(eventStringArray.length == 0) {
+            JOptionPane.showMessageDialog(view.getMainFrame(), "No events found");
+        } else {
+            //TODO change to scroll pane
+            JOptionPane.showInputDialog(view.getMainFrame(), "",
+                    "Events", JOptionPane.QUESTION_MESSAGE, null,
+                    eventStringArray, // Array of choices
+                    eventStringArray[0]); // Initial choice
+        }
+    }
+
+    /**
+     * Lists events at camps matching a search term
+     */
+    private void searchEventsCamp() {
+        String campName = JOptionPane.showInputDialog(view.getMainFrame(), "Enter event name:");
+        if(campName == null) {
+            return;
+        }
+        ArrayList<Event> eventList = eventManager.listByCamp(campName);
+        String[] eventStringArray = new String[eventList.size()];
+        for(int i = 0; i < eventList.size(); i++) {
+            eventStringArray[i] = eventList.get(i).toString();
+        }
+
+        if(eventStringArray.length == 0) {
+            JOptionPane.showMessageDialog(view.getMainFrame(), "No events found");
+        } else {
+            //TODO change to scroll pane
+            JOptionPane.showInputDialog(view.getMainFrame(), "",
+                    "Events", JOptionPane.QUESTION_MESSAGE, null,
+                    eventStringArray, // Array of choices
+                    eventStringArray[0]); // Initial choice
+        }
+    }
+
+    /**
+     * Lists events happening in the next 24 hours
+     */
+    private void listEventsHappeningSoon() {
+        ArrayList<Event> eventList = eventManager.listHappeningSoon();
+        String[] eventStringArray = new String[eventList.size()];
+        for(int i = 0; i < eventList.size(); i++) {
+            eventStringArray[i] = eventList.get(i).toString();
+        }
+
+        if(eventStringArray.length == 0) {
+            JOptionPane.showMessageDialog(view.getMainFrame(), "No upcoming events");
+        } else {
+            //TODO change to scroll pane
+            JOptionPane.showInputDialog(view.getMainFrame(), "",
+                    "Events", JOptionPane.QUESTION_MESSAGE, null,
+                    eventStringArray, // Array of choices
+                    eventStringArray[0]); // Initial choice
+        }
     }
 
     /**
@@ -227,7 +354,7 @@ public class MenuController {
      */
     private void findCamp() {
         String result = JOptionPane.showInputDialog(view.getMainFrame(), "Enter search term: ");
-        if(result != null) {
+        if(result != null && !findCamp(result)) {
             JOptionPane.showMessageDialog(view.getMainFrame(), "Camp not found");
         }
     }

@@ -1,8 +1,5 @@
 package events;
 
-import navigation.Location;
-
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.*;
@@ -14,7 +11,7 @@ public class Event {
     public static final DateTimeFormatter dfDay = DateTimeFormatter.ofPattern("EEEE");
     public static final DateTimeFormatter dfTime = DateTimeFormatter.ofPattern("h:mm a");
 
-    public static final LocalDateTime dt = LocalDateTime.of(
+    public static LocalDateTime globalEventStartTime = LocalDateTime.of(
             LocalDate.of(2019, Month.AUGUST, 25), LocalTime.MIDNIGHT
     );
 
@@ -38,6 +35,7 @@ public class Event {
         this.location = location;
         this.startTimes = startTimes;
         this.category = category;
+        this.endTimes = new LocalDateTime[0];
     }
 
     /**
@@ -56,6 +54,14 @@ public class Event {
     }
 
     /**
+     * Setter for globalEventStartTime
+     * @param globalEventStartTime LocalDateTime object
+     */
+    public static void setGlobalEventStartTime(LocalDateTime globalEventStartTime) {
+        Event.globalEventStartTime = globalEventStartTime;
+    }
+
+    /**
      * Builds a LocalDateTime object from the start time and an offset
      * @param day day offset
      * @param hour hour offset
@@ -67,7 +73,7 @@ public class Event {
         duration = duration.plusHours(hour);
         duration = duration.plusMinutes(minute);
 
-        return dt.plus(duration);
+        return globalEventStartTime.plus(duration);
     }
 
     /**
@@ -122,27 +128,66 @@ public class Event {
 
 
     /**
-     * Formats an array of start times and an array of end times as a String
+     * Formats event times as a String
      *
-     * Start dates without a corresponding end date will be treated as singular
-     *
-     * @param startDates LocalDateTime array
-     * @param endDates LocalDateTime array
      * @return String
      */
-    public static String asString(LocalDateTime[] startDates, LocalDateTime[] endDates) {
-        int length = Math.min(startDates.length, endDates.length);
+    public String timesToString() {
+        int length = Math.min(startTimes.length, endTimes.length);
         int index = 0;
         StringBuilder sb = new StringBuilder();
         while(index < length) {
-            sb.append(asString(startDates[index], endDates[index]));
+            sb.append("    ");
+            sb.append(asString(startTimes[index], endTimes[index]));
             sb.append('\n');
             index++;
         }
-        while(index < startDates.length) {
-            sb.append(asString(startDates[index++], null));
+        while(index < startTimes.length) {
+            sb.append("    ");
+            sb.append(asString(startTimes[index++], null));
             sb.append('\n');
         }
         return sb.toString();
+    }
+
+    /**
+     * Getter for name
+     * @return String name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Getter for location
+     * @return String location
+     */
+    public String getLocation() {
+        return location;
+    }
+
+    /**
+     * Getter for start times
+     * @return LocalDateTime[] array of start times
+     */
+    public LocalDateTime[] getStartTimes() {
+        return startTimes;
+    }
+
+    /**
+     * Getter for category
+     * @return EventCategory
+     */
+    public EventCategory getCategory() {
+        return category;
+    }
+
+    /**
+     * Overrides toString() method
+     * @return String representation of Event
+     */
+    @Override
+    public String toString() {
+        return "Name: " + name + " Location: " + location + " Category: " + category + '\n' + timesToString();
     }
 }

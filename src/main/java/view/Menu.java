@@ -32,6 +32,9 @@ public class Menu {
             case "Settings":
                 settings();
                 return "";
+            case "Find Events":
+                events();
+                return "";
             case "Exit":
                 System.exit(0);
             default: return action;
@@ -55,11 +58,12 @@ public class Menu {
      * Creates home menu
      */
     public void home() {
-        menuItems = new MenuLabel[4];
+        menuItems = new MenuLabel[5];
         menuItems[0] = new MenuLabel("Find camp");
         menuItems[1] = new MenuLabel("Favorites");
         menuItems[2] = new MenuLabel("List all camps");
-        menuItems[3] = new MenuLabel("Settings");
+        menuItems[3] = new MenuLabel("Find Events");
+        menuItems[4] = new MenuLabel("Settings");
 
         selected = 0;
         menuItems[0].select();
@@ -76,6 +80,21 @@ public class Menu {
         menuItems[2] = new MenuLabel("Adjust Esplanade distance");
         menuItems[3] = new MenuLabel("Adjust block width");
         menuItems[4] = new MenuLabel("Exit");
+
+        selected = 0;
+        menuItems[0].select();
+    }
+
+    /**
+     * Creates events menu
+     */
+    public void events() {
+        menuItems = new MenuLabel[4];
+
+        menuItems[0] = new MenuLabel("View Events by day");
+        menuItems[1] = new MenuLabel("Search events by name");
+        menuItems[2] = new MenuLabel("Search events by camp");
+        menuItems[3] = new MenuLabel("List events happening soon");
 
         selected = 0;
         menuItems[0].select();

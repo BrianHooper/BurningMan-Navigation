@@ -3,6 +3,11 @@ package events;
 public enum EventCategory {
     ADULT, CARE, FIRE, FOOD, GAMES, KIDS, PARADE, PARTY, PERFORMANCE, RITUAL, WORKSHOP;
 
+    /**
+     * Converts a string to a category
+     * @param category String
+     * @return EventCategory
+     */
     public static EventCategory of(String category) {
         category = category.toLowerCase();
         switch (category) {
@@ -31,5 +36,13 @@ public enum EventCategory {
             default:
                 return null;
         }
+    }
+
+    /**
+     * Returns a types of categories
+     * @return EventCategory array
+     */
+    public EventCategory[] listAll() {
+        return new EventCategory[]{ADULT, CARE, FIRE, FOOD, GAMES, KIDS, PARADE, PARTY, PERFORMANCE, RITUAL, WORKSHOP};
     }
 }
