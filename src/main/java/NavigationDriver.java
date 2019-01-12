@@ -4,8 +4,8 @@ import view.KeyController;
 import view.MenuController;
 import view.View;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class NavigationDriver {
 
@@ -26,8 +26,28 @@ public class NavigationDriver {
 //        CoordinateListener coordinateListener = new CoordinateListener(navigator, view);
 //        coordinateListener.start();
 
-        Date date = Event.dateBuilder(1, 16, 0);
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        System.out.println(df.format(date));
+        ArrayList<Integer> startOffsets = new ArrayList<>();
+        startOffsets.add(3);
+        startOffsets.add(16);
+        startOffsets.add(0);
+        startOffsets.add(4);
+        startOffsets.add(5);
+        startOffsets.add(40);
+        startOffsets.add(4);
+        startOffsets.add(8);
+        startOffsets.add(0);
+        LocalDateTime[] startDates = Event.multiDateBuilder(startOffsets);
+        ArrayList<Integer> endOffsets = new ArrayList<>();
+        endOffsets.add(3);
+        endOffsets.add(17);
+        endOffsets.add(0);
+        endOffsets.add(4);
+        endOffsets.add(7);
+        endOffsets.add(0);
+        LocalDateTime[] endDates = Event.multiDateBuilder(endOffsets);
+
+
+
+        System.out.println(Event.asString(startDates, endDates));
     }
 }

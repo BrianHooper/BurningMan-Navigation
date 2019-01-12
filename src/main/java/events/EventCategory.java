@@ -1,5 +1,5 @@
 package events;
 
 public enum EventCategory {
-    FOOD, WORKSHOP
+    ADULT, CARE, FIRE, FOOD, GAMES, KIDS, PARADE, PARTY, PERFORMACE, RITUAL, WORKSHOP
 }
