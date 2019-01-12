@@ -1,5 +1,6 @@
 package navigation;
 
+import events.Event;
 import java.io.*;
 import java.util.*;
 
@@ -48,6 +49,8 @@ public class Navigator {
                 Location.esplanade_distance = Integer.parseInt((String) properties.get("ESPLANADE-DISTANCE"));
             if(properties.containsKey("BLOCK-WIDTH"))
                 Location.block_width = Integer.parseInt((String) properties.get("BLOCK-WIDTH"));
+            if(properties.containsKey("EVENT-START-TIME"))
+                Event.setGlobalEventStartTime(properties.getProperty("EVENT-START-TIME"));
             if(properties.containsKey("CURRENT-DESTINATION-NAME")) {
                 currentDestinationName = properties.getProperty("CURRENT-DESTINATION-NAME");
                 currentDestination = landmarks.getCamp(currentDestinationName);
@@ -71,6 +74,7 @@ public class Navigator {
         properties.put("ESPLANADE-DISTANCE", String.valueOf(Location.esplanade_distance));
         properties.put("BLOCK-WIDTH", String.valueOf(Location.block_width));
         properties.put("CURRENT-DESTINATION-NAME", currentDestinationName);
+        properties.put("EVENT-START-TIME", Event.dfFull.format(Event.globalEventStartTime));
 
         try {
             properties.store(new FileOutputStream(filename), "");

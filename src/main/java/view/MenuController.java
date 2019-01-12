@@ -1,9 +1,6 @@
 package view;
 
 import javax.swing.*;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Set;
 
@@ -86,18 +83,22 @@ public class MenuController {
         view.setNavigation(navigator);
     }
 
+    /**
+     * Sets global event start time
+     */
     private void setEventStartTime() {
-        String startDate = JOptionPane.showInputDialog(view.getMainFrame(), "Enter start date in yyyy-MM-dd HH:mm format:");
+        String startDate = JOptionPane.showInputDialog(view.getMainFrame(), "" +
+                "Current start date is " + Event.dfFull.format(Event.globalEventStartTime) +
+                "\nEnter new start date in yyyy-MM-dd HH:mm format:");
         if(startDate == null || startDate.length() == 0) {
             return;
         }
 
-        try {
-            LocalDateTime formattedDateTime = LocalDateTime.parse(startDate, Event.dfFull);
-            Event.setGlobalEventStartTime(formattedDateTime);
-            String eventStartDate = Event.dfFull.format(formattedDateTime);
+        if(Event.setGlobalEventStartTime(startDate)) {
+            String eventStartDate = Event.dfFull.format(Event.globalEventStartTime);
             JOptionPane.showMessageDialog(view.getMainFrame(), "Start date set to " + eventStartDate);
-        } catch (DateTimeParseException e) {
+            navigator.writeToConfigFile("config.cfg");
+        } else {
             JOptionPane.showMessageDialog(view.getMainFrame(), "Invalid date format");
         }
     }
@@ -116,7 +117,7 @@ public class MenuController {
         if(input == null)
             return;
 
-        int day = 0;
+        int day;
         try {
             day = Integer.parseInt(input.substring(0, 1));
         } catch (NumberFormatException e) {

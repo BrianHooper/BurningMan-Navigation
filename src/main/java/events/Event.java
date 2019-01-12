@@ -1,9 +1,8 @@
 package events;
 
-import java.time.LocalDate;
-import java.time.Month;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 
 public class Event {
@@ -16,11 +15,11 @@ public class Event {
             LocalDate.of(2019, Month.AUGUST, 25), LocalTime.MIDNIGHT
     );
 
-    private String name;
-    private String location;
-    private LocalDateTime[] startTimes;
+    private final String name;
+    private final String location;
+    private final LocalDateTime[] startTimes;
     private LocalDateTime[] endTimes;
-    private EventCategory category;
+    private final EventCategory category;
 
     /**
      * Constructor
@@ -56,10 +55,16 @@ public class Event {
 
     /**
      * Setter for globalEventStartTime
-     * @param globalEventStartTime LocalDateTime object
+     * @param startTimeString string date
      */
-    public static void setGlobalEventStartTime(LocalDateTime globalEventStartTime) {
-        Event.globalEventStartTime = globalEventStartTime;
+    public static boolean setGlobalEventStartTime(String startTimeString) {
+        try {
+            globalEventStartTime = LocalDateTime.parse(startTimeString, Event.dfFull);
+            return true;
+        } catch (DateTimeParseException e) {
+            System.err.println("Error parsing string as date");
+        }
+        return false;
     }
 
     /**
