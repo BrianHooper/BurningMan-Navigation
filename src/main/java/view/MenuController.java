@@ -1,6 +1,9 @@
 package view;
 
 import javax.swing.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Set;
 
@@ -76,9 +79,29 @@ public class MenuController {
             case "List events happening soon":
                 listEventsHappeningSoon();
                 break;
+            case "Set event start time":
+                setEventStartTime();
+                break;
         }
         view.setNavigation(navigator);
     }
+
+    private void setEventStartTime() {
+        String startDate = JOptionPane.showInputDialog(view.getMainFrame(), "Enter start date in yyyy-MM-dd HH:mm format:");
+        if(startDate == null || startDate.length() == 0) {
+            return;
+        }
+
+        try {
+            LocalDateTime formattedDateTime = LocalDateTime.parse(startDate, Event.dfFull);
+            Event.setGlobalEventStartTime(formattedDateTime);
+            String eventStartDate = Event.dfFull.format(formattedDateTime);
+            JOptionPane.showMessageDialog(view.getMainFrame(), "Start date set to " + eventStartDate);
+        } catch (DateTimeParseException e) {
+            JOptionPane.showMessageDialog(view.getMainFrame(), "Invalid date format");
+        }
+    }
+
 
     /**
      * Lists all events on a specific day

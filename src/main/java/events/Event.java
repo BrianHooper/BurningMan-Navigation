@@ -10,6 +10,7 @@ public class Event {
 
     public static final DateTimeFormatter dfDay = DateTimeFormatter.ofPattern("EEEE");
     public static final DateTimeFormatter dfTime = DateTimeFormatter.ofPattern("h:mm a");
+    public static final DateTimeFormatter dfFull = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
     public static LocalDateTime globalEventStartTime = LocalDateTime.of(
             LocalDate.of(2019, Month.AUGUST, 25), LocalTime.MIDNIGHT

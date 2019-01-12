@@ -73,13 +73,14 @@ public class Menu {
      * Creates settings menu
      */
     public void settings() {
-        menuItems = new MenuLabel[5];
+        menuItems = new MenuLabel[6];
 
         menuItems[0] = new MenuLabel("Set home address");
         menuItems[1] = new MenuLabel("Set man coordinates");
         menuItems[2] = new MenuLabel("Adjust Esplanade distance");
         menuItems[3] = new MenuLabel("Adjust block width");
-        menuItems[4] = new MenuLabel("Exit");
+        menuItems[4] = new MenuLabel("Set event start time");
+        menuItems[5] = new MenuLabel("Exit");
 
         selected = 0;
         menuItems[0].select();
