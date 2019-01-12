@@ -231,7 +231,7 @@ public class MenuController {
             return;
         } else if(!findCamp(result)) {
             JOptionPane.showMessageDialog(view.getMainFrame(), "Camp not found");
-        };
+        }
     }
 
     /**

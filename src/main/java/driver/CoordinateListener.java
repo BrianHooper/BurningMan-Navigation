@@ -1,3 +1,5 @@
+package driver;
+
 import navigation.Location;
 import navigation.Navigator;
 import view.View;

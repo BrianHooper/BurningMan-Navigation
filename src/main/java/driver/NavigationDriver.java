@@ -1,3 +1,5 @@
+package driver;
+
 import events.Event;
 import navigation.Navigator;
 import view.KeyController;

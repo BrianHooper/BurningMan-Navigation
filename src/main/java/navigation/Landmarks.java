@@ -1,10 +1,8 @@
 package navigation;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Scanner;
 import java.util.TreeMap;
+import driver.FileManager;
 
 /**
  * Class Landmarks
@@ -33,26 +31,6 @@ public class Landmarks {
     }
 
     /**
-     * Reads a file into an ArrayList of lines
-     * @param filename relative path of file
-     * @return ArrayList of strings
-     */
-    private ArrayList<String> readFile(String filename) {
-        ArrayList<String> lines = new ArrayList<>();
-        try {
-            Scanner scan = new Scanner(new File(filename));
-            while(scan.hasNextLine()) {
-                lines.add(scan.nextLine());
-            }
-            scan.close();
-        } catch(FileNotFoundException e) {
-            System.err.println("Error reading " + filename);
-
-        }
-        return lines;
-    }
-
-    /**
      * Populates the list of bathroom locations from a file
      * @param filename relative path of file
      */
@@ -60,7 +38,9 @@ public class Landmarks {
         if(filename == null) {
             return;
         }
-        ArrayList<String> lines = readFile(filename);
+        ArrayList<String> lines = FileManager.readLines(filename);
+        if(lines == null)
+            return;
         try {
             for(String line : lines) {
                 String[] split = line.split(",");
@@ -90,7 +70,9 @@ public class Landmarks {
      * @param filename relative path of file
      */
     private void readNamedLocations(TreeMap<String, Location> map, String filename) {
-        ArrayList<String> lines = readFile(filename);
+        ArrayList<String> lines = FileManager.readLines(filename);
+        if(lines == null)
+            return;
         try {
             for(String line : lines) {
                 String[] split = line.split(",");
