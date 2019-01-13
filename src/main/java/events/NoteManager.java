@@ -4,11 +4,11 @@ import driver.FileManager;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Set;
 import java.util.TreeMap;
 
 public class NoteManager {
     private TreeMap<String, String> notes;
+    private static final String delimiter = String.valueOf((char) 25);
 
     public NoteManager() {
         this.notes = new TreeMap<>();
@@ -16,11 +16,22 @@ public class NoteManager {
 
     public void readNotes() {
         ArrayList<String> lines = FileManager.readLines("notes.csv");
-        //todo load notes from file
+        if(lines == null)
+            return;
+        for(String line : lines) {
+            String[] split = line.split(delimiter);
+            if(split.length == 2) {
+                notes.put(split[0], split[1]);
+            }
+        }
     }
 
     public void saveNotes() {
-        //todo write notes to file
+        ArrayList<String> lines = new ArrayList<>();
+        for(String noteTitle : notes.keySet()) {
+            lines.add(noteTitle + delimiter + notes.get(noteTitle));
+        }
+        FileManager.writeLines("notes.csv", lines);
     }
 
     public String[] getNoteTitles() {

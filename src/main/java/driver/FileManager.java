@@ -1,7 +1,6 @@
 package driver;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -24,5 +23,20 @@ public class FileManager {
             return null;
         }
         return lines;
+    }
+
+    public static void writeLines(String filename, ArrayList<String> lines) {
+        try {
+            FileWriter f = new FileWriter(filename);
+            StringBuilder sb = new StringBuilder();
+            for(String line : lines) {
+                sb.append(line);
+                sb.append('\n');
+            }
+            f.write(sb.toString());
+            f.close();
+        } catch(IOException e) {
+            System.err.println("Error writing files");
+        }
     }
 }

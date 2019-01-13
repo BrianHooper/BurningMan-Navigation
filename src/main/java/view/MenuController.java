@@ -167,6 +167,7 @@ public class MenuController {
         textArea.setRows(15);
         JScrollPane jScrollPane = new JScrollPane(textArea);
         panel.add(jScrollPane);
+        noteTitleField.requestFocus();
 
         JOptionPane.showMessageDialog(null,panel,"Add / Edit note", JOptionPane.INFORMATION_MESSAGE);
         noteTitle = noteTitleField.getText();
