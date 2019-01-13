@@ -4,9 +4,9 @@ import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class OptionPaneTextArea extends JTextArea implements KeyListener {
+class OptionPaneTextArea extends JTextArea implements KeyListener {
 
-    public OptionPaneTextArea(int cols, int rows) {
+    OptionPaneTextArea(int cols, int rows) {
         super();
         initialize();
         setColumns(cols);

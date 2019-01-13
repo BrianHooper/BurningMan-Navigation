@@ -6,6 +6,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class EventManager {
+    private static final String eventsPath = "config/eventList.csv";
+
     private final ArrayList<Event> events;
 
 //    todo implement music list
@@ -18,14 +20,14 @@ public class EventManager {
      */
     public EventManager() {
         events = new ArrayList<>();
+        readEvents();
     }
 
     /**
      * Read events from a csv file
-     * @param filename path to csv file
      */
-    public void importEvents(String filename) {
-        ArrayList<String> lines = FileManager.readLines(filename);
+    private void readEvents() {
+        ArrayList<String> lines = FileManager.readLines(eventsPath);
         if(lines == null) {
             return;
         }

@@ -5,7 +5,7 @@ package view;
  *
  * handles displaying of menu items
  */
-public class Menu {
+class Menu {
     private MenuLabel[] menuItems;
     private int selected = 0;
 
@@ -14,7 +14,7 @@ public class Menu {
      *
      * creates Home menu
      */
-    public Menu() {
+    Menu() {
         home();
     }
 
@@ -22,7 +22,7 @@ public class Menu {
      * Activates currently selected menu label
      * @return String actionCommand
      */
-    public String select() {
+    String select() {
         String action = menuItems[selected].getText();
 
         switch (action) {
@@ -60,7 +60,7 @@ public class Menu {
     /**
      * Creates home menu
      */
-    public void home() {
+    void home() {
         menuItems = new MenuLabel[6];
         menuItems[0] = new MenuLabel("Find camp");
         menuItems[1] = new MenuLabel("Favorites");
@@ -76,7 +76,7 @@ public class Menu {
     /**
      * Creates settings menu
      */
-    public void settings() {
+    private void settings() {
         menuItems = new MenuLabel[6];
 
         menuItems[0] = new MenuLabel("Set home address");
@@ -93,7 +93,7 @@ public class Menu {
     /**
      * Creates events menu
      */
-    public void events() {
+    private void events() {
         menuItems = new MenuLabel[4];
 
         menuItems[0] = new MenuLabel("View Events by day");
@@ -108,7 +108,7 @@ public class Menu {
     /**
      * Creates notes menu
      */
-    public void notes() {
+    private void notes() {
         menuItems = new MenuLabel[3];
 
         menuItems[0] = new MenuLabel("Add new note");
@@ -122,7 +122,7 @@ public class Menu {
     /**
      * Moves menu selection down
      */
-    public void down() {
+    void down() {
         menuItems[selected].deselect();
         selected++;
         if(selected >= menuItems.length) {
@@ -135,7 +135,7 @@ public class Menu {
     /**
      * Moves menu selection up
      */
-    public void up() {
+    void up() {
         menuItems[selected].deselect();
         selected--;
         if(selected < 0) {
@@ -148,7 +148,7 @@ public class Menu {
      * Getter for menuItems
      * @return menuItems
      */
-    public MenuLabel[] readMenu() {
+    MenuLabel[] readMenu() {
         return menuItems;
     }
 

@@ -1,11 +1,11 @@
 package view;
 
+import navigation.Navigator;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-
-import navigation.Navigator;
 
 /**
  * Class View
@@ -16,14 +16,14 @@ public class View {
     private final JFrame mainFrame;
     private final MainInterfacePanel mainPanel;
 
-    public static final Font standardFont = new Font("Monospaced", Font.PLAIN, 22);
+    static final Font standardFont = new Font("Monospaced", Font.PLAIN, 22);
 
     /**
      * Constructor
      *
      * instantiates main JFrame and components
      */
-    public View() {
+    View() {
         setUIParameters();
 
         mainPanel = new MainInterfacePanel();
@@ -42,7 +42,7 @@ public class View {
      * Makes the frame fullscreen
      * @param frame JFrame
      */
-    static public void fullScreen(final JFrame frame) {
+    private static void fullScreen(final JFrame frame) {
 
         GraphicsDevice device = frame.getGraphicsConfiguration().getDevice();
         boolean result = device.isFullScreenSupported();
@@ -88,7 +88,7 @@ public class View {
     /**
      * Sets global view properties (font, etc)
      */
-    public void setUIParameters() {
+    private void setUIParameters() {
         UIManager.put("Label.font", standardFont);
         UIManager.put("TextField.font", standardFont);
         UIManager.put("JList.font", standardFont);
@@ -101,7 +101,7 @@ public class View {
      * Binds KeyController to main JPanel
      * @param controller KeyController
      */
-    public void setKeyListener(KeyController controller) {
+    void setKeyListener(KeyController controller) {
         mainPanel.getMainPanel().addKeyListener(controller);
     }
 
@@ -117,7 +117,7 @@ public class View {
      * Getter for mainFrame
      * @return mainFrame
      */
-    public JFrame getMainFrame() {
+    JFrame getMainFrame() {
         return mainFrame;
     }
 
@@ -125,14 +125,14 @@ public class View {
      * Getter for menu
      * @return menu
      */
-    public Menu getMenu() {
+    Menu getMenu() {
         return mainPanel.getMenu();
     }
 
     /**
      * Repaints panel and requests keyboard focus
      */
-    public void getFocus() {
+    void getFocus() {
         mainPanel.resetMenu();
         mainPanel.getMainPanel().requestFocus();
         mainFrame.repaint();

@@ -1,6 +1,8 @@
 package driver;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -25,6 +27,12 @@ public class FileManager {
         return lines;
     }
 
+    /**
+     * Writes an ArrayList of strings to a file, line-by-line
+     *
+     * @param filename path to file
+     * @param lines    ArrayList of Strings
+     */
     public static void writeLines(String filename, ArrayList<String> lines) {
         try {
             FileWriter f = new FileWriter(filename);

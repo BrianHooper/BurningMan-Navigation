@@ -1,37 +1,53 @@
 package view;
 
+import driver.ClockDriver;
+import driver.CoordinateListener;
+import events.Event;
+import events.EventManager;
+import events.NoteManager;
+import navigation.Location;
+import navigation.Navigator;
+
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Set;
 
-import events.Event;
-import events.EventManager;
-import events.NoteManager;
-import navigation.*;
-
 /**
- * Class MenuController
+ * Class UserInterfaceController
  *
  * Handles menu actions and updates view
  */
-public class MenuController {
+public class UserInterfaceController {
     private final View view;
     private final Navigator navigator;
     private final EventManager eventManager;
     private final NoteManager noteManager;
 
+    public static void start() {
+        View view = new View();
+        Navigator navigator = new Navigator();
+        new UserInterfaceController(view, navigator);
+        CoordinateListener coordinateListener = new CoordinateListener(navigator, view);
+        coordinateListener.start();
+
+        ClockDriver clockDriver = new ClockDriver(view);
+        clockDriver.start();
+    }
+
     /**
      * Constructor
      * @param view main View
      * @param navigator Navigator object
-     * @param eventManager EventManager object
-     * @param noteManager NoteManager object
      */
-    public MenuController(View view, Navigator navigator, EventManager eventManager, NoteManager noteManager) {
+    private UserInterfaceController(View view, Navigator navigator) {
         this.view = view;
         this.navigator = navigator;
-        this.eventManager = eventManager;
-        this.noteManager = noteManager;
+        this.eventManager = navigator.getEventManager();
+        this.noteManager = navigator.getNoteManager();
+
+        view.setNavigation(navigator);
+        KeyController controller = new KeyController(this);
+        view.setKeyListener(controller);
     }
 
     /**
@@ -203,7 +219,7 @@ public class MenuController {
         if(Event.setGlobalEventStartTime(startDate)) {
             String eventStartDate = Event.dfFull.format(Event.globalEventStartTime);
             JOptionPane.showMessageDialog(view.getMainFrame(), "Start date set to " + eventStartDate);
-            navigator.writeToConfigFile("config.cfg");
+            navigator.writeToConfigFile();
         } else {
             JOptionPane.showMessageDialog(view.getMainFrame(), "Invalid date format");
         }
@@ -359,7 +375,7 @@ public class MenuController {
             if (confirmation == JOptionPane.YES_OPTION) {
                 navigator.getFavorites().remove(input);
                 navigator.writeFavorites();
-                navigator.writeToConfigFile("config.cfg");
+                navigator.writeToConfigFile();
             }
         }
     }
@@ -383,7 +399,7 @@ public class MenuController {
 
         if(input != null) {
             navigator.setDestination(navigator.getFavorites().get(input), input);
-            navigator.writeToConfigFile("config.cfg");
+            navigator.writeToConfigFile();
         }
     }
 
@@ -400,7 +416,7 @@ public class MenuController {
         if(confirm == JOptionPane.YES_OPTION) {
             navigator.getFavorites().put(favName, new Location(navigator.currentLocation()));
             navigator.writeFavorites();
-            navigator.writeToConfigFile("config.cfg");
+            navigator.writeToConfigFile();
             return;
         }
 
@@ -416,7 +432,7 @@ public class MenuController {
             int minute = Integer.parseInt(split[1]);
             char street = split[2].charAt(0);
             navigator.getFavorites().put(favName, new Location(hour, minute, street));
-            navigator.writeToConfigFile("config.cfg");
+            navigator.writeToConfigFile();
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(view.getMainFrame(), err);
         }
@@ -429,7 +445,7 @@ public class MenuController {
         String result = JOptionPane.showInputDialog(view.getMainFrame(), "Enter block width (default 240)");
         try {
             Location.block_width = Integer.parseInt(result);
-            navigator.writeToConfigFile("config.cfg");
+            navigator.writeToConfigFile();
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(view.getMainFrame(), "Error, invalid block width");
         }
@@ -442,7 +458,7 @@ public class MenuController {
         String result = JOptionPane.showInputDialog(view.getMainFrame(), "Enter Esplanade distance (default 2600)");
         try {
             Location.esplanade_distance = Integer.parseInt(result);
-            navigator.writeToConfigFile("config.cfg");
+            navigator.writeToConfigFile();
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(view.getMainFrame(), "Error, invalid esplanade distance");
         }
@@ -454,7 +470,7 @@ public class MenuController {
     private void setMan() {
         int result = JOptionPane.showConfirmDialog(view.getMainFrame(), "Use current location as man coordinates?");
         if(result == JOptionPane.YES_OPTION) {
-            navigator.writeToConfigFile("config.cfg");
+            navigator.writeToConfigFile();
         }
     }
 
@@ -473,7 +489,7 @@ public class MenuController {
             int minute = Integer.parseInt(split[1]);
             char street = split[2].charAt(0);
             navigator.setHome(hour, minute, street);
-            navigator.writeToConfigFile("config.cfg");
+            navigator.writeToConfigFile();
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(view.getMainFrame(), err);
         }
@@ -502,7 +518,7 @@ public class MenuController {
             if (camp != null) {
                 navigator.setDestination(camp, campName);
                 view.setNavigation(navigator);
-                navigator.writeToConfigFile("config.cfg");
+                navigator.writeToConfigFile();
                 return true;
             }
         }
@@ -512,21 +528,21 @@ public class MenuController {
     /**
      * Updates view / moves selection up
      */
-    public void menuUp() {
+    void menuUp() {
         view.getMenu().up();
     }
 
     /**
      * Updates view / moves selection down
      */
-    public void menuDown() {
+    void menuDown() {
         view.getMenu().down();
     }
 
     /**
      * Activates current selection
      */
-    public void menuSelect() {
+    void menuSelect() {
         action(view.getMenu().select());
         view.getFocus();
     }
@@ -534,7 +550,7 @@ public class MenuController {
     /**
      * Updates view with home selection
      */
-    public void menuEscape() {
+    void menuEscape() {
         view.getMenu().home();
         view.getFocus();
     }

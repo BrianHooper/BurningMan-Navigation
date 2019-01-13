@@ -6,8 +6,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class ClockDriver extends Thread {
-    public static final DateTimeFormatter dfDay = DateTimeFormatter.ofPattern("EEEE");
-    public static final DateTimeFormatter dfTime = DateTimeFormatter.ofPattern("h:mm:ss a");
+    private static final DateTimeFormatter dfDay = DateTimeFormatter.ofPattern("EEEE");
+    private static final DateTimeFormatter dfTime = DateTimeFormatter.ofPattern("h:mm:ss a");
     private final View view;
 
     /**

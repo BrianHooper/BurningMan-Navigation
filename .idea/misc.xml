@@ -8,12 +8,12 @@
     </option>
   </component>
   <component name="ProjectPlainTextFileTypeManager">
-    <file url="file://$PROJECT_DIR$/bathrooms.csv" />
-    <file url="file://$PROJECT_DIR$/camplist.csv" />
-    <file url="file://$PROJECT_DIR$/camps.csv" />
-    <file url="file://$PROJECT_DIR$/eventslist.csv" />
-    <file url="file://$PROJECT_DIR$/favorites.csv" />
-    <file url="file://$PROJECT_DIR$/notes.csv" />
+    <file url="file://$PROJECT_DIR$/config/bathrooms.csv" />
+    <file url="file://$PROJECT_DIR$/config/camplist.csv" />
+    <file url="file://$PROJECT_DIR$/config/camps.csv" />
+    <file url="file://$PROJECT_DIR$/config/eventList.csv" />
+    <file url="file://$PROJECT_DIR$/config/favorites.csv" />
+    <file url="file://$PROJECT_DIR$/config/notes.csv" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_10" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />

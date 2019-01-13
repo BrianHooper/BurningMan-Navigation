@@ -5,7 +5,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.TreeMap;
 
-public class MainInterfacePanel {
+class MainInterfacePanel {
     private JPanel mainPanel;
 
     private JTextField currentAddress;
@@ -24,6 +24,7 @@ public class MainInterfacePanel {
     private JPanel clockPanel;
     private JLabel clockLabel;
     private JLabel addressLabel;
+    private JPanel rightPanel;
 
     private view.Menu menu;
 
@@ -31,7 +32,7 @@ public class MainInterfacePanel {
      * getter for Menu object
      * @return menu
      */
-    public view.Menu getMenu() {
+    view.Menu getMenu() {
         return menu;
     }
 
@@ -39,7 +40,7 @@ public class MainInterfacePanel {
      * Getter for mainPanel
      * @return mainPanel
      */
-    public JPanel getMainPanel() {
+    JPanel getMainPanel() {
         return mainPanel;
     }
 
@@ -112,7 +113,7 @@ public class MainInterfacePanel {
      * Sets the clock value
      * @param clockValue time string
      */
-    public void setClock(String clockValue) {
+    void setClock(String clockValue) {
         this.clockLabel.setText(clockValue);
     }
 
@@ -120,7 +121,7 @@ public class MainInterfacePanel {
      * Updates all navigation fields
      * @param map TreeMap containing field name and field value
      */
-    public void setNavigation(TreeMap<String, String> map) {
+    void setNavigation(TreeMap<String, String> map) {
         setCurrentAddress(map.get("currentAddress"));
         setBathroomAddress(map.get("bathroomAddress"));
         setBathroomDirections(map.get("bathroomDirections"));
@@ -143,6 +144,9 @@ public class MainInterfacePanel {
 
         menu = new Menu();
 
+        addressLabel = new JLabel("Current Address:");
+        addressLabel.setBorder(new EmptyBorder(20, 0, 0, 0));
+
         nearestBathroomLabel = new JLabel("Nearest Bathroom: ");
         nearestBathroomLabel.setBorder(new EmptyBorder(20, 0, 0, 0));
 
@@ -152,8 +156,10 @@ public class MainInterfacePanel {
         destinationLabel = new JLabel("Destination: ");
         destinationLabel.setBorder(new EmptyBorder(20, 0, 0, 0));
 
+        clockPanel = new JPanel();
         clockLabel = new JLabel("Clock");
-        clockLabel.setFont(new Font(View.standardFont.getFontName(), Font.PLAIN, 36));
+        clockLabel.setFont(new Font(View.standardFont.getFontName(), Font.PLAIN, 32));
+        clockPanel.add(clockLabel);
 
         resetMenu();
     }
@@ -161,7 +167,7 @@ public class MainInterfacePanel {
     /**
      * Reads and resets menu items
      */
-    public void resetMenu() {
+    void resetMenu() {
         leftMenu.removeAll();
         MenuLabel[] menuLabels = menu.readMenu();
         if(menuLabels != null) {

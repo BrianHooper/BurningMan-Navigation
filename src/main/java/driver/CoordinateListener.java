@@ -34,7 +34,7 @@ public class CoordinateListener extends Thread {
         //noinspection InfiniteLoopStatement
         while(true) {
             try {
-                AbstractMap.SimpleEntry<Double, Double> coordinates = Location.readCoordinates("coordinate");
+                AbstractMap.SimpleEntry<Double, Double> coordinates = Location.readCoordinates("config/coordinate");
                 if (coordinates != null) {
                     double latitude = coordinates.getKey();
                     double longitude = coordinates.getValue();

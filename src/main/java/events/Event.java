@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 public class Event {
 
-    public static final DateTimeFormatter dfDay = DateTimeFormatter.ofPattern("EEEE");
-    public static final DateTimeFormatter dfTime = DateTimeFormatter.ofPattern("h:mm a");
+    private static final DateTimeFormatter dfDay = DateTimeFormatter.ofPattern("EEEE");
+    private static final DateTimeFormatter dfTime = DateTimeFormatter.ofPattern("h:mm a");
     public static final DateTimeFormatter dfFull = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
     public static LocalDateTime globalEventStartTime = LocalDateTime.of(
@@ -30,7 +30,7 @@ public class Event {
      * @param category EventCategory
      * @param startTimes Array of LocalDateTime object
      */
-    public Event(String name, String location, EventCategory category, LocalDateTime[] startTimes) {
+    Event(String name, String location, EventCategory category, LocalDateTime[] startTimes) {
         this.name = name;
         this.location = location;
         this.startTimes = startTimes;
@@ -48,7 +48,7 @@ public class Event {
      * @param startTimes Array of LocalDateTime object
      * @param endTimes Array of LocalDateTime object
      */
-    public Event(String name, String location, EventCategory category, LocalDateTime[] startTimes, LocalDateTime[] endTimes) {
+    Event(String name, String location, EventCategory category, LocalDateTime[] startTimes, LocalDateTime[] endTimes) {
         this(name, location, category, startTimes);
         this.endTimes = endTimes;
     }
@@ -74,7 +74,7 @@ public class Event {
      * @param minute minute offset
      * @return LocalDateTime object
      */
-    public static LocalDateTime dateBuilder(int day, int hour, int minute) {
+    private static LocalDateTime dateBuilder(int day, int hour, int minute) {
         Duration duration = Duration.ofDays(day);
         duration = duration.plusHours(hour);
         duration = duration.plusMinutes(minute);
@@ -87,7 +87,7 @@ public class Event {
      * @param dateStrIndexes String array of integers
      * @return LocalDateTime array
      */
-    public static LocalDateTime[] multiDateBuilder(String[] dateStrIndexes) {
+    static LocalDateTime[] multiDateBuilder(String[] dateStrIndexes) {
         ArrayList<Integer> dateIndexes = new ArrayList<>();
         for(String index : dateStrIndexes) {
             try {
@@ -124,7 +124,7 @@ public class Event {
      * @param endDate LocalDateTime object
      * @return String
      */
-    public static String asString(LocalDateTime startDate, LocalDateTime endDate) {
+    private static String asString(LocalDateTime startDate, LocalDateTime endDate) {
         if(endDate == null) {
             return dfDay.format(startDate) + " at " + dfTime.format(startDate);
         } else {
@@ -138,7 +138,7 @@ public class Event {
      *
      * @return String
      */
-    public String timesToString() {
+    private String timesToString() {
         int length = Math.min(startTimes.length, endTimes.length);
         int index = 0;
         StringBuilder sb = new StringBuilder();
@@ -160,7 +160,7 @@ public class Event {
      * Getter for name
      * @return String name
      */
-    public String getName() {
+    String getName() {
         return name;
     }
 
@@ -168,7 +168,7 @@ public class Event {
      * Getter for location
      * @return String location
      */
-    public String getLocation() {
+    String getLocation() {
         return location;
     }
 
@@ -176,7 +176,7 @@ public class Event {
      * Getter for start times
      * @return LocalDateTime[] array of start times
      */
-    public LocalDateTime[] getStartTimes() {
+    LocalDateTime[] getStartTimes() {
         return startTimes;
     }
 
@@ -184,7 +184,7 @@ public class Event {
      * Getter for category
      * @return EventCategory
      */
-    public EventCategory getCategory() {
+    EventCategory getCategory() {
         return category;
     }
 

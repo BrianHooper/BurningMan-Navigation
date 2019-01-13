@@ -8,15 +8,15 @@ import java.awt.event.KeyListener;
  *
  * listens for key presses
  */
-public class KeyController implements KeyListener {
-    private final MenuController menu;
+class KeyController implements KeyListener {
+    private final UserInterfaceController menu;
 
     /**
      * Constructor
      *
-     * @param menu MenuController object
+     * @param menu UserInterfaceController object
      */
-    public KeyController(MenuController menu) {
+    KeyController(UserInterfaceController menu) {
         this.menu = menu;
     }
 
