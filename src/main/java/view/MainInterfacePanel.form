@@ -143,7 +143,7 @@
       </component>
       <grid id="4b25a" binding="leftMenuPanel" custom-create="true" layout-manager="GridBagLayout">
         <constraints>
-          <grid row="0" column="0" row-span="12" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="0" row-span="9" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
           <gridbag top="0" left="0" bottom="0" right="50" weightx="0.0" weighty="0.0" ipadx="10"/>
         </constraints>
         <properties>
@@ -169,6 +169,29 @@
               <gridbag weightx="0.0" weighty="0.0"/>
             </constraints>
           </vspacer>
+        </children>
+      </grid>
+      <grid id="6d4" binding="clockPanel" layout-manager="GridBagLayout">
+        <constraints>
+          <grid row="9" column="0" row-span="3" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <background color="-12828863"/>
+          <enabled value="true"/>
+          <opaque value="false"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="3d479" class="javax.swing.JLabel" binding="clockLabel" custom-create="true">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <text value="Label"/>
+            </properties>
+          </component>
         </children>
       </grid>
     </children>

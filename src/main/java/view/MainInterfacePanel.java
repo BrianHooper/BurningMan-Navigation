@@ -21,6 +21,8 @@ public class MainInterfacePanel {
     private JLabel nearestBathroomLabel;
     private JLabel homeCampLabel;
     private JLabel destinationLabel;
+    private JPanel clockPanel;
+    private JLabel clockLabel;
 
     private view.Menu menu;
 
@@ -106,6 +108,14 @@ public class MainInterfacePanel {
     }
 
     /**
+     * Sets the clock value
+     * @param clockValue time string
+     */
+    public void setClock(String clockValue) {
+        this.clockLabel.setText(clockValue);
+    }
+
+    /**
      * Updates all navigation fields
      * @param map TreeMap containing field name and field value
      */
@@ -140,6 +150,9 @@ public class MainInterfacePanel {
 
         destinationLabel = new JLabel("Destination: ");
         destinationLabel.setBorder(new EmptyBorder(20, 0, 0, 0));
+
+        clockLabel = new JLabel("Clock");
+        clockLabel.setFont(new Font(View.standardFont.getFontName(), Font.PLAIN, 36));
 
         resetMenu();
     }

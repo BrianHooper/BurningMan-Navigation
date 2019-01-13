@@ -13,6 +13,8 @@ public class View {
     private final JFrame mainFrame;
     private final MainInterfacePanel mainPanel;
 
+    public static final Font standardFont = new Font("Monospaced", Font.PLAIN, 22);
+
     /**
      * Constructor
      *
@@ -39,7 +41,6 @@ public class View {
      * Sets global view properties (font, etc)
      */
     public void setUIParameters() {
-        Font standardFont = new Font("Monospaced", Font.PLAIN, 22);
         UIManager.put("Label.font", standardFont);
         UIManager.put("TextField.font", standardFont);
         UIManager.put("JList.font", standardFont);
@@ -88,6 +89,14 @@ public class View {
         mainPanel.getMainPanel().requestFocus();
         mainFrame.repaint();
         mainFrame.revalidate();
+    }
 
+
+    /**
+     * Sets the clock value
+     * @param clockValue time string
+     */
+    public void setClock(String clockValue) {
+        mainPanel.setClock(clockValue);
     }
 }

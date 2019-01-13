@@ -26,5 +26,8 @@ public class NavigationDriver {
         // Start thread for reading coordinate data
         CoordinateListener coordinateListener = new CoordinateListener(navigator, view);
         coordinateListener.start();
+
+        ClockDriver clockDriver = new ClockDriver(view);
+        clockDriver.start();
     }
 }
