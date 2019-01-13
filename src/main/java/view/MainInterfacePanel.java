@@ -23,6 +23,7 @@ public class MainInterfacePanel {
     private JLabel destinationLabel;
     private JPanel clockPanel;
     private JLabel clockLabel;
+    private JLabel addressLabel;
 
     private view.Menu menu;
 

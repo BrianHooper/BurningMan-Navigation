@@ -2,6 +2,9 @@ package view;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+
 import navigation.Navigator;
 
 /**
@@ -26,15 +29,60 @@ public class View {
         mainPanel = new MainInterfacePanel();
 
         mainFrame = new JFrame("MainInterfacePanel");
+        fullScreen(mainFrame);
         mainFrame.setContentPane(mainPanel.getMainPanel());
-        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        mainFrame.pack();
-        mainFrame.setSize(mainFrame.getWidth() + 50, mainFrame.getHeight() + 50);
 
         mainPanel.getMainPanel().setFocusable(true);
         mainPanel.getMainPanel().requestFocus();
 
-        mainFrame.setVisible(true);
+        mainFrame.setResizable(true);
+    }
+
+    /**
+     * Makes the frame fullscreen
+     * @param frame JFrame
+     */
+    static public void fullScreen(final JFrame frame) {
+
+        GraphicsDevice device = frame.getGraphicsConfiguration().getDevice();
+        boolean result = device.isFullScreenSupported();
+
+        if (result) {
+            frame.setUndecorated(true);
+            frame.setResizable(true);
+
+            frame.addFocusListener(new FocusListener() {
+
+                @Override
+                public void focusGained(FocusEvent arg0) {
+                    frame.setAlwaysOnTop(true);
+                }
+
+                @Override
+                public void focusLost(FocusEvent arg0) {
+                    frame.setAlwaysOnTop(false);
+                }
+            });
+
+            frame.pack();
+
+            device.setFullScreenWindow(frame);
+        }
+        else {
+            frame.setPreferredSize(frame.getGraphicsConfiguration().getBounds().getSize());
+
+            frame.pack();
+
+            frame.setResizable(true);
+
+            frame.setExtendedState(Frame.MAXIMIZED_BOTH);
+            boolean successful = frame.getExtendedState() == Frame.MAXIMIZED_BOTH;
+
+            frame.setVisible(true);
+
+            if (!successful)
+                frame.setExtendedState(Frame.MAXIMIZED_BOTH);
+        }
     }
 
     /**

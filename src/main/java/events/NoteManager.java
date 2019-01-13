@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.TreeMap;
 
 public class NoteManager {
-    private TreeMap<String, String> notes;
+    private final TreeMap<String, String> notes;
     private static final String delimiter = String.valueOf((char) 25);
 
     public NoteManager() {

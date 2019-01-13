@@ -42,6 +42,7 @@ public enum EventCategory {
      * Returns a types of categories
      * @return EventCategory array
      */
+    @SuppressWarnings("unused")
     public EventCategory[] listAll() {
         return new EventCategory[]{ADULT, CARE, FIRE, FOOD, GAMES, KIDS, PARADE, PARTY, PERFORMANCE, RITUAL, WORKSHOP};
     }

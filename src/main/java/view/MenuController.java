@@ -1,7 +1,6 @@
 package view;
 
 import javax.swing.*;
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Set;
 
@@ -154,24 +153,27 @@ public class MenuController {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
 
-        panel.add(new JLabel("Note title:"));
 
-        JTextField noteTitleField = new JTextField(noteTitle);
-        noteTitleField.setColumns(40);
-        panel.add(noteTitleField);
+        JTextField field = new JTextField(10);
+        field.setText(noteTitle);
+        field.addAncestorListener(new RequestFocusListener());
+        field.setAlignmentX(0);
 
-        panel.add(new JLabel("Note body:"));
+        OptionPaneTextArea area = new OptionPaneTextArea(20, 10);
+        area.setText(noteBody);
+        JScrollPane jScrollPane = new JScrollPane(area);
+        jScrollPane.setAlignmentX(0);
 
-        JTextArea textArea = new JTextArea(noteBody);
-        textArea.setColumns(40);
-        textArea.setRows(15);
-        JScrollPane jScrollPane = new JScrollPane(textArea);
+        panel.add(new JLabel("Title:"));
+        panel.add(field);
+        panel.add(new JLabel("Body:"));
         panel.add(jScrollPane);
-        noteTitleField.requestFocus();
 
-        JOptionPane.showMessageDialog(null,panel,"Add / Edit note", JOptionPane.INFORMATION_MESSAGE);
-        noteTitle = noteTitleField.getText();
-        noteBody = textArea.getText();
+        JOptionPane.showConfirmDialog(null, panel, "Input", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+
+
+        noteTitle = field.getText();
+        noteBody = area.getText();
         if(noteTitle.length() == 0 || noteBody.length() == 0) {
             return;
         }

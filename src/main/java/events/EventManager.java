@@ -7,7 +7,9 @@ import java.util.ArrayList;
 
 public class EventManager {
     private final ArrayList<Event> events;
-    private final ArrayList<Event> music;
+
+//    todo implement music list
+//    private final ArrayList<Event> music;
 
     /**
      * Constructor
@@ -16,7 +18,6 @@ public class EventManager {
      */
     public EventManager() {
         events = new ArrayList<>();
-        music = new ArrayList<>();
     }
 
     /**
@@ -60,6 +61,7 @@ public class EventManager {
      * @param category EventCategory
      * @return ArrayList of Event objects
      */
+    @SuppressWarnings("unused")
     public ArrayList<Event> listByCategory(EventCategory category) {
         ArrayList<Event> matchingEvents = new ArrayList<>();
         for(Event event : events) {
