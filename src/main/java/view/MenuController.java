@@ -1,11 +1,13 @@
 package view;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Set;
 
 import events.Event;
 import events.EventManager;
+import events.NoteManager;
 import navigation.*;
 
 /**
@@ -17,18 +19,20 @@ public class MenuController {
     private final View view;
     private final Navigator navigator;
     private final EventManager eventManager;
+    private final NoteManager noteManager;
 
     /**
      * Constructor
-     *
      * @param view main View
      * @param navigator Navigator object
+     * @param eventManager EventManager object
+     * @param noteManager NoteManager object
      */
-    public MenuController(View view, Navigator navigator, EventManager eventManager) {
+    public MenuController(View view, Navigator navigator, EventManager eventManager, NoteManager noteManager) {
         this.view = view;
         this.navigator = navigator;
         this.eventManager = eventManager;
-
+        this.noteManager = noteManager;
     }
 
     /**
@@ -79,8 +83,107 @@ public class MenuController {
             case "Set event start time":
                 setEventStartTime();
                 break;
+            case "Add new note":
+                addNote();
+                break;
+            case "View and edit notes":
+                editNotes();
+                break;
+            case "Delete notes":
+                deleteNotes();
+                break;
         }
         view.setNavigation(navigator);
+    }
+
+    /**
+     * Lists all notes and returns the users selection
+     * @return String note title
+     */
+    private String selectNote() {
+        String[] menuItems = noteManager.getNoteTitles();
+        if(menuItems.length == 0) {
+            return null;
+        }
+
+        return (String) JOptionPane.showInputDialog(view.getMainFrame(), "",
+                "Select note", JOptionPane.QUESTION_MESSAGE, null,
+                menuItems, // Array of choices
+                menuItems[0]); // Initial choice
+    }
+
+    /**
+     * Deletes notes
+     */
+    private void deleteNotes() {
+        String noteTitle = selectNote();
+        if(noteTitle == null) {
+            return;
+        }
+        int confirmation = JOptionPane.showConfirmDialog(view.getMainFrame(), "Delete note " + noteTitle + "?");
+        if (confirmation == JOptionPane.YES_OPTION) {
+            noteManager.deleteNote(noteTitle);
+            noteManager.saveNotes();
+        }
+    }
+
+    /**
+     * Displays all notes
+     */
+    private void editNotes() {
+        String noteTitle = selectNote();
+        if(noteTitle == null) {
+            return;
+        }
+        addNote(noteTitle);
+    }
+
+    /**
+     * Adds or edits a note
+     * @param noteTitle title of note to edit
+     */
+    private void addNote(String noteTitle) {
+        String noteBody;
+        if(noteTitle != null) {
+            noteBody = noteManager.getNote(noteTitle);
+        } else {
+            noteTitle = "";
+            noteBody = "";
+        }
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
+
+        panel.add(new JLabel("Note title:"));
+
+        JTextField noteTitleField = new JTextField(noteTitle);
+        noteTitleField.setColumns(40);
+        panel.add(noteTitleField);
+
+        panel.add(new JLabel("Note body:"));
+
+        JTextArea textArea = new JTextArea(noteBody);
+        textArea.setColumns(40);
+        textArea.setRows(15);
+        JScrollPane jScrollPane = new JScrollPane(textArea);
+        panel.add(jScrollPane);
+
+        JOptionPane.showMessageDialog(null,panel,"Add / Edit note", JOptionPane.INFORMATION_MESSAGE);
+        noteTitle = noteTitleField.getText();
+        noteBody = textArea.getText();
+        if(noteTitle.length() == 0 || noteBody.length() == 0) {
+            return;
+        }
+
+        noteManager.createNote(noteTitle, noteBody);
+        noteManager.saveNotes();
+    }
+
+    /**
+     * Adds a new note
+     */
+    private void addNote() {
+        addNote(null);
     }
 
     /**

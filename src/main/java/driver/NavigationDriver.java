@@ -1,6 +1,7 @@
 package driver;
 
 import events.EventManager;
+import events.NoteManager;
 import navigation.Navigator;
 import view.KeyController;
 import view.MenuController;
@@ -13,12 +14,15 @@ public class NavigationDriver {
         EventManager eventManager = new EventManager();
         eventManager.importEvents("eventslist.csv");
 
+        NoteManager noteManager = new NoteManager();
+        noteManager.readNotes();
+
         Navigator navigator = new Navigator();
         navigator.initializeLandmarks("bathrooms.csv", "camps.csv", "favorites.csv");
         navigator.loadFromFile("config.cfg");
         // Initialize GUI
         View view = new View();
-        MenuController menuController = new MenuController(view, navigator, eventManager);
+        MenuController menuController = new MenuController(view, navigator, eventManager, noteManager);
         KeyController controller = new KeyController(menuController);
         view.setKeyListener(controller);
         view.setNavigation(navigator);
