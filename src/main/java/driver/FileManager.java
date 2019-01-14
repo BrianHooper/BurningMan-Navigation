@@ -71,7 +71,6 @@ public class FileManager {
      */
     void appendLine(String line) {
         try {
-            System.out.println("Writing \"" + line + "\"");
             writer.write(line + '\n');
             writer.flush();
         } catch (IOException e) {
