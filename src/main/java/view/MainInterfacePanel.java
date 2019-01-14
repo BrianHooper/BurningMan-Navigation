@@ -25,6 +25,8 @@ class MainInterfacePanel {
     private JLabel clockLabel;
     private JLabel addressLabel;
     private JPanel rightPanel;
+    private JPanel globalPanel;
+    private JLabel header;
 
     private view.Menu menu;
 
@@ -145,7 +147,7 @@ class MainInterfacePanel {
         menu = new Menu();
 
         addressLabel = new JLabel("Current Address:");
-        addressLabel.setBorder(new EmptyBorder(20, 0, 0, 0));
+        addressLabel.setBorder(new EmptyBorder(0, 0, 0, 0));
 
         nearestBathroomLabel = new JLabel("Nearest Bathroom: ");
         nearestBathroomLabel.setBorder(new EmptyBorder(20, 0, 0, 0));

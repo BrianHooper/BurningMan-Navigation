@@ -7,15 +7,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectPlainTextFileTypeManager">
-    <file url="file://$PROJECT_DIR$/config/bathrooms.csv" />
-    <file url="file://$PROJECT_DIR$/config/camplist.csv" />
-    <file url="file://$PROJECT_DIR$/config/camps.csv" />
-    <file url="file://$PROJECT_DIR$/config/eventList.csv" />
-    <file url="file://$PROJECT_DIR$/config/favorites.csv" />
-    <file url="file://$PROJECT_DIR$/config/notes.csv" />
-  </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_10" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_10" default="false" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>
