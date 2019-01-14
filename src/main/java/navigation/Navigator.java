@@ -23,7 +23,7 @@ public class Navigator {
 
     /**
      * Constructor
-     *
+     * <p>
      * initializes current location, landmarks, home, destination
      */
     public Navigator() {
@@ -31,8 +31,8 @@ public class Navigator {
         eventManager = new EventManager();
         noteManager = new NoteManager();
 
-        currentLocation = new Location(6,0,'D');
-        home = new Location(6,0,'D');
+        currentLocation = new Location(6, 0, 'D');
+        home = new Location(6, 0, 'D');
 
         currentDestination = home;
         currentDestinationName = "";
@@ -55,17 +55,17 @@ public class Navigator {
         }
 
         try {
-            if(properties.containsKey("MAN-LATITUDE"))
+            if (properties.containsKey("MAN-LATITUDE"))
                 Location.man_latitude = Double.parseDouble((String) properties.get("MAN-LATITUDE"));
-            if(properties.containsKey("MAN-LONGITUDE"))
+            if (properties.containsKey("MAN-LONGITUDE"))
                 Location.man_longitude = Double.parseDouble((String) properties.get("MAN-LONGITUDE"));
-            if(properties.containsKey("ESPLANADE-DISTANCE"))
+            if (properties.containsKey("ESPLANADE-DISTANCE"))
                 Location.esplanade_distance = Integer.parseInt((String) properties.get("ESPLANADE-DISTANCE"));
-            if(properties.containsKey("BLOCK-WIDTH"))
+            if (properties.containsKey("BLOCK-WIDTH"))
                 Location.block_width = Integer.parseInt((String) properties.get("BLOCK-WIDTH"));
-            if(properties.containsKey("EVENT-START-TIME"))
+            if (properties.containsKey("EVENT-START-TIME"))
                 Event.setGlobalEventStartTime(properties.getProperty("EVENT-START-TIME"));
-            if(properties.containsKey("CURRENT-DESTINATION-NAME")) {
+            if (properties.containsKey("CURRENT-DESTINATION-NAME")) {
                 currentDestinationName = properties.getProperty("CURRENT-DESTINATION-NAME");
                 currentDestination = landmarks.getCamp(currentDestinationName);
             }
@@ -78,7 +78,7 @@ public class Navigator {
      * Writes configuration to file
      */
     public void writeToConfigFile() {
-        if(properties == null) {
+        if (properties == null) {
             return;
         }
 
@@ -98,7 +98,8 @@ public class Navigator {
 
     /**
      * Sets the current location based on gps coordinates
-     * @param latitude double latitude
+     *
+     * @param latitude  double latitude
      * @param longitude double longitude
      */
     public void updateLocation(double latitude, double longitude) {
@@ -107,6 +108,7 @@ public class Navigator {
 
     /**
      * Returns exact camp name string
+     *
      * @param campName partial camp name
      * @return exact camp name
      */
@@ -116,6 +118,7 @@ public class Navigator {
 
     /**
      * Getter for camps based on exact string name
+     *
      * @param exactCampName exact camp name
      * @return camp Location
      */
@@ -134,6 +137,7 @@ public class Navigator {
 
     /**
      * Returns a TreeMap
+     *
      * @return TreeMap (String, String) with panel navigation updates
      */
     public TreeMap<String, String> getPanelUpdate() {
@@ -145,7 +149,7 @@ public class Navigator {
                 ", " + currentLocation.cardinal(closestBathroom));
         map.put("homeAddress", home.getAddress());
         map.put("homeDirections", currentLocation.distance(home) + ", " + currentLocation.cardinal(home));
-        if(currentDestination != null) {
+        if (currentDestination != null) {
             map.put("destinationName", currentDestinationName);
             map.put("destinationAddress", currentDestination.getAddress());
             map.put("destinationDirections", currentLocation.distance(currentDestination) +
@@ -161,7 +165,8 @@ public class Navigator {
 
     /**
      * Sets home to a new location
-     * @param hour hour int
+     *
+     * @param hour   hour int
      * @param minute minute int
      * @param street street char
      */
@@ -171,6 +176,7 @@ public class Navigator {
 
     /**
      * Getter for favorites
+     *
      * @return TreeMap (String, Location)
      */
     public TreeMap<String, Location> getFavorites() {
@@ -179,6 +185,7 @@ public class Navigator {
 
     /**
      * Getter for currentLocation
+     *
      * @return current Location
      */
     public Location currentLocation() {
@@ -192,7 +199,7 @@ public class Navigator {
         try {
             FileWriter f = new FileWriter("favorites.csv");
             StringBuilder sb = new StringBuilder();
-            for(String campName : landmarks.getFavorites().keySet()) {
+            for (String campName : landmarks.getFavorites().keySet()) {
                 sb.append(campName);
                 sb.append(',');
                 sb.append(landmarks.getFavorites().get(campName).getCSVAddress());
@@ -200,13 +207,14 @@ public class Navigator {
             }
             f.write(sb.toString());
             f.close();
-        } catch(IOException e) {
+        } catch (IOException e) {
             System.err.println("Error writing files");
         }
     }
 
     /**
      * Getter for camps
+     *
      * @return TreeMap (String camp name, Location camp)
      */
     public TreeMap<String, Location> getCamps() {

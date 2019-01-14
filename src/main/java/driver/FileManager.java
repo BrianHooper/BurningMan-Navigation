@@ -1,28 +1,44 @@
 package driver;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class FileManager {
+    private Writer writer;
+
+    /**
+     * Constructor
+     * <p>
+     * Opens a file for appending
+     *
+     * @param filename path to file
+     * @throws IOException file not found
+     */
+    FileManager(@SuppressWarnings("SameParameterValue") String filename) throws IOException {
+        writer = new BufferedWriter(new FileWriter(filename, true));
+        appendLine("Program started," + ClockDriver.dfFull.format(LocalDateTime.now()));
+    }
+
     /**
      * Reads a text file into an ArrayList line by line
+     *
      * @param filename path to input file
      * @return ArrayList of Strings
      */
     public static ArrayList<String> readLines(String filename) {
         ArrayList<String> lines = new ArrayList<>();
+        File file = new File(filename);
+
         try {
-            Scanner inputStream = new Scanner(new File(filename));
-            while(inputStream.hasNextLine()) {
-                lines.add(inputStream.nextLine());
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            String currentLine;
+            while ((currentLine = reader.readLine()) != null) {
+                lines.add(currentLine);
             }
-            inputStream.close();
         } catch (IOException e) {
             System.err.println("Error reading file " + filename);
-            return null;
+            return lines;
         }
         return lines;
     }
@@ -37,14 +53,30 @@ public class FileManager {
         try {
             FileWriter f = new FileWriter(filename);
             StringBuilder sb = new StringBuilder();
-            for(String line : lines) {
+            for (String line : lines) {
                 sb.append(line);
                 sb.append('\n');
             }
             f.write(sb.toString());
             f.close();
-        } catch(IOException e) {
+        } catch (IOException e) {
             System.err.println("Error writing files");
         }
+    }
+
+    /**
+     * Appends an single line to a file
+     *
+     * @param line String line
+     */
+    void appendLine(String line) {
+        try {
+            System.out.println("Writing \"" + line + "\"");
+            writer.write(line + '\n');
+            writer.flush();
+        } catch (IOException e) {
+            System.err.println("Error writing file");
+        }
+
     }
 }

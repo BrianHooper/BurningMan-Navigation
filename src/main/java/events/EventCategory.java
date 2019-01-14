@@ -5,6 +5,7 @@ public enum EventCategory {
 
     /**
      * Converts a string to a category
+     *
      * @param category String
      * @return EventCategory
      */
@@ -40,6 +41,7 @@ public enum EventCategory {
 
     /**
      * Returns a types of categories
+     *
      * @return EventCategory array
      */
     @SuppressWarnings("unused")

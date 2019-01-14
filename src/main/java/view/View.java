@@ -9,7 +9,7 @@ import java.awt.event.FocusListener;
 
 /**
  * Class View
- *
+ * <p>
  * Creates JFrame and components
  */
 public class View {
@@ -20,7 +20,7 @@ public class View {
 
     /**
      * Constructor
-     *
+     * <p>
      * instantiates main JFrame and components
      */
     View() {
@@ -40,6 +40,7 @@ public class View {
 
     /**
      * Makes the frame fullscreen
+     *
      * @param frame JFrame
      */
     private static void fullScreen(final JFrame frame) {
@@ -67,8 +68,7 @@ public class View {
             frame.pack();
 
             device.setFullScreenWindow(frame);
-        }
-        else {
+        } else {
             frame.setPreferredSize(frame.getGraphicsConfiguration().getBounds().getSize());
 
             frame.pack();
@@ -99,6 +99,7 @@ public class View {
 
     /**
      * Binds KeyController to main JPanel
+     *
      * @param controller KeyController
      */
     void setKeyListener(KeyController controller) {
@@ -107,6 +108,7 @@ public class View {
 
     /**
      * Updates navigation fields with navigator data
+     *
      * @param navigator Navigator
      */
     public void setNavigation(Navigator navigator) {
@@ -115,6 +117,7 @@ public class View {
 
     /**
      * Getter for mainFrame
+     *
      * @return mainFrame
      */
     JFrame getMainFrame() {
@@ -123,6 +126,7 @@ public class View {
 
     /**
      * Getter for menu
+     *
      * @return menu
      */
     Menu getMenu() {
@@ -142,6 +146,7 @@ public class View {
 
     /**
      * Sets the clock value
+     *
      * @param clockValue time string
      */
     public void setClock(String clockValue) {

@@ -23,11 +23,12 @@ public class Event {
 
     /**
      * Constructor
-     *
+     * <p>
      * Initializes an Event object
-     * @param name event name
-     * @param location Location String
-     * @param category EventCategory
+     *
+     * @param name       event name
+     * @param location   Location String
+     * @param category   EventCategory
      * @param startTimes Array of LocalDateTime object
      */
     Event(String name, String location, EventCategory category, LocalDateTime[] startTimes) {
@@ -40,13 +41,14 @@ public class Event {
 
     /**
      * Constructor
-     *
+     * <p>
      * Initializes an Event object
-     * @param name event name
-     * @param location Location String
-     * @param category EventCategory
+     *
+     * @param name       event name
+     * @param location   Location String
+     * @param category   EventCategory
      * @param startTimes Array of LocalDateTime object
-     * @param endTimes Array of LocalDateTime object
+     * @param endTimes   Array of LocalDateTime object
      */
     Event(String name, String location, EventCategory category, LocalDateTime[] startTimes, LocalDateTime[] endTimes) {
         this(name, location, category, startTimes);
@@ -55,6 +57,7 @@ public class Event {
 
     /**
      * Setter for globalEventStartTime
+     *
      * @param startTimeString string date
      */
     public static boolean setGlobalEventStartTime(String startTimeString) {
@@ -69,8 +72,9 @@ public class Event {
 
     /**
      * Builds a LocalDateTime object from the start time and an offset
-     * @param day day offset
-     * @param hour hour offset
+     *
+     * @param day    day offset
+     * @param hour   hour offset
      * @param minute minute offset
      * @return LocalDateTime object
      */
@@ -84,12 +88,13 @@ public class Event {
 
     /**
      * Converts a list of integers to a list of dates
+     *
      * @param dateStrIndexes String array of integers
      * @return LocalDateTime array
      */
     static LocalDateTime[] multiDateBuilder(String[] dateStrIndexes) {
         ArrayList<Integer> dateIndexes = new ArrayList<>();
-        for(String index : dateStrIndexes) {
+        for (String index : dateStrIndexes) {
             try {
                 dateIndexes.add(Integer.parseInt(index));
             } catch (NumberFormatException e) {
@@ -98,7 +103,7 @@ public class Event {
             }
         }
 
-        if(dateIndexes.size() % 3 != 0) {
+        if (dateIndexes.size() % 3 != 0) {
             System.err.println("Data data has incorrect number of parameters");
             return null;
         }
@@ -120,12 +125,13 @@ public class Event {
 
     /**
      * Formats an event start time and end time as a string
+     *
      * @param startDate LocalDateTime object
-     * @param endDate LocalDateTime object
+     * @param endDate   LocalDateTime object
      * @return String
      */
     private static String asString(LocalDateTime startDate, LocalDateTime endDate) {
-        if(endDate == null) {
+        if (endDate == null) {
             return dfDay.format(startDate) + " at " + dfTime.format(startDate);
         } else {
             return dfDay.format(startDate) + " from " + dfTime.format(startDate) + " to " + dfTime.format(endDate);
@@ -142,13 +148,13 @@ public class Event {
         int length = Math.min(startTimes.length, endTimes.length);
         int index = 0;
         StringBuilder sb = new StringBuilder();
-        while(index < length) {
+        while (index < length) {
             sb.append("    ");
             sb.append(asString(startTimes[index], endTimes[index]));
             sb.append('\n');
             index++;
         }
-        while(index < startTimes.length) {
+        while (index < startTimes.length) {
             sb.append("    ");
             sb.append(asString(startTimes[index++], null));
             sb.append('\n');
@@ -158,6 +164,7 @@ public class Event {
 
     /**
      * Getter for name
+     *
      * @return String name
      */
     String getName() {
@@ -166,6 +173,7 @@ public class Event {
 
     /**
      * Getter for location
+     *
      * @return String location
      */
     String getLocation() {
@@ -174,6 +182,7 @@ public class Event {
 
     /**
      * Getter for start times
+     *
      * @return LocalDateTime[] array of start times
      */
     LocalDateTime[] getStartTimes() {
@@ -182,6 +191,7 @@ public class Event {
 
     /**
      * Getter for category
+     *
      * @return EventCategory
      */
     EventCategory getCategory() {
@@ -190,6 +200,7 @@ public class Event {
 
     /**
      * Overrides toString() method
+     *
      * @return String representation of Event
      */
     @Override

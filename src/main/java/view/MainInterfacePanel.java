@@ -32,6 +32,7 @@ class MainInterfacePanel {
 
     /**
      * getter for Menu object
+     *
      * @return menu
      */
     view.Menu getMenu() {
@@ -40,6 +41,7 @@ class MainInterfacePanel {
 
     /**
      * Getter for mainPanel
+     *
      * @return mainPanel
      */
     JPanel getMainPanel() {
@@ -48,6 +50,7 @@ class MainInterfacePanel {
 
     /**
      * Sets current address field
+     *
      * @param fieldValue address
      */
     private void setCurrentAddress(String fieldValue) {
@@ -56,6 +59,7 @@ class MainInterfacePanel {
 
     /**
      * sets bathroom address field
+     *
      * @param fieldValue address
      */
     private void setBathroomAddress(String fieldValue) {
@@ -64,6 +68,7 @@ class MainInterfacePanel {
 
     /**
      * sets bathroom directions field
+     *
      * @param fieldValue directions
      */
     private void setBathroomDirections(String fieldValue) {
@@ -72,6 +77,7 @@ class MainInterfacePanel {
 
     /**
      * sets home address field
+     *
      * @param fieldValue address
      */
     private void setHomeAddress(String fieldValue) {
@@ -80,6 +86,7 @@ class MainInterfacePanel {
 
     /**
      * sets home directions field
+     *
      * @param fieldValue directions
      */
     private void setHomeDirections(String fieldValue) {
@@ -89,6 +96,7 @@ class MainInterfacePanel {
 
     /**
      * sets destination name field
+     *
      * @param fieldValue destination
      */
     private void setDestinationName(String fieldValue) {
@@ -97,6 +105,7 @@ class MainInterfacePanel {
 
     /**
      * sets destination address field
+     *
      * @param fieldValue address
      */
     private void setDestinationAddress(String fieldValue) {
@@ -105,6 +114,7 @@ class MainInterfacePanel {
 
     /**
      * sets destination directions field
+     *
      * @param fieldValue directions
      */
     private void setDestinationDirections(String fieldValue) {
@@ -113,6 +123,7 @@ class MainInterfacePanel {
 
     /**
      * Sets the clock value
+     *
      * @param clockValue time string
      */
     void setClock(String clockValue) {
@@ -121,6 +132,7 @@ class MainInterfacePanel {
 
     /**
      * Updates all navigation fields
+     *
      * @param map TreeMap containing field name and field value
      */
     void setNavigation(TreeMap<String, String> map) {
@@ -141,7 +153,7 @@ class MainInterfacePanel {
         leftMenuPanel = new JPanel();
         leftMenu = new JPanel();
         leftMenu.setLayout(new BoxLayout(leftMenu, BoxLayout.PAGE_AXIS));
-        leftMenu.setPreferredSize(new Dimension(400,368));
+        leftMenu.setPreferredSize(new Dimension(400, 368));
         leftMenuPanel.add(leftMenu);
 
         menu = new Menu();
@@ -172,7 +184,7 @@ class MainInterfacePanel {
     void resetMenu() {
         leftMenu.removeAll();
         MenuLabel[] menuLabels = menu.readMenu();
-        if(menuLabels != null) {
+        if (menuLabels != null) {
             for (MenuLabel menuLabel : menuLabels) {
                 leftMenu.add(menuLabel);
             }

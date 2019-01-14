@@ -15,7 +15,7 @@ public class EventManager {
 
     /**
      * Constructor
-     *
+     * <p>
      * Initializes event and music lists
      */
     public EventManager() {
@@ -28,17 +28,17 @@ public class EventManager {
      */
     private void readEvents() {
         ArrayList<String> lines = FileManager.readLines(eventsPath);
-        if(lines == null) {
+        if (lines == null) {
             return;
         }
 
         String[] split;
-        for(String line : lines) {
-            if(line.length() == 0 || line.charAt(0) == '#') {
+        for (String line : lines) {
+            if (line.length() == 0 || line.charAt(0) == '#') {
                 continue;
             }
             split = line.split(";");
-            if(split.length > 3) {
+            if (split.length > 3) {
                 // mandatory elements
                 String name = split[0].toLowerCase();
                 String location = split[1].toLowerCase();
@@ -47,7 +47,7 @@ public class EventManager {
                 LocalDateTime[] startTimes = Event.multiDateBuilder(startDateStr);
 
                 // Optional elements
-                if(split.length == 5) {
+                if (split.length == 5) {
                     String[] endDateStr = split[4].split(",");
                     LocalDateTime[] endTimes = Event.multiDateBuilder(endDateStr);
                     events.add(new Event(name, location, category, startTimes, endTimes));
@@ -60,14 +60,15 @@ public class EventManager {
 
     /**
      * Returns an ArrayList of events matching a category
+     *
      * @param category EventCategory
      * @return ArrayList of Event objects
      */
     @SuppressWarnings("unused")
     public ArrayList<Event> listByCategory(EventCategory category) {
         ArrayList<Event> matchingEvents = new ArrayList<>();
-        for(Event event : events) {
-            if(event.getCategory() == category) {
+        for (Event event : events) {
+            if (event.getCategory() == category) {
                 matchingEvents.add(event);
             }
         }
@@ -77,14 +78,15 @@ public class EventManager {
 
     /**
      * Returns a list of events matching an event name
+     *
      * @param name partial match of event name
      * @return ArrayList of Event objects
      */
     public ArrayList<Event> listByName(String name) {
         name = name.toLowerCase();
         ArrayList<Event> matchingEvents = new ArrayList<>();
-        for(Event event : events) {
-            if(event.getName().contains(name)) {
+        for (Event event : events) {
+            if (event.getName().contains(name)) {
                 matchingEvents.add(event);
             }
         }
@@ -94,14 +96,15 @@ public class EventManager {
 
     /**
      * Returns a list of events at a particular camp
+     *
      * @param name partial match of camp name
      * @return ArrayList of Event objects
      */
     public ArrayList<Event> listByCamp(String name) {
         name = name.toLowerCase();
         ArrayList<Event> matchingEvents = new ArrayList<>();
-        for(Event event : events) {
-            if(event.getLocation().contains(name)) {
+        for (Event event : events) {
+            if (event.getLocation().contains(name)) {
                 matchingEvents.add(event);
             }
         }
@@ -111,16 +114,17 @@ public class EventManager {
 
     /**
      * Returns all events happening between a start time and an end time
+     *
      * @param start beginning LocalDateTime object
-     * @param end end LocalDateTime object
+     * @param end   end LocalDateTime object
      * @return ArrayList of Event objects
      */
     private ArrayList<Event> listBetween(LocalDateTime start, LocalDateTime end) {
         ArrayList<Event> matchingEvents = new ArrayList<>();
 
-        for(Event event : events) {
-            for(LocalDateTime startTime : event.getStartTimes()) {
-                if(startTime.isAfter(start) && startTime.isBefore(end)) {
+        for (Event event : events) {
+            for (LocalDateTime startTime : event.getStartTimes()) {
+                if (startTime.isAfter(start) && startTime.isBefore(end)) {
                     matchingEvents.add(event);
                 }
             }
@@ -130,6 +134,7 @@ public class EventManager {
 
     /**
      * Returns an ArrayList of events happening in the next 24 hours
+     *
      * @return ArrayList of Event objects
      */
     public ArrayList<Event> listHappeningSoon() {
@@ -140,6 +145,7 @@ public class EventManager {
 
     /**
      * Returns a list of events happening on a particular day
+     *
      * @param day int day
      * @return ArrayList of Event objects
      */

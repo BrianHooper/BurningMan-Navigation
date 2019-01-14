@@ -2,7 +2,7 @@ package view;
 
 /**
  * Class Menu
- *
+ * <p>
  * handles displaying of menu items
  */
 class Menu {
@@ -11,7 +11,7 @@ class Menu {
 
     /**
      * Constructor
-     *
+     * <p>
      * creates Home menu
      */
     Menu() {
@@ -20,6 +20,7 @@ class Menu {
 
     /**
      * Activates currently selected menu label
+     *
      * @return String actionCommand
      */
     String select() {
@@ -40,7 +41,8 @@ class Menu {
                 return "";
             case "Exit":
                 System.exit(0);
-            default: return action;
+            default:
+                return action;
         }
     }
 
@@ -125,7 +127,7 @@ class Menu {
     void down() {
         menuItems[selected].deselect();
         selected++;
-        if(selected >= menuItems.length) {
+        if (selected >= menuItems.length) {
             selected = 0;
         }
 
@@ -138,7 +140,7 @@ class Menu {
     void up() {
         menuItems[selected].deselect();
         selected--;
-        if(selected < 0) {
+        if (selected < 0) {
             selected = menuItems.length - 1;
         }
         menuItems[selected].select();
@@ -146,6 +148,7 @@ class Menu {
 
     /**
      * Getter for menuItems
+     *
      * @return menuItems
      */
     MenuLabel[] readMenu() {

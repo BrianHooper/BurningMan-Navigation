@@ -7,7 +7,7 @@ import java.util.TreeMap;
 
 /**
  * Class Landmarks
- *
+ * <p>
  * Maintains lists of Location objects and methods for interacting with them
  */
 class Landmarks {
@@ -26,7 +26,7 @@ class Landmarks {
 
     /**
      * Constructor
-     *
+     * <p>
      * Initializes empty sets
      */
     Landmarks() {
@@ -40,19 +40,19 @@ class Landmarks {
      */
     void readBathrooms() {
         ArrayList<String> lines = FileManager.readLines(bathroomsPath);
-        if(lines == null)
+        if (lines == null)
             return;
         try {
-            for(String line : lines) {
+            for (String line : lines) {
                 String[] split = line.split(",");
-                if(split.length == 2) {
+                if (split.length == 2) {
                     double latitude = Double.parseDouble(split[0]);
                     double longitude = Double.parseDouble(split[1]);
                     bathrooms.add(new Location(latitude, longitude));
-                } else if(split.length == 3) {
+                } else if (split.length == 3) {
                     int hour = Integer.parseInt(split[0]);
                     int minute = Integer.parseInt(split[1]);
-                    if(split[2].matches("0-9")) {
+                    if (split[2].matches("0-9")) {
                         double distance = Double.parseDouble(split[2]);
                         bathrooms.add(new Location(hour, minute, distance));
                     } else {
@@ -60,31 +60,32 @@ class Landmarks {
                     }
                 }
             }
-        } catch(NumberFormatException e) {
+        } catch (NumberFormatException e) {
             System.err.println("Error parsing bathroom coordinates");
         }
     }
 
     /**
      * Populates a list of named locations into a HashSet
-     * @param map HashSet of String-Location
+     *
+     * @param map      HashSet of String-Location
      * @param filename relative path of file
      */
     private void readNamedLocations(TreeMap<String, Location> map, String filename) {
         ArrayList<String> lines = FileManager.readLines(filename);
-        if(lines == null)
+        if (lines == null)
             return;
         try {
-            for(String line : lines) {
+            for (String line : lines) {
                 String[] split = line.split(",");
-                if(split.length == 3) {
+                if (split.length == 3) {
                     double latitude = Double.parseDouble(split[1]);
                     double longitude = Double.parseDouble(split[2]);
                     map.put(split[0], new Location(latitude, longitude));
-                } else if(split.length == 4) {
+                } else if (split.length == 4) {
                     int hour = Integer.parseInt(split[1]);
                     int minute = Integer.parseInt(split[2]);
-                    if(split[3].matches("0-9")) {
+                    if (split[3].matches("0-9")) {
                         double distance = Double.parseDouble(split[3]);
                         map.put(split[0], new Location(hour, minute, distance));
                     } else {
@@ -92,7 +93,7 @@ class Landmarks {
                     }
                 }
             }
-        } catch(NumberFormatException e) {
+        } catch (NumberFormatException e) {
             System.err.println("Error parsing bathroom coordinates");
         }
     }
@@ -106,7 +107,8 @@ class Landmarks {
 
     /**
      * Adds a bathroom to the list based on geographic coordinates
-     * @param latitude latitude
+     *
+     * @param latitude  latitude
      * @param longitude longitude
      */
     @SuppressWarnings("unused")
@@ -116,8 +118,9 @@ class Landmarks {
 
     /**
      * Adds a bathroom to the list based on time/distance
-     * @param hour hour
-     * @param minute minute
+     *
+     * @param hour     hour
+     * @param minute   minute
      * @param distance distance in feet
      */
     @SuppressWarnings("unused")
@@ -127,7 +130,8 @@ class Landmarks {
 
     /**
      * Adds a bathroom to the list based on time/street
-     * @param hour hour
+     *
+     * @param hour   hour
      * @param minute minute
      * @param street street as char
      */
@@ -138,7 +142,8 @@ class Landmarks {
 
     /**
      * Adds a camp to the list based on geographic coordinates
-     * @param latitude latitude
+     *
+     * @param latitude  latitude
      * @param longitude longitude
      */
     @SuppressWarnings("unused")
@@ -148,8 +153,9 @@ class Landmarks {
 
     /**
      * Adds a camp to the list based on time/distance
-     * @param hour hour
-     * @param minute minute
+     *
+     * @param hour     hour
+     * @param minute   minute
      * @param distance distance in feet
      */
     @SuppressWarnings("unused")
@@ -159,7 +165,8 @@ class Landmarks {
 
     /**
      * Adds a camp to the list based on time/street
-     * @param hour hour
+     *
+     * @param hour   hour
      * @param minute minute
      * @param street street as char
      */
@@ -170,20 +177,21 @@ class Landmarks {
 
     /**
      * Finds the closest location to another location
-     * @param locations list of Locations
+     *
+     * @param locations       list of Locations
      * @param currentLocation Location to compare
      * @return closest Location
      */
     private Location findClosest(ArrayList<Location> locations, Location currentLocation) {
-        if(locations.isEmpty()) {
+        if (locations.isEmpty()) {
             return null;
         }
 
         Location closestLocation = locations.get(0);
         double closestDistance = Double.MAX_VALUE;
-        for(Location location : locations) {
+        for (Location location : locations) {
             double distance = currentLocation.distance(location);
-            if(distance < closestDistance) {
+            if (distance < closestDistance) {
                 closestLocation = location;
                 closestDistance = distance;
             }
@@ -193,6 +201,7 @@ class Landmarks {
 
     /**
      * Finds the closest bathroom relative to the current location
+     *
      * @param currentLocation current Location
      * @return closest bathroom Location
      */
@@ -201,8 +210,9 @@ class Landmarks {
     }
 
     /**
-     *  Attempts to find a Location matching a search term
-     * @param locations Set of String to search
+     * Attempts to find a Location matching a search term
+     *
+     * @param locations  Set of String to search
      * @param searchTerm search term
      * @return String matching, or null if none
      */
@@ -210,14 +220,14 @@ class Landmarks {
         searchTerm = searchTerm.toLowerCase();
 
         ArrayList<String> matches = new ArrayList<>();
-        for(String location : locations.keySet()) {
+        for (String location : locations.keySet()) {
             String lc = location.toLowerCase();
-            if(lc.contains(searchTerm)) {
+            if (lc.contains(searchTerm)) {
                 matches.add(location);
             }
         }
 
-        if(matches.isEmpty()) {
+        if (matches.isEmpty()) {
             return null;
         } else {
             return matches.get(0);
@@ -226,12 +236,13 @@ class Landmarks {
 
     /**
      * Searches the list of camps for a camp matching the search term
+     *
      * @param name search term
      * @return Location of camp, or null if none
      */
     String findCampName(String name) {
         String campName = findMatch(camps, name);
-        if(campName == null) {
+        if (campName == null) {
             return "";
         } else {
             return campName;
@@ -240,12 +251,13 @@ class Landmarks {
 
     /**
      * Returns a camp or favorite based on an exact camp name
+     *
      * @param exactCampName exact camp name
      * @return Location or null
      */
     Location getCamp(String exactCampName) {
         Location camp = camps.get(exactCampName);
-        if(camp == null) {
+        if (camp == null) {
             return favorites.get(exactCampName);
         } else {
             return camp;
@@ -254,6 +266,7 @@ class Landmarks {
 
     /**
      * Getter for favorites HashMap
+     *
      * @return favorites
      */
     TreeMap<String, Location> getFavorites() {

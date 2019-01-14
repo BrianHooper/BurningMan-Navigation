@@ -6,18 +6,19 @@ import java.awt.*;
 
 /**
  * Class MenuLabel
- *
+ * <p>
  * extends JLabel
  */
-public class MenuLabel extends JLabel {
+class MenuLabel extends JLabel {
 
     /**
      * Constructor
-     *
+     * <p>
      * sets JLabel text
+     *
      * @param text label
      */
-    public MenuLabel(String text) {
+    MenuLabel(String text) {
         setText(text);
         setOpaque(true);
         setBorder(new EmptyBorder(5, 0, 5, 5));
@@ -26,14 +27,14 @@ public class MenuLabel extends JLabel {
     /**
      * Applies background color to show label is selected
      */
-    public void select() {
+    void select() {
         setBackground(Color.LIGHT_GRAY);
     }
 
     /**
      * Removes background color to show label is not selected
      */
-    public void deselect() {
+    void deselect() {
         setBackground(null);
     }
 }
