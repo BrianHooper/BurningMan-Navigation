@@ -171,27 +171,19 @@ public class UserInterfaceController {
             noteBody = "";
         }
 
-        JPanel panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
+        OptionPane pane = new OptionPane();
 
-
-        JTextField field = new JTextField(10);
+        pane.addLabel("Title:");
+        JTextField field = new JTextField(20);
         field.setText(noteTitle);
-        field.addAncestorListener(new RequestFocusListener());
-        field.setAlignmentX(0);
+        pane.addTextInput(field);
 
+        pane.addLabel("Body:");
         OptionPaneTextArea area = new OptionPaneTextArea(20, 10);
         area.setText(noteBody);
-        JScrollPane jScrollPane = new JScrollPane(area);
-        jScrollPane.setAlignmentX(0);
+        pane.addTextInput(area);
 
-        panel.add(new JLabel("Title:"));
-        panel.add(field);
-        panel.add(new JLabel("Body:"));
-        panel.add(jScrollPane);
-
-        JOptionPane.showConfirmDialog(null, panel, "Input", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
-
+        pane.show(view.getMainFrame(), "Add / Edit note", JOptionPane.OK_CANCEL_OPTION);
 
         noteTitle = field.getText();
         noteBody = area.getText();

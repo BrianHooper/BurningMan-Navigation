@@ -4,8 +4,6 @@ import navigation.Navigator;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 
 /**
  * Class View
@@ -44,45 +42,19 @@ public class View {
      * @param frame JFrame
      */
     private static void fullScreen(final JFrame frame) {
+        frame.setPreferredSize(frame.getGraphicsConfiguration().getBounds().getSize());
 
-        GraphicsDevice device = frame.getGraphicsConfiguration().getDevice();
-        boolean result = device.isFullScreenSupported();
+        frame.pack();
 
-        if (result) {
-            frame.setUndecorated(true);
-            frame.setResizable(true);
+        frame.setResizable(true);
 
-            frame.addFocusListener(new FocusListener() {
+        frame.setExtendedState(Frame.MAXIMIZED_BOTH);
+        boolean successful = frame.getExtendedState() == Frame.MAXIMIZED_BOTH;
 
-                @Override
-                public void focusGained(FocusEvent arg0) {
-                    frame.setAlwaysOnTop(true);
-                }
+        frame.setVisible(true);
 
-                @Override
-                public void focusLost(FocusEvent arg0) {
-                    frame.setAlwaysOnTop(false);
-                }
-            });
-
-            frame.pack();
-
-            device.setFullScreenWindow(frame);
-        } else {
-            frame.setPreferredSize(frame.getGraphicsConfiguration().getBounds().getSize());
-
-            frame.pack();
-
-            frame.setResizable(true);
-
+        if (!successful)
             frame.setExtendedState(Frame.MAXIMIZED_BOTH);
-            boolean successful = frame.getExtendedState() == Frame.MAXIMIZED_BOTH;
-
-            frame.setVisible(true);
-
-            if (!successful)
-                frame.setExtendedState(Frame.MAXIMIZED_BOTH);
-        }
     }
 
     /**

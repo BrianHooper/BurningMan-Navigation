@@ -4,7 +4,7 @@ import javax.swing.*;
 import javax.swing.text.JTextComponent;
 import java.util.ArrayList;
 
-public class OptionPane {
+class OptionPane {
     private final JPanel panel;
     private final ArrayList<JComponent> jComponents;
     private boolean focusSet = false;
