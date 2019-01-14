@@ -158,6 +158,7 @@ public class UserInterfaceController {
      * @param noteTitle title of note to edit
      */
     private void addNote(String noteTitle) {
+        //TODO fix taskbar popup
         String noteBody;
         if(noteTitle != null) {
             noteBody = noteManager.getNote(noteTitle);
@@ -412,6 +413,7 @@ public class UserInterfaceController {
             return;
         }
 
+        //TODO change to single JOptionPane panel
         int confirm = JOptionPane.showConfirmDialog(view.getMainFrame(), "Use current address?");
         if(confirm == JOptionPane.YES_OPTION) {
             navigator.getFavorites().put(favName, new Location(navigator.currentLocation()));
