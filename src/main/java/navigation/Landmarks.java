@@ -1,9 +1,8 @@
 package navigation;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import driver.FileManager;
+
 import java.util.ArrayList;
-import java.util.Scanner;
 import java.util.TreeMap;
 
 /**
@@ -11,11 +10,15 @@ import java.util.TreeMap;
  *
  * Maintains lists of Location objects and methods for interacting with them
  */
-public class Landmarks {
+class Landmarks {
+    private static final String bathroomsPath = "config/bathrooms.csv";
+    private static final String campsPath = "config/camps.csv";
+    private static final String favoritesPath = "config/favorites.csv";
+
     private final TreeMap<String, Location> favorites;
     private final ArrayList<Location> bathrooms;
 
-    public TreeMap<String, Location> getCamps() {
+    TreeMap<String, Location> getCamps() {
         return camps;
     }
 
@@ -26,41 +29,19 @@ public class Landmarks {
      *
      * Initializes empty sets
      */
-    public Landmarks() {
+    Landmarks() {
         this.bathrooms = new ArrayList<>();
         this.camps = new TreeMap<>();
         this.favorites = new TreeMap<>();
     }
 
     /**
-     * Reads a file into an ArrayList of lines
-     * @param filename relative path of file
-     * @return ArrayList of strings
-     */
-    private ArrayList<String> readFile(String filename) {
-        ArrayList<String> lines = new ArrayList<>();
-        try {
-            Scanner scan = new Scanner(new File(filename));
-            while(scan.hasNextLine()) {
-                lines.add(scan.nextLine());
-            }
-            scan.close();
-        } catch(FileNotFoundException e) {
-            System.err.println("Error reading " + filename);
-
-        }
-        return lines;
-    }
-
-    /**
      * Populates the list of bathroom locations from a file
-     * @param filename relative path of file
      */
-    public void readBathrooms(String filename) {
-        if(filename == null) {
+    void readBathrooms() {
+        ArrayList<String> lines = FileManager.readLines(bathroomsPath);
+        if(lines == null)
             return;
-        }
-        ArrayList<String> lines = readFile(filename);
         try {
             for(String line : lines) {
                 String[] split = line.split(",");
@@ -90,7 +71,9 @@ public class Landmarks {
      * @param filename relative path of file
      */
     private void readNamedLocations(TreeMap<String, Location> map, String filename) {
-        ArrayList<String> lines = readFile(filename);
+        ArrayList<String> lines = FileManager.readLines(filename);
+        if(lines == null)
+            return;
         try {
             for(String line : lines) {
                 String[] split = line.split(",");
@@ -116,13 +99,9 @@ public class Landmarks {
 
     /**
      * Populates the list of camp locations from a file
-     * @param filename relative path of file
      */
-    public void readCamps(String filename) {
-        if(filename == null) {
-            return;
-        }
-        readNamedLocations(camps, filename);
+    void readCamps() {
+        readNamedLocations(camps, campsPath);
     }
 
     /**
@@ -217,7 +196,7 @@ public class Landmarks {
      * @param currentLocation current Location
      * @return closest bathroom Location
      */
-    public Location findBathroom(Location currentLocation) {
+    Location findBathroom(Location currentLocation) {
         return findClosest(bathrooms, currentLocation);
     }
 
@@ -250,7 +229,7 @@ public class Landmarks {
      * @param name search term
      * @return Location of camp, or null if none
      */
-    public String findCampName(String name) {
+    String findCampName(String name) {
         String campName = findMatch(camps, name);
         if(campName == null) {
             return "";
@@ -264,7 +243,7 @@ public class Landmarks {
      * @param exactCampName exact camp name
      * @return Location or null
      */
-    public Location getCamp(String exactCampName) {
+    Location getCamp(String exactCampName) {
         Location camp = camps.get(exactCampName);
         if(camp == null) {
             return favorites.get(exactCampName);
@@ -277,14 +256,11 @@ public class Landmarks {
      * Getter for favorites HashMap
      * @return favorites
      */
-    public TreeMap<String, Location> getFavorites() {
+    TreeMap<String, Location> getFavorites() {
         return favorites;
     }
 
-    public void readFavorites(String filename) {
-        if(filename == null) {
-            return;
-        }
-        readNamedLocations(favorites, filename);
+    void readFavorites() {
+        readNamedLocations(favorites, favoritesPath);
     }
 }

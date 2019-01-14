@@ -1,15 +1,25 @@
 package navigation;
 
+import events.Event;
+import events.EventManager;
+import events.NoteManager;
+
 import java.io.*;
-import java.util.*;
+import java.util.Properties;
+import java.util.TreeMap;
 
 public class Navigator {
-    private final Location currentLocation;
+    private static final String configPath = "config/config.cfg";
+
     private Location home;
     private Location currentDestination;
     private String currentDestinationName;
     private Properties properties;
+
+    private final Location currentLocation;
     private final Landmarks landmarks;
+    private final EventManager eventManager;
+    private final NoteManager noteManager;
 
     /**
      * Constructor
@@ -18,24 +28,29 @@ public class Navigator {
      */
     public Navigator() {
         landmarks = new Landmarks();
+        eventManager = new EventManager();
+        noteManager = new NoteManager();
 
         currentLocation = new Location(6,0,'D');
         home = new Location(6,0,'D');
 
         currentDestination = home;
         currentDestinationName = "";
+
+        readLandmarks();
+        readConfig();
+
     }
 
     /**
      * Reads configuration file
-     * @param filename path to configuration file
      */
-    public void loadFromFile(String filename) {
+    private void readConfig() {
         properties = new Properties();
         try {
-            properties.load(new FileInputStream(new File(filename)));
+            properties.load(new FileInputStream(new File(configPath)));
         } catch (IOException e) {
-            System.err.println(filename + " not found");
+            System.err.println(configPath + " not found");
             return;
         }
 
@@ -48,6 +63,8 @@ public class Navigator {
                 Location.esplanade_distance = Integer.parseInt((String) properties.get("ESPLANADE-DISTANCE"));
             if(properties.containsKey("BLOCK-WIDTH"))
                 Location.block_width = Integer.parseInt((String) properties.get("BLOCK-WIDTH"));
+            if(properties.containsKey("EVENT-START-TIME"))
+                Event.setGlobalEventStartTime(properties.getProperty("EVENT-START-TIME"));
             if(properties.containsKey("CURRENT-DESTINATION-NAME")) {
                 currentDestinationName = properties.getProperty("CURRENT-DESTINATION-NAME");
                 currentDestination = landmarks.getCamp(currentDestinationName);
@@ -59,9 +76,8 @@ public class Navigator {
 
     /**
      * Writes configuration to file
-     * @param filename path to config file
      */
-    public void writeToConfigFile(String filename) {
+    public void writeToConfigFile() {
         if(properties == null) {
             return;
         }
@@ -71,9 +87,10 @@ public class Navigator {
         properties.put("ESPLANADE-DISTANCE", String.valueOf(Location.esplanade_distance));
         properties.put("BLOCK-WIDTH", String.valueOf(Location.block_width));
         properties.put("CURRENT-DESTINATION-NAME", currentDestinationName);
+        properties.put("EVENT-START-TIME", Event.dfFull.format(Event.globalEventStartTime));
 
         try {
-            properties.store(new FileOutputStream(filename), "");
+            properties.store(new FileOutputStream(configPath), "");
         } catch (IOException e) {
             System.err.println("Error writing config file");
         }
@@ -107,15 +124,12 @@ public class Navigator {
     }
 
     /**
-     * Reads csv files
-     * @param bathroomsPath path to bathroom locations
-     * @param campsPath path to camp locations
-     * @param favoritesPath path to favorite locations
+     * Reads landmarks from csv files
      */
-    public void initializeLandmarks(String bathroomsPath, String campsPath, String favoritesPath) {
-        landmarks.readBathrooms(bathroomsPath);
-        landmarks.readCamps(campsPath);
-        landmarks.readFavorites(favoritesPath);
+    private void readLandmarks() {
+        landmarks.readBathrooms();
+        landmarks.readCamps();
+        landmarks.readFavorites();
     }
 
     /**
@@ -197,5 +211,13 @@ public class Navigator {
      */
     public TreeMap<String, Location> getCamps() {
         return landmarks.getCamps();
+    }
+
+    public EventManager getEventManager() {
+        return eventManager;
+    }
+
+    public NoteManager getNoteManager() {
+        return noteManager;
     }
 }

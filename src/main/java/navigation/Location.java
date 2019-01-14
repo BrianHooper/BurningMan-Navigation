@@ -15,8 +15,8 @@ import java.util.Scanner;
  * Represents a single point within burning man, either a person, camp, bathroom, or art instillation
  */
 public class Location {
-    public static double man_latitude = 40.7864;
-    public static double man_longitude = -119.2065;
+    static double man_latitude = 40.7864;
+    static double man_longitude = -119.2065;
     public static int esplanade_distance = 2600;
     public static int block_width = 240;
 
@@ -42,7 +42,7 @@ public class Location {
      * @param lon1 longitude
      * @return distance in feet
      */
-    public static double distance(double lat1, double lon1) {
+    private static double distance(double lat1, double lon1) {
         lat1 = Math.toRadians(lat1);
         double lat2 = Math.toRadians(man_latitude);
         lon1 = Math.toRadians(lon1);
@@ -59,7 +59,7 @@ public class Location {
      * @param longitude longitude position
      * @return angle in degrees
      */
-    public static double angle(double latitude, double longitude) {
+    private static double angle(double latitude, double longitude) {
         double angle = Math.toDegrees(Math.atan2(latitude - man_latitude, longitude - man_longitude));
         if(angle < 0) {
             angle += 360;
@@ -95,7 +95,7 @@ public class Location {
      * @param latitude latitude
      * @param longitude longitude
      */
-    public Location(double latitude, double longitude) {
+    Location(double latitude, double longitude) {
         updateLocation(latitude, longitude);
     }
 
@@ -107,7 +107,7 @@ public class Location {
      * @param minute minute
      * @param distance distance in feet
      */
-    public Location(int hour, int minute, double distance) {
+    Location(int hour, int minute, double distance) {
         this.hour = hour;
         this.minute = minute;
         this.distance = distance;
@@ -149,7 +149,7 @@ public class Location {
      * @param latitude updated latitude
      * @param longitude updated longitude
      */
-    public void updateLocation(double latitude, double longitude) {
+    void updateLocation(double latitude, double longitude) {
         double time = (angle(latitude, longitude) / 360) * 12;
         this.hour = (int) time;
         this.minute = (int) ((time - hour) * 60);
@@ -160,7 +160,7 @@ public class Location {
      * Calculates the current address based on angular position and distance from the man
      * @return Address as String
      */
-    public String getAddress() {
+    String getAddress() {
         if(distance < esplanade_distance || distance > esplanade_distance + 12 * block_width) {
             return hour + ":" + minute + " & " + ((int) distance) + "'";
         } else {
@@ -196,7 +196,7 @@ public class Location {
      * Calculates the X position from the man
      * @return x distance in feet
      */
-    public double getY() {
+    private double getY() {
         return -1 * distance * Math.cos(clockAngle());
     }
 
@@ -204,7 +204,7 @@ public class Location {
      * Calculates the Y position from the man
      * @return y distance in feet
      */
-    public double getX() {
+    private double getX() {
         return distance * Math.sin(clockAngle());
     }
 
@@ -213,7 +213,7 @@ public class Location {
      * @param other Position of landmark
      * @return distance in feet
      */
-    public int distance(Location other) {
+    int distance(Location other) {
         if(other == null) {
             return -1;
         }
@@ -227,7 +227,7 @@ public class Location {
      * @param other Position of landmark
      * @return bearing in degrees
      */
-    public int bearing(Location other) {
+    private int bearing(Location other) {
         double deltaX = other.getX() - getX();
         double deltaY = getY() - other.getY();
         double angle = 180 * Math.atan2(deltaX, deltaY) / Math.PI;
@@ -246,7 +246,7 @@ public class Location {
      * @param other Position of landmark
      * @return direction as String
      */
-    public String cardinal(Location other) {
+    String cardinal(Location other) {
         double bearing = bearing(other);
         if(bearing < 11) return "north";
         else if(bearing < 34) return "north-northeast";
@@ -276,7 +276,7 @@ public class Location {
         return getAddress();
     }
 
-    public String getCSVAddress() {
+    String getCSVAddress() {
         return String.valueOf(hour) + "," + String.valueOf(minute) + "," + String.valueOf((int) distance);
     }
 }
