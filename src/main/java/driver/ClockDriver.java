@@ -37,7 +37,7 @@ public class ClockDriver extends Thread {
                 Thread.sleep(1000);
             }
         } catch (InterruptedException e) {
-            System.out.println("Clock process interrupted");
+            System.err.println("Clock process interrupted");
         }
     }
 
