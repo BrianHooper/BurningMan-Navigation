@@ -1,15 +1,21 @@
 package navigation;
 
+import driver.FileManager;
 import events.Event;
 import events.EventManager;
 import events.NoteManager;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Properties;
 import java.util.TreeMap;
 
 public class Navigator {
     private static final String configPath = "config/config.cfg";
+    private static final String favoritesPath = "config/favorites.csv";
 
     private Location home;
     private Location currentDestination;
@@ -196,20 +202,11 @@ public class Navigator {
      * Outputs favorites to a CSV file
      */
     public void writeFavorites() {
-        try {
-            FileWriter f = new FileWriter("favorites.csv");
-            StringBuilder sb = new StringBuilder();
-            for (String campName : landmarks.getFavorites().keySet()) {
-                sb.append(campName);
-                sb.append(',');
-                sb.append(landmarks.getFavorites().get(campName).getCSVAddress());
-                sb.append('\n');
-            }
-            f.write(sb.toString());
-            f.close();
-        } catch (IOException e) {
-            System.err.println("Error writing files");
+        ArrayList<String> favorites = new ArrayList<>();
+        for (String campName : landmarks.getFavorites().keySet()) {
+            favorites.add(campName + ',' + landmarks.getFavorites().get(campName).getCSVAddress());
         }
+        FileManager.writeLines(favoritesPath, favorites);
     }
 
     /**

@@ -3,7 +3,6 @@ package events;
 import driver.FileManager;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.TreeMap;
 
 public class NoteManager {
@@ -11,6 +10,7 @@ public class NoteManager {
 
     private final TreeMap<String, String> notes;
     private static final String delimiter = String.valueOf((char) 25);
+    private int size = 0;
 
     /**
      * Constructor
@@ -20,6 +20,7 @@ public class NoteManager {
     public NoteManager() {
         this.notes = new TreeMap<>();
         readNotes();
+        size = notes.size();
     }
 
     /**
@@ -53,8 +54,8 @@ public class NoteManager {
      *
      * @return String[]
      */
-    public String[] getNoteTitles() {
-        return Arrays.copyOf(notes.keySet().toArray(), notes.size(), String[].class);
+    public ArrayList<String> getNoteTitles() {
+        return new ArrayList<>(notes.keySet());
     }
 
     /**
@@ -75,6 +76,7 @@ public class NoteManager {
      */
     public void createNote(String title, String body) {
         notes.put(title, body);
+        size = notes.size();
     }
 
     /**
@@ -84,6 +86,11 @@ public class NoteManager {
      */
     public void deleteNote(String title) {
         notes.remove(title);
+        size = notes.size();
+    }
+
+    public boolean isEmpty() {
+        return size == 0;
     }
 
 

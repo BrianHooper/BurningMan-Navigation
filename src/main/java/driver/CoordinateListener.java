@@ -60,7 +60,7 @@ public class CoordinateListener extends Thread {
                         count = 0;
                         String line = String.valueOf(latitude) + ',' + String.valueOf(longitude) + ','
                                 + ClockDriver.dfFull.format(LocalDateTime.now());
-                        fileManager.appendLine(line);
+//                        fileManager.appendLine(line);
                     }
                     Thread.sleep(500);
                 }

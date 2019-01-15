@@ -9,7 +9,9 @@ import navigation.Location;
 import navigation.Navigator;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Set;
 
 /**
@@ -119,15 +121,20 @@ public class UserInterfaceController {
      * @return String note title
      */
     private String selectNote() {
-        String[] menuItems = noteManager.getNoteTitles();
-        if (menuItems.length == 0) {
+        if (noteManager.isEmpty()) {
+            JOptionPane.showMessageDialog(view.getMainFrame(), "No notes found");
             return null;
         }
 
-        return (String) JOptionPane.showInputDialog(view.getMainFrame(), "",
-                "Select note", JOptionPane.QUESTION_MESSAGE, null,
-                menuItems, // Array of choices
-                menuItems[0]); // Initial choice
+        OptionPane pane = new OptionPane();
+        pane.addListInput(noteManager.getNoteTitles(), 10);
+        pane.show(view.getMainFrame(), "Select Note", JOptionPane.OK_CANCEL_OPTION);
+
+        if (pane.okPressed()) {
+            return pane.getInputs()[0];
+        } else {
+            return null;
+        }
     }
 
     /**
@@ -162,7 +169,6 @@ public class UserInterfaceController {
      * @param noteTitle title of note to edit
      */
     private void addNote(String noteTitle) {
-        //TODO fix taskbar popup
         String noteBody;
         if (noteTitle != null) {
             noteBody = noteManager.getNote(noteTitle);
@@ -227,21 +233,18 @@ public class UserInterfaceController {
      * Lists all events on a specific day
      */
     private void viewEventsByDay() {
-        String[] choices = {"1: Sunday", "2: Monday", "3: Tuesday", "4: Wednesday", "5: Thursday",
-                "6: Friday", "7: Saturday", "8: Sunday"};
-        String input = (String) JOptionPane.showInputDialog(view.getMainFrame(), "",
-                "Select day", JOptionPane.QUESTION_MESSAGE, null,
-                choices, // Array of choices
-                choices[0]); // Initial choice
-        if (input == null)
-            return;
+        ArrayList<String> choices = new ArrayList<>(Arrays.asList("1: Sunday", "2: Monday",
+                "3: Tuesday", "4: Wednesday", "5: Thursday", "6: Friday", "7: Saturday", "8: Sunday"));
 
-        int day;
-        try {
-            day = Integer.parseInt(input.substring(0, 1));
-        } catch (NumberFormatException e) {
+        OptionPane pane = new OptionPane();
+        pane.addListInput(choices, 10);
+        pane.show(view.getMainFrame(), "Choose day", JOptionPane.OK_CANCEL_OPTION);
+
+        if (!pane.okPressed()) {
             return;
         }
+        JList<String> jList = (JList<String>) pane.getJComponents().get(0);
+        int day = jList.getSelectedIndex();
 
         ArrayList<Event> eventList = eventManager.listByDay(day);
         String[] eventStringArray = new String[eventList.size()];
@@ -335,18 +338,40 @@ public class UserInterfaceController {
      * Creates JOptionPane popup for listing camps
      */
     private void listCamps() {
-        Set<String> camps = navigator.getCamps().keySet();
-        Object[] menuItems = new String[camps.size()];
-        System.arraycopy(camps.toArray(), 0, menuItems, 0, camps.size());
-        if (menuItems.length == 0) {
+        ArrayList<String> menuItems = new ArrayList<>(navigator.getCamps().keySet());
+        if (menuItems.isEmpty()) {
             JOptionPane.showMessageDialog(view.getMainFrame(), "No camps found");
             return;
         }
 
-        String input = (String) JOptionPane.showInputDialog(view.getMainFrame(), "",
-                "Navigate to camp", JOptionPane.QUESTION_MESSAGE, null,
-                menuItems, // Array of choices
-                menuItems[0]); // Initial choice
+        int longest = 0;
+        for (String campName : menuItems) {
+            if (campName.length() > longest) {
+                longest = campName.length();
+            }
+        }
+        longest += 8;
+
+        ArrayList<String> fullMenuItems = new ArrayList<>();
+        for (int i = 0; i < menuItems.size(); i++) {
+            String campName = menuItems.get(i);
+            Location campLocation = navigator.getCamp(campName);
+            int spacerLength = longest - campName.length();
+            if (campLocation.getHour() >= 10) {
+                spacerLength--;
+            }
+            char[] spacer = new char[spacerLength];
+            Arrays.fill(spacer, ' ');
+            String fullItem = campName + new String(spacer) + campLocation.toString();
+            fullMenuItems.add(fullItem);
+        }
+
+        OptionPane pane = new OptionPane();
+        pane.addListInput(fullMenuItems, 10);
+        pane.show(view.getMainFrame(), "All camps", JOptionPane.OK_CANCEL_OPTION);
+
+        JList<String> jList = (JList<String>) pane.getJComponents().get(0);
+        String input = menuItems.get(jList.getSelectedIndex());
         findCamp(input);
     }
 
@@ -381,19 +406,17 @@ public class UserInterfaceController {
      * Creates JOptionPane popup for navigating to a favorite location
      */
     private void navFavorite() {
-        Set<String> favorites = navigator.getFavorites().keySet();
-        Object[] menuItems = new String[favorites.size()];
-        System.arraycopy(favorites.toArray(), 0, menuItems, 0, favorites.size());
-        if (menuItems.length == 0) {
+        ArrayList<String> menuItems = new ArrayList<>(navigator.getFavorites().keySet());
+        if (menuItems.isEmpty()) {
             JOptionPane.showMessageDialog(view.getMainFrame(), "No camps found");
             return;
         }
 
-        String input = (String) JOptionPane.showInputDialog(view.getMainFrame(), "",
-                "Navigate to camp", JOptionPane.QUESTION_MESSAGE, null,
-                menuItems, // Array of choices
-                menuItems[0]); // Initial choice
+        OptionPane pane = new OptionPane();
+        pane.addListInput(menuItems, 10);
+        pane.show(view.getMainFrame(), "All camps", JOptionPane.OK_CANCEL_OPTION);
 
+        String input = pane.getInputs()[0];
         if (input != null) {
             navigator.setDestination(navigator.getFavorites().get(input), input);
             navigator.writeToConfigFile();
@@ -404,36 +427,55 @@ public class UserInterfaceController {
      * Creates JOptionPane popup for creating a favorite location
      */
     private void addFavorite() {
-        String favName = JOptionPane.showInputDialog(view.getMainFrame(), "Enter name:");
-        if (favName == null || favName.length() == 0) {
-            return;
-        }
+        OptionPane pane = new OptionPane();
+        pane.addLabel("Favorite name: ");
 
-        //TODO change to single JOptionPane panel
-        int confirm = JOptionPane.showConfirmDialog(view.getMainFrame(), "Use current address?");
-        if (confirm == JOptionPane.YES_OPTION) {
-            navigator.getFavorites().put(favName, new Location(navigator.currentLocation()));
-            navigator.writeFavorites();
-            navigator.writeToConfigFile();
-            return;
-        }
+        JTextField nameField = new JTextField(20);
+        pane.addTextInput(nameField);
 
-        String campAddress = JOptionPane.showInputDialog(view.getMainFrame(), "Enter address (Hour,Minute,Street): ");
-        String[] split = campAddress.split(",");
-        String err = "Invalid address";
-        if (campAddress.length() == 0 || split.length != 3) {
-            JOptionPane.showMessageDialog(view.getMainFrame(), err);
-        }
+        pane.addLabel("Use current address?");
+        JPanel currentAddressPanel = new JPanel(new FlowLayout());
+        JRadioButton yes = new JRadioButton("Yes");
+        yes.setSelected(true);
+        JRadioButton no = new JRadioButton("No");
+        ButtonGroup buttonGroup = new ButtonGroup();
+        buttonGroup.add(yes);
+        buttonGroup.add(no);
+        currentAddressPanel.add(yes);
+        currentAddressPanel.add(no);
+        pane.addComponent(currentAddressPanel);
 
-        try {
-            int hour = Integer.parseInt(split[0]);
-            int minute = Integer.parseInt(split[1]);
-            char street = split[2].charAt(0);
-            navigator.getFavorites().put(favName, new Location(hour, minute, street));
-            navigator.writeToConfigFile();
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(view.getMainFrame(), err);
+        JPanel customAddressPanel = new JPanel(new FlowLayout());
+        JComboBox<String> hourBox = new JComboBox<>(
+                new String[]{"2", "3", "4", "5", "6", "7", "8", "9", "10"});
+        JComboBox<String> minuteBox = new JComboBox<>(
+                new String[]{"00", "15", "30", "45"});
+        JComboBox<String> streetBox = new JComboBox<>(
+                new String[]{"Esp.", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"});
+        customAddressPanel.add(hourBox);
+        customAddressPanel.add(minuteBox);
+        customAddressPanel.add(streetBox);
+        pane.addComponent(customAddressPanel);
+
+
+        pane.show(null, "", JOptionPane.OK_CANCEL_OPTION);
+
+        String favName = nameField.getText();
+        Location favLocation;
+        if (yes.isSelected()) {
+            favLocation = navigator.currentLocation();
+        } else {
+            int hour = 2 + hourBox.getSelectedIndex();
+            int minute = 15 * minuteBox.getSelectedIndex();
+            if (streetBox.getSelectedIndex() == 0) {
+                favLocation = new Location(hour, minute, (double) Location.esplanade_distance);
+            } else {
+                favLocation = new Location(hour, minute, (char) 64 + streetBox.getSelectedIndex());
+            }
         }
+        navigator.getFavorites().put(favName, favLocation);
+        navigator.writeFavorites();
+        navigator.writeToConfigFile();
     }
 
     /**

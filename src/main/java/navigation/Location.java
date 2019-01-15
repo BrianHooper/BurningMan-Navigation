@@ -114,7 +114,7 @@ public class Location {
      * @param minute   minute
      * @param distance distance in feet
      */
-    Location(int hour, int minute, double distance) {
+    public Location(int hour, int minute, double distance) {
         this.hour = hour;
         this.minute = minute;
         this.distance = distance;
@@ -295,5 +295,9 @@ public class Location {
 
     String getCSVAddress() {
         return String.valueOf(hour) + "," + String.valueOf(minute) + "," + String.valueOf((int) distance);
+    }
+
+    public int getHour() {
+        return hour;
     }
 }

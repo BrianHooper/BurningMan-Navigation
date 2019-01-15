@@ -8,6 +8,7 @@ class OptionPane {
     private final JPanel panel;
     private final ArrayList<JComponent> jComponents;
     private boolean focusSet = false;
+    private boolean okPressed = false;
 
     /**
      * Constructor
@@ -61,7 +62,7 @@ class OptionPane {
      * @param buttonType int, enum for JOptionPane.OK_CANCEL or other
      */
     public void show(JFrame parent, String title, int buttonType) {
-        JOptionPane.showConfirmDialog(parent, panel, title, buttonType, JOptionPane.PLAIN_MESSAGE);
+        okPressed = JOptionPane.showConfirmDialog(parent, panel, title, buttonType, JOptionPane.PLAIN_MESSAGE) == JOptionPane.OK_OPTION;
     }
 
     /**
@@ -97,6 +98,7 @@ class OptionPane {
         list.setLayoutOrientation(JList.VERTICAL);
         list.setVisibleRowCount(rows);
         list.setSelectedIndex(0);
+        list.setFont(View.standardFont);
 
         if (!focusSet) {
             list.addAncestorListener(new RequestFocusListener());
@@ -108,5 +110,19 @@ class OptionPane {
 
         panel.add(menuScrollPane);
         jComponents.add(list);
+    }
+
+    public void addComponent(JComponent component) {
+        component.setAlignmentX(0);
+        panel.add(component);
+        jComponents.add(component);
+    }
+
+    public boolean okPressed() {
+        return okPressed;
+    }
+
+    public ArrayList<JComponent> getJComponents() {
+        return jComponents;
     }
 }
