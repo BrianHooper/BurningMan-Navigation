@@ -17,6 +17,7 @@ public class Event {
 
     private final String name;
     private final String location;
+    private final String description;
     private final LocalDateTime[] startTimes;
     private LocalDateTime[] endTimes;
     private final EventCategory category;
@@ -28,12 +29,14 @@ public class Event {
      *
      * @param name       event name
      * @param location   Location String
+     * @param description String description
      * @param category   EventCategory
      * @param startTimes Array of LocalDateTime object
      */
-    Event(String name, String location, EventCategory category, LocalDateTime[] startTimes) {
+    Event(String name, String location, String description, EventCategory category, LocalDateTime[] startTimes) {
         this.name = name;
         this.location = location;
+        this.description = description;
         this.startTimes = startTimes;
         this.category = category;
         this.endTimes = new LocalDateTime[0];
@@ -46,12 +49,13 @@ public class Event {
      *
      * @param name       event name
      * @param location   Location String
+     * @param description String description
      * @param category   EventCategory
      * @param startTimes Array of LocalDateTime object
      * @param endTimes   Array of LocalDateTime object
      */
-    Event(String name, String location, EventCategory category, LocalDateTime[] startTimes, LocalDateTime[] endTimes) {
-        this(name, location, category, startTimes);
+    Event(String name, String location, String description, EventCategory category, LocalDateTime[] startTimes, LocalDateTime[] endTimes) {
+        this(name, location, description, category, startTimes);
         this.endTimes = endTimes;
     }
 

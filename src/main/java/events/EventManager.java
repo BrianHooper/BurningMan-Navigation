@@ -50,9 +50,9 @@ public class EventManager {
                 if (split.length == 5) {
                     String[] endDateStr = split[4].split(",");
                     LocalDateTime[] endTimes = Event.multiDateBuilder(endDateStr);
-                    events.add(new Event(name, location, category, startTimes, endTimes));
+                    events.add(new Event(name, "", location, category, startTimes, endTimes));
                 } else {
-                    events.add(new Event(name, location, category, startTimes));
+                    events.add(new Event(name, "", location, category, startTimes));
                 }
             }
         }

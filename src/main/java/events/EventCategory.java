@@ -1,7 +1,7 @@
 package events;
 
 public enum EventCategory {
-    ADULT, CARE, FIRE, FOOD, GAMES, KIDS, PARADE, PARTY, PERFORMANCE, RITUAL, WORKSHOP;
+    ADULT, CARE, FIRE, FOOD, GAMES, KIDS, MUSIC, PARADE, PARTY, PERFORMANCE, RITUAL, WORKSHOP;
 
     /**
      * Converts a string to a category
@@ -24,6 +24,8 @@ public enum EventCategory {
                 return GAMES;
             case "kids":
                 return KIDS;
+            case "music":
+                return MUSIC;
             case "parade":
                 return PARADE;
             case "party":
@@ -46,6 +48,6 @@ public enum EventCategory {
      */
     @SuppressWarnings("unused")
     public EventCategory[] listAll() {
-        return new EventCategory[]{ADULT, CARE, FIRE, FOOD, GAMES, KIDS, PARADE, PARTY, PERFORMANCE, RITUAL, WORKSHOP};
+        return new EventCategory[]{ADULT, CARE, FIRE, FOOD, GAMES, KIDS, MUSIC, PARADE, PARTY, PERFORMANCE, RITUAL, WORKSHOP};
     }
 }
