@@ -5,9 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24b9839f-6ad8-43a5-9b83-c469d9815187" name="Default Changelist" comment="Moved event listing to OptionPane, created framework for evenly separating string lists">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BurningMan-Navigation.iml" beforeDir="false" afterPath="$PROJECT_DIR$/BurningMan-Navigation.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/tracker.csv" beforeDir="false" afterPath="$PROJECT_DIR$/config/tracker.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/events/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/events/Event.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -55,9 +59,9 @@
           <entry key="csv" value="23" />
           <entry key="form" value="6" />
           <entry key="gitignore" value="2" />
-          <entry key="java" value="116" />
+          <entry key="java" value="118" />
           <entry key="txt" value="3" />
-          <entry key="xml" value="5" />
+          <entry key="xml" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -65,26 +69,26 @@
           <entry key="CLASS" value="2" />
           <entry key="CSV" value="10" />
           <entry key="GUI_DESIGNER_FORM" value="6" />
-          <entry key="JAVA" value="116" />
+          <entry key="JAVA" value="118" />
           <entry key="PLAIN_TEXT" value="20" />
-          <entry key="XML" value="5" />
+          <entry key="XML" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="csv" value="45" />
           <entry key="gitignore" value="8" />
-          <entry key="java" value="40905" />
-          <entry key="txt" value="492" />
-          <entry key="xml" value="105" />
+          <entry key="java" value="41224" />
+          <entry key="txt" value="523" />
+          <entry key="xml" value="116" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSV" value="21" />
-          <entry key="JAVA" value="40905" />
-          <entry key="PLAIN_TEXT" value="524" />
-          <entry key="XML" value="105" />
+          <entry key="JAVA" value="41224" />
+          <entry key="PLAIN_TEXT" value="555" />
+          <entry key="XML" value="116" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -136,13 +140,41 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/events/Event.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="194">
+              <caret line="109" column="14" lean-forward="true" selection-start-line="109" selection-start-column="14" selection-end-line="109" selection-end-column="14" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#6773#6774#0" expanded="true" />
+                <element signature="e#6813#6814#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/events/EventTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="438">
+              <caret line="52" column="32" selection-start-line="52" selection-start-column="32" selection-end-line="52" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
         <option value="Class" />
+        <option value="Arquillian JUnit Test Class" />
       </list>
     </option>
   </component>
@@ -160,6 +192,7 @@
       <find>[ ,]</find>
       <find>error pa</find>
       <find>error reading da</find>
+      <find>err</find>
     </findStrings>
     <replaceStrings>
       <replace>view.getMainFrame()</replace>
@@ -184,7 +217,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/GUIInterf.form" />
         <option value="$PROJECT_DIR$/src/main/java/mvc/Controller.java" />
         <option value="$PROJECT_DIR$/src/main/java/BurningManNavigator.java" />
         <option value="$PROJECT_DIR$/src/main/java/MainMenu.form" />
@@ -204,7 +236,6 @@
         <option value="$PROJECT_DIR$/src/main/java/view/Menu.java" />
         <option value="$PROJECT_DIR$/src/main/java/CoordinateListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/view/KeyController.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/view/MenuController.java" />
         <option value="$PROJECT_DIR$/src/main/java/navigation/Event.java" />
         <option value="$PROJECT_DIR$/src/main/java/navigation/EventManager.java" />
@@ -232,9 +263,11 @@
         <option value="$PROJECT_DIR$/src/main/java/navigation/Landmarks.java" />
         <option value="$PROJECT_DIR$/config/eventList.csv" />
         <option value="$PROJECT_DIR$/src/main/java/driver/ListManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/events/Event.java" />
         <option value="$PROJECT_DIR$/src/main/java/view/UserInterfaceController.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/events/Event.java" />
+        <option value="$PROJECT_DIR$/src/test/java/events/EventTest.java" />
       </list>
     </option>
   </component>
@@ -344,6 +377,35 @@
               <item name="BurningMan-Navigation" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="BurningMan-Navigation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BurningMan-Navigation" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BurningMan-Navigation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BurningMan-Navigation" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BurningMan-Navigation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BurningMan-Navigation" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="driver" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BurningMan-Navigation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BurningMan-Navigation" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="events" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -356,7 +418,7 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/hooperb/Documents/BurningMan-Navigation/src/main/java/view/UserInterfaceController.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547839574081" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547845289270" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="Arquillian JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.Arquillian JUnit4" value="" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/test/java" />
@@ -369,6 +431,12 @@
     <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="events" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/view" />
       <recent name="$PROJECT_DIR$/src/main/java/navigation" />
@@ -386,7 +454,21 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.EventTest">
+    <configuration name="EventTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BurningMan-Navigation" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="events.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="events" />
+      <option name="MAIN_CLASS_NAME" value="events.EventTest" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="BurningMan-Navigation.jar" type="JarApplication" factoryName="JAR Application" temporary="true">
       <option name="JAR_PATH" value="$PROJECT_DIR$/target/BurningMan-Navigation.jar" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -394,8 +476,13 @@
         <option name="Maven.BeforeRunTask" enabled="true" file="$PROJECT_DIR$/pom.xml" goal="package" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="JAR Application.BurningMan-Navigation.jar" />
+      <item itemvalue="JUnit.EventTest" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.EventTest" />
         <item itemvalue="JAR Application.BurningMan-Navigation.jar" />
       </list>
     </recent_temporary>
@@ -420,7 +507,7 @@
       <workItem from="1547246708241" duration="9400000" />
       <workItem from="1547443824020" duration="7130000" />
       <workItem from="1547681942105" duration="187000" />
-      <workItem from="1547795235529" duration="7554000" />
+      <workItem from="1547795235529" duration="9681000" />
     </task>
     <task id="LOCAL-00001" summary="Migrated project to Maven">
       <created>1547007798681</created>
@@ -506,11 +593,50 @@
       <option name="project" value="LOCAL" />
       <updated>1547839249521</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Configured project to use JUnit">
+      <created>1547839728329</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1547839728329</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="EventTest - 2019.01.18 at 12h 51m 44s.xml">
+      <configuration name="EventTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="EventTest - 2019.01.18 at 12h 52m 26s.xml">
+      <configuration name="EventTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="EventTest - 2019.01.18 at 12h 52m 41s.xml">
+      <configuration name="EventTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="EventTest - 2019.01.18 at 12h 55m 13s.xml">
+      <configuration name="EventTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="EventTest - 2019.01.18 at 12h 55m 27s.xml">
+      <configuration name="EventTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="EventTest - 2019.01.18 at 12h 56m 08s.xml">
+      <configuration name="EventTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="EventTest - 2019.01.18 at 12h 56m 28s.xml">
+      <configuration name="EventTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="EventTest - 2019.01.18 at 12h 57m 47s.xml">
+      <configuration name="EventTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="EventTest - 2019.01.18 at 12h 58m 47s.xml">
+      <configuration name="EventTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="EventTest - 2019.01.18 at 12h 59m 25s.xml">
+      <configuration name="EventTest" configurationId="JUnit" />
+    </history-entry>
+  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83805000" />
+    <option name="totallyTimeSpent" value="85932000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -523,6 +649,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="0" width="1932" height="1044" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14834578" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -534,7 +661,7 @@
       <window_info anchor="bottom" id="Dependency Viewer" weight="0.37706727" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49946752" weight="0.32745314" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4909285" visible="true" weight="0.27563396" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4909285" visible="true" weight="0.35501653" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49626467" weight="0.32745314" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -646,7 +773,8 @@
     <MESSAGE value="Updated User Interface Controller to use new OptionPane dialog" />
     <MESSAGE value="Minor bugfixes, fixed nullptr error when reading events, java 8 syntax error with JList construction" />
     <MESSAGE value="Moved event listing to OptionPane, created framework for evenly separating string lists" />
-    <option name="LAST_COMMIT_MESSAGE" value="Moved event listing to OptionPane, created framework for evenly separating string lists" />
+    <MESSAGE value="Configured project to use JUnit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Configured project to use JUnit" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -659,18 +787,6 @@
           <properties />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/events/Event.java</url>
-          <line>111</line>
-          <properties />
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/events/Event.java</url>
-          <line>172</line>
-          <properties />
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
@@ -679,7 +795,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/GUIInterf.form" />
     <entry file="file://$PROJECT_DIR$/src/main/java/mvc.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/mvc/view.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/mvc/model.java" />
@@ -711,13 +826,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/NavigationDriver.java" />
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="466">
-          <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/driver/CoordinateTracker.java" />
     <entry file="file://$PROJECT_DIR$/myfile.txt" />
     <entry file="file://$PROJECT_DIR$/test.txt" />
@@ -954,20 +1062,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/events/Event.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="226" column="33" selection-start-line="226" selection-start-column="33" selection-end-line="226" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#707#708#0" expanded="true" />
-            <element signature="e#741#742#0" expanded="true" />
-            <element signature="e#6773#6774#0" expanded="true" />
-            <element signature="e#6807#6808#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/view/OptionPane.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-801">
@@ -1011,6 +1105,35 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="38">
           <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="23" column="36" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/events/Event.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="109" column="14" lean-forward="true" selection-start-line="109" selection-start-column="14" selection-end-line="109" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#6773#6774#0" expanded="true" />
+            <element signature="e#6813#6814#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/events/EventTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="438">
+          <caret line="52" column="32" selection-start-line="52" selection-start-column="32" selection-end-line="52" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

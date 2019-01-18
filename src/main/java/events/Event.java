@@ -103,21 +103,22 @@ public class Event {
      * @return LocalDateTime array
      */
     static LocalDateTime[] multiDateBuilder(String[] dateStrIndexes) {
+        if(dateStrIndexes.length % 3 != 0) {
+            System.err.println("Data data has incorrect number of parameters");
+            return null;
+        }
+
+
         ArrayList<Integer> dateIndexes = new ArrayList<>();
         for(String index : dateStrIndexes) {
             try {
-                //TODO extract only numerical data from index
-                dateIndexes.add(Integer.parseInt(index));
+                dateIndexes.add(Integer.parseInt(index.replaceAll("[^\\d.]", "")));
             } catch(NumberFormatException e) {
                 System.err.println("Error reading date indexes");
                 return null;
             }
         }
 
-        if(dateIndexes.size() % 3 != 0) {
-            System.err.println("Data data has incorrect number of parameters");
-            return null;
-        }
 
         LocalDateTime[] dateArray = new LocalDateTime[dateIndexes.size() / 3];
         int arrayIndex = 0;
@@ -130,6 +131,7 @@ public class Event {
             }
         } catch(ArrayIndexOutOfBoundsException e) {
             System.err.println("Error reading date data");
+            return null;
         }
         return dateArray;
     }
