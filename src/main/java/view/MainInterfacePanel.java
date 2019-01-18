@@ -184,8 +184,8 @@ class MainInterfacePanel {
     void resetMenu() {
         leftMenu.removeAll();
         MenuLabel[] menuLabels = menu.readMenu();
-        if (menuLabels != null) {
-            for (MenuLabel menuLabel : menuLabels) {
+        if(menuLabels != null) {
+            for(MenuLabel menuLabel : menuLabels) {
                 leftMenu.add(menuLabel);
             }
         }

@@ -55,27 +55,27 @@ public class Navigator {
         properties = new Properties();
         try {
             properties.load(new FileInputStream(new File(configPath)));
-        } catch (IOException e) {
+        } catch(IOException e) {
             System.err.println(configPath + " not found");
             return;
         }
 
         try {
-            if (properties.containsKey("MAN-LATITUDE"))
+            if(properties.containsKey("MAN-LATITUDE"))
                 Location.man_latitude = Double.parseDouble((String) properties.get("MAN-LATITUDE"));
-            if (properties.containsKey("MAN-LONGITUDE"))
+            if(properties.containsKey("MAN-LONGITUDE"))
                 Location.man_longitude = Double.parseDouble((String) properties.get("MAN-LONGITUDE"));
-            if (properties.containsKey("ESPLANADE-DISTANCE"))
+            if(properties.containsKey("ESPLANADE-DISTANCE"))
                 Location.esplanade_distance = Integer.parseInt((String) properties.get("ESPLANADE-DISTANCE"));
-            if (properties.containsKey("BLOCK-WIDTH"))
+            if(properties.containsKey("BLOCK-WIDTH"))
                 Location.block_width = Integer.parseInt((String) properties.get("BLOCK-WIDTH"));
-            if (properties.containsKey("EVENT-START-TIME"))
+            if(properties.containsKey("EVENT-START-TIME"))
                 Event.setGlobalEventStartTime(properties.getProperty("EVENT-START-TIME"));
-            if (properties.containsKey("CURRENT-DESTINATION-NAME")) {
+            if(properties.containsKey("CURRENT-DESTINATION-NAME")) {
                 currentDestinationName = properties.getProperty("CURRENT-DESTINATION-NAME");
                 currentDestination = landmarks.getCamp(currentDestinationName);
             }
-        } catch (NumberFormatException e) {
+        } catch(NumberFormatException e) {
             System.err.println("Error reading configuration file");
         }
     }
@@ -84,7 +84,7 @@ public class Navigator {
      * Writes configuration to file
      */
     public void writeToConfigFile() {
-        if (properties == null) {
+        if(properties == null) {
             return;
         }
 
@@ -97,7 +97,7 @@ public class Navigator {
 
         try {
             properties.store(new FileOutputStream(configPath), "");
-        } catch (IOException e) {
+        } catch(IOException e) {
             System.err.println("Error writing config file");
         }
     }
@@ -155,7 +155,7 @@ public class Navigator {
                 ", " + currentLocation.cardinal(closestBathroom));
         map.put("homeAddress", home.getAddress());
         map.put("homeDirections", currentLocation.distance(home) + ", " + currentLocation.cardinal(home));
-        if (currentDestination != null) {
+        if(currentDestination != null) {
             map.put("destinationName", currentDestinationName);
             map.put("destinationAddress", currentDestination.getAddress());
             map.put("destinationDirections", currentLocation.distance(currentDestination) +
@@ -203,7 +203,7 @@ public class Navigator {
      */
     public void writeFavorites() {
         ArrayList<String> favorites = new ArrayList<>();
-        for (String campName : landmarks.getFavorites().keySet()) {
+        for(String campName : landmarks.getFavorites().keySet()) {
             favorites.add(campName + ',' + landmarks.getFavorites().get(campName).getCSVAddress());
         }
         FileManager.writeLines(favoritesPath, favorites);

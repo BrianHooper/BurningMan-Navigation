@@ -36,7 +36,7 @@ class KeyController implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
-        switch (keyCode) {
+        switch(keyCode) {
             case KeyEvent.VK_UP:
                 menu.menuUp();
                 break;

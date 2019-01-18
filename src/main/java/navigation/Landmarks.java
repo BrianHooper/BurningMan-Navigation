@@ -40,19 +40,19 @@ class Landmarks {
      */
     void readBathrooms() {
         ArrayList<String> lines = FileManager.readLines(bathroomsPath);
-        if (lines == null)
+        if(lines == null)
             return;
         try {
-            for (String line : lines) {
+            for(String line : lines) {
                 String[] split = line.split(",");
-                if (split.length == 2) {
+                if(split.length == 2) {
                     double latitude = Double.parseDouble(split[0]);
                     double longitude = Double.parseDouble(split[1]);
                     bathrooms.add(new Location(latitude, longitude));
-                } else if (split.length == 3) {
+                } else if(split.length == 3) {
                     int hour = Integer.parseInt(split[0]);
                     int minute = Integer.parseInt(split[1]);
-                    if (split[2].matches("0-9")) {
+                    if(split[2].matches("0-9")) {
                         double distance = Double.parseDouble(split[2]);
                         bathrooms.add(new Location(hour, minute, distance));
                     } else {
@@ -60,7 +60,7 @@ class Landmarks {
                     }
                 }
             }
-        } catch (NumberFormatException e) {
+        } catch(NumberFormatException e) {
             System.err.println("Error parsing bathroom coordinates");
         }
     }
@@ -73,19 +73,19 @@ class Landmarks {
      */
     private void readNamedLocations(TreeMap<String, Location> map, String filename) {
         ArrayList<String> lines = FileManager.readLines(filename);
-        if (lines == null)
+        if(lines == null)
             return;
         try {
-            for (String line : lines) {
+            for(String line : lines) {
                 String[] split = line.split(",");
-                if (split.length == 3) {
+                if(split.length == 3) {
                     double latitude = Double.parseDouble(split[1]);
                     double longitude = Double.parseDouble(split[2]);
                     map.put(split[0], new Location(latitude, longitude));
-                } else if (split.length == 4) {
+                } else if(split.length == 4) {
                     int hour = Integer.parseInt(split[1]);
                     int minute = Integer.parseInt(split[2]);
-                    if (split[3].matches("0-9")) {
+                    if(split[3].matches("0-9")) {
                         double distance = Double.parseDouble(split[3]);
                         map.put(split[0], new Location(hour, minute, distance));
                     } else {
@@ -93,7 +93,7 @@ class Landmarks {
                     }
                 }
             }
-        } catch (NumberFormatException e) {
+        } catch(NumberFormatException e) {
             System.err.println("Error parsing bathroom coordinates");
         }
     }
@@ -183,15 +183,15 @@ class Landmarks {
      * @return closest Location
      */
     private Location findClosest(ArrayList<Location> locations, Location currentLocation) {
-        if (locations.isEmpty()) {
+        if(locations.isEmpty()) {
             return null;
         }
 
         Location closestLocation = locations.get(0);
         double closestDistance = Double.MAX_VALUE;
-        for (Location location : locations) {
+        for(Location location : locations) {
             double distance = currentLocation.distance(location);
-            if (distance < closestDistance) {
+            if(distance < closestDistance) {
                 closestLocation = location;
                 closestDistance = distance;
             }
@@ -220,14 +220,14 @@ class Landmarks {
         searchTerm = searchTerm.toLowerCase();
 
         ArrayList<String> matches = new ArrayList<>();
-        for (String location : locations.keySet()) {
+        for(String location : locations.keySet()) {
             String lc = location.toLowerCase();
-            if (lc.contains(searchTerm)) {
+            if(lc.contains(searchTerm)) {
                 matches.add(location);
             }
         }
 
-        if (matches.isEmpty()) {
+        if(matches.isEmpty()) {
             return null;
         } else {
             return matches.get(0);
@@ -242,7 +242,7 @@ class Landmarks {
      */
     String findCampName(String name) {
         String campName = findMatch(camps, name);
-        if (campName == null) {
+        if(campName == null) {
             return "";
         } else {
             return campName;
@@ -257,7 +257,7 @@ class Landmarks {
      */
     Location getCamp(String exactCampName) {
         Location camp = camps.get(exactCampName);
-        if (camp == null) {
+        if(camp == null) {
             return favorites.get(exactCampName);
         } else {
             return camp;

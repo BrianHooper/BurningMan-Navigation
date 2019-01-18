@@ -2,16 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="24b9839f-6ad8-43a5-9b83-c469d9815187" name="Default Changelist" comment="Created generic OptionPane for getting text and list input">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/config.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/coordinate" beforeDir="false" afterPath="$PROJECT_DIR$/config/coordinate" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/eventList.csv" beforeDir="false" afterPath="$PROJECT_DIR$/config/eventList.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/favorites.csv" beforeDir="false" afterPath="$PROJECT_DIR$/config/favorites.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/notes.csv" beforeDir="false" afterPath="$PROJECT_DIR$/config/notes.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/tracker.csv" beforeDir="false" afterPath="$PROJECT_DIR$/config/tracker.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/events/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/events/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/events/EventCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/events/EventCategory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/events/EventManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/events/EventManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/OptionPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/OptionPane.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -44,28 +41,30 @@
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.11" value="1" />
+          <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.8" value="2" />
           <entry key="project.open.time.9" value="2" />
-          <entry key="project.opened" value="10" />
+          <entry key="project.opened" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="class" value="1" />
-          <entry key="csv" value="13" />
+          <entry key="class" value="2" />
+          <entry key="csv" value="15" />
           <entry key="form" value="6" />
           <entry key="gitignore" value="1" />
-          <entry key="java" value="101" />
+          <entry key="java" value="103" />
           <entry key="txt" value="3" />
           <entry key="xml" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="1" />
+          <entry key="CLASS" value="2" />
+          <entry key="CSV" value="2" />
           <entry key="GUI_DESIGNER_FORM" value="6" />
-          <entry key="JAVA" value="101" />
+          <entry key="JAVA" value="103" />
           <entry key="PLAIN_TEXT" value="17" />
           <entry key="XML" value="5" />
         </counts>
@@ -73,14 +72,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="csv" value="24" />
-          <entry key="java" value="38529" />
+          <entry key="java" value="38834" />
           <entry key="txt" value="277" />
           <entry key="xml" value="105" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="38529" />
+          <entry key="JAVA" value="38834" />
           <entry key="PLAIN_TEXT" value="301" />
           <entry key="XML" value="105" />
         </counts>
@@ -138,8 +137,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/events/EventManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="52" column="51" selection-start-line="52" selection-start-column="51" selection-end-line="52" selection-end-column="51" />
+            <state relative-caret-position="301">
+              <caret line="45" column="68" lean-forward="true" selection-start-line="45" selection-start-column="68" selection-end-line="45" selection-end-column="68" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -148,10 +147,37 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/view/OptionPane.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-190">
+              <caret line="88" column="18" selection-start-line="88" selection-start-column="18" selection-end-line="88" selection-end-column="18" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#680#681#0" expanded="true" />
+                <element signature="e#728#729#0" expanded="true" />
+                <element signature="e#3715#3716#0" expanded="true" />
+                <element signature="e#3747#3748#0" expanded="true" />
+                <element signature="e#3800#3801#0" expanded="true" />
+                <element signature="e#3834#3835#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/view/UserInterfaceController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="186">
+              <caret line="318" column="44" selection-start-line="318" selection-start-column="44" selection-end-line="318" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/events/Event.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="35" column="4" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="4" />
+            <state relative-caret-position="91">
+              <caret line="105" column="28" lean-forward="true" selection-start-line="105" selection-start-column="28" selection-end-line="105" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -244,13 +270,13 @@
         <option value="$PROJECT_DIR$/src/main/java/driver/CoordinateListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/navigation/Navigator.java" />
         <option value="$PROJECT_DIR$/src/main/java/events/NoteManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/view/OptionPane.java" />
         <option value="$PROJECT_DIR$/config/camps.csv" />
         <option value="$PROJECT_DIR$/src/main/java/navigation/Location.java" />
-        <option value="$PROJECT_DIR$/src/main/java/view/UserInterfaceController.java" />
         <option value="$PROJECT_DIR$/config/eventList.csv" />
         <option value="$PROJECT_DIR$/src/main/java/events/EventCategory.java" />
         <option value="$PROJECT_DIR$/src/main/java/events/Event.java" />
+        <option value="$PROJECT_DIR$/src/main/java/view/OptionPane.java" />
+        <option value="$PROJECT_DIR$/src/main/java/view/UserInterfaceController.java" />
         <option value="$PROJECT_DIR$/src/main/java/events/EventManager.java" />
       </list>
     </option>
@@ -284,7 +310,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="4">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="width" value="1680" />
     <option name="height" value="1014" />
   </component>
@@ -343,14 +369,18 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="BurningMan-Navigation" type="b2602c69:ProjectViewProjectNode" />
               <item name="BurningMan-Navigation" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BurningMan-Navigation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BurningMan-Navigation" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="BurningMan-Navigation" type="b2602c69:ProjectViewProjectNode" />
@@ -378,17 +408,27 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="events" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="BurningMan-Navigation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BurningMan-Navigation" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/hooperb/Documents/BurningMan-Navigation/src/main/java/view/UserInterfaceController.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547525977217" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547796770139" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Project" />
@@ -449,6 +489,7 @@
       <workItem from="1547246708241" duration="9400000" />
       <workItem from="1547443824020" duration="7130000" />
       <workItem from="1547681942105" duration="187000" />
+      <workItem from="1547795235529" duration="1528000" />
     </task>
     <task id="LOCAL-00001" summary="Migrated project to Maven">
       <created>1547007798681</created>
@@ -524,7 +565,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76251000" />
+    <option name="totallyTimeSpent" value="77779000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -536,10 +577,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1680" height="1014" extended-state="4" />
+    <frame x="-6" y="0" width="1932" height="1044" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16932516" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14834578" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -548,8 +589,8 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49946752" weight="0.32745314" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4941427" weight="0.2765237" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4968051" weight="0.32829374" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4941427" visible="true" weight="0.27563396" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4968051" weight="0.32745314" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3296582" />
@@ -557,7 +598,7 @@
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.3296582" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50319487" side_tool="true" weight="0.32937366" />
-      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.4978701" weight="0.5011287" />
+      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.4978701" weight="0.5005513" />
       <window_info active="true" anchor="bottom" id="Inspection Results" order="12" visible="true" weight="0.32832617" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -651,12 +692,23 @@
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/events/EventManager.java</url>
+          <line>129</line>
+          <properties />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Coordinate.java" />
     <entry file="file://$PROJECT_DIR$/src/Navigator.java" />
     <entry file="file://$PROJECT_DIR$/src/Bathrooms.java" />
     <entry file="file://$PROJECT_DIR$/src/CampList.java" />
@@ -865,40 +917,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/view/OptionPane.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="517">
-          <caret line="124" column="47" selection-start-line="124" selection-start-column="33" selection-end-line="124" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3804#3805#0" expanded="true" />
-            <element signature="e#3838#3839#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/view/UserInterfaceController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="259" column="42" selection-start-line="259" selection-start-column="42" selection-end-line="259" selection-end-column="42" />
-          <folding>
-            <element signature="e#5761#5762#0" expanded="true" />
-            <element signature="e#5790#5791#0" expanded="true" />
-            <element signature="e#19526#19527#0" expanded="true" />
-            <element signature="e#19561#19562#0" expanded="true" />
-            <element signature="e#19643#19644#0" expanded="true" />
-            <element signature="e#19680#19681#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/eventList.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="47" selection-start-line="4" selection-start-column="47" selection-end-line="4" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/camps.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -913,20 +931,61 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar!/javax/swing/DefaultListModel.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/eventList.csv">
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" rowLines="3" />
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="47" selection-start-line="4" selection-start-column="47" selection-end-line="4" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/view/UserInterfaceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="318" column="44" selection-start-line="318" selection-start-column="44" selection-end-line="318" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/events/Event.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="35" column="4" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="4" />
+        <state relative-caret-position="91">
+          <caret line="105" column="28" lean-forward="true" selection-start-line="105" selection-start-column="28" selection-end-line="105" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/view/OptionPane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-190">
+          <caret line="88" column="18" selection-start-line="88" selection-start-column="18" selection-end-line="88" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#680#681#0" expanded="true" />
+            <element signature="e#728#729#0" expanded="true" />
+            <element signature="e#3715#3716#0" expanded="true" />
+            <element signature="e#3747#3748#0" expanded="true" />
+            <element signature="e#3800#3801#0" expanded="true" />
+            <element signature="e#3834#3835#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/events/EventManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="52" column="51" selection-start-line="52" selection-start-column="51" selection-end-line="52" selection-end-column="51" />
+        <state relative-caret-position="301">
+          <caret line="45" column="68" lean-forward="true" selection-start-line="45" selection-start-column="68" selection-end-line="45" selection-end-column="68" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -973,7 +1032,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>11</last-edited>
+          <last-edited>1.8</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

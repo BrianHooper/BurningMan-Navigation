@@ -33,7 +33,7 @@ public class Location {
             double longitude = Double.parseDouble(scan.nextLine());
             scan.close();
             return new AbstractMap.SimpleEntry<>(latitude, longitude);
-        } catch (FileNotFoundException | NumberFormatException | NoSuchElementException e) {
+        } catch(FileNotFoundException | NumberFormatException | NoSuchElementException e) {
             return null;
         }
     }
@@ -65,16 +65,16 @@ public class Location {
      */
     private static double angle(double latitude, double longitude) {
         double angle = Math.toDegrees(Math.atan2(latitude - man_latitude, longitude - man_longitude));
-        if (angle < 0) {
+        if(angle < 0) {
             angle += 360;
         }
 
         angle -= 90;
-        if (angle < 0) {
+        if(angle < 0) {
             angle += 360;
         }
         angle = 360 - angle;
-        if (angle == 360) {
+        if(angle == 360) {
             angle = 0;
         }
 
@@ -133,7 +133,7 @@ public class Location {
         this.hour = hour;
         this.minute = minute;
         int chVal = ((int) Character.toUpperCase(street));
-        if (chVal >= 65 && chVal <= 76) {
+        if(chVal >= 65 && chVal <= 76) {
             chVal -= 64;
         } else {
             chVal = 0;
@@ -171,17 +171,17 @@ public class Location {
      * @return Address as String
      */
     String getAddress() {
-        if (distance < esplanade_distance || distance > esplanade_distance + 12 * block_width) {
+        if(distance < esplanade_distance || distance > esplanade_distance + 12 * block_width) {
             return hour + ":" + minute + " & " + ((int) distance) + "'";
         } else {
             String street;
-            if (distance < esplanade_distance + block_width) {
+            if(distance < esplanade_distance + block_width) {
                 street = "Esplanade";
             } else {
                 char chIndex = (char) (((distance - esplanade_distance) / block_width) + 64);
                 street = Character.toString(chIndex);
             }
-            if (minute < 10) {
+            if(minute < 10) {
                 return hour + ":0" + minute + " & " + street;
             } else {
                 return hour + ":" + minute + " & " + street;
@@ -196,7 +196,7 @@ public class Location {
      */
     private double clockAngle() {
         double time = hour + ((double) minute / 60);
-        if (time > 12) {
+        if(time > 12) {
             time -= 12;
         }
         double percent = time / 12;
@@ -228,7 +228,7 @@ public class Location {
      * @return distance in feet
      */
     int distance(Location other) {
-        if (other == null) {
+        if(other == null) {
             return -1;
         }
         double deltaX = other.getX() - getX();
@@ -247,10 +247,10 @@ public class Location {
         double deltaY = getY() - other.getY();
         double angle = 180 * Math.atan2(deltaX, deltaY) / Math.PI;
         angle += calculateOffset(angle);
-        if (angle < 0) {
+        if(angle < 0) {
             angle += 360;
         }
-        if (angle == 360) {
+        if(angle == 360) {
             angle = 0;
         }
         return (int) (angle);
@@ -264,22 +264,22 @@ public class Location {
      */
     String cardinal(Location other) {
         double bearing = bearing(other);
-        if (bearing < 11) return "north";
-        else if (bearing < 34) return "north-northeast";
-        else if (bearing < 56) return "northeast";
-        else if (bearing < 79) return "northeast-east";
-        else if (bearing < 101) return "east";
-        else if (bearing < 124) return "southeast-east";
-        else if (bearing < 146) return "southeast";
-        else if (bearing < 169) return "south-southeast";
-        else if (bearing < 191) return "south";
-        else if (bearing < 214) return "south-southwest";
-        else if (bearing < 236) return "southwest";
-        else if (bearing < 259) return "southwest-west";
-        else if (bearing < 281) return "west";
-        else if (bearing < 304) return "northwest-west";
-        else if (bearing < 326) return "northwest";
-        else if (bearing < 348) return "north-northwest";
+        if(bearing < 11) return "north";
+        else if(bearing < 34) return "north-northeast";
+        else if(bearing < 56) return "northeast";
+        else if(bearing < 79) return "northeast-east";
+        else if(bearing < 101) return "east";
+        else if(bearing < 124) return "southeast-east";
+        else if(bearing < 146) return "southeast";
+        else if(bearing < 169) return "south-southeast";
+        else if(bearing < 191) return "south";
+        else if(bearing < 214) return "south-southwest";
+        else if(bearing < 236) return "southwest";
+        else if(bearing < 259) return "southwest-west";
+        else if(bearing < 281) return "west";
+        else if(bearing < 304) return "northwest-west";
+        else if(bearing < 326) return "northwest";
+        else if(bearing < 348) return "north-northwest";
         else return "north";
     }
 

@@ -53,7 +53,7 @@ public class View {
 
         frame.setVisible(true);
 
-        if (!successful)
+        if(!successful)
             frame.setExtendedState(Frame.MAXIMIZED_BOTH);
     }
 

@@ -33,10 +33,10 @@ public class FileManager {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));
             String currentLine;
-            while ((currentLine = reader.readLine()) != null) {
+            while((currentLine = reader.readLine()) != null) {
                 lines.add(currentLine);
             }
-        } catch (IOException e) {
+        } catch(IOException e) {
             System.err.println("Error reading file " + filename);
             return lines;
         }
@@ -53,13 +53,13 @@ public class FileManager {
         try {
             FileWriter f = new FileWriter(filename);
             StringBuilder sb = new StringBuilder();
-            for (String line : lines) {
+            for(String line : lines) {
                 sb.append(line);
                 sb.append('\n');
             }
             f.write(sb.toString());
             f.close();
-        } catch (IOException e) {
+        } catch(IOException e) {
             System.err.println("Error writing files");
         }
     }
@@ -69,11 +69,11 @@ public class FileManager {
      *
      * @param line String line
      */
-    void appendLine(String line) {
+    public void appendLine(String line) {
         try {
             writer.write(line + '\n');
             writer.flush();
-        } catch (IOException e) {
+        } catch(IOException e) {
             System.err.println("Error writing file");
         }
 

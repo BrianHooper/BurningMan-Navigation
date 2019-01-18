@@ -10,7 +10,7 @@ public class NoteManager {
 
     private final TreeMap<String, String> notes;
     private static final String delimiter = String.valueOf((char) 25);
-    private int size = 0;
+    private int size;
 
     /**
      * Constructor
@@ -28,11 +28,11 @@ public class NoteManager {
      */
     private void readNotes() {
         ArrayList<String> lines = FileManager.readLines(notesPath);
-        if (lines == null)
+        if(lines == null)
             return;
-        for (String line : lines) {
+        for(String line : lines) {
             String[] split = line.split(delimiter);
-            if (split.length == 2) {
+            if(split.length == 2) {
                 notes.put(split[0], split[1]);
             }
         }
@@ -43,7 +43,7 @@ public class NoteManager {
      */
     public void saveNotes() {
         ArrayList<String> lines = new ArrayList<>();
-        for (String noteTitle : notes.keySet()) {
+        for(String noteTitle : notes.keySet()) {
             lines.add(noteTitle + delimiter + notes.get(noteTitle));
         }
         FileManager.writeLines(notesPath, lines);

@@ -26,7 +26,7 @@ class Menu {
     String select() {
         String action = menuItems[selected].getText();
 
-        switch (action) {
+        switch(action) {
             case "Favorites":
                 favorites();
                 return "";
@@ -127,7 +127,7 @@ class Menu {
     void down() {
         menuItems[selected].deselect();
         selected++;
-        if (selected >= menuItems.length) {
+        if(selected >= menuItems.length) {
             selected = 0;
         }
 
@@ -140,7 +140,7 @@ class Menu {
     void up() {
         menuItems[selected].deselect();
         selected--;
-        if (selected < 0) {
+        if(selected < 0) {
             selected = menuItems.length - 1;
         }
         menuItems[selected].select();

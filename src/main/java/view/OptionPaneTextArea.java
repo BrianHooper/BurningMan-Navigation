@@ -21,7 +21,7 @@ class OptionPaneTextArea extends JTextArea implements KeyListener {
 
     public void keyPressed(KeyEvent e) {
 
-        switch (e.getKeyCode()) {
+        switch(e.getKeyCode()) {
             case KeyEvent.VK_TAB:
                 e.consume();
                 transferFocus();
@@ -30,14 +30,14 @@ class OptionPaneTextArea extends JTextArea implements KeyListener {
     }
 
     public void keyReleased(KeyEvent e) {
-        switch (e.getKeyCode()) {
+        switch(e.getKeyCode()) {
             case KeyEvent.VK_TAB:
                 break;
         }
     }
 
     public void keyTyped(KeyEvent e) {
-        switch (e.getKeyCode()) {
+        switch(e.getKeyCode()) {
             case KeyEvent.VK_TAB:
                 break;
         }

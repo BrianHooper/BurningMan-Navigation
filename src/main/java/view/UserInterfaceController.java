@@ -59,7 +59,7 @@ public class UserInterfaceController {
      * @param actionCommand String action command
      */
     private void action(String actionCommand) {
-        switch (actionCommand) {
+        switch(actionCommand) {
             case "Find camp":
                 findCamp();
                 break;
@@ -121,7 +121,7 @@ public class UserInterfaceController {
      * @return String note title
      */
     private String selectNote() {
-        if (noteManager.isEmpty()) {
+        if(noteManager.isEmpty()) {
             JOptionPane.showMessageDialog(view.getMainFrame(), "No notes found");
             return null;
         }
@@ -130,7 +130,7 @@ public class UserInterfaceController {
         pane.addListInput(noteManager.getNoteTitles(), 10);
         pane.show(view.getMainFrame(), "Select Note", JOptionPane.OK_CANCEL_OPTION);
 
-        if (pane.okPressed()) {
+        if(pane.okPressed()) {
             return pane.getInputs()[0];
         } else {
             return null;
@@ -142,11 +142,11 @@ public class UserInterfaceController {
      */
     private void deleteNotes() {
         String noteTitle = selectNote();
-        if (noteTitle == null) {
+        if(noteTitle == null) {
             return;
         }
         int confirmation = JOptionPane.showConfirmDialog(view.getMainFrame(), "Delete note " + noteTitle + "?");
-        if (confirmation == JOptionPane.YES_OPTION) {
+        if(confirmation == JOptionPane.YES_OPTION) {
             noteManager.deleteNote(noteTitle);
             noteManager.saveNotes();
         }
@@ -157,7 +157,7 @@ public class UserInterfaceController {
      */
     private void editNotes() {
         String noteTitle = selectNote();
-        if (noteTitle == null) {
+        if(noteTitle == null) {
             return;
         }
         addNote(noteTitle);
@@ -170,7 +170,7 @@ public class UserInterfaceController {
      */
     private void addNote(String noteTitle) {
         String noteBody;
-        if (noteTitle != null) {
+        if(noteTitle != null) {
             noteBody = noteManager.getNote(noteTitle);
         } else {
             noteTitle = "";
@@ -193,7 +193,7 @@ public class UserInterfaceController {
 
         noteTitle = field.getText();
         noteBody = area.getText();
-        if (noteTitle.length() == 0 || noteBody.length() == 0) {
+        if(noteTitle.length() == 0 || noteBody.length() == 0) {
             return;
         }
 
@@ -215,11 +215,11 @@ public class UserInterfaceController {
         String startDate = JOptionPane.showInputDialog(view.getMainFrame(), "" +
                 "Current start date is " + Event.dfFull.format(Event.globalEventStartTime) +
                 "\nEnter new start date in yyyy-MM-dd HH:mm format:");
-        if (startDate == null || startDate.length() == 0) {
+        if(startDate == null || startDate.length() == 0) {
             return;
         }
 
-        if (Event.setGlobalEventStartTime(startDate)) {
+        if(Event.setGlobalEventStartTime(startDate)) {
             String eventStartDate = Event.dfFull.format(Event.globalEventStartTime);
             JOptionPane.showMessageDialog(view.getMainFrame(), "Start date set to " + eventStartDate);
             navigator.writeToConfigFile();
@@ -240,7 +240,7 @@ public class UserInterfaceController {
         pane.addListInput(choices, 10);
         pane.show(view.getMainFrame(), "Choose day", JOptionPane.OK_CANCEL_OPTION);
 
-        if (!pane.okPressed()) {
+        if(!pane.okPressed()) {
             return;
         }
         JList<String> jList = (JList<String>) pane.getJComponents().get(0);
@@ -248,11 +248,11 @@ public class UserInterfaceController {
 
         ArrayList<Event> eventList = eventManager.listByDay(day);
         String[] eventStringArray = new String[eventList.size()];
-        for (int i = 0; i < eventList.size(); i++) {
+        for(int i = 0; i < eventList.size(); i++) {
             eventStringArray[i] = eventList.get(i).toString();
         }
 
-        if (eventStringArray.length == 0) {
+        if(eventStringArray.length == 0) {
             JOptionPane.showMessageDialog(view.getMainFrame(), "No events found");
         } else {
             //TODO change to scroll pane
@@ -268,16 +268,16 @@ public class UserInterfaceController {
      */
     private void searchEventsName() {
         String eventName = JOptionPane.showInputDialog(view.getMainFrame(), "Enter event name:");
-        if (eventName == null) {
+        if(eventName == null) {
             return;
         }
         ArrayList<Event> eventList = eventManager.listByName(eventName);
         String[] eventStringArray = new String[eventList.size()];
-        for (int i = 0; i < eventList.size(); i++) {
+        for(int i = 0; i < eventList.size(); i++) {
             eventStringArray[i] = eventList.get(i).toString();
         }
 
-        if (eventStringArray.length == 0) {
+        if(eventStringArray.length == 0) {
             JOptionPane.showMessageDialog(view.getMainFrame(), "No events found");
         } else {
             //TODO change to scroll pane
@@ -293,16 +293,16 @@ public class UserInterfaceController {
      */
     private void searchEventsCamp() {
         String campName = JOptionPane.showInputDialog(view.getMainFrame(), "Enter event name:");
-        if (campName == null) {
+        if(campName == null) {
             return;
         }
         ArrayList<Event> eventList = eventManager.listByCamp(campName);
         String[] eventStringArray = new String[eventList.size()];
-        for (int i = 0; i < eventList.size(); i++) {
+        for(int i = 0; i < eventList.size(); i++) {
             eventStringArray[i] = eventList.get(i).toString();
         }
 
-        if (eventStringArray.length == 0) {
+        if(eventStringArray.length == 0) {
             JOptionPane.showMessageDialog(view.getMainFrame(), "No events found");
         } else {
             //TODO change to scroll pane
@@ -319,11 +319,11 @@ public class UserInterfaceController {
     private void listEventsHappeningSoon() {
         ArrayList<Event> eventList = eventManager.listHappeningSoon();
         String[] eventStringArray = new String[eventList.size()];
-        for (int i = 0; i < eventList.size(); i++) {
+        for(int i = 0; i < eventList.size(); i++) {
             eventStringArray[i] = eventList.get(i).toString();
         }
 
-        if (eventStringArray.length == 0) {
+        if(eventStringArray.length == 0) {
             JOptionPane.showMessageDialog(view.getMainFrame(), "No upcoming events");
         } else {
             //TODO change to scroll pane
@@ -339,25 +339,24 @@ public class UserInterfaceController {
      */
     private void listCamps() {
         ArrayList<String> menuItems = new ArrayList<>(navigator.getCamps().keySet());
-        if (menuItems.isEmpty()) {
+        if(menuItems.isEmpty()) {
             JOptionPane.showMessageDialog(view.getMainFrame(), "No camps found");
             return;
         }
 
         int longest = 0;
-        for (String campName : menuItems) {
-            if (campName.length() > longest) {
+        for(String campName : menuItems) {
+            if(campName.length() > longest) {
                 longest = campName.length();
             }
         }
         longest += 8;
 
         ArrayList<String> fullMenuItems = new ArrayList<>();
-        for (int i = 0; i < menuItems.size(); i++) {
-            String campName = menuItems.get(i);
+        for(String campName : menuItems) {
             Location campLocation = navigator.getCamp(campName);
             int spacerLength = longest - campName.length();
-            if (campLocation.getHour() >= 10) {
+            if(campLocation.getHour() >= 10) {
                 spacerLength--;
             }
             char[] spacer = new char[spacerLength];
@@ -382,7 +381,7 @@ public class UserInterfaceController {
         Set<String> favorites = navigator.getFavorites().keySet();
         Object[] menuItems = new String[favorites.size()];
         System.arraycopy(favorites.toArray(), 0, menuItems, 0, favorites.size());
-        if (menuItems.length == 0) {
+        if(menuItems.length == 0) {
             JOptionPane.showMessageDialog(view.getMainFrame(), "No camps found");
             return;
         }
@@ -392,9 +391,9 @@ public class UserInterfaceController {
                 menuItems, // Array of choices
                 menuItems[0]); // Initial choice
 
-        if (input != null) {
+        if(input != null) {
             int confirmation = JOptionPane.showConfirmDialog(view.getMainFrame(), "Delete favorite " + input + "?");
-            if (confirmation == JOptionPane.YES_OPTION) {
+            if(confirmation == JOptionPane.YES_OPTION) {
                 navigator.getFavorites().remove(input);
                 navigator.writeFavorites();
                 navigator.writeToConfigFile();
@@ -407,7 +406,7 @@ public class UserInterfaceController {
      */
     private void navFavorite() {
         ArrayList<String> menuItems = new ArrayList<>(navigator.getFavorites().keySet());
-        if (menuItems.isEmpty()) {
+        if(menuItems.isEmpty()) {
             JOptionPane.showMessageDialog(view.getMainFrame(), "No camps found");
             return;
         }
@@ -417,7 +416,7 @@ public class UserInterfaceController {
         pane.show(view.getMainFrame(), "All camps", JOptionPane.OK_CANCEL_OPTION);
 
         String input = pane.getInputs()[0];
-        if (input != null) {
+        if(input != null) {
             navigator.setDestination(navigator.getFavorites().get(input), input);
             navigator.writeToConfigFile();
         }
@@ -462,12 +461,12 @@ public class UserInterfaceController {
 
         String favName = nameField.getText();
         Location favLocation;
-        if (yes.isSelected()) {
+        if(yes.isSelected()) {
             favLocation = navigator.currentLocation();
         } else {
             int hour = 2 + hourBox.getSelectedIndex();
             int minute = 15 * minuteBox.getSelectedIndex();
-            if (streetBox.getSelectedIndex() == 0) {
+            if(streetBox.getSelectedIndex() == 0) {
                 favLocation = new Location(hour, minute, (double) Location.esplanade_distance);
             } else {
                 favLocation = new Location(hour, minute, (char) 64 + streetBox.getSelectedIndex());
@@ -486,7 +485,7 @@ public class UserInterfaceController {
         try {
             Location.block_width = Integer.parseInt(result);
             navigator.writeToConfigFile();
-        } catch (NumberFormatException e) {
+        } catch(NumberFormatException e) {
             JOptionPane.showMessageDialog(view.getMainFrame(), "Error, invalid block width");
         }
     }
@@ -499,7 +498,7 @@ public class UserInterfaceController {
         try {
             Location.esplanade_distance = Integer.parseInt(result);
             navigator.writeToConfigFile();
-        } catch (NumberFormatException e) {
+        } catch(NumberFormatException e) {
             JOptionPane.showMessageDialog(view.getMainFrame(), "Error, invalid esplanade distance");
         }
     }
@@ -509,7 +508,7 @@ public class UserInterfaceController {
      */
     private void setMan() {
         int result = JOptionPane.showConfirmDialog(view.getMainFrame(), "Use current location as man coordinates?");
-        if (result == JOptionPane.YES_OPTION) {
+        if(result == JOptionPane.YES_OPTION) {
             navigator.writeToConfigFile();
         }
     }
@@ -521,7 +520,7 @@ public class UserInterfaceController {
         String result = JOptionPane.showInputDialog(view.getMainFrame(), "Enter home address (Hour,Minute,Street): ");
         String[] split = result.split(",");
         String err = "Invalid address";
-        if (split.length != 3) {
+        if(split.length != 3) {
             JOptionPane.showMessageDialog(view.getMainFrame(), err);
         }
         try {
@@ -530,7 +529,7 @@ public class UserInterfaceController {
             char street = split[2].charAt(0);
             navigator.setHome(hour, minute, street);
             navigator.writeToConfigFile();
-        } catch (NumberFormatException e) {
+        } catch(NumberFormatException e) {
             JOptionPane.showMessageDialog(view.getMainFrame(), err);
         }
     }
@@ -540,7 +539,7 @@ public class UserInterfaceController {
      */
     private void findCamp() {
         String result = JOptionPane.showInputDialog(view.getMainFrame(), "Enter search term: ");
-        if (result != null && !findCamp(result)) {
+        if(result != null && !findCamp(result)) {
             JOptionPane.showMessageDialog(view.getMainFrame(), "Camp not found");
         }
     }
@@ -549,13 +548,13 @@ public class UserInterfaceController {
      * Searches for a camp and sets navigation
      */
     private boolean findCamp(String result) {
-        if (result == null || result.length() == 0) {
+        if(result == null || result.length() == 0) {
             return false;
         }
         String campName = navigator.findCampName(result);
-        if (campName.length() > 0) {
+        if(campName.length() > 0) {
             Location camp = navigator.getCamp(campName);
-            if (camp != null) {
+            if(camp != null) {
                 navigator.setDestination(camp, campName);
                 view.setNavigation(navigator);
                 navigator.writeToConfigFile();

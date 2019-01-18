@@ -39,12 +39,12 @@ class OptionPane {
      * @param component JComponent
      */
     public void addTextInput(JTextComponent component) {
-        if (!focusSet) {
+        if(!focusSet) {
             component.addAncestorListener(new RequestFocusListener());
             focusSet = true;
         }
         jComponents.add(component);
-        if (component instanceof OptionPaneTextArea) {
+        if(component instanceof OptionPaneTextArea) {
             JScrollPane scrollPane = new JScrollPane(component);
             scrollPane.setAlignmentX(0);
             panel.add(scrollPane);
@@ -72,11 +72,11 @@ class OptionPane {
      */
     public String[] getInputs() {
         String[] inputStrings = new String[jComponents.size()];
-        for (int i = 0; i < jComponents.size(); i++) {
+        for(int i = 0; i < jComponents.size(); i++) {
             JComponent component = jComponents.get(i);
-            if (component instanceof JTextComponent) {
+            if(component instanceof JTextComponent) {
                 inputStrings[i] = ((JTextComponent) component).getText();
-            } else if (component instanceof JList) {
+            } else if(component instanceof JList) {
                 inputStrings[i] = (String) ((JList) component).getSelectedValue();
             }
         }
@@ -90,9 +90,7 @@ class OptionPane {
      * @param rows         number of rows to display in list
      */
     public void addListInput(ArrayList<String> listElements, int rows) {
-        DefaultListModel<String> listModel = new DefaultListModel<>();
-        listModel.addAll(listElements);
-        JList<String> list = new JList<>(listModel);
+        JList<String> list = new JList<>(listElements.toArray(new String[0]));
 
         list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         list.setLayoutOrientation(JList.VERTICAL);
@@ -100,7 +98,7 @@ class OptionPane {
         list.setSelectedIndex(0);
         list.setFont(View.standardFont);
 
-        if (!focusSet) {
+        if(!focusSet) {
             list.addAncestorListener(new RequestFocusListener());
             focusSet = true;
         }

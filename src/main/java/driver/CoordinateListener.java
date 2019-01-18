@@ -40,7 +40,7 @@ public class CoordinateListener extends Thread {
         FileManager fileManager;
         try {
             fileManager = new FileManager(trackerPath);
-        } catch (IOException e) {
+        } catch(IOException e) {
             fileManager = null;
             System.err.println("Error opening tracker file");
         }
@@ -48,15 +48,15 @@ public class CoordinateListener extends Thread {
         int count = 0;
         int every = 20; //
         //noinspection InfiniteLoopStatement
-        while (true) {
+        while(true) {
             try {
                 AbstractMap.SimpleEntry<Double, Double> coordinates = Location.readCoordinates();
-                if (coordinates != null) {
+                if(coordinates != null) {
                     double latitude = coordinates.getKey();
                     double longitude = coordinates.getValue();
                     navigator.updateLocation(latitude, longitude);
                     view.setNavigation(navigator);
-                    if (count++ >= every && fileManager != null) {
+                    if(count++ >= every && fileManager != null) {
                         count = 0;
                         String line = String.valueOf(latitude) + ',' + String.valueOf(longitude) + ','
                                 + ClockDriver.dfFull.format(LocalDateTime.now());
@@ -64,7 +64,7 @@ public class CoordinateListener extends Thread {
                     }
                     Thread.sleep(500);
                 }
-            } catch (InterruptedException e) {
+            } catch(InterruptedException e) {
                 System.err.println("Coordinate thread interrupted");
             }
         }

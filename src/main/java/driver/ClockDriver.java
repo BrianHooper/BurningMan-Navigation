@@ -32,13 +32,13 @@ public class ClockDriver extends Thread {
     public void run() {
         try {
             //noinspection InfiniteLoopStatement
-            while (true) {
+            while(true) {
                 LocalDateTime time = LocalDateTime.now();
                 String timeString = dfDay.format(time) + ", " + dfTime.format(time);
                 view.setClock(timeString);
                 Thread.sleep(1000);
             }
-        } catch (InterruptedException e) {
+        } catch(InterruptedException e) {
             System.err.println("Clock process interrupted");
         }
     }

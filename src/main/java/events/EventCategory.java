@@ -11,7 +11,7 @@ public enum EventCategory {
      */
     public static EventCategory of(String category) {
         category = category.toLowerCase();
-        switch (category) {
+        switch(category) {
             case "adult":
                 return ADULT;
             case "care":
