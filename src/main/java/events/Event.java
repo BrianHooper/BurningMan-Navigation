@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 public class Event {
 
-    private static final DateTimeFormatter dfDay = DateTimeFormatter.ofPattern("EEEE");
-    private static final DateTimeFormatter dfTime = DateTimeFormatter.ofPattern("h:mm a");
+    private static final DateTimeFormatter dfDay = DateTimeFormatter.ofPattern("E");
+    private static final DateTimeFormatter dfTime = DateTimeFormatter.ofPattern("h:mma");
     public static final DateTimeFormatter dfFull = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
     public static LocalDateTime globalEventStartTime = LocalDateTime.of(
@@ -16,7 +16,13 @@ public class Event {
     );
 
     private final String name;
+
     private final String location;
+
+    public String getDescription() {
+        return description;
+    }
+
     private final String description;
     private final LocalDateTime[] startTimes;
     private LocalDateTime[] endTimes;
@@ -100,6 +106,7 @@ public class Event {
         ArrayList<Integer> dateIndexes = new ArrayList<>();
         for(String index : dateStrIndexes) {
             try {
+                //TODO extract only numerical data from index
                 dateIndexes.add(Integer.parseInt(index));
             } catch(NumberFormatException e) {
                 System.err.println("Error reading date indexes");
@@ -138,7 +145,7 @@ public class Event {
         if(endDate == null) {
             return dfDay.format(startDate) + " at " + dfTime.format(startDate);
         } else {
-            return dfDay.format(startDate) + " from " + dfTime.format(startDate) + " to " + dfTime.format(endDate);
+            return dfDay.format(startDate) + " " + dfTime.format(startDate) + "-" + dfTime.format(endDate);
         }
     }
 
@@ -148,7 +155,7 @@ public class Event {
      *
      * @return String
      */
-    private String timesToString() {
+    public String timesToString() {
         int length = Math.min(startTimes.length, endTimes.length);
         int index = 0;
         StringBuilder sb = new StringBuilder();
@@ -171,7 +178,7 @@ public class Event {
      *
      * @return String name
      */
-    String getName() {
+    public String getName() {
         return name;
     }
 
@@ -198,7 +205,7 @@ public class Event {
      *
      * @return EventCategory
      */
-    EventCategory getCategory() {
+    public EventCategory getCategory() {
         return category;
     }
 
@@ -209,6 +216,14 @@ public class Event {
      */
     @Override
     public String toString() {
-        return "Name: " + name + " Location: " + location + " Category: " + category + '\n' + timesToString();
+        return "Name: " + name + " Location: " + location + " Category: " + category.toString().charAt(0) + '\n' + timesToString();
+    }
+
+    public String[] getElements() {
+        return new String[]{name, location, String.valueOf(category.toString().charAt(0)), timesToString()};
+    }
+
+    public int numTimes() {
+        return startTimes.length;
     }
 }

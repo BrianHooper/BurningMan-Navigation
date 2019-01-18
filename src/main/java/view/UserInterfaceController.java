@@ -2,6 +2,7 @@ package view;
 
 import driver.ClockDriver;
 import driver.CoordinateListener;
+import driver.ListManager;
 import events.Event;
 import events.EventManager;
 import events.NoteManager;
@@ -268,7 +269,7 @@ public class UserInterfaceController {
      */
     private void searchEventsName() {
         String eventName = JOptionPane.showInputDialog(view.getMainFrame(), "Enter event name:");
-        if(eventName == null) {
+        if(eventName == null || eventName.isEmpty() || eventName.charAt(0) < 33) {
             return;
         }
         ArrayList<Event> eventList = eventManager.listByName(eventName);
@@ -293,24 +294,44 @@ public class UserInterfaceController {
      */
     private void searchEventsCamp() {
         String campName = JOptionPane.showInputDialog(view.getMainFrame(), "Enter event name:");
-        if(campName == null) {
+        if(campName == null || campName.isEmpty() || campName.charAt(0) < 33) {
             return;
         }
+
         ArrayList<Event> eventList = eventManager.listByCamp(campName);
-        String[] eventStringArray = new String[eventList.size()];
-        for(int i = 0; i < eventList.size(); i++) {
-            eventStringArray[i] = eventList.get(i).toString();
+
+        ArrayList<String[]> eventElements = new ArrayList<>();
+        for(Event event : eventList) {
+            eventElements.add(event.getElements());
         }
 
-        if(eventStringArray.length == 0) {
-            JOptionPane.showMessageDialog(view.getMainFrame(), "No events found");
-        } else {
-            //TODO change to scroll pane
-            JOptionPane.showInputDialog(view.getMainFrame(), "",
-                    "Events", JOptionPane.QUESTION_MESSAGE, null,
-                    eventStringArray, // Array of choices
-                    eventStringArray[0]); // Initial choice
+        ArrayList<String> eventStrList = ListManager.splitEvenly(eventElements, 4);
+
+        OptionPane pane = new OptionPane();
+        pane.addListInput(eventStrList, 10);
+        pane.show(view.getMainFrame(), "Events", JOptionPane.OK_CANCEL_OPTION);
+
+        if(!pane.okPressed()) {
+            return;
         }
+        //TODO fix cast warning
+        JList<String> jList = (JList<String>) pane.getJComponents().get(0);
+        Event chosenEvent = eventList.get(jList.getSelectedIndex());
+
+        OptionPane eventPane = new OptionPane();
+        eventPane.addLabel("Name: " + chosenEvent.getName());
+        eventPane.addLabel("Category: " + chosenEvent.getCategory());
+
+        OptionPaneTextArea timeArea = new OptionPaneTextArea(20, chosenEvent.numTimes());
+        timeArea.setText(chosenEvent.timesToString());
+        timeArea.setEditable(false);
+        eventPane.addComponent(timeArea);
+
+        OptionPaneTextArea descriptionArea = new OptionPaneTextArea(20, 10);
+        descriptionArea.setText(chosenEvent.getDescription());
+        descriptionArea.setEditable(false);
+        eventPane.addTextInput(descriptionArea);
+        eventPane.show(view.getMainFrame(), "Event", JOptionPane.OK_CANCEL_OPTION);
     }
 
     /**

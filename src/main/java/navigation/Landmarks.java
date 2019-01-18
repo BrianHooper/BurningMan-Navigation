@@ -42,8 +42,8 @@ class Landmarks {
         ArrayList<String> lines = FileManager.readLines(bathroomsPath);
         if(lines == null)
             return;
-        try {
-            for(String line : lines) {
+        for(String line : lines) {
+            try {
                 String[] split = line.split(",");
                 if(split.length == 2) {
                     double latitude = Double.parseDouble(split[0]);
@@ -59,10 +59,11 @@ class Landmarks {
                         bathrooms.add(new Location(hour, minute, split[2].charAt(0)));
                     }
                 }
+            } catch(NumberFormatException e) {
+                System.err.println("Error parsing bathroom coordinates");
             }
-        } catch(NumberFormatException e) {
-            System.err.println("Error parsing bathroom coordinates");
         }
+
     }
 
     /**
@@ -75,8 +76,8 @@ class Landmarks {
         ArrayList<String> lines = FileManager.readLines(filename);
         if(lines == null)
             return;
-        try {
-            for(String line : lines) {
+        for(String line : lines) {
+            try {
                 String[] split = line.split(",");
                 if(split.length == 3) {
                     double latitude = Double.parseDouble(split[1]);
@@ -92,9 +93,9 @@ class Landmarks {
                         map.put(split[0], new Location(hour, minute, split[3].charAt(0)));
                     }
                 }
+            } catch(NumberFormatException e) {
+                System.err.println("Error parsing camp locations");
             }
-        } catch(NumberFormatException e) {
-            System.err.println("Error parsing bathroom coordinates");
         }
     }
 
