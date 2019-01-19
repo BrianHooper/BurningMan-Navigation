@@ -14,6 +14,12 @@ public class ClockDriver extends Thread {
     // Main GUI view
     private final View view;
 
+    // Logger
+    private final LogDriver logger = LogDriver.getInstance();
+
+    // Keeps infinite loop running until instructed to stop
+    private boolean keepRunning;
+
     /**
      * Constructor
      * <p>
@@ -23,6 +29,7 @@ public class ClockDriver extends Thread {
      */
     public ClockDriver(View view) {
         this.view = view;
+        keepRunning = true;
     }
 
     /**
@@ -32,16 +39,22 @@ public class ClockDriver extends Thread {
      */
     public void run() {
         try {
-            //noinspection InfiniteLoopStatement
-            while(true) {
+            while(keepRunning) {
                 LocalDateTime time = LocalDateTime.now();
                 String timeString = dfDay.format(time) + ", " + dfTime.format(time);
                 view.setClock(timeString);
                 Thread.sleep(1000);
             }
         } catch(InterruptedException e) {
-            System.err.println("Clock process interrupted");
+            logger.severe(this.getClass(), "Clock process interrupted: " + e.getMessage());
         }
+    }
+
+    /**
+     * Function called when terminating application
+     */
+    public void terminate() {
+        keepRunning = false;
     }
 
 }

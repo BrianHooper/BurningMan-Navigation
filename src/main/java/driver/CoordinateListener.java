@@ -26,6 +26,12 @@ public class CoordinateListener extends Thread {
     // Main GUI view
     private final View view;
 
+    // Logger
+    private final LogDriver logger = LogDriver.getInstance();
+
+    // Keeps infinite loop running until instructed to stop
+    private boolean keepRunning;
+
     /**
      * Constructor
      *
@@ -35,6 +41,7 @@ public class CoordinateListener extends Thread {
     public CoordinateListener(Navigator navigator, View view) {
         this.navigator = navigator;
         this.view = view;
+        keepRunning = true;
     }
 
     /**
@@ -50,13 +57,12 @@ public class CoordinateListener extends Thread {
             fileManager.appendLine("Program started," + ClockDriver.dfFull.format(LocalDateTime.now()));
         } catch(IOException e) {
             fileManager = null;
-            System.err.println("Error opening tracker file");
+            logger.severe(this.getClass(), "Error opening tracker file: " + e.getMessage());
         }
 
         int count = 0;
-        int every = 20; //
-        //noinspection InfiniteLoopStatement
-        while(true) {
+        int every = 20;
+        while(keepRunning) {
             try {
                 AbstractMap.SimpleEntry<Double, Double> coordinates = Location.readCoordinates();
                 if(coordinates != null) {
@@ -73,9 +79,25 @@ public class CoordinateListener extends Thread {
                     Thread.sleep(500);
                 }
             } catch(InterruptedException e) {
-                System.err.println("Coordinate thread interrupted");
+                logger.severe(this.getClass(), "Coordinate thread interrupted: " + e.getMessage());
             }
         }
+
+        if(fileManager != null) {
+            try {
+                fileManager.close();
+            } catch(IOException e) {
+                logger.severe(this.getClass(), "Cannot close file manager: " + e.getMessage());
+            }
+        }
+    }
+
+
+    /**
+     * Function called when terminating application
+     */
+    public void terminate() {
+        keepRunning = false;
     }
 
 }

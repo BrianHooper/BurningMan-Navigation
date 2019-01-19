@@ -2,6 +2,7 @@ package navigation;
 
 import driver.ClockDriver;
 import driver.FileManager;
+import driver.LogDriver;
 import events.Event;
 import events.EventManager;
 import events.NoteManager;
@@ -48,6 +49,9 @@ public class Navigator {
     private final EventManager eventManager;
     private final NoteManager noteManager;
 
+    // Logger
+    private static final LogDriver logger = LogDriver.getInstance();
+
     /**
      * Constructor
      * <p>
@@ -77,7 +81,8 @@ public class Navigator {
         try {
             properties.load(new FileInputStream(new File(configPath)));
         } catch(IOException e) {
-            System.err.println(configPath + " not found");
+            logger.severe(this.getClass(),
+                    "Error reading configuration file \'" + configPath + "\': " + e.getMessage());
             return;
         }
 
@@ -97,7 +102,8 @@ public class Navigator {
             if(properties.containsKey("CURRENT-DESTINATION-ADDRESS"))
                 currentDestination = new Location(properties.getProperty("CURRENT-DESTINATION-ADDRESS"));
         } catch(NumberFormatException e) {
-            System.err.println("Error reading configuration file");
+            logger.warning(this.getClass(),
+                    "NumberFormatException while reading config file: " + e.getMessage());
         }
     }
 
@@ -120,7 +126,8 @@ public class Navigator {
         try {
             properties.store(new FileOutputStream(configPath), "");
         } catch(IOException e) {
-            System.err.println("Error writing config file");
+            logger.warning(this.getClass(),
+                    "IOException while writing to config file \'" + configPath + "\': " + e.getMessage());
         }
     }
 

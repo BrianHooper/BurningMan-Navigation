@@ -3,6 +3,7 @@ package view;
 import driver.ClockDriver;
 import driver.CoordinateListener;
 import driver.ListManager;
+import driver.LogDriver;
 import events.Event;
 import events.EventCategory;
 import events.EventManager;
@@ -33,6 +34,13 @@ public class UserInterfaceController {
     private final EventManager eventManager;
     private final NoteManager noteManager;
 
+    // Threads for updating clock and coordinates
+    private final ClockDriver clockDriver;
+    private final CoordinateListener coordinateListener;
+
+    // Logger
+    private final LogDriver logger = LogDriver.getInstance();
+
     /**
      * Initializes a new graphical interface and loads the navigator
      * <p>
@@ -42,11 +50,6 @@ public class UserInterfaceController {
         View view = new View();
         Navigator navigator = new Navigator();
         new UserInterfaceController(view, navigator);
-        CoordinateListener coordinateListener = new CoordinateListener(navigator, view);
-        coordinateListener.start();
-
-        ClockDriver clockDriver = new ClockDriver(view);
-        clockDriver.start();
     }
 
     /**
@@ -64,6 +67,29 @@ public class UserInterfaceController {
         view.setNavigation(navigator);
         KeyController controller = new KeyController(this);
         view.setKeyListener(controller);
+
+        coordinateListener = new CoordinateListener(navigator, view);
+        coordinateListener.start();
+
+        clockDriver = new ClockDriver(view);
+        clockDriver.start();
+    }
+
+    /**
+     * Rejoins thread processes, closes open files, and terminates the program
+     */
+    private void exit() {
+        clockDriver.terminate();
+        coordinateListener.terminate();
+
+        try {
+            clockDriver.join(2000);
+            coordinateListener.join(2000);
+        } catch(InterruptedException e) {
+            logger.severe(this.getClass(), "InterruptedException while joining threads: " + e.getMessage());
+            System.exit(1);
+        }
+        System.exit(0);
     }
 
     /**
@@ -118,6 +144,8 @@ public class UserInterfaceController {
             case "Delete notes":
                 deleteNotes();
                 break;
+            case "Exit":
+                exit();
         }
         view.setNavigation(navigator);
     }
@@ -335,6 +363,7 @@ public class UserInterfaceController {
      * Lists events happening in the next 24 hours
      */
     private void listEventsHappeningSoon() {
+        //TODO change to drop-down list
         OptionPane pane = new OptionPane();
         pane.addLabel("Number of hours:");
         JTextField hourString = new JTextField(5);
@@ -346,8 +375,7 @@ public class UserInterfaceController {
             try {
                 int hours = Integer.parseInt(hourString.getText());
                 showEvents(eventManager.listHappeningSoon(hours));
-            } catch(NumberFormatException e) {
-                System.err.println("Improper hour format");
+            } catch(NumberFormatException ignored) {
             }
         }
     }

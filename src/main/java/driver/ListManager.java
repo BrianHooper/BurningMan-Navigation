@@ -3,6 +3,14 @@ package driver;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * Class ListManager
+ * <p>
+ * Static helper methods for working with lists
+ *
+ * @author Brian Hooper
+ * @since 0.9.0
+ */
 public class ListManager {
 
     /**

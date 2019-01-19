@@ -43,8 +43,6 @@ class Menu {
             case "Notes":
                 notes();
                 return "";
-            case "Exit":
-                System.exit(0);
             default:
                 return action;
         }

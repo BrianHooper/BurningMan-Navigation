@@ -1,6 +1,8 @@
 package events;
 
 import driver.ClockDriver;
+import driver.FileManager;
+import driver.LogDriver;
 
 import java.time.*;
 import java.time.format.DateTimeParseException;
@@ -28,6 +30,9 @@ public class Event {
     private final EventCategory category;
     private final LocalDateTime startTime;
     private LocalDateTime endTime;
+
+    // Logger
+    private static final LogDriver logger = LogDriver.getInstance();
 
     /**
      * Constructor
@@ -76,7 +81,9 @@ public class Event {
             globalEventStartTime = LocalDateTime.parse(startTimeString, ClockDriver.dfFull);
             return true;
         } catch(DateTimeParseException e) {
-            System.err.println("Error parsing string as date");
+            logger.warning(Event.class,
+                    "DateTimeParseException while setting global event start time using string \'" +
+                            startTimeString + "\': " + e.getMessage());
         }
         return false;
     }
@@ -104,8 +111,11 @@ public class Event {
      * @return LocalDateTime array
      */
     static LocalDateTime[] multiDateBuilder(String[] dateStrIndexes) {
-        if(dateStrIndexes == null || dateStrIndexes.length % 3 != 0) {
-            System.err.println("Data data has incorrect number of parameters");
+        if(dateStrIndexes == null)
+            return null;
+        else if(dateStrIndexes.length % 3 != 0) {
+            logger.warning(Event.class, "Incorrect number of parameters while parsing dateStrIndexes: length" +
+                    dateStrIndexes.length);
             return null;
         }
 
@@ -115,7 +125,9 @@ public class Event {
             try {
                 dateIndexes.add(Integer.parseInt(index.replaceAll("[^\\d.]", "")));
             } catch(NumberFormatException e) {
-                System.err.println("Error reading date indexes");
+                logger.warning(FileManager.class,
+                        "NumberFormatException while parsing integer, cannot parse " + index +
+                                ": " + e.getMessage());
                 return null;
             }
         }
@@ -131,7 +143,8 @@ public class Event {
                 dateArray[arrayIndex++] = dateBuilder(day, hour, minute);
             }
         } catch(ArrayIndexOutOfBoundsException e) {
-            System.err.println("Error reading date data");
+            logger.warning(Event.class, "Array index out of bounds while building multiple dates: " +
+                    e.getMessage());
             return null;
         }
         return dateArray;

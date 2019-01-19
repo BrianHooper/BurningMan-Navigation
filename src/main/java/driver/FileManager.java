@@ -3,10 +3,25 @@ package driver;
 import java.io.*;
 import java.util.ArrayList;
 
+/**
+ * Class FileManager
+ * <p>
+ * Central static methods for reading / writing files
+ *
+ * @author Brian Hooper
+ * @since 0.9.0
+ */
+// Keep suppress warnings until tracker is enabled
 @SuppressWarnings("all")
 public class FileManager {
     // File output writer
     private Writer writer;
+
+    // Path to currently openend file
+    private String filename;
+
+    // Logger
+    private static LogDriver logger = LogDriver.getInstance();
 
     /**
      * Constructor
@@ -18,6 +33,7 @@ public class FileManager {
      */
     FileManager(@SuppressWarnings("SameParameterValue") String filename) throws IOException {
         writer = new BufferedWriter(new FileWriter(filename, true));
+        this.filename = filename;
     }
 
     /**
@@ -37,8 +53,8 @@ public class FileManager {
                 lines.add(currentLine);
             }
         } catch(IOException e) {
-            System.err.println("Error reading file " + filename);
-            return lines;
+            logger.severe(FileManager.class,
+                    "IOException while reading file " + filename + ": " + e.getMessage());
         }
         return lines;
     }
@@ -60,7 +76,8 @@ public class FileManager {
             f.write(sb.toString());
             f.close();
         } catch(IOException e) {
-            System.err.println("Error writing files");
+            logger.severe(FileManager.class,
+                    "IOException while writing file " + filename + ": " + e.getMessage());
         }
     }
 
@@ -70,11 +87,21 @@ public class FileManager {
      * @param line String line
      */
     public void appendLine(String line) {
-//        try {
-//            writer.write(line + '\n');
-//            writer.flush();
-//        } catch(IOException e) {
-//            System.err.println("Error writing file");
-//        }
+        try {
+            writer.write(line + '\n');
+            writer.flush();
+        } catch(IOException e) {
+            logger.severe(this.getClass(),
+                    "IOException while writing to file " + filename + ": " + e.getMessage());
+        }
+    }
+
+    /**
+     * Closes the currently open file
+     *
+     * @throws IOException if the file cannot be closed
+     */
+    public void close() throws IOException {
+        writer.close();
     }
 }

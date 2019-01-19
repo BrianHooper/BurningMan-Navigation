@@ -1,6 +1,7 @@
 package navigation;
 
 import driver.FileManager;
+import driver.LogDriver;
 
 import java.util.ArrayList;
 import java.util.TreeMap;
@@ -29,6 +30,9 @@ class Landmarks {
 
     // List of bathroom locations
     private final ArrayList<Location> bathrooms;
+
+    // Logger
+    private static final LogDriver logger = LogDriver.getInstance();
 
     /**
      * Constructor
@@ -66,7 +70,9 @@ class Landmarks {
                     }
                 }
             } catch(NumberFormatException e) {
-                System.err.println("Error parsing bathroom coordinates");
+                logger.warning(this.getClass(),
+                        "NumberFormatException while reading bathroom coordinates, error parsing line \'" +
+                                line + "\': " + e.getMessage());
             }
         }
 
@@ -100,7 +106,9 @@ class Landmarks {
                     }
                 }
             } catch(NumberFormatException e) {
-                System.err.println("Error parsing camp locations");
+                logger.warning(this.getClass(),
+                        "NumberFormatException while reading named locations, error parsing line \'" +
+                                line + "\': " + e.getMessage());
             }
         }
     }

@@ -160,6 +160,7 @@ class OptionPane {
      * @param index index of JList
      * @return selected value, or null if out of bounds
      */
+    @SuppressWarnings("SameParameterValue")
     String getJListSelectedValue(int index) {
         if(index < 0 || index >= jLists.size()) {
             return null;
