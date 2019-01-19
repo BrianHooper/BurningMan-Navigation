@@ -42,19 +42,13 @@ public class View {
      * @param frame JFrame
      */
     private static void fullScreen(final JFrame frame) {
-        frame.setPreferredSize(frame.getGraphicsConfiguration().getBounds().getSize());
-
-        frame.pack();
-
+        frame.setUndecorated(true);
         frame.setResizable(true);
-
         frame.setExtendedState(Frame.MAXIMIZED_BOTH);
-        boolean successful = frame.getExtendedState() == Frame.MAXIMIZED_BOTH;
-
+        frame.setTitle("Burning Man Navigation");
+        ImageIcon img = new ImageIcon("src/main/resources/icon.png");
+        frame.setIconImage(img.getImage());
         frame.setVisible(true);
-
-        if(!successful)
-            frame.setExtendedState(Frame.MAXIMIZED_BOTH);
     }
 
     /**
