@@ -1,9 +1,6 @@
 package driver;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
+import java.io.*;
 import java.time.LocalDateTime;
 import java.util.logging.Level;
 
@@ -32,6 +29,11 @@ public class LogDriver {
      * Private, instantiates global logger object
      */
     private LogDriver() {
+        File directory = new File("config/");
+        if(!directory.exists()) {
+            directory.mkdir();
+        }
+
         try {
             writer = new BufferedWriter(new FileWriter(logfile, true));
         } catch(IOException e) {
@@ -61,7 +63,7 @@ public class LogDriver {
      */
     private void log(Class<?> classType, Level level, String message) {
         if(writer == null) {
-            System.err.println("Error: logfile is closed.");
+            System.err.println("Error writing \'" + message + "\': logfile is closed.");
             return;
         }
         String className = classType.getName();

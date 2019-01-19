@@ -79,6 +79,10 @@ public class UserInterfaceController {
      * Rejoins thread processes, closes open files, and terminates the program
      */
     private void exit() {
+        navigator.writeToConfigFile();
+        navigator.writeFavorites();
+        noteManager.saveNotes();
+
         clockDriver.terminate();
         coordinateListener.terminate();
 
@@ -474,6 +478,7 @@ public class UserInterfaceController {
      * Creates JOptionPane popup for setting the width of a block
      */
     private void setBlockWidth() {
+        //TODO change to OptionPane to fix cancel error
         String result = JOptionPane.showInputDialog(view.getMainFrame(), "Enter block width (default 240)");
         try {
             Location.block_width = Integer.parseInt(result);
@@ -487,6 +492,7 @@ public class UserInterfaceController {
      * Creates JOptionPane popup for setting esplanade distance
      */
     private void setEsplanade() {
+        //TODO change to OptionPane to fix cancel error
         String result = JOptionPane.showInputDialog(view.getMainFrame(), "Enter Esplanade distance (default 2600)");
         try {
             Location.esplanade_distance = Integer.parseInt(result);
@@ -500,6 +506,7 @@ public class UserInterfaceController {
      * Creates JOptionPane popup for setting man coordinates
      */
     private void setMan() {
+        //TODO add option for setting coordinates manually
         int result = JOptionPane.showConfirmDialog(view.getMainFrame(), "Use current location as man coordinates?");
         if(result == JOptionPane.YES_OPTION) {
             navigator.writeToConfigFile();
@@ -510,6 +517,7 @@ public class UserInterfaceController {
      * Creates JOptionPane popup for setting home address
      */
     private void setHome() {
+        //TODO change to AddressPane
         String result = JOptionPane.showInputDialog(view.getMainFrame(), "Enter home address (Hour,Minute,Street): ");
         String[] split = result.split(",");
         String err = "Invalid address";

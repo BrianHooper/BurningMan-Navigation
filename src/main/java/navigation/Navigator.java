@@ -168,10 +168,14 @@ public class Navigator {
     public TreeMap<String, String> getPanelUpdate() {
         TreeMap<String, String> map = new TreeMap<>();
         map.put("currentAddress", currentLocation.getAddress());
+
         Location closestBathroom = landmarks.findBathroom(currentLocation);
-        map.put("bathroomAddress", closestBathroom.getAddress());
-        map.put("bathroomDirections", currentLocation.distance(closestBathroom) +
-                ", " + currentLocation.cardinal(closestBathroom));
+        if(closestBathroom != null) {
+            map.put("bathroomAddress", closestBathroom.getAddress());
+            map.put("bathroomDirections", currentLocation.distance(closestBathroom) +
+                    ", " + currentLocation.cardinal(closestBathroom));
+        }
+
         map.put("homeAddress", home.getAddress());
         map.put("homeDirections", currentLocation.distance(home) + ", " + currentLocation.cardinal(home));
         if(currentDestination != null) {
