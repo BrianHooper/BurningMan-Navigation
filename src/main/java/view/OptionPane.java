@@ -108,12 +108,22 @@ class OptionPane {
      * @param rows         number of rows to display in list
      */
     void addListInput(ArrayList<String> listElements, int rows) {
+        addListInput(listElements, rows, 0);
+    }
+
+    /**
+     * Adds a list element for single-interval selection
+     *
+     * @param listElements  ArrayList of Strings for list choices
+     * @param rows          number of rows to display in list
+     * @param selectedIndex index of default selected value
+     */
+    void addListInput(ArrayList<String> listElements, int rows, int selectedIndex) {
         JList<String> list = new JList<>(listElements.toArray(new String[0]));
 
         list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         list.setLayoutOrientation(JList.VERTICAL);
         list.setVisibleRowCount(rows);
-        list.setSelectedIndex(0);
         list.setFont(View.standardFont);
 
         if(!focusSet) {
@@ -124,6 +134,7 @@ class OptionPane {
         JScrollPane menuScrollPane = new JScrollPane(list);
         menuScrollPane.setAlignmentX(0);
 
+        list.setSelectedIndex(selectedIndex);
         panel.add(menuScrollPane);
         jComponents.add(list);
         jLists.add(list);

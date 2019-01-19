@@ -363,20 +363,20 @@ public class UserInterfaceController {
      * Lists events happening in the next 24 hours
      */
     private void listEventsHappeningSoon() {
-        //TODO change to drop-down list
         OptionPane pane = new OptionPane();
+
+        ArrayList<String> menuItems = new ArrayList<>();
+        for(int i = 1; i <= 48; i++) {
+            menuItems.add(String.valueOf(i));
+        }
+
         pane.addLabel("Number of hours:");
-        JTextField hourString = new JTextField(5);
-        hourString.setText("24");
-        pane.addTextInput(hourString);
+        pane.addListInput(menuItems, 1, 23);
 
 
         if(pane.show(view.getMainFrame(), "See upcoming events")) {
-            try {
-                int hours = Integer.parseInt(hourString.getText());
-                showEvents(eventManager.listHappeningSoon(hours));
-            } catch(NumberFormatException ignored) {
-            }
+            int hours = pane.getJListSelectedIndex(0) + 1;
+            showEvents(eventManager.listHappeningSoon(hours));
         }
     }
 
