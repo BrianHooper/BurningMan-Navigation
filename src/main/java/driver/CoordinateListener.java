@@ -9,14 +9,21 @@ import java.time.LocalDateTime;
 import java.util.AbstractMap;
 
 /**
- * class CoordinateListener
+ * Class CoordinateListener
  * <p>
  * Reads GPS coordinates from file & updates view
+ *
+ * @author Brian Hooper
+ * @since 0.9.0
  */
 public class CoordinateListener extends Thread {
+    // Relative path to tracker file
     private static final String trackerPath = "config/tracker.csv";
 
+    // Main navigator object
     private final Navigator navigator;
+
+    // Main GUI view
     private final View view;
 
     /**
@@ -40,6 +47,7 @@ public class CoordinateListener extends Thread {
         FileManager fileManager;
         try {
             fileManager = new FileManager(trackerPath);
+            fileManager.appendLine("Program started," + ClockDriver.dfFull.format(LocalDateTime.now()));
         } catch(IOException e) {
             fileManager = null;
             System.err.println("Error opening tracker file");
@@ -60,7 +68,7 @@ public class CoordinateListener extends Thread {
                         count = 0;
                         String line = String.valueOf(latitude) + ',' + String.valueOf(longitude) + ','
                                 + ClockDriver.dfFull.format(LocalDateTime.now());
-//                        fileManager.appendLine(line);
+                        fileManager.appendLine(line);
                     }
                     Thread.sleep(500);
                 }

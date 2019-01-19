@@ -1,10 +1,11 @@
 package driver;
 
 import java.io.*;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+@SuppressWarnings("all")
 public class FileManager {
+    // File output writer
     private Writer writer;
 
     /**
@@ -17,7 +18,6 @@ public class FileManager {
      */
     FileManager(@SuppressWarnings("SameParameterValue") String filename) throws IOException {
         writer = new BufferedWriter(new FileWriter(filename, true));
-        appendLine("Program started," + ClockDriver.dfFull.format(LocalDateTime.now()));
     }
 
     /**
@@ -70,12 +70,11 @@ public class FileManager {
      * @param line String line
      */
     public void appendLine(String line) {
-        try {
-            writer.write(line + '\n');
-            writer.flush();
-        } catch(IOException e) {
-            System.err.println("Error writing file");
-        }
-
+//        try {
+//            writer.write(line + '\n');
+//            writer.flush();
+//        } catch(IOException e) {
+//            System.err.println("Error writing file");
+//        }
     }
 }

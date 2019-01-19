@@ -5,15 +5,21 @@ import navigation.Navigator;
 import javax.swing.*;
 import java.awt.*;
 
+
 /**
  * Class View
  * <p>
  * Creates JFrame and components
+ *
+ * @author Brian Hooper
+ * @since 0.9.0
  */
 public class View {
+    // Main frame and panel
     private final JFrame mainFrame;
     private final MainInterfacePanel mainPanel;
 
+    // Global standard font
     static final Font standardFont = new Font("Monospaced", Font.PLAIN, 22);
 
     /**
@@ -108,7 +114,6 @@ public class View {
         mainFrame.repaint();
         mainFrame.revalidate();
     }
-
 
     /**
      * Sets the clock value

@@ -1,5 +1,6 @@
 package navigation;
 
+import driver.ClockDriver;
 import driver.FileManager;
 import events.Event;
 import events.EventManager;
@@ -13,16 +14,36 @@ import java.util.ArrayList;
 import java.util.Properties;
 import java.util.TreeMap;
 
+
+/**
+ * Class Navigator
+ * <p>
+ * Maintains the current location, destination, home, favorites
+ *
+ * @author Brian Hooper
+ * @since 0.9.0
+ */
 public class Navigator {
+    // Relative path of config file
     private static final String configPath = "config/config.cfg";
+
+    // Relative path of favorites file
     private static final String favoritesPath = "config/favorites.csv";
 
+    // Current home location
     private Location home;
+
+    // Current navigation destination
     private Location currentDestination;
     private String currentDestinationName;
+
+    // File manager for reading/writing properties
     private Properties properties;
 
+    // Current location
     private final Location currentLocation;
+
+    // Managers for camps, favorites, events, notes
     private final Landmarks landmarks;
     private final EventManager eventManager;
     private final NoteManager noteManager;
@@ -34,8 +55,6 @@ public class Navigator {
      */
     public Navigator() {
         landmarks = new Landmarks();
-        eventManager = new EventManager();
-        noteManager = new NoteManager();
 
         currentLocation = new Location(6, 0, 'D');
         home = new Location(6, 0, 'D');
@@ -45,6 +64,8 @@ public class Navigator {
 
         readLandmarks();
         readConfig();
+        noteManager = new NoteManager();
+        eventManager = new EventManager();
 
     }
 
@@ -71,10 +92,10 @@ public class Navigator {
                 Location.block_width = Integer.parseInt((String) properties.get("BLOCK-WIDTH"));
             if(properties.containsKey("EVENT-START-TIME"))
                 Event.setGlobalEventStartTime(properties.getProperty("EVENT-START-TIME"));
-            if(properties.containsKey("CURRENT-DESTINATION-NAME")) {
+            if(properties.containsKey("CURRENT-DESTINATION-NAME"))
                 currentDestinationName = properties.getProperty("CURRENT-DESTINATION-NAME");
-                currentDestination = landmarks.getCamp(currentDestinationName);
-            }
+            if(properties.containsKey("CURRENT-DESTINATION-ADDRESS"))
+                currentDestination = new Location(properties.getProperty("CURRENT-DESTINATION-ADDRESS"));
         } catch(NumberFormatException e) {
             System.err.println("Error reading configuration file");
         }
@@ -93,7 +114,8 @@ public class Navigator {
         properties.put("ESPLANADE-DISTANCE", String.valueOf(Location.esplanade_distance));
         properties.put("BLOCK-WIDTH", String.valueOf(Location.block_width));
         properties.put("CURRENT-DESTINATION-NAME", currentDestinationName);
-        properties.put("EVENT-START-TIME", Event.dfFull.format(Event.globalEventStartTime));
+        properties.put("CURRENT-DESTINATION-ADDRESS", currentDestination.getCSVAddress());
+        properties.put("EVENT-START-TIME", ClockDriver.dfFull.format(Event.globalEventStartTime));
 
         try {
             properties.store(new FileOutputStream(configPath), "");
@@ -110,16 +132,6 @@ public class Navigator {
      */
     public void updateLocation(double latitude, double longitude) {
         currentLocation.updateLocation(latitude, longitude);
-    }
-
-    /**
-     * Returns exact camp name string
-     *
-     * @param campName partial camp name
-     * @return exact camp name
-     */
-    public String findCampName(String campName) {
-        return landmarks.findCampName(campName);
     }
 
     /**
@@ -164,6 +176,12 @@ public class Navigator {
         return map;
     }
 
+    /**
+     * Setter for the current destination
+     *
+     * @param location Location object
+     * @param name     name of destination
+     */
     public void setDestination(Location location, String name) {
         this.currentDestinationName = name;
         this.currentDestination = location;
@@ -210,19 +228,56 @@ public class Navigator {
     }
 
     /**
-     * Getter for camps
+     * Getter for event manager
      *
-     * @return TreeMap (String camp name, Location camp)
+     * @return EventManager
      */
-    public TreeMap<String, Location> getCamps() {
-        return landmarks.getCamps();
-    }
-
     public EventManager getEventManager() {
         return eventManager;
     }
 
+    /**
+     * Getter for note manager
+     *
+     * @return NoteManager
+     */
     public NoteManager getNoteManager() {
         return noteManager;
+    }
+
+    /**
+     * Returns name/address pairs for each saved favorite
+     *
+     * @return ArrayList of length-2 String arrays
+     */
+    public ArrayList<String[]> getFavoritePairs() {
+        ArrayList<String[]> favPairs = new ArrayList<>();
+        for(String favName : landmarks.getFavorites().keySet()) {
+            favPairs.add(new String[]{favName, landmarks.getFavorites().get(favName).getAddress()});
+        }
+        return favPairs;
+    }
+
+    /**
+     * Returns all camps containing a partial match to a search term
+     * <p>
+     * can use * as a wildcard to return all camps
+     *
+     * @param searchTerm search term
+     * @return ArrayList of String camp names
+     */
+    public ArrayList<String> findCamps(String searchTerm) {
+        if(searchTerm.equals("*")) {
+            return new ArrayList<>(landmarks.getCamps().keySet());
+        }
+
+        searchTerm = searchTerm.toLowerCase();
+        ArrayList<String> results = new ArrayList<>();
+        for(String campName : landmarks.getCamps().keySet()) {
+            if(campName.toLowerCase().contains(searchTerm)) {
+                results.add(campName);
+            }
+        }
+        return results;
     }
 }

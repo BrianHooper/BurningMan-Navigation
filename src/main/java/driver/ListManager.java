@@ -5,6 +5,13 @@ import java.util.Arrays;
 
 public class ListManager {
 
+    /**
+     * Creates an evenly spaced row from a list of strings and a list of lengths
+     *
+     * @param elements   String array
+     * @param maxLengths int array of lengths
+     * @return String row
+     */
     private static String createRow(String[] elements, int[] maxLengths) {
         if(elements.length != maxLengths.length) {
             return null;
@@ -16,6 +23,13 @@ public class ListManager {
         return sb.toString();
     }
 
+    /**
+     * Pads the end of a string with spaces to make it a specific length
+     *
+     * @param str            input String
+     * @param requiredLength specified length
+     * @return String
+     */
     private static String addSpacers(String str, int requiredLength) {
         int spacerLength = requiredLength - str.length();
         char[] repeat = new char[spacerLength];
@@ -23,6 +37,25 @@ public class ListManager {
         return str + new String(repeat);
     }
 
+    /**
+     * Spaces a list of data evenly
+     * <p>
+     * turns
+     * <p>
+     * "One","Two"
+     * "Three and four","and five"
+     * "Six","as well as seven"
+     * <p>
+     * into
+     * <p>
+     * "One            Two"
+     * "Three and four and five"
+     * "Six            as well as seven"
+     *
+     * @param data    ArrayList of String arrays
+     * @param columns number of columns in data
+     * @return ArrayList of strings
+     */
     public static ArrayList<String> splitEvenly(ArrayList<String[]> data, int columns) {
         int[] maxLengths = new int[columns];
         for(String[] row : data) {

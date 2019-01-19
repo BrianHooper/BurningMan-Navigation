@@ -1,12 +1,19 @@
 package view;
 
+
 /**
  * Class Menu
  * <p>
- * handles displaying of menu items
+ * Handles displaying menu items
+ *
+ * @author Brian Hooper
+ * @since 0.9.0
  */
 class Menu {
+    // Current list of menu items
     private MenuLabel[] menuItems;
+
+    // Currently selected menu item
     private int selected = 0;
 
     /**
@@ -32,9 +39,6 @@ class Menu {
                 return "";
             case "Settings":
                 settings();
-                return "";
-            case "Find Events":
-                events();
                 return "";
             case "Notes":
                 notes();
@@ -63,13 +67,14 @@ class Menu {
      * Creates home menu
      */
     void home() {
-        menuItems = new MenuLabel[6];
-        menuItems[0] = new MenuLabel("Find camp");
-        menuItems[1] = new MenuLabel("Favorites");
-        menuItems[2] = new MenuLabel("List all camps");
+        menuItems = new MenuLabel[7];
+        menuItems[0] = new MenuLabel("Go to address");
+        menuItems[1] = new MenuLabel("Find camp");
+        menuItems[2] = new MenuLabel("Favorites");
         menuItems[3] = new MenuLabel("Find Events");
-        menuItems[4] = new MenuLabel("Notes");
-        menuItems[5] = new MenuLabel("Settings");
+        menuItems[4] = new MenuLabel("Happening soon");
+        menuItems[5] = new MenuLabel("Notes");
+        menuItems[6] = new MenuLabel("Settings");
 
         selected = 0;
         menuItems[0].select();
@@ -87,21 +92,6 @@ class Menu {
         menuItems[3] = new MenuLabel("Adjust block width");
         menuItems[4] = new MenuLabel("Set event start time");
         menuItems[5] = new MenuLabel("Exit");
-
-        selected = 0;
-        menuItems[0].select();
-    }
-
-    /**
-     * Creates events menu
-     */
-    private void events() {
-        menuItems = new MenuLabel[4];
-
-        menuItems[0] = new MenuLabel("View Events by day");
-        menuItems[1] = new MenuLabel("Search events by name");
-        menuItems[2] = new MenuLabel("Search events by camp");
-        menuItems[3] = new MenuLabel("List events happening soon");
 
         selected = 0;
         menuItems[0].select();

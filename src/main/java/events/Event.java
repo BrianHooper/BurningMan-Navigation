@@ -1,32 +1,33 @@
 package events;
 
+import driver.ClockDriver;
+
 import java.time.*;
-import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 
+
+/**
+ * Class Event
+ * <p>
+ * Represents a single event (Music, workshop, etc) with a name, location, category, and start/end time
+ *
+ * @author Brian Hooper
+ * @since 0.9.0
+ */
 public class Event {
-
-    private static final DateTimeFormatter dfDay = DateTimeFormatter.ofPattern("E");
-    private static final DateTimeFormatter dfTime = DateTimeFormatter.ofPattern("h:mma");
-    public static final DateTimeFormatter dfFull = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-
+    // Global start time, all relative events (+1 day, etc) are based on this
     public static LocalDateTime globalEventStartTime = LocalDateTime.of(
             LocalDate.of(2019, Month.AUGUST, 25), LocalTime.MIDNIGHT
     );
 
+    // Main parameters for the event
     private final String name;
-
     private final String location;
-
-    public String getDescription() {
-        return description;
-    }
-
     private final String description;
-    private final LocalDateTime[] startTimes;
-    private LocalDateTime[] endTimes;
     private final EventCategory category;
+    private final LocalDateTime startTime;
+    private LocalDateTime endTime;
 
     /**
      * Constructor
@@ -37,15 +38,15 @@ public class Event {
      * @param location    Location String
      * @param description String description
      * @param category    EventCategory
-     * @param startTimes  Array of LocalDateTime object
+     * @param startTime   LocalDateTime object
      */
-    Event(String name, String location, String description, EventCategory category, LocalDateTime[] startTimes) {
+    Event(String name, String location, String description, EventCategory category, LocalDateTime startTime) {
         this.name = name;
         this.location = location;
         this.description = description;
-        this.startTimes = startTimes;
+
+        this.startTime = startTime;
         this.category = category;
-        this.endTimes = new LocalDateTime[0];
     }
 
     /**
@@ -57,12 +58,12 @@ public class Event {
      * @param location    Location String
      * @param description String description
      * @param category    EventCategory
-     * @param startTimes  Array of LocalDateTime object
-     * @param endTimes    Array of LocalDateTime object
+     * @param startTime   LocalDateTime object
+     * @param endTime     LocalDateTime object
      */
-    Event(String name, String location, String description, EventCategory category, LocalDateTime[] startTimes, LocalDateTime[] endTimes) {
-        this(name, location, description, category, startTimes);
-        this.endTimes = endTimes;
+    Event(String name, String location, String description, EventCategory category, LocalDateTime startTime, LocalDateTime endTime) {
+        this(name, location, description, category, startTime);
+        this.endTime = endTime;
     }
 
     /**
@@ -72,7 +73,7 @@ public class Event {
      */
     public static boolean setGlobalEventStartTime(String startTimeString) {
         try {
-            globalEventStartTime = LocalDateTime.parse(startTimeString, Event.dfFull);
+            globalEventStartTime = LocalDateTime.parse(startTimeString, ClockDriver.dfFull);
             return true;
         } catch(DateTimeParseException e) {
             System.err.println("Error parsing string as date");
@@ -103,7 +104,7 @@ public class Event {
      * @return LocalDateTime array
      */
     static LocalDateTime[] multiDateBuilder(String[] dateStrIndexes) {
-        if(dateStrIndexes.length % 3 != 0) {
+        if(dateStrIndexes == null || dateStrIndexes.length % 3 != 0) {
             System.err.println("Data data has incorrect number of parameters");
             return null;
         }
@@ -144,35 +145,14 @@ public class Event {
      * @return String
      */
     private static String asString(LocalDateTime startDate, LocalDateTime endDate) {
-        if(endDate == null) {
-            return dfDay.format(startDate) + " at " + dfTime.format(startDate);
+        if(startDate == null) {
+            return "";
+        } else if(endDate == null) {
+            return ClockDriver.dfTime.format(startDate) + " at " + ClockDriver.dfTime.format(startDate);
         } else {
-            return dfDay.format(startDate) + " " + dfTime.format(startDate) + "-" + dfTime.format(endDate);
+            return ClockDriver.dfTime.format(startDate) + " " +
+                    ClockDriver.dfTime.format(startDate) + "-" + ClockDriver.dfTime.format(endDate);
         }
-    }
-
-
-    /**
-     * Formats event times as a String
-     *
-     * @return String
-     */
-    public String timesToString() {
-        int length = Math.min(startTimes.length, endTimes.length);
-        int index = 0;
-        StringBuilder sb = new StringBuilder();
-        while(index < length) {
-            sb.append("    ");
-            sb.append(asString(startTimes[index], endTimes[index]));
-            sb.append('\n');
-            index++;
-        }
-        while(index < startTimes.length) {
-            sb.append("    ");
-            sb.append(asString(startTimes[index++], null));
-            sb.append('\n');
-        }
-        return sb.toString();
     }
 
     /**
@@ -194,12 +174,12 @@ public class Event {
     }
 
     /**
-     * Getter for start times
+     * Getter for start time
      *
-     * @return LocalDateTime[] array of start times
+     * @return LocalDateTime start time
      */
-    LocalDateTime[] getStartTimes() {
-        return startTimes;
+    LocalDateTime getStartTime() {
+        return startTime;
     }
 
     /**
@@ -218,14 +198,33 @@ public class Event {
      */
     @Override
     public String toString() {
-        return "Name: " + name + " Location: " + location + " Category: " + category.toString().charAt(0) + '\n' + timesToString();
+        return "Name: " + name + " Location: " + location + " Category: " + category.toString().charAt(0) + '\n' + asString(startTime, endTime);
     }
 
+    /**
+     * Gets the name, location, category, and time as a String array
+     *
+     * @return String array
+     */
     public String[] getElements() {
-        return new String[]{name, location, String.valueOf(category.toString().charAt(0)), timesToString()};
+        return new String[]{name, location, String.valueOf(category.toString().charAt(0)), asString(startTime, endTime)};
     }
 
-    public int numTimes() {
-        return startTimes.length;
+    /**
+     * Formats the start and end time as a string
+     *
+     * @return String start and end time
+     */
+    public String timeToString() {
+        return asString(startTime, endTime);
+    }
+
+    /**
+     * Getter for event description
+     *
+     * @return description
+     */
+    public String getDescription() {
+        return description;
     }
 }

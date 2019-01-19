@@ -5,13 +5,20 @@ import driver.FileManager;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+/**
+ * Class EventManager
+ * <p>
+ * Creates, updates, and deletes events
+ *
+ * @author Brian Hooper
+ * @since 0.9.0
+ */
 public class EventManager {
+    // relative path to file containing list of events
     private static final String eventsPath = "config/eventList.csv";
 
+    // main list of events
     private final ArrayList<Event> events;
-
-//    todo implement music list
-//    private final ArrayList<Event> music;
 
     /**
      * Constructor
@@ -50,71 +57,21 @@ public class EventManager {
                 if(startTimes != null) {
                     // Optional elements
                     if(split.length == 6) {
-                        String[] endDateStr = split[4].split(",");
+                        String[] endDateStr = split[5].split(",");
                         LocalDateTime[] endTimes = Event.multiDateBuilder(endDateStr);
-                        if(endTimes != null) {
-                            events.add(new Event(name, location, description, category, startTimes, endTimes));
+                        if(endTimes != null && startTimes.length <= endTimes.length) {
+                            for(int i = 0; i < startTimes.length; i++) {
+                                events.add(new Event(name, location, description, category, startTimes[i], endTimes[i]));
+                            }
                         }
                     } else {
-                        events.add(new Event(name, location, description, category, startTimes));
+                        for(LocalDateTime startTime : startTimes) {
+                            events.add(new Event(name, location, description, category, startTime));
+                        }
                     }
                 }
             }
         }
-    }
-
-    /**
-     * Returns an ArrayList of events matching a category
-     *
-     * @param category EventCategory
-     * @return ArrayList of Event objects
-     */
-    @SuppressWarnings("unused")
-    public ArrayList<Event> listByCategory(EventCategory category) {
-        ArrayList<Event> matchingEvents = new ArrayList<>();
-        for(Event event : events) {
-            if(event.getCategory() == category) {
-                matchingEvents.add(event);
-            }
-        }
-
-        return matchingEvents;
-    }
-
-    /**
-     * Returns a list of events matching an event name
-     *
-     * @param name partial match of event name
-     * @return ArrayList of Event objects
-     */
-    public ArrayList<Event> listByName(String name) {
-        name = name.toLowerCase();
-        ArrayList<Event> matchingEvents = new ArrayList<>();
-        for(Event event : events) {
-            if(event.getName().contains(name)) {
-                matchingEvents.add(event);
-            }
-        }
-
-        return matchingEvents;
-    }
-
-    /**
-     * Returns a list of events at a particular camp
-     *
-     * @param name partial match of camp name
-     * @return ArrayList of Event objects
-     */
-    public ArrayList<Event> listByCamp(String name) {
-        name = name.toLowerCase();
-        ArrayList<Event> matchingEvents = new ArrayList<>();
-        for(Event event : events) {
-            if(event.getLocation().contains(name)) {
-                matchingEvents.add(event);
-            }
-        }
-
-        return matchingEvents;
     }
 
     /**
@@ -128,10 +85,8 @@ public class EventManager {
         ArrayList<Event> matchingEvents = new ArrayList<>();
 
         for(Event event : events) {
-            for(LocalDateTime startTime : event.getStartTimes()) {
-                if(startTime.isAfter(start) && startTime.isBefore(end)) {
-                    matchingEvents.add(event);
-                }
+            if(event.getStartTime().isAfter(start) && event.getStartTime().isBefore(end)) {
+                matchingEvents.add(event);
             }
         }
         return matchingEvents;
@@ -140,23 +95,72 @@ public class EventManager {
     /**
      * Returns an ArrayList of events happening in the next 24 hours
      *
+     * @param hours number of hours ahead to search
      * @return ArrayList of Event objects
      */
-    public ArrayList<Event> listHappeningSoon() {
+    public ArrayList<Event> listHappeningSoon(int hours) {
         LocalDateTime now = LocalDateTime.now();
-        LocalDateTime tomorrow = LocalDateTime.now().plusDays(1);
+        LocalDateTime tomorrow = LocalDateTime.now().plusHours(hours);
         return listBetween(now, tomorrow);
     }
 
     /**
-     * Returns a list of events happening on a particular day
+     * Returns a list of events matching search terms
      *
-     * @param day int day
-     * @return ArrayList of Event objects
+     * @param name     String name of event to match
+     * @param camp     String name of location
+     * @param day      int day, if day is set to 0 this parameter is ignored
+     * @param category int category, index of list of EventCategory enums in alphabetical order
+     * @return ArrayList of Event objects matching search terms
      */
-    public ArrayList<Event> listByDay(int day) {
-        LocalDateTime start = Event.globalEventStartTime.plusDays(day);
-        LocalDateTime end = LocalDateTime.now().plusDays(1);
-        return listBetween(start, end);
+    public ArrayList<Event> listBySearch(String name, String camp, int day, int category) {
+        EventCategory eventCategory;
+        if(category > 0) {
+            eventCategory = EventCategory.values()[--category];
+        } else {
+            eventCategory = null;
+        }
+        day--;
+
+        ArrayList<Event> matchingEvents = new ArrayList<>();
+        for(Event event : events) {
+            if(matches(event, name, camp, day, eventCategory)) {
+                matchingEvents.add(event);
+            }
+        }
+        return matchingEvents;
+    }
+
+    /**
+     * Checks that an individual event matches a search term
+     *
+     * @param event         Event object
+     * @param name          String name
+     * @param camp          String camp
+     * @param day           int day
+     * @param eventCategory EventCategory enum
+     * @return true if event matches all search terms
+     */
+    private boolean matches(Event event, String name, String camp, int day, EventCategory eventCategory) {
+        name = name.toLowerCase();
+        camp = camp.toLowerCase();
+
+        if(eventCategory != null && eventCategory != event.getCategory()) {
+            return false;
+        }
+
+        if(day >= 0) {
+            LocalDateTime start = Event.globalEventStartTime.plusDays(day);
+            LocalDateTime end = start.plusDays(1);
+            if(event.getStartTime().isBefore(start) || event.getStartTime().isAfter(end)) {
+                return false;
+            }
+        }
+
+        if(name.length() > 0 && !event.getName().contains(name)) {
+            return false;
+        }
+
+        return camp.length() <= 0 || event.getLocation().contains(camp);
     }
 }

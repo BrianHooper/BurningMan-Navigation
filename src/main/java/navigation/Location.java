@@ -13,19 +13,54 @@ import java.util.Scanner;
  * Class Location
  * <p>
  * Represents a single point within burning man, either a person, camp, bathroom, or art instillation
+ *
+ * @author Brian Hooper
+ * @since 0.9.0
  */
 public class Location {
+    // Relative path for coordinate file
     private static final String coordinatePath = "config/coordinate";
 
+    // Globals used for converting gps coordinates to addresses
     static double man_latitude = 40.7864;
     static double man_longitude = -119.2065;
     public static int esplanade_distance = 2600;
     public static int block_width = 240;
 
+    // Parameters for location
     private int hour;
     private int minute;
     private double distance;
 
+    /**
+     * Constructor
+     * <p>
+     * creates a new Location based off an address as a CSV string
+     * <p>
+     * If the input is not in "hour,minute,distance" format, will default to 6:00 & B (center camp)
+     *
+     * @param csvAddress CSV address
+     */
+    Location(String csvAddress) {
+        this(6, 0, 'B');
+        String[] split = csvAddress.split(",");
+        if(split.length != 3) {
+            return;
+        }
+        try {
+            hour = Integer.parseInt(split[0]);
+            minute = Integer.parseInt(split[1]);
+            distance = Double.parseDouble(split[2]);
+        } catch(NumberFormatException ignored) {
+        }
+    }
+
+    /**
+     * Reads the current coordinates from the coordinate file
+     * and returns a latitude, longitude pair
+     *
+     * @return AbstractMap.SimpleEntry pair
+     */
     public static AbstractMap.SimpleEntry<Double, Double> readCoordinates() {
         try {
             Scanner scan = new Scanner(new File(coordinatePath));
@@ -139,17 +174,6 @@ public class Location {
             chVal = 0;
         }
         this.distance = 2700 + chVal * 240;
-    }
-
-    /**
-     * Copy constructor
-     *
-     * @param other location
-     */
-    public Location(Location other) {
-        this.hour = other.hour;
-        this.minute = other.minute;
-        this.distance = other.distance;
     }
 
     /**
@@ -293,11 +317,12 @@ public class Location {
         return getAddress();
     }
 
+    /**
+     * Gets the current address in "hour,minute,distance" format
+     *
+     * @return CSV String
+     */
     String getCSVAddress() {
         return String.valueOf(hour) + "," + String.valueOf(minute) + "," + String.valueOf((int) distance);
-    }
-
-    public int getHour() {
-        return hour;
     }
 }

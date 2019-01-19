@@ -4,10 +4,16 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
+
 /**
  * Class MenuLabel
  * <p>
- * extends JLabel
+ * Extends JLabel
+ * <p>
+ * Represents a single menu item, can be selected or deselected
+ *
+ * @author Brian Hooper
+ * @since 0.9.0
  */
 class MenuLabel extends JLabel {
 

@@ -5,11 +5,26 @@ import driver.FileManager;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
+
+/**
+ * Class NoteManager
+ * <p>
+ * Creates, updates, and deletes notes
+ *
+ * @author Brian Hooper
+ * @since 0.9.0
+ */
 public class NoteManager {
+    // Relative path to notes file
     private static final String notesPath = "config/notes.csv";
 
+    // Main list of note names and notes
     private final TreeMap<String, String> notes;
+
+    // Static delimiter to separate note names and notes in file
     private static final String delimiter = String.valueOf((char) 25);
+
+    // Number of notes in the NoteManager
     private int size;
 
     /**
@@ -89,6 +104,11 @@ public class NoteManager {
         size = notes.size();
     }
 
+    /**
+     * Checks for 0 elements
+     *
+     * @return true if the NoteManager is empty
+     */
     public boolean isEmpty() {
         return size == 0;
     }

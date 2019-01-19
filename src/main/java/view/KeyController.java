@@ -3,10 +3,16 @@ package view;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+
 /**
  * Class KeyController
  * <p>
- * listens for key presses
+ * Implements KeyListener
+ * <p>
+ * Listens for arrow and enter/escape keys for navigating the menu
+ *
+ * @author Brian Hooper
+ * @since 0.9.0
  */
 class KeyController implements KeyListener {
     private final UserInterfaceController menu;

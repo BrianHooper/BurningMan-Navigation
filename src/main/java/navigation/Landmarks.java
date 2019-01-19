@@ -9,20 +9,26 @@ import java.util.TreeMap;
  * Class Landmarks
  * <p>
  * Maintains lists of Location objects and methods for interacting with them
+ * <p>
+ * CSV files for list data are stored in the config directory
+ *
+ * @author Brian Hooper
+ * @since 0.9.0
  */
 class Landmarks {
+    // Relative path to landmark files
     private static final String bathroomsPath = "config/bathrooms.csv";
     private static final String campsPath = "config/camps.csv";
     private static final String favoritesPath = "config/favorites.csv";
 
+    // Key-Value pairs representing the name and location of a favorite
     private final TreeMap<String, Location> favorites;
-    private final ArrayList<Location> bathrooms;
 
-    TreeMap<String, Location> getCamps() {
-        return camps;
-    }
-
+    // Key-Value pairs representing the name and location of camps
     private final TreeMap<String, Location> camps;
+
+    // List of bathroom locations
+    private final ArrayList<Location> bathrooms;
 
     /**
      * Constructor
@@ -211,46 +217,6 @@ class Landmarks {
     }
 
     /**
-     * Attempts to find a Location matching a search term
-     *
-     * @param locations  Set of String to search
-     * @param searchTerm search term
-     * @return String matching, or null if none
-     */
-    private static String findMatch(TreeMap<String, Location> locations, String searchTerm) {
-        searchTerm = searchTerm.toLowerCase();
-
-        ArrayList<String> matches = new ArrayList<>();
-        for(String location : locations.keySet()) {
-            String lc = location.toLowerCase();
-            if(lc.contains(searchTerm)) {
-                matches.add(location);
-            }
-        }
-
-        if(matches.isEmpty()) {
-            return null;
-        } else {
-            return matches.get(0);
-        }
-    }
-
-    /**
-     * Searches the list of camps for a camp matching the search term
-     *
-     * @param name search term
-     * @return Location of camp, or null if none
-     */
-    String findCampName(String name) {
-        String campName = findMatch(camps, name);
-        if(campName == null) {
-            return "";
-        } else {
-            return campName;
-        }
-    }
-
-    /**
      * Returns a camp or favorite based on an exact camp name
      *
      * @param exactCampName exact camp name
@@ -274,7 +240,19 @@ class Landmarks {
         return favorites;
     }
 
+    /**
+     * Reads the favorites from a file
+     */
     void readFavorites() {
         readNamedLocations(favorites, favoritesPath);
+    }
+
+    /**
+     * Getter for camps
+     *
+     * @return TreeMap of String-Locations
+     */
+    TreeMap<String, Location> getCamps() {
+        return camps;
     }
 }

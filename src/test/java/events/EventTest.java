@@ -21,9 +21,12 @@ public class EventTest {
 //    }
 
     @org.junit.Test
-    public void multiDateBuilder() {
+    public void multiDateBuilderTest() {
         String[] input;
         LocalDateTime[] multiDate;
+
+        multiDate = Event.multiDateBuilder(null);
+        Assert.assertNull(multiDate);
 
         input = new String[]{"1", "2", "3"};
         multiDate = Event.multiDateBuilder(input);
@@ -58,5 +61,24 @@ public class EventTest {
         multiDate = Event.multiDateBuilder(input);
         Assert.assertNotNull(multiDate);
         Assert.assertEquals(multiDate.length, 1);
+    }
+
+    @org.junit.Test
+    public void eventConstructorTest() {
+        Event[] events = {
+                new Event(null, null, null, null, null),
+                new Event(null, null, null, null, null, null),
+                new Event(null, null, null, null, LocalDateTime.now(), null)
+        };
+        String output;
+        LocalDateTime startTimes;
+        LocalDateTime endTimes;
+
+//        for(Event event : events) {
+//            output = event.timeToString();
+//            Assert.assertNotNull(output);
+//            startTimes = event.getStartTime();
+//            Assert.assertNotNull(startTimes);
+//        }
     }
 }

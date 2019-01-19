@@ -4,19 +4,31 @@ import javax.swing.*;
 import javax.swing.text.JTextComponent;
 import java.util.ArrayList;
 
+
+/**
+ * Class OptionPane
+ * <p>
+ * Custom container for JOptionPane objects
+ * <p>
+ * Creates a JPanel with a vertically oriented BoxLayout for obtaining input from the user
+ *
+ * @author Brian Hooper
+ * @since 0.9.0
+ */
 class OptionPane {
     private final JPanel panel;
     private final ArrayList<JComponent> jComponents;
+    private final ArrayList<JList<String>> jLists;
     private boolean focusSet = false;
-    private boolean okPressed = false;
 
     /**
      * Constructor
      * <p>
      * Initializes JPanel
      */
-    public OptionPane() {
+    OptionPane() {
         jComponents = new ArrayList<>();
+        jLists = new ArrayList<>();
 
         panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
@@ -27,7 +39,7 @@ class OptionPane {
      *
      * @param labelText String label text
      */
-    public void addLabel(String labelText) {
+    void addLabel(String labelText) {
         panel.add(new JLabel(labelText));
     }
 
@@ -38,7 +50,7 @@ class OptionPane {
      *
      * @param component JComponent
      */
-    public void addTextInput(JTextComponent component) {
+    void addTextInput(JTextComponent component) {
         if(!focusSet) {
             component.addAncestorListener(new RequestFocusListener());
             focusSet = true;
@@ -57,12 +69,18 @@ class OptionPane {
     /**
      * Displays the JPanel in a JOptionFrame
      *
-     * @param parent     parent JFrame, or null
-     * @param title      String panel title
-     * @param buttonType int, enum for JOptionPane.OK_CANCEL or other
+     * @param parent parent JFrame, or null
+     * @param title  String panel title
      */
-    public void show(JFrame parent, String title, int buttonType) {
-        okPressed = JOptionPane.showConfirmDialog(parent, panel, title, buttonType, JOptionPane.PLAIN_MESSAGE) == JOptionPane.OK_OPTION;
+    boolean show(JFrame parent, String title) {
+        for(JComponent component : jComponents) {
+            if(!(component instanceof JLabel)) {
+                component.addAncestorListener(new RequestFocusListener());
+                break;
+            }
+        }
+        return JOptionPane.showConfirmDialog(parent, panel, title,
+                JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE) == JOptionPane.OK_OPTION;
     }
 
     /**
@@ -70,7 +88,7 @@ class OptionPane {
      *
      * @return String array
      */
-    public String[] getInputs() {
+    String[] getInputs() {
         String[] inputStrings = new String[jComponents.size()];
         for(int i = 0; i < jComponents.size(); i++) {
             JComponent component = jComponents.get(i);
@@ -89,7 +107,7 @@ class OptionPane {
      * @param listElements ArrayList of Strings for list choices
      * @param rows         number of rows to display in list
      */
-    public void addListInput(ArrayList<String> listElements, int rows) {
+    void addListInput(ArrayList<String> listElements, int rows) {
         JList<String> list = new JList<>(listElements.toArray(new String[0]));
 
         list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
@@ -108,19 +126,45 @@ class OptionPane {
 
         panel.add(menuScrollPane);
         jComponents.add(list);
+        jLists.add(list);
     }
 
-    public void addComponent(JComponent component) {
+    /**
+     * Adds a component to the panel
+     *
+     * @param component JComponent object
+     */
+    void addComponent(JComponent component) {
         component.setAlignmentX(0);
         panel.add(component);
         jComponents.add(component);
     }
 
-    public boolean okPressed() {
-        return okPressed;
+    /**
+     * Returns the selected index for a specific JList
+     *
+     * @param index index of jList
+     * @return selected index, or -1 if out of bounds
+     */
+    int getJListSelectedIndex(int index) {
+        if(index < 0 || index >= jLists.size()) {
+            return -1;
+        } else {
+            return jLists.get(index).getSelectedIndex();
+        }
     }
 
-    public ArrayList<JComponent> getJComponents() {
-        return jComponents;
+    /**
+     * Returns the selected value for a specific JList
+     *
+     * @param index index of JList
+     * @return selected value, or null if out of bounds
+     */
+    String getJListSelectedValue(int index) {
+        if(index < 0 || index >= jLists.size()) {
+            return null;
+        } else {
+            return jLists.get(index).getSelectedValue();
+        }
     }
 }

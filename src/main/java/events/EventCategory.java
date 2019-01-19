@@ -1,5 +1,16 @@
 package events;
 
+import java.util.ArrayList;
+
+
+/**
+ * enum EventCategory
+ * <p>
+ * represents a type of event
+ *
+ * @author Brian Hooper
+ * @since 0.9.0
+ */
 public enum EventCategory {
     ADULT, CARE, FIRE, FOOD, GAMES, KIDS, MUSIC, PARADE, PARTY, PERFORMANCE, RITUAL, WORKSHOP;
 
@@ -46,8 +57,11 @@ public enum EventCategory {
      *
      * @return EventCategory array
      */
-    @SuppressWarnings("unused")
-    public EventCategory[] listAll() {
-        return new EventCategory[]{ADULT, CARE, FIRE, FOOD, GAMES, KIDS, MUSIC, PARADE, PARTY, PERFORMANCE, RITUAL, WORKSHOP};
+    public static ArrayList<String> listAll() {
+        ArrayList<String> names = new ArrayList<>();
+        for(EventCategory category : EventCategory.values()) {
+            names.add(category.name());
+        }
+        return names;
     }
 }
