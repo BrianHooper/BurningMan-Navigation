@@ -20,25 +20,49 @@ class AddressPanel extends JPanel {
     // Panel components
     private final JComboBox<String> hourBox;
     private final JComboBox<String> minuteBox;
-    private final JComboBox<String> streetBox;
+    private final JTextField streetBox;
 
     /**
      * Constructor
      * <p>
      * Adds components to the panel
      */
-    AddressPanel() {
-        setLayout(new FlowLayout());
+    private AddressPanel() {
+        setLayout(new GridLayout(0, 3));
 
         hourBox = new JComboBox<>(
                 new String[]{"2", "3", "4", "5", "6", "7", "8", "9", "10"});
         minuteBox = new JComboBox<>(
                 new String[]{"00", "15", "30", "45"});
-        streetBox = new JComboBox<>(
-                new String[]{"Esp.", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"});
+        streetBox = new JTextField(5);
         add(hourBox);
         add(minuteBox);
         add(streetBox);
+    }
+
+    /**
+     * Creates an AddressPanel with selected indices as the current location
+     *
+     * @param location Current Location object
+     */
+    AddressPanel(Location location) {
+        this();
+        int hour = location.getHour();
+        int minute = location.getMinute();
+        double distance = location.getDistance();
+
+        if(hour >= 2 && hour <= 10) {
+            hourBox.setSelectedIndex(hour - 2);
+        }
+
+        minuteBox.setSelectedIndex(minute / 15);
+
+        if(distance < Location.getEsplanade_distance() + Location.getBlock_width()) {
+            streetBox.setText(String.valueOf(distance));
+        } else {
+            streetBox.setText(String.valueOf(Location.toStreet(distance)));
+        }
+
     }
 
     /**
@@ -49,11 +73,20 @@ class AddressPanel extends JPanel {
     Location getAddress() {
         int hour = 2 + hourBox.getSelectedIndex();
         int minute = 15 * minuteBox.getSelectedIndex();
-        if(streetBox.getSelectedIndex() == 0) {
-            return new Location(hour, minute, (double) Location.esplanade_distance);
+
+        // Remove everything except numbers and letters
+        String text = streetBox.getText().toUpperCase().replaceAll("[^a-zA-Z0-9]", "");
+
+        if(text.charAt(0) > 64) {
+            return new Location(hour, minute, text.charAt(0));
         } else {
-            char street = (char) (64 + streetBox.getSelectedIndex());
-            return new Location(hour, minute, street);
+            try {
+                double distance = Double.parseDouble(text);
+                return new Location(hour, minute, distance);
+            } catch(NumberFormatException e) {
+                return null;
+            }
         }
+
     }
 }

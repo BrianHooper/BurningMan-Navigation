@@ -1,6 +1,8 @@
 package view;
 
 
+import navigation.Navigator;
+
 /**
  * Class Menu
  * <p>
@@ -30,32 +32,24 @@ class Menu {
      *
      * @return String actionCommand
      */
-    String select() {
-        String action = menuItems[selected].getText();
-
-        switch(action) {
-            case "Favorites":
-                favorites();
-                return "";
-            case "Settings":
-                settings();
-                return "";
-            case "Notes":
-                notes();
-                return "";
-            default:
-                return action;
+    boolean select(View view, Navigator navigator) {
+        if(menuItems[selected].getText().equals("Exit")) {
+            return false;
+        } else {
+            menuItems[selected].performAction(view, navigator);
+            return true;
         }
     }
 
     /**
      * Creates favorites menu
      */
-    private void favorites() {
-        menuItems = new MenuLabel[3];
-        menuItems[0] = new MenuLabel("Add new favorite");
-        menuItems[1] = new MenuLabel("Navigate to favorite");
-        menuItems[2] = new MenuLabel("Delete favorite");
+    void favorites() {
+        menuItems = new MenuLabel[]{
+                new MenuLabel("Add new favorite", OptionPaneCreator::goToAddress),
+                new MenuLabel("Navigate to favorite", OptionPaneCreator::goToAddress),
+                new MenuLabel("Delete favorite", OptionPaneCreator::goToAddress)
+        };
 
         selected = 0;
         menuItems[0].select();
@@ -65,14 +59,16 @@ class Menu {
      * Creates home menu
      */
     void home() {
-        menuItems = new MenuLabel[7];
-        menuItems[0] = new MenuLabel("Go to address");
-        menuItems[1] = new MenuLabel("Find camp");
-        menuItems[2] = new MenuLabel("Favorites");
-        menuItems[3] = new MenuLabel("Find Events");
-        menuItems[4] = new MenuLabel("Happening soon");
-        menuItems[5] = new MenuLabel("Notes");
-        menuItems[6] = new MenuLabel("Settings");
+        menuItems = new MenuLabel[]{
+                new MenuLabel("Go to address", OptionPaneCreator::goToAddress),
+                new MenuLabel("Find camp", OptionPaneCreator::findCamp),
+                new MenuLabel("Favorites", OptionPaneCreator::favorites),
+                new MenuLabel("Find Events", OptionPaneCreator::findEvents),
+                new MenuLabel("Happening soon", OptionPaneCreator::listEventsHappeningSoon),
+                new MenuLabel("Notes", OptionPaneCreator::notes),
+                new MenuLabel("Measure distance", OptionPaneCreator::measureDistance),
+                new MenuLabel("Settings", OptionPaneCreator::settings)
+        };
 
         selected = 0;
         menuItems[0].select();
@@ -81,15 +77,17 @@ class Menu {
     /**
      * Creates settings menu
      */
-    private void settings() {
-        menuItems = new MenuLabel[6];
-
-        menuItems[0] = new MenuLabel("Set home address");
-        menuItems[1] = new MenuLabel("Set man coordinates");
-        menuItems[2] = new MenuLabel("Adjust Esplanade distance");
-        menuItems[3] = new MenuLabel("Adjust block width");
-        menuItems[4] = new MenuLabel("Set event start time");
-        menuItems[5] = new MenuLabel("Exit");
+    void settings() {
+        menuItems = new MenuLabel[]{
+                new MenuLabel("Set home address", OptionPaneCreator::setHome),
+                new MenuLabel("Set man coordinates", OptionPaneCreator::setMan),
+                new MenuLabel("Adjust Esplanade distance", OptionPaneCreator::setEsplanade),
+                new MenuLabel("Adjust block width", OptionPaneCreator::setBlockWidth),
+                new MenuLabel("Set event start time", OptionPaneCreator::setEventStartTime),
+                new MenuLabel("Adjust Correction Coefficients", OptionPaneCreator::adjustCoefficients),
+                new MenuLabel("Calculate correction error", OptionPaneCreator::calculateError),
+                new MenuLabel("Exit", null)
+        };
 
         selected = 0;
         menuItems[0].select();
@@ -98,13 +96,12 @@ class Menu {
     /**
      * Creates notes menu
      */
-    private void notes() {
-        menuItems = new MenuLabel[3];
-
-        menuItems[0] = new MenuLabel("Add new note");
-        menuItems[1] = new MenuLabel("View and edit notes");
-        menuItems[2] = new MenuLabel("Delete notes");
-
+    void notes() {
+        menuItems = new MenuLabel[]{
+                new MenuLabel("Add new note", OptionPaneCreator::addNote),
+                new MenuLabel("View and edit notes", OptionPaneCreator::editNotes),
+                new MenuLabel("Delete notes", OptionPaneCreator::deleteNotes)
+        };
         selected = 0;
         menuItems[0].select();
     }

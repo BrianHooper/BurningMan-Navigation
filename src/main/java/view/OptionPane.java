@@ -157,6 +157,7 @@ class OptionPane {
      * @param index index of jList
      * @return selected index, or -1 if out of bounds
      */
+    @SuppressWarnings({"SameParameterValue", "unused"})
     int getJListSelectedIndex(int index) {
         if(index < 0 || index >= jLists.size()) {
             return -1;
@@ -171,12 +172,22 @@ class OptionPane {
      * @param index index of JList
      * @return selected value, or null if out of bounds
      */
-    @SuppressWarnings("SameParameterValue")
+    @SuppressWarnings({"SameParameterValue", "unused"})
     String getJListSelectedValue(int index) {
         if(index < 0 || index >= jLists.size()) {
             return null;
         } else {
             return jLists.get(index).getSelectedValue();
         }
+    }
+
+    /**
+     * Displays an error message
+     *
+     * @param parent  parent component
+     * @param message String message
+     */
+    static void showMessage(JFrame parent, String message) {
+        JOptionPane.showMessageDialog(parent, message, "", JOptionPane.INFORMATION_MESSAGE);
     }
 }

@@ -21,17 +21,12 @@ class RequestFocusListener implements AncestorListener {
      *
      * @param e AncestorEvent
      */
-    @SuppressWarnings("Convert2Lambda")
     public void ancestorAdded(final AncestorEvent e) {
         final AncestorListener al = this;
-        SwingUtilities.invokeLater(new Runnable() {
-
-            @Override
-            public void run() {
-                JComponent component = e.getComponent();
-                component.requestFocusInWindow();
-                component.removeAncestorListener(al);
-            }
+        SwingUtilities.invokeLater(() -> {
+            JComponent component = e.getComponent();
+            component.requestFocusInWindow();
+            component.removeAncestorListener(al);
         });
     }
 

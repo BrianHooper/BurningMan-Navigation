@@ -18,6 +18,10 @@ import java.util.ArrayList;
  * @since 0.9.0
  */
 public class Event {
+//**********************
+// Class member fields
+//**********************
+
     // Global start time, all relative events (+1 day, etc) are based on this
     public static LocalDateTime globalEventStartTime = LocalDateTime.of(
             LocalDate.of(2019, Month.AUGUST, 25), LocalTime.MIDNIGHT
@@ -34,42 +38,9 @@ public class Event {
     // Logger
     private static final LogDriver logger = LogDriver.getInstance();
 
-    /**
-     * Constructor
-     * <p>
-     * Initializes an Event object
-     *
-     * @param name        event name
-     * @param location    Location String
-     * @param description String description
-     * @param category    EventCategory
-     * @param startTime   LocalDateTime object
-     */
-    Event(String name, String location, String description, EventCategory category, LocalDateTime startTime) {
-        this.name = name;
-        this.location = location;
-        this.description = description;
-
-        this.startTime = startTime;
-        this.category = category;
-    }
-
-    /**
-     * Constructor
-     * <p>
-     * Initializes an Event object
-     *
-     * @param name        event name
-     * @param location    Location String
-     * @param description String description
-     * @param category    EventCategory
-     * @param startTime   LocalDateTime object
-     * @param endTime     LocalDateTime object
-     */
-    Event(String name, String location, String description, EventCategory category, LocalDateTime startTime, LocalDateTime endTime) {
-        this(name, location, description, category, startTime);
-        this.endTime = endTime;
-    }
+//**********************
+// Public static methods
+//**********************
 
     /**
      * Setter for globalEventStartTime
@@ -86,22 +57,6 @@ public class Event {
                             startTimeString + "\': " + e.getMessage());
         }
         return false;
-    }
-
-    /**
-     * Builds a LocalDateTime object from the start time and an offset
-     *
-     * @param day    day offset
-     * @param hour   hour offset
-     * @param minute minute offset
-     * @return LocalDateTime object
-     */
-    private static LocalDateTime dateBuilder(int day, int hour, int minute) {
-        Duration duration = Duration.ofDays(day);
-        duration = duration.plusHours(hour);
-        duration = duration.plusMinutes(minute);
-
-        return globalEventStartTime.plus(duration);
     }
 
     /**
@@ -150,6 +105,68 @@ public class Event {
         return dateArray;
     }
 
+//**********************
+// Constructors and initializers
+//**********************
+
+    /**
+     * Constructor
+     * <p>
+     * Initializes an Event object
+     *
+     * @param name        event name
+     * @param location    Location String
+     * @param description String description
+     * @param category    EventCategory
+     * @param startTime   LocalDateTime object
+     */
+    Event(String name, String location, String description, EventCategory category, LocalDateTime startTime) {
+        this.name = name;
+        this.location = location;
+        this.description = description;
+
+        this.startTime = startTime;
+        this.category = category;
+    }
+
+    /**
+     * Constructor
+     * <p>
+     * Initializes an Event object
+     *
+     * @param name        event name
+     * @param location    Location String
+     * @param description String description
+     * @param category    EventCategory
+     * @param startTime   LocalDateTime object
+     * @param endTime     LocalDateTime object
+     */
+    Event(String name, String location, String description, EventCategory category, LocalDateTime startTime, LocalDateTime endTime) {
+        this(name, location, description, category, startTime);
+        this.endTime = endTime;
+    }
+
+
+//**********************
+// Private static methods
+//**********************
+
+    /**
+     * Builds a LocalDateTime object from the start time and an offset
+     *
+     * @param day    day offset
+     * @param hour   hour offset
+     * @param minute minute offset
+     * @return LocalDateTime object
+     */
+    private static LocalDateTime dateBuilder(int day, int hour, int minute) {
+        Duration duration = Duration.ofDays(day);
+        duration = duration.plusHours(hour);
+        duration = duration.plusMinutes(minute);
+
+        return globalEventStartTime.plus(duration);
+    }
+
     /**
      * Formats an event start time and end time as a string
      *
@@ -167,6 +184,10 @@ public class Event {
                     ClockDriver.dfTime.format(startDate) + "-" + ClockDriver.dfTime.format(endDate);
         }
     }
+
+//**********************
+// Getters and setters
+//**********************
 
     /**
      * Getter for name
@@ -240,4 +261,5 @@ public class Event {
     public String getDescription() {
         return description;
     }
+
 }

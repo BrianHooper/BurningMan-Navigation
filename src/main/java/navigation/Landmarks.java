@@ -17,6 +17,10 @@ import java.util.TreeMap;
  * @since 0.9.0
  */
 class Landmarks {
+//**********************
+// Class member fields
+//**********************
+
     // Relative path to landmark files
     private static final String bathroomsPath = "config/bathrooms.csv";
     private static final String campsPath = "config/camps.csv";
@@ -33,6 +37,10 @@ class Landmarks {
 
     // Logger
     private static final LogDriver logger = LogDriver.getInstance();
+
+//**********************
+// Constructors and initializers
+//**********************
 
     /**
      * Constructor
@@ -121,6 +129,17 @@ class Landmarks {
     }
 
     /**
+     * Reads the favorites from a file
+     */
+    void readFavorites() {
+        readNamedLocations(favorites, favoritesPath);
+    }
+
+//**********************
+// Getters and setters
+//**********************
+
+    /**
      * Adds a bathroom to the list based on geographic coordinates
      *
      * @param latitude  latitude
@@ -191,6 +210,43 @@ class Landmarks {
     }
 
     /**
+     * Returns a camp or favorite based on an exact camp name
+     *
+     * @param exactCampName exact camp name
+     * @return Location or null
+     */
+    Location getCamp(String exactCampName) {
+        Location camp = camps.get(exactCampName);
+        if(camp == null) {
+            return favorites.get(exactCampName);
+        } else {
+            return camp;
+        }
+    }
+
+    /**
+     * Getter for favorites HashMap
+     *
+     * @return favorites
+     */
+    TreeMap<String, Location> getFavorites() {
+        return favorites;
+    }
+
+    /**
+     * Getter for camps
+     *
+     * @return TreeMap of String-Locations
+     */
+    TreeMap<String, Location> getCamps() {
+        return camps;
+    }
+
+//**********************
+// Class methods
+//**********************
+
+    /**
      * Finds the closest location to another location
      *
      * @param locations       list of Locations
@@ -222,45 +278,5 @@ class Landmarks {
      */
     Location findBathroom(Location currentLocation) {
         return findClosest(bathrooms, currentLocation);
-    }
-
-    /**
-     * Returns a camp or favorite based on an exact camp name
-     *
-     * @param exactCampName exact camp name
-     * @return Location or null
-     */
-    Location getCamp(String exactCampName) {
-        Location camp = camps.get(exactCampName);
-        if(camp == null) {
-            return favorites.get(exactCampName);
-        } else {
-            return camp;
-        }
-    }
-
-    /**
-     * Getter for favorites HashMap
-     *
-     * @return favorites
-     */
-    TreeMap<String, Location> getFavorites() {
-        return favorites;
-    }
-
-    /**
-     * Reads the favorites from a file
-     */
-    void readFavorites() {
-        readNamedLocations(favorites, favoritesPath);
-    }
-
-    /**
-     * Getter for camps
-     *
-     * @return TreeMap of String-Locations
-     */
-    TreeMap<String, Location> getCamps() {
-        return camps;
     }
 }

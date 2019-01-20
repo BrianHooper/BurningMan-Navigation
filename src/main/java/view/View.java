@@ -15,12 +15,20 @@ import java.awt.*;
  * @since 0.9.0
  */
 public class View {
+//**********************
+// Class member fields
+//**********************
+
     // Main frame and panel
     private final JFrame mainFrame;
     private final MainInterfacePanel mainPanel;
 
     // Global standard font
     static final Font standardFont = new Font("Monospaced", Font.PLAIN, 22);
+
+//**********************
+// Constructors and initializers
+//**********************
 
     /**
      * Constructor
@@ -31,8 +39,19 @@ public class View {
         setUIParameters();
 
         mainPanel = new MainInterfacePanel();
+        mainPanel.getMainPanel().setBackground(Color.LIGHT_GRAY);
 
         mainFrame = new JFrame("MainInterfacePanel");
+
+        // F1 key requests focus for the main panel
+        KeyboardFocusManager.getCurrentKeyboardFocusManager()
+                .addKeyEventDispatcher(e -> {
+                    if(e.getKeyCode() == 112) {
+                        mainPanel.getMainPanel().requestFocus();
+                    }
+                    return false;
+                });
+
         fullScreen(mainFrame);
         mainFrame.setContentPane(mainPanel.getMainPanel());
 
@@ -41,6 +60,22 @@ public class View {
 
         mainFrame.setResizable(true);
     }
+
+    /**
+     * Sets global view properties (font, etc)
+     */
+    private void setUIParameters() {
+        UIManager.put("Label.font", standardFont);
+        UIManager.put("TextField.font", standardFont);
+        UIManager.put("JList.font", standardFont);
+        UIManager.put("JScrollPane.font", standardFont);
+        UIManager.put("OptionPane.font", standardFont);
+        UIManager.put("TextField.background", Color.WHITE);
+    }
+
+//**********************
+// Private static methods
+//**********************
 
     /**
      * Makes the frame fullscreen
@@ -57,17 +92,9 @@ public class View {
         frame.setVisible(true);
     }
 
-    /**
-     * Sets global view properties (font, etc)
-     */
-    private void setUIParameters() {
-        UIManager.put("Label.font", standardFont);
-        UIManager.put("TextField.font", standardFont);
-        UIManager.put("JList.font", standardFont);
-        UIManager.put("JScrollPane.font", standardFont);
-        UIManager.put("OptionPane.font", standardFont);
-        UIManager.put("TextField.background", Color.WHITE);
-    }
+//**********************
+// Getters and setters
+//**********************
 
     /**
      * Binds KeyController to main JPanel
@@ -123,4 +150,19 @@ public class View {
     public void setClock(String clockValue) {
         mainPanel.setClock(clockValue);
     }
+
+    /**
+     * Updates main panel with latitude and longitude
+     *
+     * @param latitude  latitude
+     * @param longitude longitude
+     */
+    public void setLocation(double latitude, double longitude) {
+        mainPanel.setLocation(latitude, longitude);
+    }
+
+//**********************
+// Class methods
+//**********************
+
 }

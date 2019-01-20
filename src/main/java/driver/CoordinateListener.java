@@ -70,6 +70,7 @@ public class CoordinateListener extends Thread {
                     double longitude = coordinates.getValue();
                     navigator.updateLocation(latitude, longitude);
                     view.setNavigation(navigator);
+                    view.setLocation(latitude, longitude);
                     if(count++ >= every && fileManager != null) {
                         count = 0;
                         String line = String.valueOf(latitude) + ',' + String.valueOf(longitude) + ','

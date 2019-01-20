@@ -12,7 +12,7 @@ import java.util.logging.Level;
  * @author Brian Hooper
  * @since 0.9.0
  */
-@SuppressWarnings("all")
+@SuppressWarnings("unused")
 public class LogDriver {
     // Singleton instance
     private static LogDriver instance;
@@ -28,6 +28,7 @@ public class LogDriver {
      * <p>
      * Private, instantiates global logger object
      */
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     private LogDriver() {
         File directory = new File("config/");
         if(!directory.exists()) {
@@ -58,8 +59,8 @@ public class LogDriver {
      *
      * @param classType class of object throwing the log file, pass with 'ClassName.class' for static objects
      *                  or with 'this.getClass()' for non-static
-     * @param level
-     * @param message
+     * @param level     warning level
+     * @param message   String log message
      */
     private void log(Class<?> classType, Level level, String message) {
         if(writer == null) {
@@ -73,17 +74,16 @@ public class LogDriver {
         try {
             writer.write(line + '\n');
             writer.flush();
-        } catch(IOException e) {
+        } catch(IOException ignored) {
         }
     }
-
 
     /**
      * Writes a severe log message to the logfile
      *
      * @param classType class of object throwing the log file, pass with 'ClassName.class' for static objects
      *                  or with 'this.getClass()' for non-static
-     * @param message
+     * @param message   String log message
      */
     public void severe(Class<?> classType, String message) {
         log(classType, Level.SEVERE, message);
@@ -94,24 +94,22 @@ public class LogDriver {
      *
      * @param classType class of object throwing the log file, pass with 'ClassName.class' for static objects
      *                  or with 'this.getClass()' for non-static
-     * @param message
+     * @param message   String log message
      */
     public void warning(Class<?> classType, String message) {
         log(classType, Level.WARNING, message);
     }
-
 
     /**
      * Writes a info log message to the logfile
      *
      * @param classType class of object throwing the log file, pass with 'ClassName.class' for static objects
      *                  or with 'this.getClass()' for non-static
-     * @param message
+     * @param message   String log message
      */
     public void info(Class<?> classType, String message) {
         log(classType, Level.INFO, message);
     }
-
 
     /**
      * Closes the log file
@@ -120,7 +118,7 @@ public class LogDriver {
         try {
             writer.close();
             writer = null;
-        } catch(IOException e) {
+        } catch(IOException ignored) {
         }
     }
 }

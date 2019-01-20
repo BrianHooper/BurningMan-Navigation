@@ -14,6 +14,10 @@ import java.util.TreeMap;
  * @since 0.9.0
  */
 class MainInterfacePanel {
+//**********************
+// Class member fields
+//**********************
+
     // Main Panel
     private JPanel mainPanel;
 
@@ -37,9 +41,51 @@ class MainInterfacePanel {
     private JPanel rightPanel;
     private JPanel globalPanel;
     private JLabel header;
+    private JTextField currentCoordinates;
 
+    // main menu controller
     private view.Menu menu;
 
+//**********************
+// Constructors and initializers
+//**********************
+
+    /**
+     * Builds custom UI components
+     */
+    private void createUIComponents() {
+        leftMenuPanel = new JPanel();
+        leftMenu = new JPanel();
+        leftMenu.setLayout(new GridLayout(0, 1));
+
+        leftMenuPanel.add(leftMenu);
+
+        menu = new Menu();
+
+        addressLabel = new JLabel("Current Address:");
+        addressLabel.setBorder(new EmptyBorder(0, 0, 0, 0));
+
+        nearestBathroomLabel = new JLabel("Nearest Bathroom: ");
+        nearestBathroomLabel.setBorder(new EmptyBorder(20, 0, 0, 0));
+
+        homeCampLabel = new JLabel("Home camp: ");
+        homeCampLabel.setBorder(new EmptyBorder(20, 0, 0, 0));
+
+        destinationLabel = new JLabel("Destination: ");
+        destinationLabel.setBorder(new EmptyBorder(20, 0, 0, 0));
+
+        clockPanel = new JPanel();
+        clockLabel = new JLabel("Clock");
+        clockLabel.setFont(new Font(View.standardFont.getFontName(), Font.PLAIN, 32));
+        clockPanel.add(clockLabel);
+
+
+        resetMenu();
+    }
+
+//**********************
+// Getters and setters
+//**********************
     /**
      * getter for Menu object
      *
@@ -103,7 +149,6 @@ class MainInterfacePanel {
         this.homeDirections.setText(fieldValue);
     }
 
-
     /**
      * sets destination name field
      *
@@ -157,36 +202,19 @@ class MainInterfacePanel {
     }
 
     /**
-     * Builds custom UI components
+     * Updates currentCoordinates panel with latitude and longitude
+     *
+     * @param latitude  latitude
+     * @param longitude longitude
      */
-    private void createUIComponents() {
-        leftMenuPanel = new JPanel();
-        leftMenu = new JPanel();
-        leftMenu.setLayout(new BoxLayout(leftMenu, BoxLayout.PAGE_AXIS));
-        leftMenu.setPreferredSize(new Dimension(400, 368));
-        leftMenuPanel.add(leftMenu);
-
-        menu = new Menu();
-
-        addressLabel = new JLabel("Current Address:");
-        addressLabel.setBorder(new EmptyBorder(0, 0, 0, 0));
-
-        nearestBathroomLabel = new JLabel("Nearest Bathroom: ");
-        nearestBathroomLabel.setBorder(new EmptyBorder(20, 0, 0, 0));
-
-        homeCampLabel = new JLabel("Home camp: ");
-        homeCampLabel.setBorder(new EmptyBorder(20, 0, 0, 0));
-
-        destinationLabel = new JLabel("Destination: ");
-        destinationLabel.setBorder(new EmptyBorder(20, 0, 0, 0));
-
-        clockPanel = new JPanel();
-        clockLabel = new JLabel("Clock");
-        clockLabel.setFont(new Font(View.standardFont.getFontName(), Font.PLAIN, 32));
-        clockPanel.add(clockLabel);
-
-        resetMenu();
+    void setLocation(double latitude, double longitude) {
+        currentCoordinates.setText(String.format(
+                "%.4f", latitude) + ", " + String.format("%.4f", longitude));
     }
+
+//**********************
+// Class methods
+//**********************
 
     /**
      * Reads and resets menu items
@@ -200,4 +228,5 @@ class MainInterfacePanel {
             }
         }
     }
+
 }

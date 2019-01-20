@@ -12,7 +12,7 @@
       <color color="-16777216"/>
     </border>
     <children>
-      <grid id="7fda2" binding="globalPanel" layout-manager="GridBagLayout">
+      <grid id="7e1f1" layout-manager="GridBagLayout">
         <constraints>
           <grid row="0" column="0" row-span="2" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
@@ -22,225 +22,265 @@
           <color color="-16777216"/>
         </border>
         <children>
-          <grid id="7f71b" binding="rightPanel" layout-manager="GridBagLayout">
+          <grid id="7fda2" binding="globalPanel" layout-manager="GridBagLayout">
             <constraints>
-              <grid row="1" column="1" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
               <gridbag weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties/>
-            <border type="none"/>
+            <border type="empty">
+              <size top="20" left="20" bottom="20" right="20"/>
+              <color color="-16777216"/>
+            </border>
             <children>
-              <vspacer id="bf7ef">
+              <grid id="7f71b" binding="rightPanel" layout-manager="GridBagLayout">
                 <constraints>
-                  <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                  <grid row="1" column="2" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                   <gridbag weightx="0.0" weighty="0.0"/>
                 </constraints>
-              </vspacer>
-              <component id="12cbf" class="javax.swing.JTextField" binding="destinationDirections">
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <vspacer id="bf7ef">
+                    <constraints>
+                      <grid row="13" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                  </vspacer>
+                  <component id="12cbf" class="javax.swing.JTextField" binding="destinationDirections">
+                    <constraints>
+                      <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties>
+                      <columns value="32"/>
+                      <editable value="false"/>
+                      <name value="directionsField"/>
+                      <text value=""/>
+                    </properties>
+                  </component>
+                  <component id="3deb7" class="javax.swing.JTextField" binding="destinationAddress">
+                    <constraints>
+                      <grid row="11" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties>
+                      <columns value="32"/>
+                      <editable value="false"/>
+                    </properties>
+                  </component>
+                  <component id="50bf3" class="javax.swing.JTextField" binding="destinationName">
+                    <constraints>
+                      <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties>
+                      <columns value="32"/>
+                      <editable value="false"/>
+                    </properties>
+                  </component>
+                  <component id="cc773" class="javax.swing.JLabel" binding="destinationLabel" custom-create="true">
+                    <constraints>
+                      <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties>
+                      <text value="Destination"/>
+                    </properties>
+                  </component>
+                  <component id="4bd6f" class="javax.swing.JTextField" binding="homeDirections">
+                    <constraints>
+                      <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties>
+                      <columns value="32"/>
+                      <editable value="false"/>
+                    </properties>
+                  </component>
+                  <component id="3f1f2" class="javax.swing.JTextField" binding="homeAddress">
+                    <constraints>
+                      <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties>
+                      <columns value="32"/>
+                      <editable value="false"/>
+                    </properties>
+                  </component>
+                  <component id="d42f9" class="javax.swing.JLabel" binding="homeCampLabel" custom-create="true">
+                    <constraints>
+                      <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties>
+                      <text value="Home Camp"/>
+                    </properties>
+                  </component>
+                  <component id="f21d1" class="javax.swing.JTextField" binding="bathroomAddress">
+                    <constraints>
+                      <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties>
+                      <columns value="32"/>
+                      <editable value="false"/>
+                    </properties>
+                  </component>
+                  <component id="4f79a" class="javax.swing.JTextField" binding="bathroomDirections">
+                    <constraints>
+                      <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties>
+                      <columns value="32"/>
+                      <editable value="false"/>
+                    </properties>
+                  </component>
+                  <component id="c00b1" class="javax.swing.JLabel" binding="nearestBathroomLabel" custom-create="true">
+                    <constraints>
+                      <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties>
+                      <text value="Nearest Bathroom"/>
+                    </properties>
+                  </component>
+                  <component id="d55a" class="javax.swing.JTextField" binding="currentAddress">
+                    <constraints>
+                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties>
+                      <columns value="32"/>
+                      <editable value="false"/>
+                    </properties>
+                  </component>
+                  <component id="708fa" class="javax.swing.JLabel" binding="addressLabel" custom-create="true">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties>
+                      <text value="Current Address"/>
+                    </properties>
+                  </component>
+                  <component id="d4249" class="javax.swing.JTextField" binding="currentCoordinates">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                </children>
+              </grid>
+              <grid id="4b25a" binding="leftMenuPanel" custom-create="true" layout-manager="GridBagLayout">
                 <constraints>
-                  <grid row="11" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                    <preferred-size width="150" height="-1"/>
-                  </grid>
-                  <gridbag weightx="0.0" weighty="0.0"/>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0" ipadx="10"/>
                 </constraints>
                 <properties>
-                  <columns value="32"/>
-                  <editable value="false"/>
-                  <name value="directionsField"/>
-                  <text value=""/>
-                </properties>
-              </component>
-              <component id="3deb7" class="javax.swing.JTextField" binding="destinationAddress">
-                <constraints>
-                  <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                    <preferred-size width="150" height="-1"/>
-                  </grid>
-                  <gridbag weightx="0.0" weighty="0.0"/>
-                </constraints>
-                <properties>
-                  <columns value="32"/>
-                  <editable value="false"/>
-                </properties>
-              </component>
-              <component id="50bf3" class="javax.swing.JTextField" binding="destinationName">
-                <constraints>
-                  <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                    <preferred-size width="150" height="-1"/>
-                  </grid>
-                  <gridbag weightx="0.0" weighty="0.0"/>
-                </constraints>
-                <properties>
-                  <columns value="32"/>
-                  <editable value="false"/>
-                </properties>
-              </component>
-              <component id="cc773" class="javax.swing.JLabel" binding="destinationLabel" custom-create="true">
-                <constraints>
-                  <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                  <gridbag weightx="0.0" weighty="0.0"/>
-                </constraints>
-                <properties>
-                  <text value="Destination"/>
-                </properties>
-              </component>
-              <component id="4bd6f" class="javax.swing.JTextField" binding="homeDirections">
-                <constraints>
-                  <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                    <preferred-size width="150" height="-1"/>
-                  </grid>
-                  <gridbag weightx="0.0" weighty="0.0"/>
-                </constraints>
-                <properties>
-                  <columns value="32"/>
-                  <editable value="false"/>
-                </properties>
-              </component>
-              <component id="3f1f2" class="javax.swing.JTextField" binding="homeAddress">
-                <constraints>
-                  <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                    <preferred-size width="150" height="-1"/>
-                  </grid>
-                  <gridbag weightx="0.0" weighty="0.0"/>
-                </constraints>
-                <properties>
-                  <columns value="32"/>
-                  <editable value="false"/>
-                </properties>
-              </component>
-              <component id="d42f9" class="javax.swing.JLabel" binding="homeCampLabel" custom-create="true">
-                <constraints>
-                  <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                  <gridbag weightx="0.0" weighty="0.0"/>
-                </constraints>
-                <properties>
-                  <text value="Home Camp"/>
-                </properties>
-              </component>
-              <component id="f21d1" class="javax.swing.JTextField" binding="bathroomAddress">
-                <constraints>
-                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                    <preferred-size width="150" height="-1"/>
-                  </grid>
-                  <gridbag weightx="0.0" weighty="0.0"/>
-                </constraints>
-                <properties>
-                  <columns value="32"/>
-                  <editable value="false"/>
-                </properties>
-              </component>
-              <component id="4f79a" class="javax.swing.JTextField" binding="bathroomDirections">
-                <constraints>
-                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                    <preferred-size width="150" height="-1"/>
-                  </grid>
-                  <gridbag weightx="0.0" weighty="0.0"/>
-                </constraints>
-                <properties>
-                  <columns value="32"/>
-                  <editable value="false"/>
-                </properties>
-              </component>
-              <component id="c00b1" class="javax.swing.JLabel" binding="nearestBathroomLabel" custom-create="true">
-                <constraints>
-                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                  <gridbag weightx="0.0" weighty="0.0"/>
-                </constraints>
-                <properties>
-                  <text value="Nearest Bathroom"/>
-                </properties>
-              </component>
-              <component id="d55a" class="javax.swing.JTextField" binding="currentAddress">
-                <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                    <preferred-size width="150" height="-1"/>
-                  </grid>
-                  <gridbag weightx="0.0" weighty="0.0"/>
-                </constraints>
-                <properties>
-                  <columns value="32"/>
-                  <editable value="false"/>
-                </properties>
-              </component>
-              <component id="708fa" class="javax.swing.JLabel" binding="addressLabel" custom-create="true">
-                <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                  <gridbag weightx="0.0" weighty="0.0"/>
-                </constraints>
-                <properties>
-                  <text value="Current Address"/>
-                </properties>
-              </component>
-            </children>
-          </grid>
-          <grid id="4b25a" binding="leftMenuPanel" custom-create="true" layout-manager="GridBagLayout">
-            <constraints>
-              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
-              <gridbag weightx="0.0" weighty="0.0" ipadx="10"/>
-            </constraints>
-            <properties>
-              <inheritsPopupMenu value="false"/>
-              <minimumSize width="-1" height="-1"/>
-            </properties>
-            <border type="none"/>
-            <children>
-              <grid id="15299" binding="leftMenu" custom-create="true" layout-manager="GridBagLayout">
-                <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
-                  <gridbag weightx="0.0" weighty="0.0"/>
-                </constraints>
-                <properties>
-                  <minimumSize width="400" height="0"/>
+                  <inheritsPopupMenu value="false"/>
+                  <minimumSize width="-1" height="-1"/>
                 </properties>
                 <border type="none"/>
-                <children/>
+                <children>
+                  <grid id="15299" binding="leftMenu" custom-create="true" layout-manager="GridBagLayout">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties>
+                      <minimumSize width="400" height="0"/>
+                    </properties>
+                    <border type="none"/>
+                    <children/>
+                  </grid>
+                  <vspacer id="cfb68">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                  </vspacer>
+                </children>
               </grid>
-              <vspacer id="cfb68">
+              <grid id="6d4" binding="clockPanel" custom-create="true" layout-manager="GridBagLayout">
                 <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-                  <gridbag weightx="0.0" weighty="0.0"/>
-                </constraints>
-              </vspacer>
-            </children>
-          </grid>
-          <grid id="6d4" binding="clockPanel" custom-create="true" layout-manager="GridBagLayout">
-            <constraints>
-              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-              <gridbag weightx="0.0" weighty="0.0"/>
-            </constraints>
-            <properties>
-              <background color="-12828863"/>
-              <enabled value="true"/>
-              <name value="clockPanel"/>
-              <opaque value="false"/>
-            </properties>
-            <border type="none"/>
-            <children>
-              <component id="3d479" class="javax.swing.JLabel" binding="clockLabel" custom-create="true">
-                <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="2" fill="1" indent="0" use-parent-layout="false"/>
                   <gridbag weightx="0.0" weighty="0.0"/>
                 </constraints>
                 <properties>
-                  <text value="clock"/>
+                  <background color="-12828863"/>
+                  <enabled value="true"/>
+                  <name value="clockPanel"/>
+                  <opaque value="false"/>
                 </properties>
-              </component>
-              <hspacer id="d0662">
+                <border type="none"/>
+                <children>
+                  <component id="3d479" class="javax.swing.JLabel" binding="clockLabel" custom-create="true">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="10" fill="0" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties>
+                      <text value="clock"/>
+                    </properties>
+                  </component>
+                  <hspacer id="d0662">
+                    <constraints>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                  </hspacer>
+                </children>
+              </grid>
+              <hspacer id="3b739">
                 <constraints>
-                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                   <gridbag weightx="0.0" weighty="0.0"/>
                 </constraints>
               </hspacer>
+              <grid id="58fb1" layout-manager="GridBagLayout">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0"/>
+                </constraints>
+                <properties/>
+                <border type="empty">
+                  <size top="0" left="0" bottom="30" right="0"/>
+                </border>
+                <children>
+                  <component id="8af6c" class="javax.swing.JLabel" binding="header">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties>
+                      <text value="Burning Man Navigation"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
             </children>
           </grid>
-          <component id="8af6c" class="javax.swing.JLabel" binding="header">
-            <constraints>
-              <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-              <gridbag weightx="0.0" weighty="0.0"/>
-            </constraints>
-            <properties>
-              <text value="Burning Man Navigation"/>
-            </properties>
-          </component>
         </children>
       </grid>
     </children>
