@@ -4,42 +4,12 @@
     <option name="CUSTOM_SCOPE_NAME" value="Project Files" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24b9839f-6ad8-43a5-9b83-c469d9815187" name="Default Changelist" comment="Major changes to menu structure, switched to using java 8-style lambdas to call anonymous functions, implemented methods for measuring distances, minor UI improvements">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_intellij_asm_all_17_1_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_intellij_javac2_17_1_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/view/OptionPaneController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/view/OptionPaneCreator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/navigation/LocationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/brian.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/brian.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__asm_asm_3_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__asm_asm_commons_3_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__asm_asm_tree_3_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_intellij_forms_rt_7_0_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_intellij_forms_rt_17_1_5.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_jgoodies_forms_1_1_preview.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__jdom_jdom_1_0.xml" beforeDir="false" />
+    <list default="true" id="24b9839f-6ad8-43a5-9b83-c469d9815187" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BurningMan-Navigation.iml" beforeDir="false" afterPath="$PROJECT_DIR$/BurningMan-Navigation.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/config.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.cfg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/coordinate" beforeDir="false" afterPath="$PROJECT_DIR$/config/coordinate" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/favorites.csv" beforeDir="false" afterPath="$PROJECT_DIR$/config/favorites.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/tracker.csv" beforeDir="false" afterPath="$PROJECT_DIR$/config/tracker.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/driver/CoordinateListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/driver/CoordinateListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/driver/LogDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/driver/LogDriver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/events/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/events/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/navigation/Landmarks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/navigation/Landmarks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/navigation/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/navigation/Location.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/navigation/Navigator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/navigation/Navigator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/AddressPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/AddressPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/MainInterfacePanel.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainInterfacePanel.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/MainInterfacePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainInterfacePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/MenuLabel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MenuLabel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/OptionPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/OptionPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/RequestFocusListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/RequestFocusListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/UserInterfaceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/UserInterfaceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/View.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/events/EventTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/events/EventTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -73,30 +43,30 @@
     <session id="1556803589">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="16" />
+          <entry key="project.closed" value="19" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="3" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.11" value="1" />
-          <entry key="project.open.time.12" value="2" />
+          <entry key="project.open.time.12" value="3" />
           <entry key="project.open.time.13" value="2" />
           <entry key="project.open.time.14" value="1" />
-          <entry key="project.open.time.15" value="2" />
+          <entry key="project.open.time.15" value="3" />
           <entry key="project.open.time.17" value="1" />
           <entry key="project.open.time.8" value="2" />
           <entry key="project.open.time.9" value="2" />
-          <entry key="project.opened" value="18" />
+          <entry key="project.opened" value="20" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="cfg" value="6" />
           <entry key="class" value="4" />
-          <entry key="coordinate" value="3" />
+          <entry key="coordinate" value="4" />
           <entry key="csv" value="25" />
-          <entry key="form" value="9" />
+          <entry key="form" value="10" />
           <entry key="gitignore" value="2" />
-          <entry key="java" value="299" />
+          <entry key="java" value="304" />
           <entry key="log" value="2" />
           <entry key="png" value="2" />
           <entry key="txt" value="3" />
@@ -107,10 +77,10 @@
         <counts>
           <entry key="CLASS" value="4" />
           <entry key="CSV" value="12" />
-          <entry key="GUI_DESIGNER_FORM" value="9" />
+          <entry key="GUI_DESIGNER_FORM" value="10" />
           <entry key="Image" value="2" />
-          <entry key="JAVA" value="299" />
-          <entry key="PLAIN_TEXT" value="29" />
+          <entry key="JAVA" value="304" />
+          <entry key="PLAIN_TEXT" value="30" />
           <entry key="XML" value="10" />
         </counts>
       </usages-collector>
@@ -120,16 +90,16 @@
           <entry key="coordinate" value="11" />
           <entry key="csv" value="53" />
           <entry key="gitignore" value="8" />
-          <entry key="java" value="74856" />
-          <entry key="txt" value="1120" />
+          <entry key="java" value="75059" />
+          <entry key="txt" value="1174" />
           <entry key="xml" value="127" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSV" value="29" />
-          <entry key="JAVA" value="74856" />
-          <entry key="PLAIN_TEXT" value="1176" />
+          <entry key="JAVA" value="75059" />
+          <entry key="PLAIN_TEXT" value="1230" />
           <entry key="XML" value="127" />
         </counts>
       </usages-collector>
@@ -186,196 +156,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/events/EventManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="22" column="4" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
-              <folding>
-                <element signature="docComment;class#EventManager#0" />
-                <element signature="docComment;method#EventManager#0;class#EventManager#0" />
-                <element signature="method#EventManager#0;class#EventManager#0" />
-                <element signature="docComment;method#readEvents#0;class#EventManager#0" />
-                <element signature="method#readEvents#0;class#EventManager#0" />
-                <element signature="docComment;method#listBetween#0;class#EventManager#0" />
-                <element signature="method#listBetween#0;class#EventManager#0" />
-                <element signature="docComment;method#listHappeningSoon#0;class#EventManager#0" />
-                <element signature="method#listHappeningSoon#0;class#EventManager#0" />
-                <element signature="docComment;method#listBySearch#0;class#EventManager#0" />
-                <element signature="method#listBySearch#0;class#EventManager#0" />
-                <element signature="docComment;method#matches#0;class#EventManager#0" />
-                <element signature="method#matches#0;class#EventManager#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/events/EventCategory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="5" selection-start-line="5" selection-end-line="5" />
-              <folding>
-                <element signature="docComment;class#EventCategory#0" />
-                <element signature="docComment;method#of#0;class#EventCategory#0" />
-                <element signature="method#of#0;class#EventCategory#0" />
-                <element signature="docComment;method#listAll#0;class#EventCategory#0" />
-                <element signature="method#listAll#0;class#EventCategory#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/events/Event.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="684">
-              <caret line="106" selection-start-line="106" selection-end-line="106" />
-              <folding>
-                <element signature="docComment;class#Event#0" />
-                <element signature="docComment;method#setGlobalEventStartTime#0;class#Event#0" />
-                <element signature="method#setGlobalEventStartTime#0;class#Event#0" />
-                <element signature="docComment;method#multiDateBuilder#0;class#Event#0" />
-                <element signature="method#multiDateBuilder#0;class#Event#0" />
-                <element signature="docComment;method#Event#0;class#Event#0" />
-                <element signature="method#Event#0;class#Event#0" />
-                <element signature="docComment;method#Event#1;class#Event#0" />
-                <element signature="method#Event#1;class#Event#0" />
-                <element signature="docComment;method#dateBuilder#0;class#Event#0" />
-                <element signature="method#dateBuilder#0;class#Event#0" />
-                <element signature="docComment;method#asString#0;class#Event#0" />
-                <element signature="method#asString#0;class#Event#0" />
-                <element signature="docComment;method#getName#0;class#Event#0" />
-                <element signature="docComment;method#getLocation#0;class#Event#0" />
-                <element signature="docComment;method#getStartTime#0;class#Event#0" />
-                <element signature="docComment;method#getCategory#0;class#Event#0" />
-                <element signature="docComment;method#toString#0;class#Event#0" />
-                <element signature="method#toString#0;class#Event#0" />
-                <element signature="docComment;method#getElements#0;class#Event#0" />
-                <element signature="method#getElements#0;class#Event#0" />
-                <element signature="docComment;method#timeToString#0;class#Event#0" />
-                <element signature="docComment;method#getDescription#0;class#Event#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/driver/ClockDriver.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="22" column="4" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
-              <folding>
-                <element signature="docComment;method#ClockDriver#0;class#ClockDriver#0" />
-                <element signature="method#ClockDriver#0;class#ClockDriver#0" />
-                <element signature="docComment;method#run#0;class#ClockDriver#0" />
-                <element signature="method#run#0;class#ClockDriver#0" />
-                <element signature="docComment;method#terminate#0;class#ClockDriver#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/driver/CoordinateListener.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="52" column="22" selection-start-line="52" selection-start-column="22" selection-end-line="52" selection-end-column="22" />
-              <folding>
-                <element signature="docComment;class#CoordinateListener#0" />
-                <element signature="docComment;method#CoordinateListener#0;class#CoordinateListener#0" />
-                <element signature="method#CoordinateListener#0;class#CoordinateListener#0" />
-                <element signature="docComment;method#run#0;class#CoordinateListener#0" />
-                <element signature="method#run#0;class#CoordinateListener#0" />
-                <element signature="docComment;method#terminate#0;class#CoordinateListener#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/driver/FileManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="25" column="4" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="4" />
-              <folding>
-                <element signature="docComment;class#FileManager#0" />
-                <element signature="docComment;method#FileManager#0;class#FileManager#0" />
-                <element signature="method#FileManager#0;class#FileManager#0" />
-                <element signature="docComment;method#readLines#0;class#FileManager#0" />
-                <element signature="method#readLines#0;class#FileManager#0" />
-                <element signature="docComment;method#writeLines#0;class#FileManager#0" />
-                <element signature="method#writeLines#0;class#FileManager#0" />
-                <element signature="docComment;method#appendLine#0;class#FileManager#0" />
-                <element signature="method#appendLine#0;class#FileManager#0" />
-                <element signature="docComment;method#close#0;class#FileManager#0" />
-                <element signature="method#close#0;class#FileManager#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/driver/ListManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
-              <folding>
-                <element signature="docComment;class#ListManager#0" />
-                <element signature="docComment;method#createRow#0;class#ListManager#0" />
-                <element signature="method#createRow#0;class#ListManager#0" />
-                <element signature="docComment;method#addSpacers#0;class#ListManager#0" />
-                <element signature="method#addSpacers#0;class#ListManager#0" />
-                <element signature="docComment;method#splitEvenly#0;class#ListManager#0" />
-                <element signature="method#splitEvenly#0;class#ListManager#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/driver/LogDriver.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="608">
-              <caret line="108" column="7" lean-forward="true" selection-start-line="108" selection-start-column="7" selection-end-line="108" selection-end-column="7" />
-              <folding>
-                <element signature="docComment;class#LogDriver#0" />
-                <element signature="docComment;method#LogDriver#0;class#LogDriver#0" />
-                <element signature="method#LogDriver#0;class#LogDriver#0" />
-                <element signature="docComment;method#getInstance#0;class#LogDriver#0" />
-                <element signature="method#getInstance#0;class#LogDriver#0" />
-                <element signature="docComment;method#log#0;class#LogDriver#0" />
-                <element signature="method#log#0;class#LogDriver#0" />
-                <element signature="docComment;method#severe#0;class#LogDriver#0" />
-                <element signature="docComment;method#warning#0;class#LogDriver#0" />
-                <element signature="docComment;method#info#0;class#LogDriver#0" />
-                <element signature="docComment;method#close#0;class#LogDriver#0" />
-                <element signature="method#close#0;class#LogDriver#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/driver/NavigationDriver.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
-              <folding>
-                <element signature="docComment;class#NavigationDriver#0" />
-                <element signature="docComment;method#run#0;class#NavigationDriver#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/view/MainInterfacePanel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="290">
+              <caret line="209" column="21" selection-start-line="209" selection-start-column="21" selection-end-line="209" selection-end-column="21" />
+              <folding>
+                <element signature="docComment;class#MainInterfacePanel#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/view/MainInterfacePanel.form">
+          <provider selected="true" editor-type-id="ui-designer" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/navigation/Location.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="248">
-              <caret line="419" column="19" selection-start-line="419" selection-start-column="19" selection-end-line="419" selection-end-column="19" />
+            <state relative-caret-position="4940">
+              <caret line="283" selection-start-line="283" selection-end-line="283" />
               <folding>
                 <element signature="docComment;class#Location#0" />
+                <element signature="e#4735#4736#0" expanded="true" />
+                <element signature="e#4786#4787#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -443,7 +249,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/MainInterfacePanel.form" />
         <option value="$PROJECT_DIR$/src/main/java/MainInterfacePanel.java" />
         <option value="$PROJECT_DIR$/src/main/java/Landmarks.java" />
         <option value="$PROJECT_DIR$/src/main/java/Navigator.java" />
@@ -472,9 +277,7 @@
         <option value="$PROJECT_DIR$/src/main/java/driver/ListManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/driver/ClockDriver.java" />
         <option value="$PROJECT_DIR$/src/main/java/driver/FileManager.java" />
-        <option value="$PROJECT_DIR$/config/coordinate" />
         <option value="$PROJECT_DIR$/src/main/java/driver/CoordinateListener.java" />
-        <option value="$PROJECT_DIR$/src/main/java/view/MainInterfacePanel.form" />
         <option value="$PROJECT_DIR$/src/main/java/view/AddressPanel.java" />
         <option value="$PROJECT_DIR$/src/main/java/view/KeyController.java" />
         <option value="$PROJECT_DIR$/src/main/java/view/OptionPane.java" />
@@ -487,13 +290,16 @@
         <option value="$PROJECT_DIR$/src/main/java/view/OptionPaneController.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/view/OptionPaneCreator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/navigation/Location.java" />
         <option value="$PROJECT_DIR$/src/main/java/view/MainInterfacePanel.java" />
         <option value="$PROJECT_DIR$/src/main/java/view/View.java" />
         <option value="$PROJECT_DIR$/src/main/java/view/UserInterfaceController.java" />
         <option value="$PROJECT_DIR$/src/main/java/navigation/Navigator.java" />
         <option value="$PROJECT_DIR$/src/main/java/navigation/Landmarks.java" />
         <option value="$PROJECT_DIR$/src/main/java/events/Event.java" />
+        <option value="$PROJECT_DIR$/config/coordinate" />
+        <option value="$PROJECT_DIR$/src/main/java/navigation/Location.java" />
+        <option value="$PROJECT_DIR$/src/main/java/driver/sandbox.java" />
+        <option value="$PROJECT_DIR$/src/main/java/view/MainInterfacePanel.form" />
       </list>
     </option>
   </component>
@@ -585,8 +391,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
@@ -650,6 +456,15 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="view" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="BurningMan-Navigation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BurningMan-Navigation" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+              <item name="MainInterfacePanel" type="e9f4de52:FormNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -660,7 +475,7 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/hooperb/Documents/BurningMan-Navigation/src/main/java/view/UserInterfaceController.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548027134688" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548038486681" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="Arquillian JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.Arquillian JUnit4" value="" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/test/java" />
@@ -697,6 +512,19 @@
     </option>
   </component>
   <component name="RunManager" selected="JAR Application.BurningMan-Navigation.jar">
+    <configuration name="sandbox" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="driver.sandbox" />
+      <module name="BurningMan-Navigation" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="driver.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="EventTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="BurningMan-Navigation" />
       <extension name="coverage">
@@ -736,10 +564,12 @@
       <item itemvalue="JAR Application.BurningMan-Navigation.jar" />
       <item itemvalue="JUnit.EventTest" />
       <item itemvalue="JUnit.LocationTest" />
+      <item itemvalue="Application.sandbox" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JAR Application.BurningMan-Navigation.jar" />
+        <item itemvalue="Application.sandbox" />
         <item itemvalue="JUnit.LocationTest" />
         <item itemvalue="JUnit.EventTest" />
       </list>
@@ -775,7 +605,9 @@
       <workItem from="1547966753595" duration="5888000" />
       <workItem from="1548005693239" duration="4326000" />
       <workItem from="1548012120837" duration="1313000" />
-      <workItem from="1548014606573" duration="7549000" />
+      <workItem from="1548014606573" duration="8802000" />
+      <workItem from="1548033139949" duration="1038000" />
+      <workItem from="1548036383174" duration="883000" />
     </task>
     <task id="LOCAL-00001" summary="Migrated project to Maven">
       <created>1547007798681</created>
@@ -910,7 +742,21 @@
       <option name="project" value="LOCAL" />
       <updated>1547935814610</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Major changes to menu structure, switched to using java 8-style lambdas to call anonymous functions, implemented methods for measuring distances, minor UI improvements">
+      <created>1548027167362</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1548027167362</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Fixed bug when calculating angles near 12:00">
+      <created>1548034174013</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1548034174014</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -946,7 +792,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="150269000" />
+    <option name="totallyTimeSpent" value="153443000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -959,9 +805,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1044" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49931034" visible="true" weight="0.22732124" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49931034" visible="true" weight="0.23265742" />
       <window_info id="Image Layers" order="1" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -978,7 +823,7 @@
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.3296582" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50053364" side_tool="true" weight="0.37706727" />
-      <window_info active="true" anchor="bottom" id="Messages" order="11" sideWeight="0.49306297" visible="true" weight="0.18522602" />
+      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.49306297" weight="0.2899669" />
       <window_info anchor="bottom" id="Inspection Results" order="12" weight="0.32745314" />
       <window_info anchor="right" id="Coverage" order="0" sideWeight="0.5015723" side_tool="true" weight="0.07097118" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
@@ -1063,16 +908,34 @@
     <MESSAGE value="Changed happening soon OptionPane to use drop-down" />
     <MESSAGE value="Fixed minor bugs when using packaged jar file" />
     <MESSAGE value="Major changes to menu structure, switched to using java 8-style lambdas to call anonymous functions, implemented methods for measuring distances, minor UI improvements" />
-    <option name="LAST_COMMIT_MESSAGE" value="Major changes to menu structure, switched to using java 8-style lambdas to call anonymous functions, implemented methods for measuring distances, minor UI improvements" />
+    <MESSAGE value="Fixed bug when calculating angles near 12:00" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug when calculating angles near 12:00" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/navigation/Location.java</url>
+          <line>293</line>
+          <properties />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/navigation/Location.java</url>
+          <line>280</line>
+          <properties />
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar:///usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/java-atk-wrapper.jar!/org/GNOME/Accessibility/AtkWrapper.class" />
     <entry file="file://$PROJECT_DIR$/favorites.csv" />
     <entry file="file://$PROJECT_DIR$/src/main/java/CoordinateListener.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/view/MenuController.java" />
@@ -1193,16 +1056,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/coordinate">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" column="9" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/view/MainInterfacePanel.form">
-      <provider selected="true" editor-type-id="ui-designer" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/navigation/LocationTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -1221,60 +1074,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
           <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/view/MainInterfacePanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1767">
-          <caret line="230" column="4" selection-start-line="230" selection-start-column="4" selection-end-line="230" selection-end-column="4" />
-          <folding>
-            <element signature="docComment;class#MainInterfacePanel#0" />
-            <element signature="e#1356#1402#0" />
-            <element signature="e#1356#2350#0" />
-            <element signature="e#2506#2574#0" />
-            <element signature="e#2633#2704#0" />
-            <element signature="e#2770#2855#0" />
-            <element signature="e#2972#3058#0" />
-            <element signature="e#3177#3269#0" />
-            <element signature="e#3394#3476#0" />
-            <element signature="e#3587#3675#0" />
-            <element signature="e#3796#3886#0" />
-            <element signature="e#4005#4094#0" />
-            <element signature="e#4219#4314#0" />
-            <element signature="e#4445#4528#0" />
-            <element signature="e#4624#4743#0" />
-            <element signature="e#4624#5263#0" />
-            <element signature="e#5271#5424#0" />
-            <element signature="e#5271#5616#0" />
-            <element signature="e#2579#2625#0" />
-            <element signature="e#2579#2884#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/view/View.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="28" column="24" lean-forward="true" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
-          <folding>
-            <element signature="docComment;class#View#0" />
-            <element signature="docComment;method#View#0;class#View#0" />
-            <element signature="method#View#0;class#View#0" />
-            <element signature="e#1121#1314#0" />
-            <element signature="docComment;method#setUIParameters#0;class#View#0" />
-            <element signature="method#setUIParameters#0;class#View#0" />
-            <element signature="docComment;method#fullScreen#0;class#View#0" />
-            <element signature="method#fullScreen#0;class#View#0" />
-            <element signature="docComment;method#setKeyListener#0;class#View#0" />
-            <element signature="docComment;method#setNavigation#0;class#View#0" />
-            <element signature="docComment;method#getMainFrame#0;class#View#0" />
-            <element signature="docComment;method#getMenu#0;class#View#0" />
-            <element signature="docComment;method#getFocus#0;class#View#0" />
-            <element signature="method#getFocus#0;class#View#0" />
-            <element signature="docComment;method#setClock#0;class#View#0" />
-            <element signature="docComment;method#setLocation#0;class#View#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1628,24 +1427,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/driver/CoordinateListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="52" column="22" selection-start-line="52" selection-start-column="22" selection-end-line="52" selection-end-column="22" />
-          <folding>
-            <element signature="docComment;class#CoordinateListener#0" />
-            <element signature="docComment;method#CoordinateListener#0;class#CoordinateListener#0" />
-            <element signature="method#CoordinateListener#0;class#CoordinateListener#0" />
-            <element signature="docComment;method#run#0;class#CoordinateListener#0" />
-            <element signature="method#run#0;class#CoordinateListener#0" />
-            <element signature="docComment;method#terminate#0;class#CoordinateListener#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/driver/FileManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
+        <state relative-caret-position="323">
           <caret line="25" column="4" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="4" />
           <folding>
             <element signature="docComment;class#FileManager#0" />
@@ -1682,7 +1466,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/driver/LogDriver.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="608">
-          <caret line="108" column="7" lean-forward="true" selection-start-line="108" selection-start-column="7" selection-end-line="108" selection-end-column="7" />
+          <caret line="108" column="7" selection-start-line="108" selection-start-column="7" selection-end-line="108" selection-end-column="7" />
           <folding>
             <element signature="docComment;class#LogDriver#0" />
             <element signature="docComment;method#LogDriver#0;class#LogDriver#0" />
@@ -1703,7 +1487,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/driver/NavigationDriver.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
-          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
           <folding>
             <element signature="docComment;class#NavigationDriver#0" />
             <element signature="docComment;method#run#0;class#NavigationDriver#0" />
@@ -1711,12 +1495,74 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/config/coordinate">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/driver/CoordinateListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="72" column="30" lean-forward="true" selection-start-line="72" selection-start-column="30" selection-end-line="72" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/view/View.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="159" column="16" selection-start-line="159" selection-start-column="16" selection-end-line="159" selection-end-column="16" />
+          <folding>
+            <element signature="docComment;class#View#0" />
+            <element signature="docComment;method#View#0;class#View#0" />
+            <element signature="method#View#0;class#View#0" />
+            <element signature="docComment;method#setUIParameters#0;class#View#0" />
+            <element signature="method#setUIParameters#0;class#View#0" />
+            <element signature="docComment;method#fullScreen#0;class#View#0" />
+            <element signature="method#fullScreen#0;class#View#0" />
+            <element signature="docComment;method#setKeyListener#0;class#View#0" />
+            <element signature="docComment;method#setNavigation#0;class#View#0" />
+            <element signature="docComment;method#getMainFrame#0;class#View#0" />
+            <element signature="docComment;method#getMenu#0;class#View#0" />
+            <element signature="docComment;method#getFocus#0;class#View#0" />
+            <element signature="method#getFocus#0;class#View#0" />
+            <element signature="docComment;method#setClock#0;class#View#0" />
+            <element signature="docComment;method#setLocation#0;class#View#0" />
+            <element signature="e#3884#3885#0" expanded="true" />
+            <element signature="e#3942#3943#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/navigation/Location.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="419" column="19" selection-start-line="419" selection-start-column="19" selection-end-line="419" selection-end-column="19" />
+        <state relative-caret-position="4940">
+          <caret line="283" selection-start-line="283" selection-end-line="283" />
           <folding>
             <element signature="docComment;class#Location#0" />
+            <element signature="e#4735#4736#0" expanded="true" />
+            <element signature="e#4786#4787#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/view/MainInterfacePanel.form">
+      <provider selected="true" editor-type-id="ui-designer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/driver/sandbox.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/view/MainInterfacePanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="209" column="21" selection-start-line="209" selection-start-column="21" selection-end-line="209" selection-end-column="21" />
+          <folding>
+            <element signature="docComment;class#MainInterfacePanel#0" />
           </folding>
         </state>
       </provider>

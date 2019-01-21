@@ -188,7 +188,9 @@
                       </grid>
                       <gridbag weightx="0.0" weighty="0.0"/>
                     </constraints>
-                    <properties/>
+                    <properties>
+                      <editable value="false"/>
+                    </properties>
                   </component>
                 </children>
               </grid>
@@ -274,6 +276,7 @@
                       <gridbag weightx="0.0" weighty="0.0"/>
                     </constraints>
                     <properties>
+                      <icon value="logo.png"/>
                       <text value="Burning Man Navigation"/>
                     </properties>
                   </component>
