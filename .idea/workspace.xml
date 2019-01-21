@@ -7,7 +7,6 @@
     <list default="true" id="24b9839f-6ad8-43a5-9b83-c469d9815187" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/config.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/coordinate" beforeDir="false" afterPath="$PROJECT_DIR$/config/coordinate" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/tracker.csv" beforeDir="false" afterPath="$PROJECT_DIR$/config/tracker.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/MainInterfacePanel.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainInterfacePanel.form" afterDir="false" />
     </list>
@@ -51,11 +50,11 @@
           <entry key="project.open.time.12" value="3" />
           <entry key="project.open.time.13" value="2" />
           <entry key="project.open.time.14" value="1" />
-          <entry key="project.open.time.15" value="3" />
+          <entry key="project.open.time.15" value="4" />
           <entry key="project.open.time.17" value="1" />
           <entry key="project.open.time.8" value="2" />
           <entry key="project.open.time.9" value="2" />
-          <entry key="project.opened" value="20" />
+          <entry key="project.opened" value="21" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -69,6 +68,7 @@
           <entry key="java" value="304" />
           <entry key="log" value="2" />
           <entry key="png" value="2" />
+          <entry key="svg" value="1" />
           <entry key="txt" value="3" />
           <entry key="xml" value="10" />
         </counts>
@@ -81,6 +81,7 @@
           <entry key="Image" value="2" />
           <entry key="JAVA" value="304" />
           <entry key="PLAIN_TEXT" value="30" />
+          <entry key="SVG" value="1" />
           <entry key="XML" value="10" />
         </counts>
       </usages-collector>
@@ -91,7 +92,7 @@
           <entry key="csv" value="53" />
           <entry key="gitignore" value="8" />
           <entry key="java" value="75059" />
-          <entry key="txt" value="1174" />
+          <entry key="txt" value="1211" />
           <entry key="xml" value="127" />
         </counts>
       </usages-collector>
@@ -99,7 +100,7 @@
         <counts>
           <entry key="CSV" value="29" />
           <entry key="JAVA" value="75059" />
-          <entry key="PLAIN_TEXT" value="1230" />
+          <entry key="PLAIN_TEXT" value="1267" />
           <entry key="XML" value="127" />
         </counts>
       </usages-collector>
@@ -156,11 +157,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/view/MainInterfacePanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="290">
-              <caret line="209" column="21" selection-start-line="209" selection-start-column="21" selection-end-line="209" selection-end-column="21" />
+            <state relative-caret-position="95">
+              <caret line="15" selection-start-line="15" selection-end-line="15" />
               <folding>
                 <element signature="docComment;class#MainInterfacePanel#0" />
               </folding>
@@ -168,7 +169,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/view/MainInterfacePanel.form">
           <provider selected="true" editor-type-id="ui-designer" />
         </entry>
@@ -391,9 +392,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -469,13 +468,15 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/hooperb/Documents/BurningMan-Navigation/src/main/java/view/UserInterfaceController.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548038486681" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548043232596" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="Arquillian JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.Arquillian JUnit4" value="" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/test/java" />
@@ -608,6 +609,7 @@
       <workItem from="1548014606573" duration="8802000" />
       <workItem from="1548033139949" duration="1038000" />
       <workItem from="1548036383174" duration="883000" />
+      <workItem from="1548041780631" duration="1255000" />
     </task>
     <task id="LOCAL-00001" summary="Migrated project to Maven">
       <created>1547007798681</created>
@@ -756,7 +758,14 @@
       <option name="project" value="LOCAL" />
       <updated>1548034174014</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Minor changes to UI, added logo">
+      <created>1548041904653</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1548041904653</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -792,7 +801,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="153443000" />
+    <option name="totallyTimeSpent" value="154698000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -805,8 +814,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1044" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49931034" visible="true" weight="0.23265742" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49931034" visible="true" weight="0.2353255" />
       <window_info id="Image Layers" order="1" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -815,7 +825,7 @@
       <window_info anchor="bottom" id="Dependency Viewer" order="0" sideWeight="0.4994664" weight="0.37706727" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" sideWeight="0.49946752" weight="0.32745314" />
-      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.4909285" weight="0.2987872" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" sideWeight="0.4909285" visible="true" weight="0.29327452" />
       <window_info anchor="bottom" id="Debug" order="4" sideWeight="0.49626467" weight="0.34840134" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -909,7 +919,8 @@
     <MESSAGE value="Fixed minor bugs when using packaged jar file" />
     <MESSAGE value="Major changes to menu structure, switched to using java 8-style lambdas to call anonymous functions, implemented methods for measuring distances, minor UI improvements" />
     <MESSAGE value="Fixed bug when calculating angles near 12:00" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug when calculating angles near 12:00" />
+    <MESSAGE value="Minor changes to UI, added logo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor changes to UI, added logo" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -936,7 +947,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/favorites.csv" />
     <entry file="file://$PROJECT_DIR$/src/main/java/CoordinateListener.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/view/MenuController.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/NavigationDriver.java" />
@@ -951,56 +961,56 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/tracker.csv">
-      <provider selected="true" editor-type-id="csv-text-editor" />
+      <provider editor-type-id="text-editor" />
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" rowLines="3" />
       </provider>
-      <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="csv-text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/config/notes.csv">
-      <provider selected="true" editor-type-id="csv-text-editor" />
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" rowLines="3" />
       </provider>
+      <provider selected="true" editor-type-id="csv-text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/config/favorites.csv">
-      <provider selected="true" editor-type-id="csv-text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="16" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
-        </state>
-      </provider>
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" rowLines="3" />
-      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/camps.csv">
-      <provider selected="true" editor-type-id="csv-text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" rowLines="3" />
       </provider>
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="16" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/camps.csv">
       <provider editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
         </state>
       </provider>
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" rowLines="3" />
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/bathrooms.csv">
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" rowLines="3" />
+      </provider>
       <provider selected="true" editor-type-id="csv-text-editor">
         <state relative-caret-position="57">
           <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
         </state>
-      </provider>
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" rowLines="3" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
@@ -1025,17 +1035,17 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/eventList.csv">
-      <provider selected="true" editor-type-id="csv-text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" column="42" lean-forward="true" selection-start-line="1" selection-start-column="42" selection-end-line="1" selection-end-column="42" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="47" selection-start-line="4" selection-start-column="47" selection-end-line="4" selection-end-column="47" />
         </state>
       </provider>
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" rowLines="3" />
       </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="47" selection-start-line="4" selection-start-column="47" selection-end-line="4" selection-end-column="47" />
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="19">
+          <caret line="1" column="42" lean-forward="true" selection-start-line="1" selection-start-column="42" selection-end-line="1" selection-end-column="42" />
         </state>
       </provider>
     </entry>
@@ -1103,14 +1113,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
           <caret line="22" column="7" lean-forward="true" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
-          <folding>
-            <element signature="docComment;class#RequestFocusListener#0" />
-            <element signature="docComment;method#ancestorAdded#0;class#RequestFocusListener#0" />
-            <element signature="method#ancestorAdded#0;class#RequestFocusListener#0" />
-            <element signature="e#572#738#0" />
-            <element signature="method#ancestorMoved#0;class#RequestFocusListener#0" />
-            <element signature="method#ancestorRemoved#0;class#RequestFocusListener#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1118,17 +1120,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
           <caret line="61" column="4" selection-start-line="61" selection-start-column="4" selection-end-line="61" selection-end-column="4" />
-          <folding>
-            <element signature="docComment;class#OptionPaneTextArea#0" />
-            <element signature="docComment;method#OptionPaneTextArea#0;class#OptionPaneTextArea#0" />
-            <element signature="method#OptionPaneTextArea#0;class#OptionPaneTextArea#0" />
-            <element signature="docComment;method#keyPressed#0;class#OptionPaneTextArea#0" />
-            <element signature="method#keyPressed#0;class#OptionPaneTextArea#0" />
-            <element signature="docComment;method#keyReleased#0;class#OptionPaneTextArea#0" />
-            <element signature="method#keyReleased#0;class#OptionPaneTextArea#0" />
-            <element signature="docComment;method#keyTyped#0;class#OptionPaneTextArea#0" />
-            <element signature="method#keyTyped#0;class#OptionPaneTextArea#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1171,11 +1162,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2169">
           <caret line="160" column="8" selection-start-line="160" selection-start-column="8" selection-end-line="160" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3187#3188#0" expanded="true" />
-            <element signature="e#3238#3239#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1183,9 +1169,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-358">
           <caret line="26" column="39" selection-start-line="26" selection-start-column="39" selection-end-line="26" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1219,9 +1202,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="950">
           <caret line="52" column="27" selection-start-line="52" selection-start-column="27" selection-end-line="52" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1229,9 +1209,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-624">
           <caret line="29" column="12" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1239,43 +1216,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="741">
           <caret line="59" column="47" selection-start-line="59" selection-start-column="47" selection-end-line="59" selection-end-column="47" />
-          <folding>
-            <element signature="docComment;class#Navigator#0" />
-            <element signature="e#1699#1806#0" />
-            <element signature="e#1699#2172#0" />
-            <element signature="e#2178#2221#0" />
-            <element signature="e#2178#4303#0" />
-            <element signature="e#4309#4356#0" />
-            <element signature="e#4309#5725#0" />
-            <element signature="e#5731#5781#0" />
-            <element signature="e#5731#6114#0" />
-            <element signature="e#6120#6169#0" />
-            <element signature="e#6120#6311#0" />
-            <element signature="e#6467#6612#0" />
-            <element signature="e#6467#6789#0" />
-            <element signature="e#6795#6881#0" />
-            <element signature="e#6992#7135#0" />
-            <element signature="e#6992#7310#0" />
-            <element signature="e#7316#7399#0" />
-            <element signature="e#7506#7648#0" />
-            <element signature="e#8948#9090#0" />
-            <element signature="e#8948#9249#0" />
-            <element signature="e#9255#9338#0" />
-            <element signature="e#9417#9505#0" />
-            <element signature="e#9612#9696#0" />
-            <element signature="e#9780#9858#0" />
-            <element signature="e#9943#10019#0" />
-            <element signature="e#11012#11169#0" />
-            <element signature="e#11012#11304#0" />
-            <element signature="e#10124#10237#0" />
-            <element signature="e#10124#11305#0" />
-            <element signature="docComment;method#findCamps#0;class#Navigator#0" />
-            <element signature="method#findCamps#0;class#Navigator#0" />
-            <element signature="e#11133#11260#0" />
-            <element signature="e#11133#11578#0" />
-            <element signature="e#11584#11760#0" />
-            <element signature="e#11584#12038#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1283,42 +1223,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1729">
           <caret line="278" column="17" lean-forward="true" selection-start-line="278" selection-start-column="17" selection-end-line="278" selection-end-column="17" />
-          <folding>
-            <element signature="docComment;class#Landmarks#0" />
-            <element signature="docComment;method#Landmarks#0;class#Landmarks#0" />
-            <element signature="method#Landmarks#0;class#Landmarks#0" />
-            <element signature="docComment;method#readBathrooms#0;class#Landmarks#0" />
-            <element signature="method#readBathrooms#0;class#Landmarks#0" />
-            <element signature="docComment;method#readNamedLocations#0;class#Landmarks#0" />
-            <element signature="method#readNamedLocations#0;class#Landmarks#0" />
-            <element signature="docComment;method#readCamps#0;class#Landmarks#0" />
-            <element signature="docComment;method#readFavorites#0;class#Landmarks#0" />
-            <element signature="docComment;method#addBathroom#0;class#Landmarks#0" />
-            <element signature="e#5040#5067#0" expanded="true" />
-            <element signature="method#addBathroom#0;class#Landmarks#0" />
-            <element signature="docComment;method#addBathroom#1;class#Landmarks#0" />
-            <element signature="e#5386#5413#0" expanded="true" />
-            <element signature="method#addBathroom#1;class#Landmarks#0" />
-            <element signature="docComment;method#addBathroom#2;class#Landmarks#0" />
-            <element signature="e#5729#5756#0" expanded="true" />
-            <element signature="method#addBathroom#2;class#Landmarks#0" />
-            <element signature="docComment;method#addCamp#0;class#Landmarks#0" />
-            <element signature="e#6050#6077#0" expanded="true" />
-            <element signature="method#addCamp#0;class#Landmarks#0" />
-            <element signature="docComment;method#addCamp#1;class#Landmarks#0" />
-            <element signature="e#6403#6430#0" expanded="true" />
-            <element signature="method#addCamp#1;class#Landmarks#0" />
-            <element signature="docComment;method#addCamp#2;class#Landmarks#0" />
-            <element signature="e#6753#6780#0" expanded="true" />
-            <element signature="method#addCamp#2;class#Landmarks#0" />
-            <element signature="docComment;method#getCamp#0;class#Landmarks#0" />
-            <element signature="method#getCamp#0;class#Landmarks#0" />
-            <element signature="docComment;method#getFavorites#0;class#Landmarks#0" />
-            <element signature="docComment;method#getCamps#0;class#Landmarks#0" />
-            <element signature="docComment;method#findClosest#0;class#Landmarks#0" />
-            <element signature="method#findClosest#0;class#Landmarks#0" />
-            <element signature="docComment;method#findBathroom#0;class#Landmarks#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1326,22 +1230,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-133">
           <caret line="8" selection-start-line="8" selection-end-line="8" />
-          <folding>
-            <element signature="docComment;class#NoteManager#0" />
-            <element signature="docComment;method#NoteManager#0;class#NoteManager#0" />
-            <element signature="method#NoteManager#0;class#NoteManager#0" />
-            <element signature="docComment;method#readNotes#0;class#NoteManager#0" />
-            <element signature="method#readNotes#0;class#NoteManager#0" />
-            <element signature="docComment;method#saveNotes#0;class#NoteManager#0" />
-            <element signature="method#saveNotes#0;class#NoteManager#0" />
-            <element signature="docComment;method#getNoteTitles#0;class#NoteManager#0" />
-            <element signature="docComment;method#getNote#0;class#NoteManager#0" />
-            <element signature="docComment;method#createNote#0;class#NoteManager#0" />
-            <element signature="method#createNote#0;class#NoteManager#0" />
-            <element signature="docComment;method#deleteNote#0;class#NoteManager#0" />
-            <element signature="method#deleteNote#0;class#NoteManager#0" />
-            <element signature="docComment;method#isEmpty#0;class#NoteManager#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1349,21 +1237,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
           <caret line="22" column="4" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
-          <folding>
-            <element signature="docComment;class#EventManager#0" />
-            <element signature="docComment;method#EventManager#0;class#EventManager#0" />
-            <element signature="method#EventManager#0;class#EventManager#0" />
-            <element signature="docComment;method#readEvents#0;class#EventManager#0" />
-            <element signature="method#readEvents#0;class#EventManager#0" />
-            <element signature="docComment;method#listBetween#0;class#EventManager#0" />
-            <element signature="method#listBetween#0;class#EventManager#0" />
-            <element signature="docComment;method#listHappeningSoon#0;class#EventManager#0" />
-            <element signature="method#listHappeningSoon#0;class#EventManager#0" />
-            <element signature="docComment;method#listBySearch#0;class#EventManager#0" />
-            <element signature="method#listBySearch#0;class#EventManager#0" />
-            <element signature="docComment;method#matches#0;class#EventManager#0" />
-            <element signature="method#matches#0;class#EventManager#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1371,13 +1244,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
           <caret line="5" selection-start-line="5" selection-end-line="5" />
-          <folding>
-            <element signature="docComment;class#EventCategory#0" />
-            <element signature="docComment;method#of#0;class#EventCategory#0" />
-            <element signature="method#of#0;class#EventCategory#0" />
-            <element signature="docComment;method#listAll#0;class#EventCategory#0" />
-            <element signature="method#listAll#0;class#EventCategory#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1385,31 +1251,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="684">
           <caret line="106" selection-start-line="106" selection-end-line="106" />
-          <folding>
-            <element signature="docComment;class#Event#0" />
-            <element signature="docComment;method#setGlobalEventStartTime#0;class#Event#0" />
-            <element signature="method#setGlobalEventStartTime#0;class#Event#0" />
-            <element signature="docComment;method#multiDateBuilder#0;class#Event#0" />
-            <element signature="method#multiDateBuilder#0;class#Event#0" />
-            <element signature="docComment;method#Event#0;class#Event#0" />
-            <element signature="method#Event#0;class#Event#0" />
-            <element signature="docComment;method#Event#1;class#Event#0" />
-            <element signature="method#Event#1;class#Event#0" />
-            <element signature="docComment;method#dateBuilder#0;class#Event#0" />
-            <element signature="method#dateBuilder#0;class#Event#0" />
-            <element signature="docComment;method#asString#0;class#Event#0" />
-            <element signature="method#asString#0;class#Event#0" />
-            <element signature="docComment;method#getName#0;class#Event#0" />
-            <element signature="docComment;method#getLocation#0;class#Event#0" />
-            <element signature="docComment;method#getStartTime#0;class#Event#0" />
-            <element signature="docComment;method#getCategory#0;class#Event#0" />
-            <element signature="docComment;method#toString#0;class#Event#0" />
-            <element signature="method#toString#0;class#Event#0" />
-            <element signature="docComment;method#getElements#0;class#Event#0" />
-            <element signature="method#getElements#0;class#Event#0" />
-            <element signature="docComment;method#timeToString#0;class#Event#0" />
-            <element signature="docComment;method#getDescription#0;class#Event#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1417,13 +1258,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="361">
           <caret line="22" column="4" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
-          <folding>
-            <element signature="docComment;method#ClockDriver#0;class#ClockDriver#0" />
-            <element signature="method#ClockDriver#0;class#ClockDriver#0" />
-            <element signature="docComment;method#run#0;class#ClockDriver#0" />
-            <element signature="method#run#0;class#ClockDriver#0" />
-            <element signature="docComment;method#terminate#0;class#ClockDriver#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1431,19 +1265,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="25" column="4" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="4" />
-          <folding>
-            <element signature="docComment;class#FileManager#0" />
-            <element signature="docComment;method#FileManager#0;class#FileManager#0" />
-            <element signature="method#FileManager#0;class#FileManager#0" />
-            <element signature="docComment;method#readLines#0;class#FileManager#0" />
-            <element signature="method#readLines#0;class#FileManager#0" />
-            <element signature="docComment;method#writeLines#0;class#FileManager#0" />
-            <element signature="method#writeLines#0;class#FileManager#0" />
-            <element signature="docComment;method#appendLine#0;class#FileManager#0" />
-            <element signature="method#appendLine#0;class#FileManager#0" />
-            <element signature="docComment;method#close#0;class#FileManager#0" />
-            <element signature="method#close#0;class#FileManager#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1451,15 +1272,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
           <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
-          <folding>
-            <element signature="docComment;class#ListManager#0" />
-            <element signature="docComment;method#createRow#0;class#ListManager#0" />
-            <element signature="method#createRow#0;class#ListManager#0" />
-            <element signature="docComment;method#addSpacers#0;class#ListManager#0" />
-            <element signature="method#addSpacers#0;class#ListManager#0" />
-            <element signature="docComment;method#splitEvenly#0;class#ListManager#0" />
-            <element signature="method#splitEvenly#0;class#ListManager#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1467,20 +1279,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="608">
           <caret line="108" column="7" selection-start-line="108" selection-start-column="7" selection-end-line="108" selection-end-column="7" />
-          <folding>
-            <element signature="docComment;class#LogDriver#0" />
-            <element signature="docComment;method#LogDriver#0;class#LogDriver#0" />
-            <element signature="method#LogDriver#0;class#LogDriver#0" />
-            <element signature="docComment;method#getInstance#0;class#LogDriver#0" />
-            <element signature="method#getInstance#0;class#LogDriver#0" />
-            <element signature="docComment;method#log#0;class#LogDriver#0" />
-            <element signature="method#log#0;class#LogDriver#0" />
-            <element signature="docComment;method#severe#0;class#LogDriver#0" />
-            <element signature="docComment;method#warning#0;class#LogDriver#0" />
-            <element signature="docComment;method#info#0;class#LogDriver#0" />
-            <element signature="docComment;method#close#0;class#LogDriver#0" />
-            <element signature="method#close#0;class#LogDriver#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1488,10 +1286,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
           <caret line="25" selection-start-line="25" selection-end-line="25" />
-          <folding>
-            <element signature="docComment;class#NavigationDriver#0" />
-            <element signature="docComment;method#run#0;class#NavigationDriver#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1535,6 +1329,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/driver/sandbox.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/navigation/Location.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4940">
@@ -1547,25 +1348,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/view/MainInterfacePanel.form">
-      <provider selected="true" editor-type-id="ui-designer" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/driver/sandbox.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/logo.svg">
+      <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/view/MainInterfacePanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="209" column="21" selection-start-line="209" selection-start-column="21" selection-end-line="209" selection-end-column="21" />
+        <state relative-caret-position="95">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
           <folding>
             <element signature="docComment;class#MainInterfacePanel#0" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/view/MainInterfacePanel.form">
+      <provider selected="true" editor-type-id="ui-designer" />
     </entry>
   </component>
   <component name="masterDetails">

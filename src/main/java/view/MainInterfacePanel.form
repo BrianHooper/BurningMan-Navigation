@@ -35,18 +35,12 @@
             <children>
               <grid id="7f71b" binding="rightPanel" layout-manager="GridBagLayout">
                 <constraints>
-                  <grid row="1" column="2" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                  <grid row="1" column="2" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
                   <gridbag weightx="0.0" weighty="0.0"/>
                 </constraints>
                 <properties/>
                 <border type="none"/>
                 <children>
-                  <vspacer id="bf7ef">
-                    <constraints>
-                      <grid row="13" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-                      <gridbag weightx="0.0" weighty="0.0"/>
-                    </constraints>
-                  </vspacer>
                   <component id="12cbf" class="javax.swing.JTextField" binding="destinationDirections">
                     <constraints>
                       <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
@@ -203,7 +197,9 @@
                   <inheritsPopupMenu value="false"/>
                   <minimumSize width="-1" height="-1"/>
                 </properties>
-                <border type="none"/>
+                <border type="empty">
+                  <size top="0" left="0" bottom="0" right="20"/>
+                </border>
                 <children>
                   <grid id="15299" binding="leftMenu" custom-create="true" layout-manager="GridBagLayout">
                     <constraints>
@@ -216,17 +212,11 @@
                     <border type="none"/>
                     <children/>
                   </grid>
-                  <vspacer id="cfb68">
-                    <constraints>
-                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-                      <gridbag weightx="0.0" weighty="0.0"/>
-                    </constraints>
-                  </vspacer>
                 </children>
               </grid>
               <grid id="6d4" binding="clockPanel" custom-create="true" layout-manager="GridBagLayout">
                 <constraints>
-                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="2" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="2" fill="0" indent="0" use-parent-layout="false"/>
                   <gridbag weightx="0.0" weighty="0.0"/>
                 </constraints>
                 <properties>
@@ -246,20 +236,8 @@
                       <text value="clock"/>
                     </properties>
                   </component>
-                  <hspacer id="d0662">
-                    <constraints>
-                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                      <gridbag weightx="0.0" weighty="0.0"/>
-                    </constraints>
-                  </hspacer>
                 </children>
               </grid>
-              <hspacer id="3b739">
-                <constraints>
-                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                  <gridbag weightx="0.0" weighty="0.0"/>
-                </constraints>
-              </hspacer>
               <grid id="58fb1" layout-manager="GridBagLayout">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
