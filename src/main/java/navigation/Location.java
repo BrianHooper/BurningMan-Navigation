@@ -292,6 +292,11 @@ public class Location {
         }
 
         angle -= calculateOffset(angle);
+        if(angle < 0) {
+            angle = 360 + angle;
+        } else if(angle > 360) {
+            angle = angle - 360;
+        }
 
         return angle;
     }
