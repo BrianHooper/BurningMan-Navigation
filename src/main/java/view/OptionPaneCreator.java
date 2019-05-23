@@ -547,54 +547,6 @@ class OptionPaneCreator {
     }
 
     /**
-     * Creates JOptionPane popup for setting the width of a block
-     *
-     * @param view      main view panel
-     * @param navigator main navigator object
-     */
-    static void setBlockWidth(View view, Navigator navigator) {
-        OptionPane pane = new OptionPane();
-        pane.addLabel("Set new block width:");
-        JTextField field = new JTextField(10);
-        field.setText(String.valueOf(Location.getBlock_width()));
-        pane.addComponent(field);
-
-        if(pane.show(view.getMainFrame(), "Set Block Width")) {
-            try {
-                int width = Integer.parseInt(field.getText());
-                Location.setBlock_width(width);
-                navigator.writeToConfigFile();
-            } catch(NumberFormatException e) {
-                OptionPane.showMessage(view.getMainFrame(), "Invalid width");
-            }
-        }
-    }
-
-    /**
-     * Creates JOptionPane popup for setting esplanade distance
-     *
-     * @param view      main view panel
-     * @param navigator main navigator object
-     */
-    static void setEsplanade(View view, Navigator navigator) {
-        OptionPane pane = new OptionPane();
-        pane.addLabel("Set new esplanade distance:");
-        JTextField field = new JTextField(10);
-        field.setText(String.valueOf(Location.getEsplanade_distance()));
-        pane.addComponent(field);
-
-        if(pane.show(view.getMainFrame(), "Set Esplanade Distance")) {
-            try {
-                int distance = Integer.parseInt(field.getText());
-                Location.setEsplanade_distance(distance);
-                navigator.writeToConfigFile();
-            } catch(NumberFormatException e) {
-                OptionPane.showMessage(view.getMainFrame(), "Invalid distance");
-            }
-        }
-    }
-
-    /**
      * Creates JOptionPane popup for setting man coordinates
      *
      * @param view      main view panel

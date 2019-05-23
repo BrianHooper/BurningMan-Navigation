@@ -106,10 +106,6 @@ public class Navigator {
                 Location.setAdjustmentCoefficients(Double.parseDouble(split[0]), Double.parseDouble(split[1]),
                         Double.parseDouble(split[2]), Double.parseDouble(split[3]));
             }
-            if(properties.containsKey("ESPLANADE-DISTANCE"))
-                Location.setEsplanade_distance(Integer.parseInt((String) properties.get("ESPLANADE-DISTANCE")));
-            if(properties.containsKey("BLOCK-WIDTH"))
-                Location.setBlock_width(Integer.parseInt((String) properties.get("BLOCK-WIDTH")));
             if(properties.containsKey("EVENT-START-TIME"))
                 Event.setGlobalEventStartTime(properties.getProperty("EVENT-START-TIME"));
             if(properties.containsKey("CURRENT-DESTINATION-NAME"))
@@ -132,8 +128,6 @@ public class Navigator {
 
         properties.put("MAN-LATITUDE", String.valueOf(Location.getMan_latitude()));
         properties.put("MAN-LONGITUDE", String.valueOf(Location.getMan_longitude()));
-        properties.put("ESPLANADE-DISTANCE", String.valueOf(Location.getEsplanade_distance()));
-        properties.put("BLOCK-WIDTH", String.valueOf(Location.getBlock_width()));
         properties.put("CURRENT-DESTINATION-NAME", currentDestinationName);
         properties.put("CURRENT-DESTINATION-ADDRESS", currentDestination.getCSVAddress());
         properties.put("EVENT-START-TIME", ClockDriver.dfFull.format(Event.globalEventStartTime));

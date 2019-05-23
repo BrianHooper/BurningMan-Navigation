@@ -26,8 +26,6 @@ public class Location {
     // Globals used for converting gps coordinates to addresses
     private static double man_latitude = 40.7864;
     private static double man_longitude = -119.2065;
-    private static int esplanade_distance = 2600;
-    private static int block_width = 240;
     public static Object[][] blockDistances = new Object[][] {
             { 2300, "The Man"},
             { 2700, "Esplanade"},
@@ -90,42 +88,6 @@ public class Location {
     }
 
     /**
-     * Getter for esplanade distance
-     *
-     * @return esplanade distance
-     */
-    public static int getEsplanade_distance() {
-        return esplanade_distance;
-    }
-
-    /**
-     * Setter for esplanade distance
-     *
-     * @param esplanade_distance esplanade distance
-     */
-    public static void setEsplanade_distance(int esplanade_distance) {
-        Location.esplanade_distance = esplanade_distance;
-    }
-
-    /**
-     * Getter for block width
-     *
-     * @return block width
-     */
-    public static int getBlock_width() {
-        return block_width;
-    }
-
-    /**
-     * Setter for block width
-     *
-     * @param block_width block width
-     */
-    public static void setBlock_width(int block_width) {
-        Location.block_width = block_width;
-    }
-
-    /**
      * Getter for adjustment coefficients
      *
      * @return double[]
@@ -149,11 +111,19 @@ public class Location {
     /**
      * Converts a char street to a distance
      *
-     * @param street char
+     * @param streetChar char
      * @return double
      */
-    static double toDistance(char street) {
-        return (street - 64) * block_width + esplanade_distance;
+    static int toDistance(char streetChar) {
+        if(streetChar < 65 || streetChar > 76) return 0;
+        String street = String.valueOf(streetChar);
+        int index = 1;
+        while(index < Location.blockDistances.length - 1 && !street.equals(Location.blockDistances[index][1])) {
+            index++;
+        }
+
+        int difference = (int) Location.blockDistances[index][0] - (int) Location.blockDistances[index + 1][0];
+        return (int) Location.blockDistances[index][0] + (difference / 2);
     }
 
     /**
@@ -242,13 +212,7 @@ public class Location {
     public Location(int hour, int minute, char street) {
         this.hour = hour;
         this.minute = minute;
-        int chVal = ((int) Character.toUpperCase(street));
-        if(chVal >= 65 && chVal <= 76) {
-            chVal -= 64;
-        } else {
-            chVal = 0;
-        }
-        this.distance = esplanade_distance + chVal * block_width;
+        this.distance = toDistance(street);
     }
 
     /**

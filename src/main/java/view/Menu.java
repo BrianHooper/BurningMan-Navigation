@@ -81,8 +81,6 @@ class Menu {
         menuItems = new MenuLabel[]{
                 new MenuLabel("Set home address", OptionPaneCreator::setHome),
                 new MenuLabel("Set man coordinates", OptionPaneCreator::setMan),
-                new MenuLabel("Adjust Esplanade distance", OptionPaneCreator::setEsplanade),
-                new MenuLabel("Adjust block width", OptionPaneCreator::setBlockWidth),
                 new MenuLabel("Set event start time", OptionPaneCreator::setEventStartTime),
                 new MenuLabel("Adjust Correction Coefficients", OptionPaneCreator::adjustCoefficients),
                 new MenuLabel("Calculate correction error", OptionPaneCreator::calculateError),
