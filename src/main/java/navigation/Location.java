@@ -100,7 +100,7 @@ public class Location {
      * Setter for block distances
      * @param blockDistances object[][] of type Integer, String
      */
-    static void setBlockDistances(Object[][] blockDistances) {
+    public static void setBlockDistances(Object[][] blockDistances) {
         Location.blockDistances = blockDistances;
     }
 
@@ -108,7 +108,7 @@ public class Location {
      * Getter for block distances
      * @return  object[][] of type Integer, String
      */
-    static Object[][] getBlockDistances() {
+    public static Object[][] getBlockDistances() {
         return blockDistances;
     }
 

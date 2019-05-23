@@ -82,6 +82,7 @@ class Menu {
                 new MenuLabel("Set home address", OptionPaneCreator::setHome),
                 new MenuLabel("Set man coordinates", OptionPaneCreator::setMan),
                 new MenuLabel("Set event start time", OptionPaneCreator::setEventStartTime),
+                new MenuLabel("Adjust Block Widths", OptionPaneCreator::adjustBlockWidths),
                 new MenuLabel("Adjust Correction Coefficients", OptionPaneCreator::adjustCoefficients),
                 new MenuLabel("Calculate correction error", OptionPaneCreator::calculateError),
                 new MenuLabel("Exit", null)

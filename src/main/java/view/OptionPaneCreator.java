@@ -666,4 +666,59 @@ class OptionPaneCreator {
     static void settings(View view, Navigator navigator) {
         view.getMenu().settings();
     }
+
+    public static void adjustBlockWidths(View view, Navigator navigator) {
+        class BlockPane extends JPanel {
+            private JTextField distance, street;
+
+            private BlockPane(String distanceStr, String streetStr) {
+                setLayout(new FlowLayout());
+                distance = new JTextField(6);
+                distance.setText(distanceStr);
+                street = new JTextField(11);
+                street.setText(streetStr);
+                add(distance);
+                add(street);
+            }
+
+            private String getDistance() {
+                return distance.getText();
+            }
+
+            private String getStreet() {
+                return street.getText();
+            }
+
+        }
+
+        OptionPane pane = new OptionPane();
+        pane.addLabel("Enter block widths:");
+
+        Object[][] blockDistances = Location.getBlockDistances();
+        BlockPane[] blockPanes = new BlockPane[blockDistances.length];
+        for(int i = 0; i < blockDistances.length; i++) {
+            blockPanes[i] = new BlockPane(String.valueOf(blockDistances[i][0]), (String) blockDistances[i][1]);
+        }
+
+        for(BlockPane blockPane : blockPanes) {
+            pane.addComponent(blockPane);
+        }
+
+        if(!pane.show(null, "Calculate errors")) {
+            return;
+        }
+
+        Object[][] blockDistancesUpdated = new Object[blockDistances.length][2];
+        for(int i = 0; i < blockPanes.length; i++) {
+            try {
+                blockDistancesUpdated[i][0] = Integer.parseInt(blockPanes[i].getDistance());
+                blockDistancesUpdated[i][1] = blockPanes[i].getStreet();
+            } catch(NumberFormatException e) {
+                OptionPane.showMessage(view.getMainFrame(),
+                        "Invalid distance for street " + blockPanes[i].getStreet());
+                return;
+            }
+        }
+        Location.setBlockDistances(blockDistancesUpdated);
+    }
 }
