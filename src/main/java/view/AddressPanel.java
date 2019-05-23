@@ -54,15 +54,8 @@ class AddressPanel extends JPanel {
         if(hour >= 2 && hour <= 10) {
             hourBox.setSelectedIndex(hour - 2);
         }
-
         minuteBox.setSelectedIndex(minute / 15);
-
-        if(distance < Location.getEsplanade_distance() + Location.getBlock_width()) {
-            streetBox.setText(String.valueOf(distance));
-        } else {
-            streetBox.setText(String.valueOf(Location.toStreet(distance)));
-        }
-
+        streetBox.setText(Location.toStreet(distance));
     }
 
     /**

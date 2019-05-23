@@ -164,14 +164,7 @@ public class Location {
      * @param distance double
      * @return char
      */
-    public static char toStreet(double distance) {
-        if(distance < esplanade_distance) {
-            return '0';
-        }
-        return (char) (((distance - esplanade_distance) / block_width) + 64);
-    }
-
-    public static String toStreetString(double distance) {
+    public static String toStreet(double distance) {
         String street = String.valueOf((int) distance);
         int index = 0;
         if(distance < ((int) blockDistances[blockDistances.length - 1][0])) {
@@ -400,7 +393,7 @@ public class Location {
      * @return Address as String
      */
     String getAddress() {
-        return hour + ":" + minute + " & " + toStreetString(distance);
+        return hour + ":" + minute + " & " + toStreet(distance);
     }
 
 //**********************
