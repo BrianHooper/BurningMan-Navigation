@@ -644,7 +644,7 @@ class OptionPaneCreator {
      * @param navigator main navigator object
      */
     static void favorites(View view, Navigator navigator) {
-        view.getMenu().favorites();
+        view.getMenu().favorites(view, navigator);
     }
 
     /**
@@ -654,7 +654,7 @@ class OptionPaneCreator {
      * @param navigator main navigator object
      */
     static void notes(View view, Navigator navigator) {
-        view.getMenu().notes();
+        view.getMenu().notes(view, navigator);
     }
 
     /**
@@ -664,7 +664,7 @@ class OptionPaneCreator {
      * @param navigator main navigator object
      */
     static void settings(View view, Navigator navigator) {
-        view.getMenu().settings();
+        view.getMenu().settings(view, navigator);
     }
 
     public static void adjustBlockWidths(View view, Navigator navigator) {
@@ -720,5 +720,9 @@ class OptionPaneCreator {
             }
         }
         Location.setBlockDistances(blockDistancesUpdated);
+    }
+
+    public static void exitProgram(View view, Navigator navigator) {
+
     }
 }

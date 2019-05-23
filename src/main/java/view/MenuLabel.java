@@ -8,6 +8,8 @@ import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 
 /**
@@ -25,6 +27,8 @@ class MenuLabel extends JLabel {
     private final Border selectedBorder = new CompoundBorder(
             new BevelBorder(BevelBorder.RAISED), deselectedBorder);
     private final OptionPaneController optionPane;
+    private final View view;
+    private final Navigator navigator;
 
     /**
      * Constructor
@@ -33,8 +37,29 @@ class MenuLabel extends JLabel {
      *
      * @param text label
      */
-    MenuLabel(String text, OptionPaneController optionPane) {
+    MenuLabel(String text, OptionPaneController optionPane, View view, Navigator navigator) {
         this.optionPane = optionPane;
+        this.view = view;
+        this.navigator = navigator;
+        addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                performAction(view, navigator);
+                view.getFocus();
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {}
+
+            @Override
+            public void mouseReleased(MouseEvent e) {}
+
+            @Override
+            public void mouseEntered(MouseEvent e) {}
+
+            @Override
+            public void mouseExited(MouseEvent e) {}
+        });
         setText(text);
         setOpaque(true);
         setBorder(deselectedBorder);
@@ -56,7 +81,6 @@ class MenuLabel extends JLabel {
         setBackground(null);
     }
 
-
     /**
      * Forces explicit size of menu labels
      *
@@ -74,6 +98,6 @@ class MenuLabel extends JLabel {
      * @param navigator navigator
      */
     void performAction(View view, Navigator navigator) {
-        optionPane.createPane(view, navigator);
+        if(optionPane != null) optionPane.createPane(this.view, this.navigator);
     }
 }
