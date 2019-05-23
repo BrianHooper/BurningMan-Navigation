@@ -41,6 +41,7 @@ public class Navigator {
     // Current navigation destination
     private Location currentDestination;
     private String currentDestinationName;
+    private String  blockWidths;
 
     // File manager for reading/writing properties
     private Properties properties;
@@ -112,6 +113,9 @@ public class Navigator {
                 currentDestinationName = properties.getProperty("CURRENT-DESTINATION-NAME");
             if(properties.containsKey("CURRENT-DESTINATION-ADDRESS"))
                 currentDestination = new Location(properties.getProperty("CURRENT-DESTINATION-ADDRESS"));
+            if(properties.containsKey("BLOCK-DISTANCES"))
+                blockWidths = properties.getProperty("BLOCK-DISTANCES");
+            System.out.println(blockWidths);
         } catch(NumberFormatException | ArrayIndexOutOfBoundsException e) {
             logger.warning(this.getClass(),
                     "NumberFormatException while reading config file: " + e.getMessage());

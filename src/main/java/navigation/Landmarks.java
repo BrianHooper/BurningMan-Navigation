@@ -71,7 +71,7 @@ class Landmarks {
                     int hour = Integer.parseInt(split[0]);
                     int minute = Integer.parseInt(split[1]);
                     if(split[2].matches("0-9")) {
-                        double distance = Double.parseDouble(split[2]);
+                        int distance = Integer.parseInt(split[2]);
                         bathrooms.add(new Location(hour, minute, distance));
                     } else {
                         bathrooms.add(new Location(hour, minute, split[2].charAt(0)));
@@ -107,7 +107,7 @@ class Landmarks {
                     int hour = Integer.parseInt(split[1]);
                     int minute = Integer.parseInt(split[2]);
                     if(split[3].matches("0-9")) {
-                        double distance = Double.parseDouble(split[3]);
+                        int distance = Integer.parseInt(split[2]);
                         map.put(split[0], new Location(hour, minute, distance));
                     } else {
                         map.put(split[0], new Location(hour, minute, split[3].charAt(0)));
@@ -158,7 +158,7 @@ class Landmarks {
      * @param distance distance in feet
      */
     @SuppressWarnings("unused")
-    public void addBathroom(int hour, int minute, double distance) {
+    public void addBathroom(int hour, int minute, int distance) {
         this.bathrooms.add(new Location(hour, minute, distance));
     }
 
@@ -193,7 +193,7 @@ class Landmarks {
      * @param distance distance in feet
      */
     @SuppressWarnings("unused")
-    public void addCamp(String name, int hour, int minute, double distance) {
+    public void addCamp(String name, int hour, int minute, int distance) {
         this.camps.put(name, new Location(hour, minute, distance));
     }
 
