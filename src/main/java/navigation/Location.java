@@ -28,6 +28,23 @@ public class Location {
     private static double man_longitude = -119.2065;
     private static int esplanade_distance = 2600;
     private static int block_width = 240;
+    public static Object[][] blockDistances = new Object[][] {
+            { 2300, "The Man"},
+            { 2700, "Esplanade"},
+            { 2950, "A"},
+            { 3200, "B"},
+            { 3450, "C"},
+            { 3700, "D"},
+            { 3900, "E"},
+            { 4100, "F"},
+            { 4300, "G"},
+            { 4500, "H"},
+            { 4650, "I"},
+            { 4800, "J"},
+            { 4950, "K"},
+            { 5100, "L"},
+            { 5250, "o" },
+    };
 
     // Parameters for location
     private int hour;
@@ -152,6 +169,18 @@ public class Location {
             return '0';
         }
         return (char) (((distance - esplanade_distance) / block_width) + 64);
+    }
+
+    public static String toStreetString(double distance) {
+        String street = String.valueOf((int) distance);
+        int index = 0;
+        if(distance < ((int) blockDistances[blockDistances.length - 1][0])) {
+            while (index < blockDistances.length  - 1 && distance > ((int) blockDistances[index][0])) {
+                street = (String) blockDistances[index + 1][1];
+                index++;
+            }
+        }
+        return street;
     }
 
 //**********************
@@ -371,21 +400,7 @@ public class Location {
      * @return Address as String
      */
     String getAddress() {
-        if(distance < esplanade_distance || distance > esplanade_distance + 12 * block_width) {
-            return hour + ":" + minute + " & " + ((int) distance) + "'";
-        } else {
-            String street;
-            if(distance < esplanade_distance + block_width) {
-                street = "Esplanade";
-            } else {
-                street = Character.toString(toStreet(distance));
-            }
-            if(minute < 10) {
-                return hour + ":0" + minute + " & " + street;
-            } else {
-                return hour + ":" + minute + " & " + street;
-            }
-        }
+        return hour + ":" + minute + " & " + toStreetString(distance);
     }
 
 //**********************
