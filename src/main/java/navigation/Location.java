@@ -49,7 +49,7 @@ public class Location {
     // Parameters for location
     private int hour;
     private int minute;
-    private double distance;
+    private int distance;
 
     // Adjustment coefficients
     // Default 8.2 * Math.sin(0.035 * angle + 6.3) + 44.7;
@@ -161,11 +161,11 @@ public class Location {
      * <p>
      * returns '0' if invalid
      *
-     * @param distance double
+     * @param distance int
      * @return char
      */
-    public static String toStreet(double distance) {
-        String street = String.valueOf((int) distance);
+    public static String toStreet(int distance) {
+        String street = String.valueOf(distance);
         int index = 0;
         if(distance < ((int) blockDistances[blockDistances.length - 1][0])) {
             while (index < blockDistances.length  - 1 && distance > ((int) blockDistances[index][0])) {
@@ -198,7 +198,7 @@ public class Location {
         try {
             hour = Integer.parseInt(split[0]);
             minute = Integer.parseInt(split[1]);
-            distance = Double.parseDouble(split[2]);
+            distance = Integer.parseInt(split[2]);
         } catch(NumberFormatException ignored) {
         }
     }
@@ -224,7 +224,7 @@ public class Location {
      * @param minute   minute
      * @param distance distance in feet
      */
-    public Location(int hour, int minute, double distance) {
+    public Location(int hour, int minute, int distance) {
         this.hour = hour;
         this.minute = minute;
         this.distance = distance;
@@ -280,7 +280,7 @@ public class Location {
      * @param lon1 longitude
      * @return distance in feet
      */
-    private static double distance(double lat1, double lon1) {
+    private static int distance(double lat1, double lon1) {
         lat1 = Math.toRadians(lat1);
         double lat2 = Math.toRadians(man_latitude);
         lon1 = Math.toRadians(lon1);
@@ -288,7 +288,7 @@ public class Location {
         double u = Math.sin((lat2 - lat1) / 2);
         double v = Math.sin((lon2 - lon1) / 2);
         double kilometers = 2.0 * 6371 * Math.asin(Math.sqrt(u * u + Math.cos(lat1) * Math.cos(lat2) * v * v));
-        return kilometers / 1.6 * 5280;
+        return (int) (kilometers / 1.6 * 5280);
     }
 
     /**
@@ -383,7 +383,7 @@ public class Location {
      *
      * @return distance
      */
-    public double getDistance() {
+    public int getDistance() {
         return distance;
     }
 
