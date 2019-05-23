@@ -41,7 +41,6 @@ public class Navigator {
     // Current navigation destination
     private Location currentDestination;
     private String currentDestinationName;
-    private String  blockWidths;
 
     // File manager for reading/writing properties
     private Properties properties;
@@ -113,9 +112,20 @@ public class Navigator {
                 currentDestinationName = properties.getProperty("CURRENT-DESTINATION-NAME");
             if(properties.containsKey("CURRENT-DESTINATION-ADDRESS"))
                 currentDestination = new Location(properties.getProperty("CURRENT-DESTINATION-ADDRESS"));
-            if(properties.containsKey("BLOCK-DISTANCES"))
-                blockWidths = properties.getProperty("BLOCK-DISTANCES");
-            System.out.println(blockWidths);
+            if(properties.containsKey("BLOCK-DISTANCES")) {
+                String blockDistanceStr = properties.getProperty("BLOCK-DISTANCES");
+                String[] blockDistances = blockDistanceStr.split(";");
+                Object[][] blockDistanceObjects = new Object[blockDistances.length][2];
+                for(int i = 0; i < blockDistances.length; i++) {
+                    String[] block = blockDistances[i].split(",");
+                    if(block.length == 2) {
+                        blockDistanceObjects[i][0] = Integer.parseInt(block[0]);
+                        blockDistanceObjects[i][1] = block[1];
+                    }
+                }
+                Location.setBlockDistances(blockDistanceObjects);
+
+            }
         } catch(NumberFormatException | ArrayIndexOutOfBoundsException e) {
             logger.warning(this.getClass(),
                     "NumberFormatException while reading config file: " + e.getMessage());
@@ -140,6 +150,16 @@ public class Navigator {
                 String.valueOf(coefficients[1]) + ',' + String.valueOf(coefficients[2]) + ',' +
                 String.valueOf(coefficients[3]);
         properties.put("ADJUSTMENT-COEFFICIENTS", adjustmentCoefficients);
+        StringBuilder blockStringBuilder = new StringBuilder();
+        for(Object[] block : Location.getBlockDistances()) {
+            if(block.length == 2) {
+                blockStringBuilder.append(block[0]);
+                blockStringBuilder.append(',');
+                blockStringBuilder.append(block[1]);
+                blockStringBuilder.append(';');
+            }
+        }
+        properties.put("BLOCK-DISTANCES", blockStringBuilder.toString());
 
         try {
             properties.store(new FileOutputStream(configPath), "");

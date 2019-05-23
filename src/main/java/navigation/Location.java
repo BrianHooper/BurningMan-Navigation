@@ -26,7 +26,7 @@ public class Location {
     // Globals used for converting gps coordinates to addresses
     private static double man_latitude = 40.7864;
     private static double man_longitude = -119.2065;
-    public static Object[][] blockDistances = new Object[][] {
+    private static Object[][] blockDistances = new Object[][] {
             { 2300, "The Man"},
             { 2700, "Esplanade"},
             { 2950, "A"},
@@ -94,6 +94,22 @@ public class Location {
      */
     public static double[] getAdjustmentCoefficients() {
         return adjustmentCoefficients;
+    }
+
+    /**
+     * Setter for block distances
+     * @param blockDistances object[][] of type Integer, String
+     */
+    static void setBlockDistances(Object[][] blockDistances) {
+        Location.blockDistances = blockDistances;
+    }
+
+    /**
+     * Getter for block distances
+     * @return  object[][] of type Integer, String
+     */
+    static Object[][] getBlockDistances() {
+        return blockDistances;
     }
 
     /**

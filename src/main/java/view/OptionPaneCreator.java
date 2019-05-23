@@ -158,9 +158,7 @@ class OptionPaneCreator {
             try {
                 double latitude = Double.parseDouble(errorPane.getLatitude());
                 double longitude = Double.parseDouble(errorPane.getLongitude());
-                System.out.println(String.valueOf(latitude) + "," + String.valueOf(longitude));
                 Location location = new Location(latitude, longitude);
-                System.out.println(String.valueOf(location.getHour()) + "," + String.valueOf(location.getMinute()));
                 results.addLabel(errorPane.name + ": " +
                         String.valueOf(location.getHour()) + ":" + String.format("%02d", location.getMinute()));
             } catch(NumberFormatException e) {
