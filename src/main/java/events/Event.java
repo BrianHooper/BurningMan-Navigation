@@ -7,6 +7,7 @@ import driver.LogDriver;
 import java.time.*;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 
 /**
@@ -68,9 +69,9 @@ public class Event {
     static LocalDateTime[] multiDateBuilder(String[] dateStrIndexes) {
         if(dateStrIndexes == null)
             return null;
-        else if(dateStrIndexes.length % 3 != 0) {
-            logger.warning(Event.class, "Incorrect number of parameters while parsing dateStrIndexes: length" +
-                    dateStrIndexes.length);
+        if(dateStrIndexes.length % 3 != 0) {
+            logger.warning(Event.class, "Incorrect number of parameters while parsing dateStrIndexes: length " +
+                    dateStrIndexes.length + " dateStr: " + Arrays.toString(dateStrIndexes));
             return null;
         }
 
@@ -80,9 +81,10 @@ public class Event {
             try {
                 dateIndexes.add(Integer.parseInt(index.replaceAll("[^\\d.]", "")));
             } catch(NumberFormatException e) {
-                logger.warning(FileManager.class,
-                        "NumberFormatException while parsing integer, cannot parse " + index +
-                                ": " + e.getMessage());
+                logger.warning(
+                        Event.class,"NumberFormatException while parsing integer, cannot parse \'" + index +
+                                "\' on string \'" +
+                                Arrays.toString(dateStrIndexes) + "\'. " + e.getMessage());
                 return null;
             }
         }

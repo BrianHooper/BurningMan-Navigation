@@ -43,6 +43,7 @@ public class UserInterfaceController {
      * @param navigator Navigator object
      */
     private UserInterfaceController(View view, Navigator navigator) {
+        LogDriver.activate();
         this.view = view;
         this.navigator = navigator;
 

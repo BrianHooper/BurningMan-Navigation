@@ -2,14 +2,18 @@ package view;
 
 import driver.ClockDriver;
 import driver.ListManager;
+import driver.LogDriver;
 import events.Event;
 import events.EventCategory;
 import navigation.Location;
 import navigation.Navigator;
+import sun.rmi.log.ReliableLog;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -715,5 +719,33 @@ class OptionPaneCreator {
      */
     static void settings(View view, Navigator navigator) {
         view.getMenu().settings();
+    }
+
+    /**
+     * Shows the log file
+     * @param view      main view panel
+     * @param navigator main navigator object
+     */
+    static void viewLog(View view, Navigator navigator) {
+        OptionPane pane = new OptionPane();
+        ArrayList<String> logData = LogDriver.readLog();
+
+        OptionPaneTextArea field = new OptionPaneTextArea(60, 30);
+        field.setText(String.join("\n", logData));
+        field.setEditable(false);
+        pane.addComponent(field);
+
+        JButton button = new JButton("Clear log file");
+        button.addActionListener(actionEvent -> {
+            int result = JOptionPane.showConfirmDialog(view.getMainFrame(), "Are you sure you want to delete the log file?", "Delete log file", JOptionPane.YES_NO_OPTION);
+            if(result == JOptionPane.YES_OPTION) {
+                LogDriver.clearLog();
+            }
+        });
+        JPanel buttonPanel = new JPanel(new GridLayout(0, 1));
+        buttonPanel.add(button);
+        pane.addComponent(buttonPanel);
+        pane.show(view.getMainFrame(), "Log data");
+
     }
 }

@@ -46,9 +46,9 @@ class Menu {
      */
     void favorites() {
         menuItems = new MenuLabel[]{
-                new MenuLabel("Add new favorite", OptionPaneCreator::goToAddress),
-                new MenuLabel("Navigate to favorite", OptionPaneCreator::goToAddress),
-                new MenuLabel("Delete favorite", OptionPaneCreator::goToAddress)
+                new MenuLabel("Add new favorite", OptionPaneCreator::addFavorite),
+                new MenuLabel("Navigate to favorite", OptionPaneCreator::navFavorite),
+                new MenuLabel("Delete favorite", OptionPaneCreator::delFavorite)
         };
 
         selected = 0;
@@ -86,6 +86,7 @@ class Menu {
                 new MenuLabel("Set event start time", OptionPaneCreator::setEventStartTime),
                 new MenuLabel("Adjust Correction Coefficients", OptionPaneCreator::adjustCoefficients),
                 new MenuLabel("Calculate correction error", OptionPaneCreator::calculateError),
+                new MenuLabel("View error log", OptionPaneCreator::viewLog),
                 new MenuLabel("Exit", null)
         };
 

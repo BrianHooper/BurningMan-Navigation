@@ -1,7 +1,9 @@
 package driver;
 
 import java.io.*;
+import java.lang.annotation.Annotation;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.logging.Level;
 
 /**
@@ -22,6 +24,9 @@ public class LogDriver {
 
     // Relative path to logfile
     private static final String logfile = "config/logfile.log";
+
+    // Only activate when expilicity told to activate
+    private static boolean isActive = false;
 
     /**
      * Constructor
@@ -55,6 +60,24 @@ public class LogDriver {
     }
 
     /**
+     * Reads the logfile into a String
+     * @return String log data
+     */
+    public static ArrayList<String> readLog() {
+        return FileManager.readLines(logfile);
+    }
+
+    /**
+     * Deletes the contents of the log file on the disk
+     */
+    public static void clearLog() {
+        File logFile = new File(logfile);
+        if(logFile.exists()) {
+            boolean deleted = logFile.delete();
+        }
+    }
+
+    /**
      * Writes a log message to the logfile
      *
      * @param classType class of object throwing the log file, pass with 'ClassName.class' for static objects
@@ -63,6 +86,11 @@ public class LogDriver {
      * @param message   String log message
      */
     private void log(Class<?> classType, Level level, String message) {
+        if(!isActive) {
+            return;
+        }
+
+        Annotation[] a = classType.getAnnotations();
         if(writer == null) {
             System.err.println("Error writing \'" + message + "\': logfile is closed.");
             return;
@@ -120,5 +148,19 @@ public class LogDriver {
             writer = null;
         } catch(IOException ignored) {
         }
+    }
+
+    /**
+     * Activates the logger for logging
+     */
+    public static void activate() {
+        isActive = true;
+    }
+
+    /**
+     * Deactivates the logger for logging
+     */
+    public static void deactivate() {
+        isActive = false;
     }
 }

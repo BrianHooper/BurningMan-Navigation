@@ -1,6 +1,7 @@
 package events;
 
 import driver.FileManager;
+import driver.LogDriver;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -19,6 +20,9 @@ public class EventManager {
 
     // main list of events
     private final ArrayList<Event> events;
+
+    // Logger
+    private static final LogDriver logger = LogDriver.getInstance();
 
     /**
      * Constructor
@@ -59,6 +63,10 @@ public class EventManager {
                     if(split.length == 6) {
                         String[] endDateStr = split[5].split(",");
                         LocalDateTime[] endTimes = Event.multiDateBuilder(endDateStr);
+                        if(endTimes == null) {
+                            logger.warning(EventManager.class,
+                                    "MultiDateBuilder returned null while trying to parse event line " + line);
+                        }
                         if(endTimes != null && startTimes.length <= endTimes.length) {
                             for(int i = 0; i < startTimes.length; i++) {
                                 events.add(new Event(name, location, description, category, startTimes[i], endTimes[i]));
@@ -69,6 +77,9 @@ public class EventManager {
                             events.add(new Event(name, location, description, category, startTime));
                         }
                     }
+                } else {
+                    logger.warning(EventManager.class,
+                            "MultiDateBuilder returned null while trying to parse event line " + line);
                 }
             }
         }
