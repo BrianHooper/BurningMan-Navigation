@@ -7,11 +7,10 @@
     <list default="true" id="24b9839f-6ad8-43a5-9b83-c469d9815187" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/config.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/favorites.csv" beforeDir="false" afterPath="$PROJECT_DIR$/config/favorites.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/tracker.csv" beforeDir="false" afterPath="$PROJECT_DIR$/config/tracker.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/MainInterfacePanel.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainInterfacePanel.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/MainInterfacePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainInterfacePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/MenuLabel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MenuLabel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/OptionPaneCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/OptionPaneCreator.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -45,7 +44,7 @@
     <session id="1556803589">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="23" />
+          <entry key="project.closed" value="24" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="3" />
           <entry key="project.open.time.10" value="1" />
@@ -69,7 +68,7 @@
           <entry key="csv" value="26" />
           <entry key="form" value="11" />
           <entry key="gitignore" value="2" />
-          <entry key="java" value="325" />
+          <entry key="java" value="327" />
           <entry key="log" value="4" />
           <entry key="png" value="2" />
           <entry key="svg" value="1" />
@@ -83,7 +82,7 @@
           <entry key="CSV" value="13" />
           <entry key="GUI_DESIGNER_FORM" value="11" />
           <entry key="Image" value="2" />
-          <entry key="JAVA" value="325" />
+          <entry key="JAVA" value="327" />
           <entry key="PLAIN_TEXT" value="32" />
           <entry key="SVG" value="1" />
           <entry key="XML" value="10" />
@@ -95,7 +94,7 @@
           <entry key="coordinate" value="11" />
           <entry key="csv" value="53" />
           <entry key="gitignore" value="8" />
-          <entry key="java" value="78819" />
+          <entry key="java" value="78832" />
           <entry key="txt" value="1245" />
           <entry key="xml" value="127" />
         </counts>
@@ -103,7 +102,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSV" value="29" />
-          <entry key="JAVA" value="78819" />
+          <entry key="JAVA" value="78832" />
           <entry key="PLAIN_TEXT" value="1301" />
           <entry key="XML" value="127" />
         </counts>
@@ -162,104 +161,19 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/driver/FileManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="25" column="4" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/view/Menu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="52" selection-start-line="52" selection-end-line="52" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/view/View.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="28" column="74" selection-start-line="28" selection-start-column="74" selection-end-line="28" selection-end-column="74" />
-              <folding>
-                <element signature="e#3884#3885#0" expanded="true" />
-                <element signature="e#3942#3943#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/view/OptionPaneCreator.java">
-          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="171">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/navigation/Location.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="513">
-              <caret line="34" column="25" selection-start-line="34" selection-start-column="25" selection-end-line="34" selection-end-column="25" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="docComment;class#Location#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/view/MainInterfacePanel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="270" column="88" selection-start-line="270" selection-start-column="83" selection-end-line="270" selection-end-column="88" />
-              <folding>
-                <element signature="docComment;class#MainInterfacePanel#0" />
-              </folding>
+              <caret line="49" column="76" selection-start-line="49" selection-start-column="76" selection-end-line="49" selection-end-column="76" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/view/MainInterfacePanel.form">
-          <provider selected="true" editor-type-id="ui-designer" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/view/OptionPane.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/view/OptionPaneCreator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="551">
-              <caret line="87" column="9" selection-start-line="87" selection-start-column="9" selection-end-line="87" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/view/MenuLabel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="513">
-              <caret line="90" column="31" selection-start-line="90" selection-start-column="31" selection-end-line="90" selection-end-column="31" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/driver/LogDriver.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2793">
-              <caret line="161" column="7" selection-start-line="161" selection-start-column="7" selection-end-line="161" selection-end-column="7" />
+            <state relative-caret-position="228">
+              <caret line="504" column="81" lean-forward="true" selection-start-line="504" selection-start-column="81" selection-end-line="504" selection-end-column="81" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -378,12 +292,12 @@
         <option value="$PROJECT_DIR$/src/main/java/driver/LogDriver.java" />
         <option value="$PROJECT_DIR$/src/main/java/view/OptionPane2.java" />
         <option value="$PROJECT_DIR$/src/main/java/view/OptionPane.java" />
-        <option value="$PROJECT_DIR$/src/main/java/view/Menu.java" />
-        <option value="$PROJECT_DIR$/src/main/java/view/OptionPaneCreator.java" />
         <option value="$PROJECT_DIR$/src/main/java/view/View.java" />
         <option value="$PROJECT_DIR$/src/main/java/view/MenuLabel.java" />
         <option value="$PROJECT_DIR$/src/main/java/view/MainInterfacePanel.java" />
         <option value="$PROJECT_DIR$/src/main/java/view/MainInterfacePanel.form" />
+        <option value="$PROJECT_DIR$/src/main/java/view/Menu.java" />
+        <option value="$PROJECT_DIR$/src/main/java/view/OptionPaneCreator.java" />
       </list>
     </option>
   </component>
@@ -510,15 +424,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="view" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="BurningMan-Navigation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BurningMan-Navigation" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="MainInterfacePanel" type="e9f4de52:FormNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -532,7 +437,7 @@
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="505" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561190923490" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561191688337" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="Arquillian JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.Arquillian JUnit4" value="" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/test/java" />
@@ -669,7 +574,7 @@
       <workItem from="1548409727339" duration="2017000" />
       <workItem from="1553201909798" duration="680000" />
       <workItem from="1561188389481" duration="94000" />
-      <workItem from="1561188519276" duration="2388000" />
+      <workItem from="1561188519276" duration="3227000" />
     </task>
     <task id="LOCAL-00001" summary="Migrated project to Maven">
       <created>1547007798681</created>
@@ -868,7 +773,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="167248000" />
+    <option name="totallyTimeSpent" value="168087000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -892,7 +797,7 @@
       <window_info anchor="bottom" id="Dependency Viewer" order="0" sideWeight="0.4994664" weight="0.37706727" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" sideWeight="0.49946752" weight="0.32745314" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" sideWeight="0.4909285" visible="true" weight="0.29327452" />
+      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.4909285" weight="0.29327452" />
       <window_info anchor="bottom" id="Debug" order="4" sideWeight="0.49626467" weight="0.34840134" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -1375,24 +1280,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/view/Menu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="52" selection-start-line="52" selection-end-line="52" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/events/EventTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
           <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/view/OptionPaneCreator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
         </state>
       </provider>
     </entry>
@@ -1438,6 +1329,9 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/view/MainInterfacePanel.form">
+      <provider selected="true" editor-type-id="ui-designer" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/view/MainInterfacePanel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="186">
@@ -1448,8 +1342,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/view/MainInterfacePanel.form">
-      <provider selected="true" editor-type-id="ui-designer" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/view/Menu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="49" column="76" selection-start-line="49" selection-start-column="76" selection-end-line="49" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/view/OptionPaneCreator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="504" column="81" lean-forward="true" selection-start-line="504" selection-start-column="81" selection-end-line="504" selection-end-column="81" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
   </component>
   <component name="masterDetails">

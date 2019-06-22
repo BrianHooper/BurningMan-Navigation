@@ -510,7 +510,7 @@ class OptionPaneCreator {
 
         OptionPane pane = new OptionPane();
         pane.addListInput(menuItems, 10);
-        if(pane.show(view.getMainFrame(), "Delete favorite")) {
+        if(pane.show(view.getMainFrame(), "Navigate to favorite")) {
             String favName = favoritePairs.get(pane.getJListSelectedIndex(0))[0];
             if(favName != null) {
                 navigator.setDestination(navigator.getFavorites().get(favName), favName);
