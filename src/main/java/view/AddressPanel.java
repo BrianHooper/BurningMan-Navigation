@@ -31,7 +31,7 @@ class AddressPanel extends JPanel {
         setLayout(new GridLayout(0, 3));
 
         hourBox = new JComboBox<>(
-                new String[]{"2", "3", "4", "5", "6", "7", "8", "9", "10"});
+                new String[]{"12", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"});
         minuteBox = new JComboBox<>(
                 new String[]{"00", "15", "30", "45"});
         streetBox = new JTextField(5);
@@ -64,7 +64,8 @@ class AddressPanel extends JPanel {
      * @return Location object
      */
     Location getAddress() {
-        int hour = 2 + hourBox.getSelectedIndex();
+        int hour = hourBox.getSelectedIndex();
+        if(hour == 0) hour = 12;
         int minute = 15 * minuteBox.getSelectedIndex();
 
         // Remove everything except numbers and letters
