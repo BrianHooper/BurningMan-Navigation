@@ -29,7 +29,7 @@
             </constraints>
             <properties/>
             <border type="empty">
-              <size top="20" left="20" bottom="20" right="20"/>
+              <size top="5" left="5" bottom="5" right="5"/>
               <color color="-16777216"/>
             </border>
             <children>
@@ -245,7 +245,7 @@
                 </constraints>
                 <properties/>
                 <border type="empty">
-                  <size top="0" left="0" bottom="30" right="0"/>
+                  <size top="0" left="0" bottom="5" right="0"/>
                 </border>
                 <children>
                   <component id="8af6c" class="javax.swing.JLabel" binding="header">

@@ -66,17 +66,17 @@ class MainInterfacePanel {
         addressLabel.setBorder(new EmptyBorder(0, 0, 0, 0));
 
         nearestBathroomLabel = new JLabel("Nearest Bathroom: ");
-        nearestBathroomLabel.setBorder(new EmptyBorder(20, 0, 0, 0));
+        nearestBathroomLabel.setBorder(new EmptyBorder(5, 0, 0, 0));
 
         homeCampLabel = new JLabel("Home camp: ");
-        homeCampLabel.setBorder(new EmptyBorder(20, 0, 0, 0));
+        homeCampLabel.setBorder(new EmptyBorder(5, 0, 0, 0));
 
         destinationLabel = new JLabel("Destination: ");
-        destinationLabel.setBorder(new EmptyBorder(20, 0, 0, 0));
+        destinationLabel.setBorder(new EmptyBorder(5, 0, 0, 0));
 
         clockPanel = new JPanel();
         clockLabel = new JLabel("Clock");
-        clockLabel.setFont(new Font(View.standardFont.getFontName(), Font.PLAIN, 32));
+        clockLabel.setFont(new Font(View.standardFont.getFontName(), Font.PLAIN, 18));
         clockPanel.add(clockLabel);
 
 

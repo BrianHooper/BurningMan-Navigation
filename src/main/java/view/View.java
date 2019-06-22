@@ -26,7 +26,7 @@ public class View {
     private final MainInterfacePanel mainPanel;
 
     // Global standard font
-    static final Font standardFont = new Font("Monospaced", Font.PLAIN, 22);
+    static final Font standardFont = new Font("Monospaced", Font.PLAIN, 14);
 
 //**********************
 // Constructors and initializers

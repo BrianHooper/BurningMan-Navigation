@@ -88,7 +88,7 @@ class MenuLabel extends JLabel {
      */
     @Override
     public Dimension getPreferredSize() {
-        return new Dimension(400, 40);
+        return new Dimension(250, 25);
     }
 
     /**
