@@ -49,20 +49,13 @@ class AddressPanel extends JPanel {
         this();
         int hour = location.getHour();
         int minute = location.getMinute();
-        double distance = location.getDistance();
+        int distance = location.getDistance();
 
         if(hour >= 2 && hour <= 10) {
             hourBox.setSelectedIndex(hour - 2);
         }
-
         minuteBox.setSelectedIndex(minute / 15);
-
-        if(distance < Location.getEsplanade_distance() + Location.getBlock_width()) {
-            streetBox.setText(String.valueOf(distance));
-        } else {
-            streetBox.setText(String.valueOf(Location.toStreet(distance)));
-        }
-
+        streetBox.setText(Location.toStreet(distance));
     }
 
     /**
@@ -81,7 +74,7 @@ class AddressPanel extends JPanel {
             return new Location(hour, minute, text.charAt(0));
         } else {
             try {
-                double distance = Double.parseDouble(text);
+                int distance = Integer.parseInt(text);
                 return new Location(hour, minute, distance);
             } catch(NumberFormatException e) {
                 return null;

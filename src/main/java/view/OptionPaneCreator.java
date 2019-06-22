@@ -7,13 +7,10 @@ import events.Event;
 import events.EventCategory;
 import navigation.Location;
 import navigation.Navigator;
-import sun.rmi.log.ReliableLog;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -162,9 +159,7 @@ class OptionPaneCreator {
             try {
                 double latitude = Double.parseDouble(errorPane.getLatitude());
                 double longitude = Double.parseDouble(errorPane.getLongitude());
-                System.out.println(String.valueOf(latitude) + "," + String.valueOf(longitude));
                 Location location = new Location(latitude, longitude);
-                System.out.println(String.valueOf(location.getHour()) + "," + String.valueOf(location.getMinute()));
                 results.addLabel(errorPane.name + ": " +
                         String.valueOf(location.getHour()) + ":" + String.format("%02d", location.getMinute()));
             } catch(NumberFormatException e) {
@@ -551,54 +546,6 @@ class OptionPaneCreator {
     }
 
     /**
-     * Creates JOptionPane popup for setting the width of a block
-     *
-     * @param view      main view panel
-     * @param navigator main navigator object
-     */
-    static void setBlockWidth(View view, Navigator navigator) {
-        OptionPane pane = new OptionPane();
-        pane.addLabel("Set new block width:");
-        JTextField field = new JTextField(10);
-        field.setText(String.valueOf(Location.getBlock_width()));
-        pane.addComponent(field);
-
-        if(pane.show(view.getMainFrame(), "Set Block Width")) {
-            try {
-                int width = Integer.parseInt(field.getText());
-                Location.setBlock_width(width);
-                navigator.writeToConfigFile();
-            } catch(NumberFormatException e) {
-                OptionPane.showMessage(view.getMainFrame(), "Invalid width");
-            }
-        }
-    }
-
-    /**
-     * Creates JOptionPane popup for setting esplanade distance
-     *
-     * @param view      main view panel
-     * @param navigator main navigator object
-     */
-    static void setEsplanade(View view, Navigator navigator) {
-        OptionPane pane = new OptionPane();
-        pane.addLabel("Set new esplanade distance:");
-        JTextField field = new JTextField(10);
-        field.setText(String.valueOf(Location.getEsplanade_distance()));
-        pane.addComponent(field);
-
-        if(pane.show(view.getMainFrame(), "Set Esplanade Distance")) {
-            try {
-                int distance = Integer.parseInt(field.getText());
-                Location.setEsplanade_distance(distance);
-                navigator.writeToConfigFile();
-            } catch(NumberFormatException e) {
-                OptionPane.showMessage(view.getMainFrame(), "Invalid distance");
-            }
-        }
-    }
-
-    /**
      * Creates JOptionPane popup for setting man coordinates
      *
      * @param view      main view panel
@@ -698,7 +645,7 @@ class OptionPaneCreator {
      * @param navigator main navigator object
      */
     static void favorites(View view, Navigator navigator) {
-        view.getMenu().favorites();
+        view.getMenu().favorites(view, navigator);
     }
 
     /**
@@ -708,7 +655,7 @@ class OptionPaneCreator {
      * @param navigator main navigator object
      */
     static void notes(View view, Navigator navigator) {
-        view.getMenu().notes();
+        view.getMenu().notes(view, navigator);
     }
 
     /**
@@ -718,7 +665,66 @@ class OptionPaneCreator {
      * @param navigator main navigator object
      */
     static void settings(View view, Navigator navigator) {
-        view.getMenu().settings();
+        view.getMenu().settings(view, navigator);
+    }
+
+    public static void adjustBlockWidths(View view, Navigator navigator) {
+        class BlockPane extends JPanel {
+            private JTextField distance, street;
+
+            private BlockPane(String distanceStr, String streetStr) {
+                setLayout(new FlowLayout());
+                distance = new JTextField(6);
+                distance.setText(distanceStr);
+                street = new JTextField(11);
+                street.setText(streetStr);
+                add(distance);
+                add(street);
+            }
+
+            private String getDistance() {
+                return distance.getText();
+            }
+
+            private String getStreet() {
+                return street.getText();
+            }
+
+        }
+
+        OptionPane pane = new OptionPane();
+        pane.addLabel("Enter block widths:");
+
+        Object[][] blockDistances = Location.getBlockDistances();
+        BlockPane[] blockPanes = new BlockPane[blockDistances.length];
+        for(int i = 0; i < blockDistances.length; i++) {
+            blockPanes[i] = new BlockPane(String.valueOf(blockDistances[i][0]), (String) blockDistances[i][1]);
+        }
+
+        for(BlockPane blockPane : blockPanes) {
+            pane.addComponent(blockPane);
+        }
+
+        if(!pane.show(null, "Calculate errors")) {
+            return;
+        }
+
+        Object[][] blockDistancesUpdated = new Object[blockDistances.length][2];
+        for(int i = 0; i < blockPanes.length; i++) {
+            try {
+                blockDistancesUpdated[i][0] = Integer.parseInt(blockPanes[i].getDistance());
+                blockDistancesUpdated[i][1] = blockPanes[i].getStreet();
+            } catch(NumberFormatException e) {
+                OptionPane.showMessage(view.getMainFrame(),
+                        "Invalid distance for street " + blockPanes[i].getStreet());
+                return;
+            }
+        }
+        Location.setBlockDistances(blockDistancesUpdated);
+    }
+
+    public static void exitProgram(View view, Navigator navigator) {
+
     }
 
     /**

@@ -106,16 +106,26 @@ public class Navigator {
                 Location.setAdjustmentCoefficients(Double.parseDouble(split[0]), Double.parseDouble(split[1]),
                         Double.parseDouble(split[2]), Double.parseDouble(split[3]));
             }
-            if(properties.containsKey("ESPLANADE-DISTANCE"))
-                Location.setEsplanade_distance(Integer.parseInt((String) properties.get("ESPLANADE-DISTANCE")));
-            if(properties.containsKey("BLOCK-WIDTH"))
-                Location.setBlock_width(Integer.parseInt((String) properties.get("BLOCK-WIDTH")));
             if(properties.containsKey("EVENT-START-TIME"))
                 Event.setGlobalEventStartTime(properties.getProperty("EVENT-START-TIME"));
             if(properties.containsKey("CURRENT-DESTINATION-NAME"))
                 currentDestinationName = properties.getProperty("CURRENT-DESTINATION-NAME");
             if(properties.containsKey("CURRENT-DESTINATION-ADDRESS"))
                 currentDestination = new Location(properties.getProperty("CURRENT-DESTINATION-ADDRESS"));
+            if(properties.containsKey("BLOCK-DISTANCES")) {
+                String blockDistanceStr = properties.getProperty("BLOCK-DISTANCES");
+                String[] blockDistances = blockDistanceStr.split(";");
+                Object[][] blockDistanceObjects = new Object[blockDistances.length][2];
+                for(int i = 0; i < blockDistances.length; i++) {
+                    String[] block = blockDistances[i].split(",");
+                    if(block.length == 2) {
+                        blockDistanceObjects[i][0] = Integer.parseInt(block[0]);
+                        blockDistanceObjects[i][1] = block[1];
+                    }
+                }
+                Location.setBlockDistances(blockDistanceObjects);
+
+            }
         } catch(NumberFormatException | ArrayIndexOutOfBoundsException e) {
             logger.warning(this.getClass(),
                     "NumberFormatException while reading config file: " + e.getMessage());
@@ -132,8 +142,6 @@ public class Navigator {
 
         properties.put("MAN-LATITUDE", String.valueOf(Location.getMan_latitude()));
         properties.put("MAN-LONGITUDE", String.valueOf(Location.getMan_longitude()));
-        properties.put("ESPLANADE-DISTANCE", String.valueOf(Location.getEsplanade_distance()));
-        properties.put("BLOCK-WIDTH", String.valueOf(Location.getBlock_width()));
         properties.put("CURRENT-DESTINATION-NAME", currentDestinationName);
         properties.put("CURRENT-DESTINATION-ADDRESS", currentDestination.getCSVAddress());
         properties.put("EVENT-START-TIME", ClockDriver.dfFull.format(Event.globalEventStartTime));
@@ -142,6 +150,16 @@ public class Navigator {
                 String.valueOf(coefficients[1]) + ',' + String.valueOf(coefficients[2]) + ',' +
                 String.valueOf(coefficients[3]);
         properties.put("ADJUSTMENT-COEFFICIENTS", adjustmentCoefficients);
+        StringBuilder blockStringBuilder = new StringBuilder();
+        for(Object[] block : Location.getBlockDistances()) {
+            if(block.length == 2) {
+                blockStringBuilder.append(block[0]);
+                blockStringBuilder.append(',');
+                blockStringBuilder.append(block[1]);
+                blockStringBuilder.append(';');
+            }
+        }
+        properties.put("BLOCK-DISTANCES", blockStringBuilder.toString());
 
         try {
             properties.store(new FileOutputStream(configPath), "");

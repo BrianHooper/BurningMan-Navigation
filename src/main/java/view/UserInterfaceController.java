@@ -5,6 +5,9 @@ import driver.CoordinateListener;
 import driver.LogDriver;
 import navigation.Navigator;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
 
 /**
  * Class UserInterfaceController
@@ -56,6 +59,7 @@ public class UserInterfaceController {
 
         clockDriver = new ClockDriver(view);
         clockDriver.start();
+        menuEscape();
     }
 
     /**
@@ -67,6 +71,7 @@ public class UserInterfaceController {
         View view = new View();
         Navigator navigator = new Navigator();
         new UserInterfaceController(view, navigator);
+
     }
 
     /**
@@ -124,7 +129,7 @@ public class UserInterfaceController {
      * Updates view with home selection
      */
     void menuEscape() {
-        view.getMenu().home();
+        view.getMenu().home(view, navigator);
         view.getFocus();
     }
 

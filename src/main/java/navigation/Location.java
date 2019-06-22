@@ -26,13 +26,28 @@ public class Location {
     // Globals used for converting gps coordinates to addresses
     private static double man_latitude = 40.7864;
     private static double man_longitude = -119.2065;
-    private static int esplanade_distance = 2600;
-    private static int block_width = 240;
+    private static Object[][] blockDistances = new Object[][] {
+            { 2300, "The Man"},
+            { 2700, "Esplanade"},
+            { 2950, "A"},
+            { 3200, "B"},
+            { 3450, "C"},
+            { 3700, "D"},
+            { 3900, "E"},
+            { 4100, "F"},
+            { 4300, "G"},
+            { 4500, "H"},
+            { 4650, "I"},
+            { 4800, "J"},
+            { 4950, "K"},
+            { 5100, "L"},
+            { 5250, "o" },
+    };
 
     // Parameters for location
     private int hour;
     private int minute;
-    private double distance;
+    private int distance;
 
     // Adjustment coefficients
     // Default 8.2 * Math.sin(0.035 * angle + 6.3) + 44.7;
@@ -73,48 +88,28 @@ public class Location {
     }
 
     /**
-     * Getter for esplanade distance
-     *
-     * @return esplanade distance
-     */
-    public static int getEsplanade_distance() {
-        return esplanade_distance;
-    }
-
-    /**
-     * Setter for esplanade distance
-     *
-     * @param esplanade_distance esplanade distance
-     */
-    public static void setEsplanade_distance(int esplanade_distance) {
-        Location.esplanade_distance = esplanade_distance;
-    }
-
-    /**
-     * Getter for block width
-     *
-     * @return block width
-     */
-    public static int getBlock_width() {
-        return block_width;
-    }
-
-    /**
-     * Setter for block width
-     *
-     * @param block_width block width
-     */
-    public static void setBlock_width(int block_width) {
-        Location.block_width = block_width;
-    }
-
-    /**
      * Getter for adjustment coefficients
      *
      * @return double[]
      */
     public static double[] getAdjustmentCoefficients() {
         return adjustmentCoefficients;
+    }
+
+    /**
+     * Setter for block distances
+     * @param blockDistances object[][] of type Integer, String
+     */
+    public static void setBlockDistances(Object[][] blockDistances) {
+        Location.blockDistances = blockDistances;
+    }
+
+    /**
+     * Getter for block distances
+     * @return  object[][] of type Integer, String
+     */
+    public static Object[][] getBlockDistances() {
+        return blockDistances;
     }
 
     /**
@@ -132,11 +127,19 @@ public class Location {
     /**
      * Converts a char street to a distance
      *
-     * @param street char
+     * @param streetChar char
      * @return double
      */
-    static double toDistance(char street) {
-        return (street - 64) * block_width + esplanade_distance;
+    static int toDistance(char streetChar) {
+        if(streetChar < 65 || streetChar > 76) return 0;
+        String street = String.valueOf(streetChar);
+        int index = 1;
+        while(index < Location.blockDistances.length - 1 && !street.equals(Location.blockDistances[index][1])) {
+            index++;
+        }
+
+        int difference = (int) Location.blockDistances[index][0] - (int) Location.blockDistances[index + 1][0];
+        return (int) Location.blockDistances[index][0] + (difference / 2);
     }
 
     /**
@@ -144,14 +147,19 @@ public class Location {
      * <p>
      * returns '0' if invalid
      *
-     * @param distance double
+     * @param distance int
      * @return char
      */
-    public static char toStreet(double distance) {
-        if(distance < esplanade_distance) {
-            return '0';
+    public static String toStreet(int distance) {
+        String street = String.valueOf(distance);
+        int index = 0;
+        if(distance < ((int) blockDistances[blockDistances.length - 1][0])) {
+            while (index < blockDistances.length  - 1 && distance > ((int) blockDistances[index][0])) {
+                street = (String) blockDistances[index + 1][1];
+                index++;
+            }
         }
-        return (char) (((distance - esplanade_distance) / block_width) + 64);
+        return street;
     }
 
 //**********************
@@ -176,7 +184,7 @@ public class Location {
         try {
             hour = Integer.parseInt(split[0]);
             minute = Integer.parseInt(split[1]);
-            distance = Double.parseDouble(split[2]);
+            distance = Integer.parseInt(split[2]);
         } catch(NumberFormatException ignored) {
         }
     }
@@ -202,7 +210,7 @@ public class Location {
      * @param minute   minute
      * @param distance distance in feet
      */
-    public Location(int hour, int minute, double distance) {
+    public Location(int hour, int minute, int distance) {
         this.hour = hour;
         this.minute = minute;
         this.distance = distance;
@@ -220,13 +228,7 @@ public class Location {
     public Location(int hour, int minute, char street) {
         this.hour = hour;
         this.minute = minute;
-        int chVal = ((int) Character.toUpperCase(street));
-        if(chVal >= 65 && chVal <= 76) {
-            chVal -= 64;
-        } else {
-            chVal = 0;
-        }
-        this.distance = esplanade_distance + chVal * block_width;
+        this.distance = toDistance(street);
     }
 
     /**
@@ -258,7 +260,7 @@ public class Location {
      * @param lon1 longitude
      * @return distance in feet
      */
-    private static double distance(double lat1, double lon1) {
+    private static int distance(double lat1, double lon1) {
         lat1 = Math.toRadians(lat1);
         double lat2 = Math.toRadians(man_latitude);
         lon1 = Math.toRadians(lon1);
@@ -266,7 +268,7 @@ public class Location {
         double u = Math.sin((lat2 - lat1) / 2);
         double v = Math.sin((lon2 - lon1) / 2);
         double kilometers = 2.0 * 6371 * Math.asin(Math.sqrt(u * u + Math.cos(lat1) * Math.cos(lat2) * v * v));
-        return kilometers / 1.6 * 5280;
+        return (int) (kilometers / 1.6 * 5280);
     }
 
     /**
@@ -361,7 +363,7 @@ public class Location {
      *
      * @return distance
      */
-    public double getDistance() {
+    public int getDistance() {
         return distance;
     }
 
@@ -371,21 +373,7 @@ public class Location {
      * @return Address as String
      */
     String getAddress() {
-        if(distance < esplanade_distance || distance > esplanade_distance + 12 * block_width) {
-            return hour + ":" + minute + " & " + ((int) distance) + "'";
-        } else {
-            String street;
-            if(distance < esplanade_distance + block_width) {
-                street = "Esplanade";
-            } else {
-                street = Character.toString(toStreet(distance));
-            }
-            if(minute < 10) {
-                return hour + ":0" + minute + " & " + street;
-            } else {
-                return hour + ":" + minute + " & " + street;
-            }
-        }
+        return hour + ":" + minute + " & " + toStreet(distance);
     }
 
 //**********************
