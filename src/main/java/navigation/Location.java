@@ -373,7 +373,11 @@ public class Location {
      * @return Address as String
      */
     String getAddress() {
-        return hour + ":" + minute + " & " + toStreet(distance);
+        String minuteString = String.valueOf(minute);
+        if(minuteString.length() < 2) {
+            minuteString = "0" + minuteString;
+        }
+        return hour + ":" + minuteString + " & " + toStreet(distance);
     }
 
 //**********************
