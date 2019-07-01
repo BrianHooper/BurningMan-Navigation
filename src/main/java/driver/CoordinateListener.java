@@ -18,7 +18,7 @@ import java.util.AbstractMap;
  */
 public class CoordinateListener extends Thread {
     // Relative path to tracker file
-    private static final String trackerPath = "config/tracker.csv";
+    private final String trackerPath;
 
     // Main navigator object
     private final Navigator navigator;
@@ -41,6 +41,7 @@ public class CoordinateListener extends Thread {
     public CoordinateListener(Navigator navigator, View view) {
         this.navigator = navigator;
         this.view = view;
+        this.trackerPath = "config/tracker/" + ClockDriver.dfFilePath.format(LocalDateTime.now()) + ".csv";
         keepRunning = true;
     }
 

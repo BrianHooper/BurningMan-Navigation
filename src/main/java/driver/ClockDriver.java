@@ -10,6 +10,7 @@ public class ClockDriver extends Thread {
     private static final DateTimeFormatter dfDay = DateTimeFormatter.ofPattern("EEEE");
     public static final DateTimeFormatter dfTime = DateTimeFormatter.ofPattern("h:mma");
     public static final DateTimeFormatter dfFull = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+    public static final DateTimeFormatter dfFilePath = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm");
 
     // Main GUI view
     private final View view;
