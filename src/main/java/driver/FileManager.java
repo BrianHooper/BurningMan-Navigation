@@ -1,6 +1,9 @@
 package driver;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 /**
@@ -32,6 +35,14 @@ public class FileManager {
      * @throws IOException file not found
      */
     FileManager(@SuppressWarnings("SameParameterValue") String filename) throws IOException {
+        Path filePath = Paths.get(filename);
+        File parent = new File(String.valueOf(filePath.getParent()));
+        if(!parent.exists()) {
+            if(!parent.mkdirs()) {
+                throw new IOException("Could not create non-existant directory " + parent.getAbsolutePath());
+            }
+        }
+
         writer = new BufferedWriter(new FileWriter(filename, true));
         this.filename = filename;
     }
