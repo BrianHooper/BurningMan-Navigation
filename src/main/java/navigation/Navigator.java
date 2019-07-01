@@ -397,4 +397,17 @@ public class Navigator {
         }
         return pairs;
     }
+
+    /**
+     * Returns name/address pairs for all camps
+     *
+     * @return ArrayList of length-2 String arrays
+     */
+    public ArrayList<String[]> getCampPairs() {
+        ArrayList<String[]> campPairs = new ArrayList<>();
+        for(String camp : landmarks.getCamps().keySet()) {
+            campPairs.add(new String[]{camp, landmarks.getCamps().get(camp).getAddress()});
+        }
+        return campPairs;
+    }
 }

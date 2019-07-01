@@ -754,4 +754,29 @@ class OptionPaneCreator {
         pane.show(view.getMainFrame(), "Log data");
 
     }
+
+    /**
+     * Populates a list with all camps
+     * @param view      main view panel
+     * @param navigator main navigator object
+     */
+    static void viewAllCamps(View view, Navigator navigator) {
+        ArrayList<String[]> allCamps = navigator.getCampPairs();
+        if(allCamps.isEmpty()) {
+            JOptionPane.showMessageDialog(view.getMainFrame(), "No camps found");
+            return;
+        }
+        ArrayList<String> menuItems = ListManager.splitEvenly(allCamps, 2);
+
+        OptionPane pane = new OptionPane();
+        pane.addListInput(menuItems, 10);
+        if(pane.show(view.getMainFrame(), "Navigate to camp")) {
+            String campName = allCamps.get(pane.getJListSelectedIndex(0))[0];
+            if(campName != null) {
+                navigator.setDestination(navigator.getCamp(campName), campName);
+                navigator.writeToConfigFile();
+            }
+        }
+
+    }
 }
