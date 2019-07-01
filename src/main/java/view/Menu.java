@@ -62,6 +62,7 @@ class Menu {
         menuItems = new MenuLabel[]{
                 new MenuLabel("Go to address", OptionPaneCreator::goToAddress, view, navigator),
                 new MenuLabel("Find camp", OptionPaneCreator::findCamp, view, navigator),
+                new MenuLabel("Show all camps", OptionPaneCreator::viewAllCamps, view, navigator),
                 new MenuLabel("Favorites", OptionPaneCreator::favorites, view, navigator),
                 new MenuLabel("Find Events", OptionPaneCreator::findEvents, view, navigator),
                 new MenuLabel("Happening soon", OptionPaneCreator::listEventsHappeningSoon, view, navigator),
