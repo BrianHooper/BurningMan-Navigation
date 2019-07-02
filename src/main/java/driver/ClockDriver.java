@@ -2,15 +2,20 @@ package driver;
 
 import view.View;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.NoSuchElementException;
+import java.util.Scanner;
 
 public class ClockDriver extends Thread {
     // Formatter for converting between Strings and LocalDateTime objects
     private static final DateTimeFormatter dfDay = DateTimeFormatter.ofPattern("EEEE");
     public static final DateTimeFormatter dfTime = DateTimeFormatter.ofPattern("h:mma");
     public static final DateTimeFormatter dfFull = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-    public static final DateTimeFormatter dfFilePath = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm");
+    static final DateTimeFormatter dfFilePath = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm");
+    private static final String temperaturePath = "config/temperature";
 
     // Main GUI view
     private final View view;
@@ -32,6 +37,21 @@ public class ClockDriver extends Thread {
         this.view = view;
         keepRunning = true;
     }
+    /**
+     * Reads the current temperature from the temperature file
+     *
+     * @return String
+     */
+    private String readTemperature() {
+        try {
+            Scanner scan = new Scanner(new File(temperaturePath));
+            String temperature = scan.nextLine();
+            scan.close();
+            return temperature;
+        } catch(FileNotFoundException | NoSuchElementException e) {
+            return null;
+        }
+    }
 
     /**
      * Thread process
@@ -42,7 +62,13 @@ public class ClockDriver extends Thread {
         try {
             while(keepRunning) {
                 LocalDateTime time = LocalDateTime.now();
-                String timeString = dfDay.format(time) + ", " + dfTime.format(time);
+                String timeString;
+                String temperature = readTemperature();
+                if(temperature != null) {
+                    timeString = dfDay.format(time) + ", " + dfTime.format(time) + " " + temperature + "°";
+                } else {
+                    timeString = dfDay.format(time) + ", " + dfTime.format(time);
+                }
                 view.setClock(timeString);
                 Thread.sleep(1000);
             }
