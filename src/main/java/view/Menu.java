@@ -64,11 +64,23 @@ class Menu {
                 new MenuLabel("Find camp", OptionPaneCreator::findCamp, view, navigator),
                 new MenuLabel("Show all camps", OptionPaneCreator::viewAllCamps, view, navigator),
                 new MenuLabel("Favorites", OptionPaneCreator::favorites, view, navigator),
-                new MenuLabel("Find Events", OptionPaneCreator::findEvents, view, navigator),
-                new MenuLabel("Happening soon", OptionPaneCreator::listEventsHappeningSoon, view, navigator),
+                new MenuLabel("Events", OptionPaneCreator::events, view, navigator),
                 new MenuLabel("Notes", OptionPaneCreator::notes, view, navigator),
                 new MenuLabel("Measure distance", OptionPaneCreator::measureDistance, view, navigator),
                 new MenuLabel("Settings", OptionPaneCreator::settings, view, navigator)
+        };
+
+        selected = 0;
+        menuItems[0].select();
+    }
+
+    /**
+     * Creates settings menu
+     */
+    void events(View view, Navigator navigator) {
+        menuItems = new MenuLabel[]{
+                new MenuLabel("Find Events", OptionPaneCreator::findEvents, view, navigator),
+                new MenuLabel("Happening soon", OptionPaneCreator::listEventsHappeningSoon, view, navigator),
         };
 
         selected = 0;

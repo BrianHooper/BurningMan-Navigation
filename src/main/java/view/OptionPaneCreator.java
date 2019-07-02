@@ -659,6 +659,16 @@ class OptionPaneCreator {
     }
 
     /**
+     * Sets menu to events submenu
+     *
+     * @param view      main view panel
+     * @param navigator main navigator object
+     */
+    static void events(View view, Navigator navigator) {
+        view.getMenu().events(view, navigator);
+    }
+
+    /**
      * Sets menu to settings submenu
      *
      * @param view      main view panel
