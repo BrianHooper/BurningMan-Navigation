@@ -23,7 +23,7 @@ class Landmarks {
 
     // Relative path to landmark files
     private static final String bathroomsPath = "config/bathrooms.csv";
-    private static final String campsPath = "config/camps.csv";
+    private static final String campsPath = "config/theme_camps.tsv";
     private static final String favoritesPath = "config/favorites.csv";
 
     // Key-Value pairs representing the name and location of a favorite
@@ -126,6 +126,46 @@ class Landmarks {
      */
     void readCamps() {
         readNamedLocations(camps, campsPath);
+    }
+
+    void readCampsTSV() {
+        ArrayList<String> lines = FileManager.readLines(campsPath);
+        if(lines == null)
+            return;
+        String regex = "[0-9]+";
+        for(String line : lines) {
+
+            String[] split = line.split("\t");
+            if (split.length >= 2) {
+                String campName = split[0];
+                String[] address = split[1].split(" ");
+                if (address.length == 3) {
+                    String[] time = address[0].split(":");
+                    if (time.length == 2) {
+                        try {
+                            int hour = Integer.parseInt(time[0]);
+                            int minute = Integer.parseInt(time[1]);
+                            if(address[1].matches(regex)) {
+                                camps.put(campName, new Location(hour, minute, Integer.parseInt(address[1])));
+                            } else {
+                                camps.put(campName, new Location(hour, minute, address[1].charAt(0)));
+                            }
+                        } catch (NumberFormatException e) {
+                            logger.warning(this.getClass(),
+                                    "NumberFormatException while reading named locations, error parsing line \'" +
+                                            line + "\': " + e.getMessage());
+                            System.out.println("NumberFormatException: " + line);
+                        }
+                    } else {
+                        System.out.println("Invalid time length: " + campName);
+                    }
+                } else {
+                    System.out.println("No address break: " + campName);
+                }
+            } else {
+                System.out.println("No breaks at all: " + line);
+            }
+        }
     }
 
     /**
