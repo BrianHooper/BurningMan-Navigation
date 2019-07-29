@@ -268,7 +268,7 @@ class MainInterfacePanel {
         gbc.gridy = 0;
         gbc.fill = GridBagConstraints.BOTH;
         panel1.add(globalPanel, gbc);
-        globalPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20), null));
+        globalPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5), null));
         rightPanel = new JPanel();
         rightPanel.setLayout(new GridBagLayout());
         gbc = new GridBagConstraints();
@@ -426,7 +426,7 @@ class MainInterfacePanel {
         gbc.gridwidth = 3;
         gbc.fill = GridBagConstraints.BOTH;
         globalPanel.add(panel2, gbc);
-        panel2.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEmptyBorder(0, 0, 30, 0), null));
+        panel2.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEmptyBorder(0, 0, 5, 0), null));
         header = new JLabel();
         header.setIcon(new ImageIcon(getClass().getResource("/logo.png")));
         header.setText("Burning Man Navigation");
@@ -442,4 +442,5 @@ class MainInterfacePanel {
     public JComponent $$$getRootComponent$$$() {
         return mainPanel;
     }
+
 }
