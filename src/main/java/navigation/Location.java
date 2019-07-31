@@ -131,6 +131,7 @@ public class Location {
      * @return double
      */
     static int toDistance(char streetChar) {
+        streetChar = Character.toUpperCase(streetChar);
         if(streetChar < 65 || streetChar > 76) return 0;
         String street = String.valueOf(streetChar);
         int index = 1;

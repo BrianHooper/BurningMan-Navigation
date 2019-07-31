@@ -185,7 +185,7 @@ public class Navigator {
      */
     private void readLandmarks() {
         landmarks.readBathrooms();
-        landmarks.readCamps();
+        landmarks.readCampsTSV();
         landmarks.readFavorites();
     }
 

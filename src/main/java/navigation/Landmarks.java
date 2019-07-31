@@ -146,9 +146,9 @@ class Landmarks {
                             int hour = Integer.parseInt(time[0]);
                             int minute = Integer.parseInt(time[1]);
                             if(address[1].matches(regex)) {
-                                camps.put(campName, new Location(hour, minute, Integer.parseInt(address[1])));
+                                camps.put(campName, new Location(hour, minute, Integer.parseInt(address[2])));
                             } else {
-                                camps.put(campName, new Location(hour, minute, address[1].charAt(0)));
+                                camps.put(campName, new Location(hour, minute, address[2].charAt(0)));
                             }
                         } catch (NumberFormatException e) {
                             logger.warning(this.getClass(),
