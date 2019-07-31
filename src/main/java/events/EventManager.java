@@ -4,7 +4,9 @@ import driver.FileManager;
 import driver.LogDriver;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Class EventManager
@@ -17,6 +19,7 @@ import java.util.ArrayList;
 public class EventManager {
     // relative path to file containing list of events
     private static final String eventsPath = "config/eventList.csv";
+    private static final String eventsTSVPath = "config/events.tsv";
 
     // main list of events
     private final ArrayList<Event> events;
@@ -31,7 +34,7 @@ public class EventManager {
      */
     public EventManager() {
         events = new ArrayList<>();
-        readEvents();
+        readEventsTSV();
     }
 
     /**
@@ -80,6 +83,93 @@ public class EventManager {
                 } else {
                     logger.warning(EventManager.class,
                             "MultiDateBuilder returned null while trying to parse event line " + line);
+                }
+            }
+        }
+    }
+
+    private void parseEventDate(String dateString) {
+        DateTimeFormatter dfWithoutMin = DateTimeFormatter.ofPattern("yyyy MMMM dd ha");
+        DateTimeFormatter dfWithMin = DateTimeFormatter.ofPattern("yyyy MMMM dd h:mma");
+
+        String[] allDates = dateString.split("<-->");
+        for(String singleDate : allDates) {
+            singleDate = singleDate.replaceAll("\\[", "");
+            singleDate = singleDate.replaceAll("\\]", "");
+
+            String[] splitDate = singleDate.split(",");
+            String[] daySplit;
+            if(splitDate[1].charAt(0) == ' ') {
+                daySplit = splitDate[1].substring(1).split(" ");
+            } else {
+                daySplit = splitDate[1].split(" ");
+            }
+
+            String[] timeSplit = splitDate[3].split(" – ");
+
+            String month = daySplit[0].replaceAll(" ", "");
+            String day = daySplit[1].substring(0, daySplit[1].length() - 2).replaceAll(" ", "");
+            String year = splitDate[2].replaceAll(" ", "");
+            String startTime = timeSplit[0].replaceAll(" ", "").replaceAll("\'", "");
+            String endTime = timeSplit[1].replaceAll(" ", "").replaceAll("\'", "");
+
+
+
+            String formattedStartDate = year + " " + month + " " + day + " " + startTime;
+            String formattedEndDate = year + " " + month + " " + day + " " + endTime;
+
+            LocalDateTime startDate;
+            if(startTime.contains(":")) {
+                startDate = LocalDateTime.parse(formattedStartDate, dfWithMin);
+            } else {
+                startDate = LocalDateTime.parse(formattedStartDate, dfWithoutMin);
+            }
+
+            LocalDateTime endDate;
+            if(endTime.contains(":")) {
+                endDate = LocalDateTime.parse(formattedEndDate, dfWithMin);
+            } else {
+                endDate = LocalDateTime.parse(formattedEndDate, dfWithoutMin);
+            }
+
+
+            //TODO create event with name/camp/description
+            Event event = new Event()
+
+        }
+        if(dateString.charAt(0) == '[') {
+            dateString = dateString.substring(1, dateString.length() - 1);
+        }
+        String[] indivudialDates = dateString.split("', '");
+        for(String SingleDateString : indivudialDates) {
+            String[] dateParts = SingleDateString.split(",");
+            if(dateParts.length == 4) {
+                String[] day = dateParts[1].split(" ");
+                String[] times = dateParts[3].split(" – ");
+                System.out.println();
+            }
+            System.out.println();
+        }
+    }
+
+    private void readEventsTSV() {
+        ArrayList<String> lines = FileManager.readLines(eventsTSVPath);
+        if(lines == null) {
+            return;
+        }
+
+        for(String line : lines) {
+            String[] split = line.split("\t");
+            if(split.length == 4 || split.length == 5) {
+                String name = split[0];
+                String location = split[1];
+                EventCategory category = EventCategory.of(split[2]);
+                String dateListString = split[3];
+                parseEventDate(dateListString);
+                if(split.length == 5) {
+                    String description = split[4];
+                } else {
+                    System.out.print("");
                 }
             }
         }
