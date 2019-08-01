@@ -5,6 +5,7 @@ import driver.LogDriver;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -20,6 +21,9 @@ public class EventManager {
     // relative path to file containing list of events
     private static final String eventsPath = "config/eventList.csv";
     private static final String eventsTSVPath = "config/events.tsv";
+
+    private static DateTimeFormatter dfWithoutMin = DateTimeFormatter.ofPattern("yyyy MMMM d ha");
+    private static DateTimeFormatter dfWithMin = DateTimeFormatter.ofPattern("yyyy MMMM d h:mma");
 
     // main list of events
     private final ArrayList<Event> events;
@@ -88,68 +92,73 @@ public class EventManager {
         }
     }
 
-    private void parseEventDate(String dateString) {
-        DateTimeFormatter dfWithoutMin = DateTimeFormatter.ofPattern("yyyy MMMM dd ha");
-        DateTimeFormatter dfWithMin = DateTimeFormatter.ofPattern("yyyy MMMM dd h:mma");
+    private void parseSingleDate(String name, String location, String eventType, String description, String dateString) {
+        dateString = dateString.replaceAll("\\[", "");
+        dateString = dateString.replaceAll("\\]", "");
 
-        String[] allDates = dateString.split("<-->");
-        for(String singleDate : allDates) {
-            singleDate = singleDate.replaceAll("\\[", "");
-            singleDate = singleDate.replaceAll("\\]", "");
+        String[] splitDate = dateString.split(",");
+        String[] daySplit;
+        if(splitDate[1].charAt(0) == ' ') {
+            daySplit = splitDate[1].substring(1).split(" ");
+        } else {
+            daySplit = splitDate[1].split(" ");
+        }
 
-            String[] splitDate = singleDate.split(",");
-            String[] daySplit;
-            if(splitDate[1].charAt(0) == ' ') {
-                daySplit = splitDate[1].substring(1).split(" ");
-            } else {
-                daySplit = splitDate[1].split(" ");
-            }
+        String[] timeSplit = splitDate[3].split(" – ");
 
-            String[] timeSplit = splitDate[3].split(" – ");
+        String month = daySplit[0].replaceAll(" ", "");
+        String day = daySplit[1].substring(0, daySplit[1].length() - 2).replaceAll(" ", "");
+        String year = splitDate[2].replaceAll(" ", "");
+        String startTime = timeSplit[0].replaceAll(" ", "").replaceAll("\'", "");
+        String endTime = timeSplit[1].replaceAll(" ", "").replaceAll("\'", "");
 
-            String month = daySplit[0].replaceAll(" ", "");
-            String day = daySplit[1].substring(0, daySplit[1].length() - 2).replaceAll(" ", "");
-            String year = splitDate[2].replaceAll(" ", "");
-            String startTime = timeSplit[0].replaceAll(" ", "").replaceAll("\'", "");
-            String endTime = timeSplit[1].replaceAll(" ", "").replaceAll("\'", "");
+        String formattedStartDate = year + " " + month + " " + day + " " + startTime;
+        String formattedEndDate = year + " " + month + " " + day + " " + endTime;
 
-
-
-            String formattedStartDate = year + " " + month + " " + day + " " + startTime;
-            String formattedEndDate = year + " " + month + " " + day + " " + endTime;
-
-            LocalDateTime startDate;
+        LocalDateTime startDate = null, endDate = null;
+        try {
             if(startTime.contains(":")) {
                 startDate = LocalDateTime.parse(formattedStartDate, dfWithMin);
             } else {
                 startDate = LocalDateTime.parse(formattedStartDate, dfWithoutMin);
             }
 
-            LocalDateTime endDate;
             if(endTime.contains(":")) {
                 endDate = LocalDateTime.parse(formattedEndDate, dfWithMin);
             } else {
                 endDate = LocalDateTime.parse(formattedEndDate, dfWithoutMin);
             }
+        } catch(DateTimeParseException e) {
+            System.err.println("Error on " + dateString);
+            return;
+        }
+
+        if(EventCategory.of(eventType) == null) {
+            System.out.println(eventType);
+        }
+        events.add(new Event(name, location, description, EventCategory.of(eventType), startDate, endDate));
+    }
+
+    private void parseEventDate(String name, String location, String eventType, String description, String dateString) {
 
 
-            //TODO create event with name/camp/description
-            Event event = new Event()
-
+        String[] allDates = dateString.split("<-->");
+        for(String singleDate : allDates) {
+            parseSingleDate(name, location, eventType, description, singleDate);
         }
-        if(dateString.charAt(0) == '[') {
-            dateString = dateString.substring(1, dateString.length() - 1);
-        }
-        String[] indivudialDates = dateString.split("', '");
-        for(String SingleDateString : indivudialDates) {
-            String[] dateParts = SingleDateString.split(",");
-            if(dateParts.length == 4) {
-                String[] day = dateParts[1].split(" ");
-                String[] times = dateParts[3].split(" – ");
-                System.out.println();
-            }
-            System.out.println();
-        }
+//        if(dateString.charAt(0) == '[') {
+//            dateString = dateString.substring(1, dateString.length() - 1);
+//        }
+//        String[] indivudialDates = dateString.split("', '");
+//        for(String SingleDateString : indivudialDates) {
+//            String[] dateParts = SingleDateString.split(",");
+//            if(dateParts.length == 4) {
+//                String[] day = dateParts[1].split(" ");
+//                String[] times = dateParts[3].split(" – ");
+//                System.out.println();
+//            }
+//            System.out.println();
+//        }
     }
 
     private void readEventsTSV() {
@@ -163,14 +172,10 @@ public class EventManager {
             if(split.length == 4 || split.length == 5) {
                 String name = split[0];
                 String location = split[1];
-                EventCategory category = EventCategory.of(split[2]);
+                String category = split[2];
                 String dateListString = split[3];
-                parseEventDate(dateListString);
-                if(split.length == 5) {
-                    String description = split[4];
-                } else {
-                    System.out.print("");
-                }
+                String description = split[4];
+                parseEventDate(name, location, category, description, dateListString);
             }
         }
     }

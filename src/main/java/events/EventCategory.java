@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @since 0.9.0
  */
 public enum EventCategory {
-    ADULT, CARE, FIRE, FOOD, GAMES, KIDS, MUSIC, PARADE, PARTY, PERFORMANCE, RITUAL, WORKSHOP;
+    PARTY, OTHER, PERFORMANCE, ADULT, CARE, RITUAL, FOOD, WORKSHOP, FIRE, GAME, KIDS, PARADE;
 
     /**
      * Converts a string to a category
@@ -23,30 +23,30 @@ public enum EventCategory {
     public static EventCategory of(String category) {
         category = category.toLowerCase();
         switch(category) {
-            case "adult":
-                return ADULT;
-            case "care":
-                return CARE;
-            case "fire":
-                return FIRE;
-            case "food":
-                return FOOD;
-            case "games":
-                return GAMES;
-            case "kids":
-                return KIDS;
-            case "music":
-                return MUSIC;
-            case "parade":
-                return PARADE;
-            case "party":
+            case "gathering/party":
                 return PARTY;
+            case "other":
+                return OTHER;
             case "performance":
                 return PERFORMANCE;
-            case "ritual":
+            case "adult-oriented":
+                return ADULT;
+            case "care/support":
+                return CARE;
+            case "ritual/ceremony":
                 return RITUAL;
-            case "workshop":
+            case "food":
+                return FOOD;
+            case "class/workshop":
                 return WORKSHOP;
+            case "fire":
+                return FIRE;
+            case "game":
+                return GAME;
+            case "kid-friendly":
+                return KIDS;
+            case "parade":
+                return PARADE;
             default:
                 return null;
         }
