@@ -5,6 +5,7 @@ import driver.ListManager;
 import driver.LogDriver;
 import events.Event;
 import events.EventCategory;
+import navigation.Landmark;
 import navigation.Location;
 import navigation.Navigator;
 
@@ -391,6 +392,7 @@ class OptionPaneCreator {
 
         OptionPane eventPane = new OptionPane();
         eventPane.addLabel("Name: " + chosenEvent.getName());
+        eventPane.addLabel("Location: " + chosenEvent.getLocation());
         eventPane.addLabel("Category: " + chosenEvent.getCategory());
         eventPane.addLabel(chosenEvent.timeToString());
 
@@ -505,17 +507,17 @@ class OptionPaneCreator {
             JOptionPane.showMessageDialog(view.getMainFrame(), "No camps found");
             return;
         }
-        ArrayList<String> menuItems = ListManager.splitEvenly(favoritePairs, 2);
+        ArrayList<String> menuItems = ListManager.splitEvenly(favoritePairs, 3);
 
 
         OptionPane pane = new OptionPane();
         pane.addListInput(menuItems, 10);
         if(pane.show(view.getMainFrame(), "Navigate to favorite")) {
             String favName = favoritePairs.get(pane.getJListSelectedIndex(0))[0];
-            if(favName != null) {
-                navigator.setDestination(navigator.getFavorites().get(favName), favName);
-                navigator.writeToConfigFile();
-            }
+//            if(favName != null) {
+//                navigator.setDestination(navigator.getFavorites().get(favName), favName);
+//                navigator.writeToConfigFile();
+//            }
         }
     }
 
@@ -539,7 +541,7 @@ class OptionPaneCreator {
         if(pane.show(view.getMainFrame(), "Add new favorite")) {
             String favName = nameField.getText();
             Location favLocation = addressPanel.getAddress();
-            navigator.getFavorites().put(favName, favLocation);
+            navigator.getFavorites().add(new Landmark(favName, favLocation));
             navigator.writeFavorites();
             navigator.writeToConfigFile();
         }

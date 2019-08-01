@@ -33,7 +33,7 @@ public class Navigator {
     private static final String configPath = "config/config.cfg";
 
     // Relative path of favorites file
-    private static final String favoritesPath = "config/favorites.csv";
+    private static final String favoritesPath = "config/favorites.tsv";
 
     // Current home location
     private Location home;
@@ -174,8 +174,8 @@ public class Navigator {
      */
     public void writeFavorites() {
         ArrayList<String> favorites = new ArrayList<>();
-        for(String campName : landmarks.getFavorites().keySet()) {
-            favorites.add(campName + ',' + landmarks.getFavorites().get(campName).getCSVAddress());
+        for(Landmark landmark : landmarks.getFavorites()) {
+            favorites.add(landmark.toString());
         }
         FileManager.writeLines(favoritesPath, favorites);
     }
@@ -186,7 +186,7 @@ public class Navigator {
     private void readLandmarks() {
         landmarks.readBathrooms();
         landmarks.readCampsTSV();
-        landmarks.readFavorites();
+        landmarks.readFavoritesTSV();
     }
 
 //**********************
@@ -276,7 +276,7 @@ public class Navigator {
      *
      * @return TreeMap (String, Location)
      */
-    public TreeMap<String, Location> getFavorites() {
+    public ArrayList<Landmark> getFavorites() {
         return landmarks.getFavorites();
     }
 
@@ -378,8 +378,8 @@ public class Navigator {
      */
     public ArrayList<String[]> getFavoritePairs() {
         ArrayList<String[]> favPairs = new ArrayList<>();
-        for(String favName : landmarks.getFavorites().keySet()) {
-            favPairs.add(new String[]{favName, landmarks.getFavorites().get(favName).getAddress()});
+        for(Landmark landmark : landmarks.getFavorites()) {
+            favPairs.add(new String[]{landmark.getName(), landmark.getLocation().toString(), landmark.getDescription()});
         }
         return favPairs;
     }

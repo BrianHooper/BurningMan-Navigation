@@ -24,10 +24,11 @@ class Landmarks {
     // Relative path to landmark files
     private static final String bathroomsPath = "config/bathrooms.csv";
     private static final String campsPath = "config/theme_camps.tsv";
-    private static final String favoritesPath = "config/favorites.csv";
+    private static final String favoritesPath = "config/facilities.tsv";
 
     // Key-Value pairs representing the name and location of a favorite
     private final TreeMap<String, Location> favorites;
+    private final ArrayList<Landmark> favoriteLandmarks;
 
     // Key-Value pairs representing the name and location of camps
     private final TreeMap<String, Location> camps;
@@ -51,6 +52,7 @@ class Landmarks {
         this.bathrooms = new ArrayList<>();
         this.camps = new TreeMap<>();
         this.favorites = new TreeMap<>();
+        this.favoriteLandmarks = new ArrayList<>();
     }
 
     /**
@@ -175,6 +177,36 @@ class Landmarks {
         readNamedLocations(favorites, favoritesPath);
     }
 
+    void readFavoritesTSV() {
+        ArrayList<String> lines = FileManager.readLines(favoritesPath);
+        if(lines == null)
+            return;
+        for(String line : lines) {
+            String[] split = line.split("\t");
+            String name = split[0];
+            String description;
+            if(split.length == 3) {
+                description = split[2];
+            } else {
+                description = "";
+            }
+            String[] address = split[1].split(" and ");
+            String[] time = address[0].split(":");
+            try {
+                String hour = time[0];
+                String minute = time[1];
+                String street = address[1];
+
+                Landmark landmark = new Landmark(name, description, hour, minute, street);
+                if(landmark.getLocation() != null) {
+                    favoriteLandmarks.add(landmark);
+                }
+            } catch(Exception e) {
+                System.out.println();
+            }
+        }
+    }
+
 //**********************
 // Getters and setters
 //**********************
@@ -269,8 +301,8 @@ class Landmarks {
      *
      * @return favorites
      */
-    TreeMap<String, Location> getFavorites() {
-        return favorites;
+    ArrayList<Landmark> getFavorites() {
+        return favoriteLandmarks;
     }
 
     /**

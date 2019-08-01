@@ -180,10 +180,9 @@ public class Event {
         if(startDate == null) {
             return "";
         } else if(endDate == null) {
-            return ClockDriver.dfTime.format(startDate) + " at " + ClockDriver.dfTime.format(startDate);
+            return ClockDriver.dfTime.format(startDate);
         } else {
-            return ClockDriver.dfTime.format(startDate) + " " +
-                    ClockDriver.dfTime.format(startDate) + "-" + ClockDriver.dfTime.format(endDate);
+            return ClockDriver.dfTime.format(startDate) + "-" + ClockDriver.dfTime.format(endDate);
         }
     }
 
@@ -205,7 +204,7 @@ public class Event {
      *
      * @return String location
      */
-    String getLocation() {
+    public String getLocation() {
         return location;
     }
 
