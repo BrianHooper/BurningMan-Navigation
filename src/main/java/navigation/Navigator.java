@@ -33,7 +33,7 @@ public class Navigator {
     private static final String configPath = "config/config.cfg";
 
     // Relative path of favorites file
-    private static final String favoritesPath = "config/favorites.tsv";
+    private static final String favoritesPath = "config/facilities.tsv";
 
     // Current home location
     private Location home;
@@ -175,7 +175,7 @@ public class Navigator {
     public void writeFavorites() {
         ArrayList<String> favorites = new ArrayList<>();
         for(Landmark landmark : landmarks.getFavorites()) {
-            favorites.add(landmark.toString());
+            favorites.add(landmark.toStringForOutput());
         }
         FileManager.writeLines(favoritesPath, favorites);
     }

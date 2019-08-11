@@ -491,4 +491,16 @@ public class Location {
         else if(bearing < 348) return "north-northwest";
         else return "north";
     }
+
+    String toStringForOutput() {
+        String minuteString = String.valueOf(minute);
+        if(minuteString.length() < 2) {
+            minuteString = "0" + minuteString;
+        }
+        String street = toStreet(distance);
+        if(street.length() > 1) {
+            street = String.valueOf(distance);
+        }
+        return hour + ":" + minuteString + " & " + street;
+    }
 }

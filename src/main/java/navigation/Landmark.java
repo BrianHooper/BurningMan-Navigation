@@ -26,6 +26,12 @@ public class Landmark {
         this.description = "";
     }
 
+    public Landmark(String name, String description, Location location) {
+        this.name = name;
+        this.location = location;
+        this.description = description;
+    }
+
     public String getName() {
         return name;
     }
@@ -40,5 +46,9 @@ public class Landmark {
 
     public String toString() {
         return name + "\t" + location.toString() + "\t" + description;
+    }
+
+    public String toStringForOutput() {
+        return name + "\t" + location.toStringForOutput() + "\t" + description;
     }
 }

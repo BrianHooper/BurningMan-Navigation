@@ -39,10 +39,16 @@ public class ListManager {
      * @return String
      */
     private static String addSpacers(String str, int requiredLength) {
-        int spacerLength = requiredLength - str.length();
-        char[] repeat = new char[spacerLength];
-        Arrays.fill(repeat, ' ');
-        return str + new String(repeat);
+        if(str.length() < requiredLength) {
+            int spacerLength = requiredLength - str.length();
+            char[] repeat = new char[spacerLength];
+            Arrays.fill(repeat, ' ');
+            return str + new String(repeat);
+        } else if(str.length() > requiredLength) {
+            return str.substring(0, requiredLength);
+        } else {
+            return str;
+        }
     }
 
     /**
@@ -65,6 +71,7 @@ public class ListManager {
      * @return ArrayList of strings
      */
     public static ArrayList<String> splitEvenly(ArrayList<String[]> data, int columns) {
+        int globalMax = 20;
         int[] maxLengths = new int[columns];
         for(String[] row : data) {
             if(row.length == columns) {
@@ -73,6 +80,12 @@ public class ListManager {
                         maxLengths[i] = row[i].length();
                     }
                 }
+            }
+        }
+
+        for(int i = 0; i < maxLengths.length; i++) {
+            if(maxLengths[i] > globalMax) {
+                maxLengths[i] = globalMax;
             }
         }
 

@@ -5,6 +5,7 @@ import driver.ListManager;
 import driver.LogDriver;
 import events.Event;
 import events.EventCategory;
+import jdk.nashorn.internal.runtime.linker.NashornBeansLinker;
 import navigation.Landmark;
 import navigation.Location;
 import navigation.Navigator;
@@ -397,6 +398,7 @@ class OptionPaneCreator {
         eventPane.addLabel(chosenEvent.timeToString());
 
         OptionPaneTextArea descriptionArea = new OptionPaneTextArea(20, 10);
+        descriptionArea.setLineWrap(true);
         descriptionArea.setText(chosenEvent.getDescription());
         descriptionArea.setEditable(false);
         eventPane.addTextInput(descriptionArea);
@@ -472,26 +474,16 @@ class OptionPaneCreator {
      * @param navigator main navigator object
      */
     static void delFavorite(View view, Navigator navigator) {
-        ArrayList<String[]> favoritePairs = navigator.getFavoritePairs();
-        if(favoritePairs.isEmpty()) {
-            JOptionPane.showMessageDialog(view.getMainFrame(), "No camps found");
+        Landmark landmark = chooseFavorite(view, navigator);
+        if(landmark == null) {
             return;
         }
-        ArrayList<String> menuItems = ListManager.splitEvenly(favoritePairs, 2);
 
-
-        OptionPane pane = new OptionPane();
-        pane.addListInput(menuItems, 10);
-        if(pane.show(view.getMainFrame(), "Delete favorite")) {
-            String favName = favoritePairs.get(pane.getJListSelectedIndex(0))[0];
-            if(favName != null) {
-                int confirmation = JOptionPane.showConfirmDialog(view.getMainFrame(), "Delete favorite " + favName + "?");
-                if(confirmation == JOptionPane.YES_OPTION) {
-                    navigator.getFavorites().remove(favName);
-                    navigator.writeFavorites();
-                    navigator.writeToConfigFile();
-                }
-            }
+        int confirmation = JOptionPane.showConfirmDialog(view.getMainFrame(), "Delete favorite " + landmark.getName() + "?");
+        if(confirmation == JOptionPane.YES_OPTION) {
+            navigator.getFavorites().remove(landmark);
+            navigator.writeFavorites();
+            navigator.writeToConfigFile();
         }
     }
 
@@ -502,22 +494,34 @@ class OptionPaneCreator {
      * @param navigator main navigator object
      */
     static void navFavorite(View view, Navigator navigator) {
+        Landmark favName = chooseFavorite(view, navigator);
+        if(favName != null) {
+            navigator.setDestination(favName.getLocation(), favName.getName());
+            navigator.writeToConfigFile();
+        }
+    }
+
+    private static Landmark chooseFavorite(View view, Navigator navigator) {
         ArrayList<String[]> favoritePairs = navigator.getFavoritePairs();
         if(favoritePairs.isEmpty()) {
             JOptionPane.showMessageDialog(view.getMainFrame(), "No camps found");
-            return;
+            return null;
         }
-        ArrayList<String> menuItems = ListManager.splitEvenly(favoritePairs, 3);
 
+        ArrayList<String[]> filteredFavorites = new ArrayList<>();
+        for(String[] pair : favoritePairs) {
+            filteredFavorites.add(new String[]{pair[0], pair[1]});
+        }
+
+        ArrayList<String> menuItems = ListManager.splitEvenly(filteredFavorites, 2);
 
         OptionPane pane = new OptionPane();
         pane.addListInput(menuItems, 10);
         if(pane.show(view.getMainFrame(), "Navigate to favorite")) {
-            String favName = favoritePairs.get(pane.getJListSelectedIndex(0))[0];
-//            if(favName != null) {
-//                navigator.setDestination(navigator.getFavorites().get(favName), favName);
-//                navigator.writeToConfigFile();
-//            }
+            int selectedIndex = pane.getJListSelectedIndex(0);
+            return navigator.getFavorites().get(selectedIndex);
+        } else {
+            return null;
         }
     }
 
@@ -537,14 +541,34 @@ class OptionPaneCreator {
         AddressPanel addressPanel = new AddressPanel(navigator.currentLocation());
         pane.addComponent(addressPanel);
 
+        JTextArea descriptionField = new JTextArea(8, 20);
+        pane.addTextInput(descriptionField);
 
         if(pane.show(view.getMainFrame(), "Add new favorite")) {
             String favName = nameField.getText();
             Location favLocation = addressPanel.getAddress();
-            navigator.getFavorites().add(new Landmark(favName, favLocation));
+            String description = descriptionField.getText();
+            navigator.getFavorites().add(new Landmark(favName, description, favLocation));
             navigator.writeFavorites();
             navigator.writeToConfigFile();
         }
+    }
+
+    static void viewFavoriteDescription(View view, Navigator navigator) {
+        Landmark landmark = chooseFavorite(view, navigator);
+        if(landmark == null) {
+            return;
+        }
+
+        OptionPane eventPane = new OptionPane();
+        eventPane.addLabel("Name: " + landmark.getName());
+        eventPane.addLabel("Location: " + landmark.getLocation());
+        OptionPaneTextArea descriptionArea = new OptionPaneTextArea(20, 10);
+        descriptionArea.setLineWrap(true);
+        descriptionArea.setText(landmark.getDescription());
+        descriptionArea.setEditable(false);
+        eventPane.addTextInput(descriptionArea);
+        eventPane.show(view.getMainFrame(), "Landmark");
     }
 
     /**

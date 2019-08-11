@@ -46,8 +46,9 @@ class Menu {
      */
     void favorites(View view, Navigator navigator) {
         menuItems = new MenuLabel[]{
-                new MenuLabel("Add new favorite", OptionPaneCreator::goToAddress, view, navigator),
+                new MenuLabel("Add new favorite", OptionPaneCreator::addFavorite, view, navigator),
                 new MenuLabel("Navigate to favorite", OptionPaneCreator::navFavorite, view, navigator),
+                new MenuLabel("View favorite description", OptionPaneCreator::viewFavoriteDescription, view, navigator),
                 new MenuLabel("Delete favorite", OptionPaneCreator::delFavorite, view, navigator)
         };
 

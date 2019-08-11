@@ -183,14 +183,17 @@ class Landmarks {
             return;
         for(String line : lines) {
             String[] split = line.split("\t");
-            String name = split[0];
+
             String description;
             if(split.length == 3) {
                 description = split[2];
-            } else {
+            } else if(split.length == 2){
                 description = "";
+            } else {
+                continue;
             }
-            String[] address = split[1].split(" and ");
+            String name = split[0];
+            String[] address = split[1].split(" & ");
             String[] time = address[0].split(":");
             try {
                 String hour = time[0];

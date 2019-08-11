@@ -242,7 +242,7 @@ public class Event {
      * @return String array
      */
     public String[] getElements() {
-        return new String[]{name, location, String.valueOf(category.toString().charAt(0)), asString(startTime, endTime)};
+        return new String[]{name, location, String.valueOf(category.toString()), asString(startTime, endTime)};
     }
 
     /**
