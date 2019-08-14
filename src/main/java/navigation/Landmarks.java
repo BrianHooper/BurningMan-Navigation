@@ -4,6 +4,8 @@ import driver.FileManager;
 import driver.LogDriver;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.TreeMap;
 
 /**
@@ -156,16 +158,15 @@ class Landmarks {
                             logger.warning(this.getClass(),
                                     "NumberFormatException while reading named locations, error parsing line \'" +
                                             line + "\': " + e.getMessage());
-                            System.out.println("NumberFormatException: " + line);
                         }
                     } else {
-                        System.out.println("Invalid time length: " + campName);
+                        logger.warning(this.getClass(),"Invalid time length: " + campName);
                     }
                 } else {
-                    System.out.println("No address break: " + campName);
+                    logger.warning(this.getClass(),"No address break: " + campName);
                 }
             } else {
-                System.out.println("No breaks at all: " + line);
+                logger.warning(this.getClass(),"No breaks at all: " + line);
             }
         }
     }
@@ -193,7 +194,14 @@ class Landmarks {
                 continue;
             }
             String name = split[0];
-            String[] address = split[1].split(" & ");
+            String[] address;
+            if(split[1].contains("&")) {
+                address = split[1].split(" & ");
+            } else if(split[1].contains("and")) {
+                address = split[1].split(" and ");
+            } else {
+                continue;
+            }
             String[] time = address[0].split(":");
             try {
                 String hour = time[0];
@@ -205,7 +213,7 @@ class Landmarks {
                     favoriteLandmarks.add(landmark);
                 }
             } catch(Exception e) {
-                System.out.println();
+                logger.warning(this.getClass(),"Error parsing favorite: " + line + "\n\t" + e.getStackTrace());
             }
         }
     }

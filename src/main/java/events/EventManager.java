@@ -7,6 +7,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 
 /**
@@ -234,6 +236,7 @@ public class EventManager {
                 matchingEvents.add(event);
             }
         }
+        matchingEvents.sort((o1, o2) -> o1.getName().compareToIgnoreCase(o2.getName()));
         return matchingEvents;
     }
 
@@ -263,10 +266,10 @@ public class EventManager {
             }
         }
 
-        if(name.length() > 0 && !event.getName().contains(name)) {
+        if(name.length() > 0 && !event.getName().toLowerCase().contains(name)) {
             return false;
         }
 
-        return camp.length() <= 0 || event.getLocation().contains(camp);
+        return camp.length() <= 0 || event.getLocation().toLowerCase().contains(camp);
     }
 }

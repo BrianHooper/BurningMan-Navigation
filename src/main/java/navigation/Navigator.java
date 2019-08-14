@@ -187,6 +187,7 @@ public class Navigator {
         landmarks.readBathrooms();
         landmarks.readCampsTSV();
         landmarks.readFavoritesTSV();
+        System.out.println();
     }
 
 //**********************

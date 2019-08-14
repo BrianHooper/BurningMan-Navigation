@@ -512,7 +512,7 @@ class OptionPaneCreator {
         for(String[] pair : favoritePairs) {
             filteredFavorites.add(new String[]{pair[0], pair[1]});
         }
-
+        filteredFavorites.sort((o1, o2) -> o1[0].compareToIgnoreCase(o2[0]));
         ArrayList<String> menuItems = ListManager.splitEvenly(filteredFavorites, 2);
 
         OptionPane pane = new OptionPane();
@@ -638,6 +638,7 @@ class OptionPaneCreator {
 
 
         ArrayList<String> camps = navigator.findCamps(nameField.getText());
+        camps.sort(String::compareToIgnoreCase);
         if(camps.isEmpty()) {
             JOptionPane.showMessageDialog(view.getMainFrame(), "Camp not found");
             return;
